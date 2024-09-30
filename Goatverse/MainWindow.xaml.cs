@@ -37,7 +37,7 @@ namespace Goatverse
 
             ThicknessAnimation marginAnimation = new ThicknessAnimation {
                 From = card.Margin,
-                To = new Thickness(20, 200, 0, 0),
+                To = new Thickness(20, -500, 0, 0),
                 Duration = TimeSpan.FromSeconds(0.3) 
             };
 
@@ -50,7 +50,7 @@ namespace Goatverse
 
             ThicknessAnimation marginAnimation = new ThicknessAnimation {
                 From = card.Margin,
-                To = new Thickness(20, 570, 0, 0),
+                To = new Thickness(20, 0, 0, 0),
                 Duration = TimeSpan.FromSeconds(0.3)
             };
 
