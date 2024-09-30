@@ -1,101 +1,331 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
-		Microsoft ResX Schema
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
 
-		Version 1.3
-
-		The primary goals of this format is to allow a simple XML format 
-		that is mostly human readable. The generation and parsing of the 
-		various data types are done through the TypeConverter classes 
-		associated with the data types.
-
-		Example:
-
-		... ado.net/XML headers & schema ...
-		<resheader name="resmimetype">text/microsoft-resx</resheader>
-		<resheader name="version">1.3</resheader>
-		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-		<data name="Name1">this is my long string</data>
-		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-			[base64 mime encoded serialized .NET Framework object]
-		</data>
-		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-			[base64 mime encoded string representing a byte array form of the .NET Framework object]
-		</data>
-
-		There are any number of "resheader" rows that contain simple 
-		name/value pairs.
-
-		Each data row contains a name, and value. The row also contains a 
-		type or mimetype. Type corresponds to a .NET class that support 
-		text/value conversion through the TypeConverter architecture. 
-		Classes that don't support this are serialized and stored with the 
-		mimetype set.
-
-		The mimetype is used for serialized objects, and tells the 
-		ResXResourceReader how to depersist the object. This is currently not 
-		extensible. For a given mimetype the value must be set accordingly:
-
-		Note - application/x-microsoft.net.object.binary.base64 is the format 
-		that the ResXResourceWriter will generate, however the reader can 
-		read any of the formats listed below.
-
-		mimetype: application/x-microsoft.net.object.binary.base64
-		value   : The object must be serialized with 
-			: System.Serialization.Formatters.Binary.BinaryFormatter
-			: and then encoded with base64 encoding.
-
-		mimetype: application/x-microsoft.net.object.soap.base64
-		value   : The object must be serialized with 
-			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-			: and then encoded with base64 encoding.
-
-		mimetype: application/x-microsoft.net.object.bytearray.base64
-		value   : The object must be serialized into a byte array 
-			: using a System.ComponentModel.TypeConverter
-			: and then encoded with base64 encoding.
-	-->
-	
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>1.3</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="globalAccept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="globalAccount" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="globalAddFriend" xml:space="preserve">
+    <value>Add Friend</value>
+  </data>
+  <data name="globalAttack" xml:space="preserve">
+    <value>Attack</value>
+  </data>
+  <data name="globalCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="globalCard" xml:space="preserve">
+    <value>Card</value>
+  </data>
+  <data name="globalChangeLanguage" xml:space="preserve">
+    <value>Change Language</value>
+  </data>
+  <data name="globalClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="globalCloseGame" xml:space="preserve">
+    <value>Close Game</value>
+  </data>
+  <data name="globalCopyCode" xml:space="preserve">
+    <value>Copy lobby code</value>
+  </data>
+  <data name="globalDeck" xml:space="preserve">
+    <value>Deck</value>
+  </data>
+  <data name="globalDeleteFriend" xml:space="preserve">
+    <value>Delete Friend</value>
+  </data>
+  <data name="globalDeleteProfile" xml:space="preserve">
+    <value>Delete Profile</value>
+  </data>
+  <data name="globalDiscard" xml:space="preserve">
+    <value>Discard</value>
+  </data>
+  <data name="globalDrawCard" xml:space="preserve">
+    <value>Draw a Card</value>
+  </data>
+  <data name="globalDrawPile" xml:space="preserve">
+    <value>Draw Pile</value>
+  </data>
+  <data name="globalDuel" xml:space="preserve">
+    <value>Duel</value>
+  </data>
+  <data name="globalEditProfile" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="globalEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="globalEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="globalExit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="globalExitGame" xml:space="preserve">
+    <value>Exit Game</value>
+  </data>
+  <data name="globalFriend" xml:space="preserve">
+    <value>Friend</value>
+  </data>
+  <data name="globalFriendList" xml:space="preserve">
+    <value>Friend List</value>
+  </data>
+  <data name="globalHistory" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="globalHowToPlay" xml:space="preserve">
+    <value>How to play</value>
+  </data>
+  <data name="globalInvitePlayer" xml:space="preserve">
+    <value>Invite Player</value>
+  </data>
+  <data name="globalKickPlayer" xml:space="preserve">
+    <value>Kick Player</value>
+  </data>
+  <data name="globalLevel" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="globalLobby" xml:space="preserve">
+    <value>Lobby</value>
+  </data>
+  <data name="globalLobbyCode" xml:space="preserve">
+    <value>Lobby Code</value>
+  </data>
+  <data name="globalLogIn" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="globalLoser" xml:space="preserve">
+    <value>You lose</value>
+  </data>
+  <data name="globalMessages" xml:space="preserve">
+    <value>Messages</value>
+  </data>
+  <data name="globalPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="globalPlayAgain" xml:space="preserve">
+    <value>Play Again</value>
+  </data>
+  <data name="globalPlayAsGuest" xml:space="preserve">
+    <value>Play As Guest</value>
+  </data>
+  <data name="globalPlayer" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="globalPoints" xml:space="preserve">
+    <value>Points</value>
+  </data>
+  <data name="globalProfile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="globalReturn" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="globalSendFriendRequest" xml:space="preserve">
+    <value>Send Friend Request</value>
+  </data>
+  <data name="globalSendMessage" xml:space="preserve">
+    <value>Send Message</value>
+  </data>
+  <data name="globalSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="globalSignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="globalSpanish" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="globalStartGame" xml:space="preserve">
+    <value>Start Game</value>
+  </data>
+  <data name="globalTrash" xml:space="preserve">
+    <value>Trash</value>
+  </data>
+  <data name="globalTurn" xml:space="preserve">
+    <value>Turn</value>
+  </data>
+  <data name="globalUser" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="globalUsername" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="globalWinner" xml:space="preserve">
+    <value>You win</value>
+  </data>
+  <data name="messageConfirmChanges" xml:space="preserve">
+    <value>Confirm your changes?</value>
+  </data>
+  <data name="messageDatabaseLostConnection" xml:space="preserve">
+    <value>The game lost connection to the Database. Check your connection and try again later</value>
+  </data>
+  <data name="messageEmailInUse" xml:space="preserve">
+    <value>The email is already linked to an account</value>
+  </data>
+  <data name="messageGameError" xml:space="preserve">
+    <value>The game suffer and unexpected error. </value>
+  </data>
+  <data name="messageLostInternetConnection" xml:space="preserve">
+    <value>Internet connection required. Check your connection and try again.</value>
+  </data>
+  <data name="messageNotExistingUsername" xml:space="preserve">
+    <value>The user doesn't exist, check and try again</value>
+  </data>
+  <data name="messageWrongPassword" xml:space="preserve">
+    <value>The password is incorrect</value>
+  </data>
+  <data name="tutorialHowToPlay" xml:space="preserve">
+    <value>Game Rules 
+Building Your Set 
+There are 3 ways to build a set: 
+Having a matching pair of cards in your deck.
+Winning a duel.
+Duel 
+You may attack the top stack of an opponent's herd by producing a goat from your hand (or a wild card) that MATCHES the goat on top of the opponent's herd. If able, the opponent may choose to defend with an identical goat or a wild card (all wild cards are equally powerful, regardless of point value).
+Continue alternating until someone can no longer play or chooses not to Duel Rules If the attacker wins, they collect all the cards in the duel, including the opponent's top stack, and add them as a new stack to their herd.
+If the defender wins, they collect the cards used in the duel and add them to the top (defended) stack.
+You may ONLY attack an opponent's TOP stack; lower stacks are protected by the top stack.
+You may NOT use the discard pile to attack an opponent.
+You must have at least one birth in front of you before you duel.
+You cannot duel over or steal a player's foundation pile.
+Action Cards 
+You may play one action card during your turn. You cannot play an action card on an individual until both have been born. Place the action card in the trash pile after using it.
+Discarding 
+To keep the game moving forward, and if you have done nothing, put one of your cards in the discard pile and draw a new card from the draw pile. If there are no cards in the draw pile (end of game), you discard cards anyway. 
+Note: The discard pile can only be used for assisted births; you cannot put a card from the discard pile into your hand.
+Replenishing Your Hand 
+At the end of each player's turn, all players replenish their hand with 5 cards (unless they choose to play with a different hand size). The player who stockpiled the turn replenishes first, taking cards from the draw pile. 
+Replenishment continues clockwise. No player replenishes their hand until the end of the turn, including duels and +1 and +2 plays. 
+If you have more than 5 cards at the end of your turn, discard until you have 5 in your hand again.
+and End of Game 
+End of Game 
+When the draw pile runs out, players continue playing until they have used all the cards in their hands. Once the first player runs out of cards in their hand and cannot draw any more, no player may use action cards from that point on. However, they may still use the goat cards they have in their hand.
+Scoring Each player adds up the total value of their herd by counting the points on each goat card in their herd (the point value is shown in the corner of each card). The player with the most points wins!</value>
+  </data>
+  <data name="globalWelcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="globalCreateAccount" xml:space="preserve">
+    <value>Create Account</value>
+  </data>
 </root>
