@@ -25,7 +25,7 @@ namespace Goatverse.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("es-US")]
+        [global::System.Configuration.DefaultSettingValueAttribute("en-US")]
         public string languageCode {
             get {
                 return ((string)(this["languageCode"]));
