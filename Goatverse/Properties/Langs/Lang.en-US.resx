@@ -328,4 +328,7 @@ Scoring Each player adds up the total value of their herd by counting the points
   <data name="globalCreateAccount" xml:space="preserve">
     <value>Create Account</value>
   </data>
+  <data name="globalGuest" xml:space="preserve">
+    <value>Guest</value>
+  </data>
 </root>

@@ -286,6 +286,15 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Guest.
+        /// </summary>
+        public static string globalGuest {
+            get {
+                return ResourceManager.GetString("globalGuest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to History.
         /// </summary>
         public static string globalHistory {
