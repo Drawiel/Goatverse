@@ -29,7 +29,18 @@ namespace Goatverse
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e) {
-
+            GoatverseService.UsersManagerClient usersManagerClient = new GoatverseService.UsersManagerClient();
+            string username = textBoxUsername.Text;
+            string password = passwordBoxPassword.Password.ToString();
+            bool login = usersManagerClient.tryLogin(username, password);
+            if (login) {
+                Lobby lobby = new Lobby();
+                lobby.Show();
+                this.Close();
+            } else {
+                textBoxUsername.Text = login.ToString();
+            }
+            
         }
 
         private void Card_MouseEnter(object sender, MouseEventArgs e) {
