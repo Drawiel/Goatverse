@@ -10,9 +10,13 @@
         Height="1080" 
         Width="1920" 
         Title="MainWindow"  WindowState="Maximized" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="Multimedia/login.png"/>
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -21,7 +25,8 @@
             <RowDefinition Height="27*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <materialDesign:Card Grid.Column="1" Grid.Row="1" Margin="10 0 10 -20"  UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" MouseEnter="Card_MouseEnter" MouseLeave="Card_MouseLeave">
+        <!--Iniciar sesión-->
+        <materialDesign:Card Grid.Column="3" Grid.Row="1" Margin="10 0 10 -20"  UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" MouseEnter="Card_MouseEnter" MouseLeave="Card_MouseLeave">
             <StackPanel>
                 <Viewbox>
                     <TextBlock Margin="20 10" HorizontalAlignment="Stretch" TextAlignment="Center" 
@@ -45,7 +50,8 @@
                 </Viewbox>
             </StackPanel>
         </materialDesign:Card>
-        <materialDesign:Card Grid.Column="2" Grid.Row="1" Margin="10 0 10 -20" UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" MouseEnter="Card_MouseEnter" MouseLeave="Card_MouseLeave">
+        <!--Registrarse-->
+        <materialDesign:Card Grid.Column="4" Grid.Row="1" Margin="10 0 10 -20" UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" MouseEnter="Card_MouseEnter" MouseLeave="Card_MouseLeave">
             <StackPanel>
                 <Viewbox>
                     <TextBlock Margin="20 10" HorizontalAlignment="Stretch" TextAlignment="Center" 
@@ -74,7 +80,8 @@
                 </Viewbox>
             </StackPanel>
         </materialDesign:Card>
-        <materialDesign:Card Grid.Column="3" Grid.Row="1" Margin="10 0 10 -20" UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" MouseEnter="Card_MouseEnter" MouseLeave="Card_MouseLeave">
+        <!--Invitado-->
+        <materialDesign:Card Grid.Column="0" Grid.Row="1" Margin="10 0 10 -20" UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" MouseEnter="Card_MouseEnter" MouseLeave="Card_MouseLeave">
             <StackPanel>
                 <Viewbox>
                     <TextBlock Margin="20 10" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap"

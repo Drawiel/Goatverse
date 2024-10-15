@@ -25,12 +25,13 @@ namespace Goatverse.Windows {
     public partial class Lobby : Window, GoatverseService.ILobbyManagerCallback {
 
         private GoatverseService.LobbyManagerClient lobbyManagerClient;
-        private ObservableCollection<Message> messages;
+        private ObservableCollection<UIElement> userControls;
         private string usernamePlayer;
 
         public Lobby() {
             InitializeComponent();
-
+            userControls = new ObservableCollection<UIElement>();
+            chatSection.ItemsSource = userControls;
             UserSession userSession = new UserSession();
             userSession = UserSessionManager.getInstance().getUser();
             usernamePlayer = userSession.Username;
@@ -52,8 +53,8 @@ namespace Goatverse.Windows {
                 Message = user.Message,
             };
 
-            chatSection.Children.Add(userChat);
-            chatSection.Children.Add(chatMessage);
+            userControls.Add(userChat);
+            userControls.Add(chatMessage);
 
             MessageBox.Show("New Message from: " + message.UserName + " Content: " + user.Message);
         }

@@ -68,11 +68,15 @@
 
                         <!--Chats-->
                         <Grid>
-                            <StackPanel Grid.Row="1" Margin="20 20 20 20" x:Name="chatSection">
-                                <uc:ChatSeparator Title="Chat grupal"/>
-
-
-                            </StackPanel>
+                            <ItemsControl x:Name="chatSection" ItemsSource="{Binding messages}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                    
+                                
+                            </ItemsControl>
                         </Grid>
 
 
