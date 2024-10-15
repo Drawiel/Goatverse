@@ -24,6 +24,7 @@
   <Metadata>
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="f1ab40e2-00fd-4ba0-98d7-58dbbc7a75ef" SourceId="1" SourceUrl="http://localhost:8083/?xsd=xsd1" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="53ca5c64-7e78-44a3-bac2-e1fcf952991a" SourceId="1" SourceUrl="http://localhost:8083/?xsd=xsd0" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="69942db4-7103-4bc4-acc8-512ffadd5487" SourceId="1" SourceUrl="http://localhost:8083/?xsd=xsd2" />
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="1576c6cf-b304-4fc8-9070-aab8bd46f60b" SourceId="1" SourceUrl="http://localhost:8083/?disco" />
     <MetadataFile FileName="ServiceImplementation.wsdl" MetadataType="Wsdl" ID="a8e11d4d-2299-4a8d-bb8d-6962004df8d0" SourceId="1" SourceUrl="http://localhost:8083/?wsdl" />
   </Metadata>

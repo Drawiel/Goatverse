@@ -29,10 +29,40 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILobbyManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUsersManager_tryLogin_InputMessage">
@@ -41,10 +71,74 @@
   <wsdl:message name="IUsersManager_tryLogin_OutputMessage">
     <wsdl:part name="parameters" element="tns:tryLoginResponse" />
   </wsdl:message>
+  <wsdl:message name="IUsersManager_trySignIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:trySignIn" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_trySignIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:trySignInResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_sendMessageToLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendMessageToLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_connectToLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:connectToLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_connectToLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:connectToLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_disconnectFromLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:disconnectFromLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_disconnectFromLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:disconnectFromLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_GetMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetMessage" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_SuccessfulJoin_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SuccessfulJoin" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_SuccessfulJoin_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SuccessfulJoinResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_SucessfulLeave_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SucessfulLeave" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_SucessfulLeave_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SucessfulLeaveResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="tryLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/tryLogin" message="tns:IUsersManager_tryLogin_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/tryLoginResponse" message="tns:IUsersManager_tryLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="trySignIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/trySignIn" message="tns:IUsersManager_trySignIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/trySignInResponse" message="tns:IUsersManager_trySignIn_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILobbyManager">
+    <wsdl:operation name="sendMessageToLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/sendMessageToLobby" message="tns:ILobbyManager_sendMessageToLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="connectToLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/connectToLobby" message="tns:ILobbyManager_connectToLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/connectToLobbyResponse" message="tns:ILobbyManager_connectToLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="disconnectFromLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/disconnectFromLobby" message="tns:ILobbyManager_disconnectFromLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/disconnectFromLobbyResponse" message="tns:ILobbyManager_disconnectFromLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/GetMessage" message="tns:ILobbyManager_GetMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SuccessfulJoin">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/SuccessfulJoin" message="tns:ILobbyManager_SuccessfulJoin_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/SuccessfulJoinResponse" message="tns:ILobbyManager_SuccessfulJoin_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SucessfulLeave">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/SucessfulLeave" message="tns:ILobbyManager_SucessfulLeave_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/SucessfulLeaveResponse" message="tns:ILobbyManager_SucessfulLeave_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -59,9 +153,79 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="trySignIn">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/trySignIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILobbyManager" type="tns:ILobbyManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILobbyManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="sendMessageToLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/sendMessageToLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="connectToLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/connectToLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="disconnectFromLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/disconnectFromLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessage">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/GetMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuccessfulJoin">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/SuccessfulJoin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SucessfulLeave">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/SucessfulLeave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ServiceImplementation">
     <wsdl:port name="NetTcpBinding_IUsersManager" binding="tns:NetTcpBinding_IUsersManager">
+      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>VICTUS-DUAA\daur0</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILobbyManager" binding="tns:NetTcpBinding_ILobbyManager">
       <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>

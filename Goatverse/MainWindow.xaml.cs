@@ -1,4 +1,7 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using Goatverse.Logic.Classes;
+using Goatverse.Windows;
+using MaterialDesignColors;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +28,7 @@ namespace Goatverse
     {
         public MainWindow()
         {
+            InitializeMaterialDesign();
             InitializeComponent();
         }
 
@@ -34,6 +38,8 @@ namespace Goatverse
             string password = passwordBoxPassword.Password.ToString();
             bool login = usersManagerClient.tryLogin(username, password);
             if (login) {
+                UserSession userSession = new UserSession { Username = username};
+                UserSessionManager.getInstance().loginUser(userSession);
                 Lobby lobby = new Lobby();
                 lobby.Show();
                 this.Close();
@@ -67,6 +73,23 @@ namespace Goatverse
 
 
             card.BeginAnimation(FrameworkElement.MarginProperty, marginAnimation);
+        }
+
+        private void InitializeMaterialDesign() {
+            // Create dummy objects to force the MaterialDesign assemblies to be loaded
+            // from this assembly, which causes the MaterialDesign assemblies to be searched
+            // relative to this assembly's path. Otherwise, the MaterialDesign assemblies
+            // are searched relative to Eclipse's path, so they're not found.
+            var card = new MaterialDesignThemes.Wpf.Card();
+            var hue = new Hue("Dummy", Colors.Black, Colors.White);
+        }
+
+        private void btnSignIn_Click(object sender, RoutedEventArgs e) {
+            GoatverseService.UsersManagerClient usersManagerClient = new GoatverseService.UsersManagerClient();
+            string username = textBoxUsername.Text;
+            string password = passwordBoxPassword.Password.ToString();
+            string email = textBoxEmail.Text;
+            bool login = usersManagerClient.trySignIn(username, password, email);
         }
     }
 }
