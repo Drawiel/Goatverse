@@ -68,10 +68,10 @@
 
                         <!--Chats-->
                         <Grid>
-                            <ItemsControl x:Name="chatSection" ItemsSource="{Binding messages}">
+                            <ItemsControl x:Name="chatSection" ItemsSource="{Binding userControls}">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <StackPanel/>
+                                        <StackPanel x:Name="chatPanel"/>
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
                                     

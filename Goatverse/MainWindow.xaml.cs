@@ -76,17 +76,13 @@ namespace Goatverse
         }
 
         private void InitializeMaterialDesign() {
-            // Create dummy objects to force the MaterialDesign assemblies to be loaded
-            // from this assembly, which causes the MaterialDesign assemblies to be searched
-            // relative to this assembly's path. Otherwise, the MaterialDesign assemblies
-            // are searched relative to Eclipse's path, so they're not found.
             var card = new MaterialDesignThemes.Wpf.Card();
             var hue = new Hue("Dummy", Colors.Black, Colors.White);
         }
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e) {
             GoatverseService.UsersManagerClient usersManagerClient = new GoatverseService.UsersManagerClient();
-            string username = textBoxUsername.Text;
+            string username = textBoxUsernameSignIn.Text;
             string password = passwordBoxPassword.Password.ToString();
             string email = textBoxEmail.Text;
             bool login = usersManagerClient.trySignIn(username, password, email);

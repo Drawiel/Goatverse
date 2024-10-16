@@ -25,19 +25,35 @@ namespace Goatverse.Windows {
     public partial class Lobby : Window, GoatverseService.ILobbyManagerCallback {
 
         private GoatverseService.LobbyManagerClient lobbyManagerClient;
-        private ObservableCollection<UIElement> userControls;
+        public ObservableCollection<UIElement> userControls {  get; set; }
         private string usernamePlayer;
+        public static string test = "Elemento Statico";
 
         public Lobby() {
             InitializeComponent();
-            userControls = new ObservableCollection<UIElement>();
-            chatSection.ItemsSource = userControls;
+           
+            
             UserSession userSession = new UserSession();
             userSession = UserSessionManager.getInstance().getUser();
             usernamePlayer = userSession.Username;
             InstanceContext context = new InstanceContext(this);
             lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
             lobbyManagerClient.connectToLobby(usernamePlayer,"A4231D");
+
+            userControls = new ObservableCollection<UIElement>();
+            chatSection.ItemsSource = userControls;
+
+            var userChat = new UserChat {
+                UserName = "Usuario de prueba",
+            };
+
+            var chatMessage = new ChatMessage {
+                Message = "Mensaje de usuario",
+            };
+
+            userControls.Add(userChat);
+            userControls.Add(chatMessage);
+
         }
 
         public void GetMessage(User user) {
