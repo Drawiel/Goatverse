@@ -26,7 +26,7 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <!--Iniciar sesión-->
-        <materialDesign:Card Grid.Column="3" Grid.Row="1" Margin="10 0 10 -20"  UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" MouseEnter="Card_MouseEnter" MouseLeave="Card_MouseLeave">
+        <materialDesign:Card Grid.Column="3" Grid.Row="1" Margin="10 0 10 -20"  UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" MouseEnter="CardMouseEnter" MouseLeave="CardMouseLeave">
             <StackPanel>
                 <Viewbox>
                     <TextBlock Margin="20 10" HorizontalAlignment="Stretch" TextAlignment="Center" 
@@ -46,12 +46,12 @@
                 <Viewbox>
                     <Button Margin="20 10" x:Name="btnLogin" Content="{x:Static language:Lang.globalLogIn}" Foreground="White"
                                     FontSize="15" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.Darken="True"
-                                    Height="50" Width="250" materialDesign:ButtonAssist.CornerRadius="10" Click="btnLogin_Click"/>
+                                    Height="50" Width="250" materialDesign:ButtonAssist.CornerRadius="10" Click="BtnClickLogIn"/>
                 </Viewbox>
             </StackPanel>
         </materialDesign:Card>
         <!--Registrarse-->
-        <materialDesign:Card Grid.Column="4" Grid.Row="1" Margin="10 0 10 -20" UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" MouseEnter="Card_MouseEnter" MouseLeave="Card_MouseLeave">
+        <materialDesign:Card Grid.Column="4" Grid.Row="1" Margin="10 0 10 -20" UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" MouseEnter="CardMouseEnter" MouseLeave="CardMouseLeave">
             <StackPanel>
                 <Viewbox>
                     <TextBlock Margin="20 10" HorizontalAlignment="Stretch" TextAlignment="Center" 
@@ -76,12 +76,12 @@
                 <Viewbox>
                     <Button Margin="20 10" x:Name="btnSignIn" Content="{x:Static language:Lang.globalSignIn}" Foreground="White"
                             FontSize="15" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.Darken="True"
-                            Height="50" Width="250" materialDesign:ButtonAssist.CornerRadius="10" Click="btnSignIn_Click"/>
+                            Height="50" Width="250" materialDesign:ButtonAssist.CornerRadius="10" Click="BtnClickSignIn"/>
                 </Viewbox>
             </StackPanel>
         </materialDesign:Card>
         <!--Invitado-->
-        <materialDesign:Card Grid.Column="0" Grid.Row="1" Margin="10 0 10 -20" UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" MouseEnter="Card_MouseEnter" MouseLeave="Card_MouseLeave">
+        <materialDesign:Card Grid.Column="0" Grid.Row="1" Margin="10 0 10 -20" UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" MouseEnter="CardMouseEnter" MouseLeave="CardMouseLeave">
             <StackPanel>
                 <Viewbox>
                     <TextBlock Margin="20 10" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap"

@@ -15,9 +15,118 @@ namespace Goatverse.GoatverseService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserData", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
     [System.SerializableAttribute()]
-    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class UserData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdUser {
+            get {
+                return this.IdUserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdUserField, value) != true)) {
+                    this.IdUserField = value;
+                    this.RaisePropertyChanged("IdUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MessageData", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
+    [System.SerializableAttribute()]
+    public partial class MessageData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -110,17 +219,17 @@ namespace Goatverse.GoatverseService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GoatverseService.IUsersManager")]
     public interface IUsersManager {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/tryLogin", ReplyAction="http://tempuri.org/IUsersManager/tryLoginResponse")]
-        bool tryLogin(string username, string password);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/ServiceTryLogin", ReplyAction="http://tempuri.org/IUsersManager/ServiceTryLoginResponse")]
+        bool ServiceTryLogin(Goatverse.GoatverseService.UserData userData);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/tryLogin", ReplyAction="http://tempuri.org/IUsersManager/tryLoginResponse")]
-        System.Threading.Tasks.Task<bool> tryLoginAsync(string username, string password);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/ServiceTryLogin", ReplyAction="http://tempuri.org/IUsersManager/ServiceTryLoginResponse")]
+        System.Threading.Tasks.Task<bool> ServiceTryLoginAsync(Goatverse.GoatverseService.UserData userData);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/trySignIn", ReplyAction="http://tempuri.org/IUsersManager/trySignInResponse")]
-        bool trySignIn(string username, string password, string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/ServiceTrySignIn", ReplyAction="http://tempuri.org/IUsersManager/ServiceTrySignInResponse")]
+        bool ServiceTrySignIn(Goatverse.GoatverseService.UserData userData);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/trySignIn", ReplyAction="http://tempuri.org/IUsersManager/trySignInResponse")]
-        System.Threading.Tasks.Task<bool> trySignInAsync(string username, string password, string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/ServiceTrySignIn", ReplyAction="http://tempuri.org/IUsersManager/ServiceTrySignInResponse")]
+        System.Threading.Tasks.Task<bool> ServiceTrySignInAsync(Goatverse.GoatverseService.UserData userData);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -150,20 +259,20 @@ namespace Goatverse.GoatverseService {
                 base(binding, remoteAddress) {
         }
         
-        public bool tryLogin(string username, string password) {
-            return base.Channel.tryLogin(username, password);
+        public bool ServiceTryLogin(Goatverse.GoatverseService.UserData userData) {
+            return base.Channel.ServiceTryLogin(userData);
         }
         
-        public System.Threading.Tasks.Task<bool> tryLoginAsync(string username, string password) {
-            return base.Channel.tryLoginAsync(username, password);
+        public System.Threading.Tasks.Task<bool> ServiceTryLoginAsync(Goatverse.GoatverseService.UserData userData) {
+            return base.Channel.ServiceTryLoginAsync(userData);
         }
         
-        public bool trySignIn(string username, string password, string email) {
-            return base.Channel.trySignIn(username, password, email);
+        public bool ServiceTrySignIn(Goatverse.GoatverseService.UserData userData) {
+            return base.Channel.ServiceTrySignIn(userData);
         }
         
-        public System.Threading.Tasks.Task<bool> trySignInAsync(string username, string password, string email) {
-            return base.Channel.trySignInAsync(username, password, email);
+        public System.Threading.Tasks.Task<bool> ServiceTrySignInAsync(Goatverse.GoatverseService.UserData userData) {
+            return base.Channel.ServiceTrySignInAsync(userData);
         }
     }
     
@@ -171,36 +280,36 @@ namespace Goatverse.GoatverseService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GoatverseService.ILobbyManager", CallbackContract=typeof(Goatverse.GoatverseService.ILobbyManagerCallback))]
     public interface ILobbyManager {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/sendMessageToLobby")]
-        void sendMessageToLobby(Goatverse.GoatverseService.User user);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/ServiceSendMessageToLobby")]
+        void ServiceSendMessageToLobby(Goatverse.GoatverseService.MessageData messageData);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/sendMessageToLobby")]
-        System.Threading.Tasks.Task sendMessageToLobbyAsync(Goatverse.GoatverseService.User user);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/ServiceSendMessageToLobby")]
+        System.Threading.Tasks.Task ServiceSendMessageToLobbyAsync(Goatverse.GoatverseService.MessageData messageData);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/connectToLobby", ReplyAction="http://tempuri.org/ILobbyManager/connectToLobbyResponse")]
-        bool connectToLobby(string username, string lobbyCode);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceConnectToLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceConnectToLobbyResponse")]
+        bool ServiceConnectToLobby(string username, string lobbyCode);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/connectToLobby", ReplyAction="http://tempuri.org/ILobbyManager/connectToLobbyResponse")]
-        System.Threading.Tasks.Task<bool> connectToLobbyAsync(string username, string lobbyCode);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceConnectToLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceConnectToLobbyResponse")]
+        System.Threading.Tasks.Task<bool> ServiceConnectToLobbyAsync(string username, string lobbyCode);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/disconnectFromLobby", ReplyAction="http://tempuri.org/ILobbyManager/disconnectFromLobbyResponse")]
-        bool disconnectFromLobby(string username, string lobbyCode);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceDisconnectFromLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceDisconnectFromLobbyResponse")]
+        bool ServiceDisconnectFromLobby(string username, string lobbyCode);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/disconnectFromLobby", ReplyAction="http://tempuri.org/ILobbyManager/disconnectFromLobbyResponse")]
-        System.Threading.Tasks.Task<bool> disconnectFromLobbyAsync(string username, string lobbyCode);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceDisconnectFromLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceDisconnectFromLobbyResponse")]
+        System.Threading.Tasks.Task<bool> ServiceDisconnectFromLobbyAsync(string username, string lobbyCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ILobbyManagerCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/GetMessage")]
-        void GetMessage(Goatverse.GoatverseService.User user);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/ServiceGetMessage")]
+        void ServiceGetMessage(Goatverse.GoatverseService.MessageData messageData);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/SuccessfulJoin", ReplyAction="http://tempuri.org/ILobbyManager/SuccessfulJoinResponse")]
-        bool SuccessfulJoin();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceSuccessfulJoin", ReplyAction="http://tempuri.org/ILobbyManager/ServiceSuccessfulJoinResponse")]
+        bool ServiceSuccessfulJoin();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/SucessfulLeave", ReplyAction="http://tempuri.org/ILobbyManager/SucessfulLeaveResponse")]
-        bool SucessfulLeave();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceSucessfulLeave", ReplyAction="http://tempuri.org/ILobbyManager/ServiceSucessfulLeaveResponse")]
+        bool ServiceSucessfulLeave();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -231,28 +340,28 @@ namespace Goatverse.GoatverseService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void sendMessageToLobby(Goatverse.GoatverseService.User user) {
-            base.Channel.sendMessageToLobby(user);
+        public void ServiceSendMessageToLobby(Goatverse.GoatverseService.MessageData messageData) {
+            base.Channel.ServiceSendMessageToLobby(messageData);
         }
         
-        public System.Threading.Tasks.Task sendMessageToLobbyAsync(Goatverse.GoatverseService.User user) {
-            return base.Channel.sendMessageToLobbyAsync(user);
+        public System.Threading.Tasks.Task ServiceSendMessageToLobbyAsync(Goatverse.GoatverseService.MessageData messageData) {
+            return base.Channel.ServiceSendMessageToLobbyAsync(messageData);
         }
         
-        public bool connectToLobby(string username, string lobbyCode) {
-            return base.Channel.connectToLobby(username, lobbyCode);
+        public bool ServiceConnectToLobby(string username, string lobbyCode) {
+            return base.Channel.ServiceConnectToLobby(username, lobbyCode);
         }
         
-        public System.Threading.Tasks.Task<bool> connectToLobbyAsync(string username, string lobbyCode) {
-            return base.Channel.connectToLobbyAsync(username, lobbyCode);
+        public System.Threading.Tasks.Task<bool> ServiceConnectToLobbyAsync(string username, string lobbyCode) {
+            return base.Channel.ServiceConnectToLobbyAsync(username, lobbyCode);
         }
         
-        public bool disconnectFromLobby(string username, string lobbyCode) {
-            return base.Channel.disconnectFromLobby(username, lobbyCode);
+        public bool ServiceDisconnectFromLobby(string username, string lobbyCode) {
+            return base.Channel.ServiceDisconnectFromLobby(username, lobbyCode);
         }
         
-        public System.Threading.Tasks.Task<bool> disconnectFromLobbyAsync(string username, string lobbyCode) {
-            return base.Channel.disconnectFromLobbyAsync(username, lobbyCode);
+        public System.Threading.Tasks.Task<bool> ServiceDisconnectFromLobbyAsync(string username, string lobbyCode) {
+            return base.Channel.ServiceDisconnectFromLobbyAsync(username, lobbyCode);
         }
     }
 }

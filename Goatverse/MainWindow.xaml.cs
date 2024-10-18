@@ -32,14 +32,20 @@ namespace Goatverse
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e) {
+        private void BtnClickLogIn(object sender, RoutedEventArgs e) {
             GoatverseService.UsersManagerClient usersManagerClient = new GoatverseService.UsersManagerClient();
             string username = textBoxUsername.Text;
             string password = passwordBoxPassword.Password.ToString();
-            bool login = usersManagerClient.tryLogin(username, password);
+
+            GoatverseService.UserData userData = new GoatverseService.UserData();
+            userData.Username = username;
+            userData.Password = password;
+
+            bool login = usersManagerClient.ServiceTryLogin(userData);
             if (login) {
                 UserSession userSession = new UserSession { Username = username};
                 UserSessionManager.getInstance().loginUser(userSession);
+
                 Lobby lobby = new Lobby();
                 lobby.Show();
                 this.Close();
@@ -49,7 +55,7 @@ namespace Goatverse
             
         }
 
-        private void Card_MouseEnter(object sender, MouseEventArgs e) {
+        private void CardMouseEnter(object sender, MouseEventArgs e) {
             var card = sender as MaterialDesignThemes.Wpf.Card;
 
             ThicknessAnimation marginAnimation = new ThicknessAnimation {
@@ -62,7 +68,7 @@ namespace Goatverse
             card.BeginAnimation(FrameworkElement.MarginProperty, marginAnimation);
         }
 
-        private void Card_MouseLeave(object sender, MouseEventArgs e) {
+        private void CardMouseLeave(object sender, MouseEventArgs e) {
             var card = sender as MaterialDesignThemes.Wpf.Card;
 
             ThicknessAnimation marginAnimation = new ThicknessAnimation {
@@ -80,12 +86,18 @@ namespace Goatverse
             var hue = new Hue("Dummy", Colors.Black, Colors.White);
         }
 
-        private void btnSignIn_Click(object sender, RoutedEventArgs e) {
+        private void BtnClickSignIn(object sender, RoutedEventArgs e) {
             GoatverseService.UsersManagerClient usersManagerClient = new GoatverseService.UsersManagerClient();
             string username = textBoxUsernameSignIn.Text;
             string password = passwordBoxPassword.Password.ToString();
             string email = textBoxEmail.Text;
-            bool login = usersManagerClient.trySignIn(username, password, email);
+
+            GoatverseService.UserData userData = new GoatverseService.UserData();
+            userData.Username = username;
+            userData.Password = password;
+            userData.Email = email;
+            
+            bool login = usersManagerClient.ServiceTrySignIn(userData);
         }
     }
 }

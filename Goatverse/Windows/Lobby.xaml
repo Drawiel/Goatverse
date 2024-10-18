@@ -27,7 +27,7 @@
 
         <Viewbox Grid.Column="5" Grid.ColumnSpan="5" Grid.Row="3" Margin="0">
             <Border CornerRadius="0 20 20 0">
-                <Button Background="Transparent" BorderBrush="Transparent" Click="Button_Click">
+                <Button Background="Transparent" BorderBrush="Transparent" Click="BtnClickShowChat">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" 
@@ -42,7 +42,7 @@
             </Border>
         </Viewbox>
 
-        <Border Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Height="auto" Margin="173,325,10,0" Grid.Row="1" VerticalAlignment="Stretch" Width="auto">
+        <Border Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Height="auto" Margin="173,325,10,0" Grid.Row="1" VerticalAlignment="Stretch" Width="auto" x:Name="BorderChat">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="340*"/>
@@ -93,20 +93,18 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <!--message TextBox-->
+                <!--message TextBox-->
                     <Grid>
-                        <TextBlock Margin="15 0 120 0" VerticalAlignment="Center" Foreground="#868686" Panel.ZIndex="1"
-                        IsHitTestVisible="False" Text="Escribe tu mensaje..."/>
 
-                        <TextBox x:Name="txtMessage" materialDesign:HintAssist.Hint="{x:Static language:Lang.globalEmail}"
-                                 Style="{StaticResource messageTextBox}"/>
-
+                        <TextBox x:Name="txtMessage" materialDesign:HintAssist.Hint="{x:Static language:Lang.globalSendMessage}" Panel.ZIndex="1"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}" BorderThickness="3" FontSize="15" VerticalAlignment="Center"
+                        Margin="15 0 30 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Background="LightGray" materialDesign:HintAssist.IsFloating="False"/>
 
                     </Grid>
-                    <!--SendButton-->
+                <!--SendButton-->
 
-                    <Button Grid.Column="1" Margin="5 0 0 0" Style="{StaticResource MaterialDesignFlatMidBgButton}" Click="Button_Click_1">
-                        <Image Source="../Multimedia/chat_logo.png" Stretch="Uniform" />
+                    <Button Grid.Column="1" Margin="5 0 0 0" Style="{StaticResource MaterialDesignIconButton}" Click="BtnClickSendMessage" >
+                        <materialDesign:PackIcon Kind="Send" />
                     </Button>
                 </Grid>
             </Grid>

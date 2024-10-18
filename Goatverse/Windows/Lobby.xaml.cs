@@ -36,9 +36,10 @@ namespace Goatverse.Windows {
             UserSession userSession = new UserSession();
             userSession = UserSessionManager.getInstance().getUser();
             usernamePlayer = userSession.Username;
+
             InstanceContext context = new InstanceContext(this);
             lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
-            lobbyManagerClient.connectToLobby(usernamePlayer,"A4231D");
+            lobbyManagerClient.ServiceConnectToLobby(usernamePlayer,"A4231D");
 
             userControls = new ObservableCollection<UIElement>();
             chatSection.ItemsSource = userControls;
@@ -56,61 +57,46 @@ namespace Goatverse.Windows {
 
         }
 
-        public void GetMessage(User user) {
+        public void ServiceGetMessage(MessageData messageData) {
             Message message = new Message();
             message.LobbyCode = "A4231D";
-            message.UserName = user.Username;
+            message.UserName = messageData.Username;
 
             var userChat = new UserChat {
-               UserName = user.Username,
+               UserName = messageData.Username,
             };
 
             var chatMessage = new ChatMessage {
-                Message = user.Message,
+                Message = messageData.Message,
             };
 
             userControls.Add(userChat);
             userControls.Add(chatMessage);
 
-            MessageBox.Show("New Message from: " + message.UserName + " Content: " + user.Message);
+            MessageBox.Show("New Message from: " + message.UserName + " Content: " + messageData.Message);
         }
 
-        public bool SuccessfulJoin() {
+        public bool ServiceSuccessfulJoin() {
             throw new NotImplementedException();
         }
 
-        public bool SucessfulLeave() {
+        public bool ServiceSucessfulLeave() {
             throw new NotImplementedException();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
+        private void BtnClickShowChat(object sender, RoutedEventArgs e) {
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e) {
+        private void BtnClickSendMessage(object sender, RoutedEventArgs e) {
             string messageText = txtMessage.Text;
 
-            GoatverseService.User userMessage = new User();
-            userMessage.Message = messageText;
-            userMessage.Username = usernamePlayer;
-            userMessage.LobbyCode = "A4231D";
+            GoatverseService.MessageData messageData = new MessageData();
+            messageData.Message = messageText;
+            messageData.Username = usernamePlayer;
+            messageData.LobbyCode = "A4231D";
 
-            lobbyManagerClient.sendMessageToLobby(userMessage);
-        }
-
-        public class BoolToVis : IValueConverter {
-            public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-                if (value is bool boolValue) {
-                    return boolValue ? Visibility.Visible : Visibility.Collapsed;
-                }
-                return Visibility.Collapsed;
-            }
-
-            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
-                return (value is Visibility visibility) && visibility == Visibility.Visible;
-            }
+            lobbyManagerClient.ServiceSendMessageToLobby(messageData);
         }
     }
-
-    
 }
