@@ -25,9 +25,9 @@ namespace Goatverse.Windows {
     public partial class Lobby : Window, GoatverseService.ILobbyManagerCallback {
 
         private GoatverseService.LobbyManagerClient lobbyManagerClient;
-        public ObservableCollection<UIElement> userControls {  get; set; }
+        public ObservableCollection<UserControl> userControls {  get; set; }
         private string usernamePlayer;
-        public static string test = "Elemento Statico";
+        
 
         public Lobby() {
             InitializeComponent();
@@ -41,19 +41,8 @@ namespace Goatverse.Windows {
             lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
             lobbyManagerClient.ServiceConnectToLobby(usernamePlayer,"A4231D");
 
-            userControls = new ObservableCollection<UIElement>();
-            chatSection.ItemsSource = userControls;
-
-            var userChat = new UserChat {
-                UserName = "Usuario de prueba",
-            };
-
-            var chatMessage = new ChatMessage {
-                Message = "Mensaje de usuario",
-            };
-
-            userControls.Add(userChat);
-            userControls.Add(chatMessage);
+            userControls = new ObservableCollection<UserControl>();
+            DataContext = this;
 
         }
 
@@ -61,19 +50,27 @@ namespace Goatverse.Windows {
             Message message = new Message();
             message.LobbyCode = "A4231D";
             message.UserName = messageData.Username;
+            string color = "LightBlue";
+            string horizontalAlignment = "Left";
+
+            if(message.UserName == usernamePlayer) {
+                color = "LightGray";
+                horizontalAlignment = "Right";
+            }
 
             var userChat = new UserChat {
-               UserName = messageData.Username,
+               Username = messageData.Username,
+               HorizontalAlignment = horizontalAlignment,
             };
 
             var chatMessage = new ChatMessage {
-                Message = messageData.Message,
+               Message = messageData.Message,
+               Color = color,
+               HorizontalAlignment = horizontalAlignment,
             };
 
             userControls.Add(userChat);
             userControls.Add(chatMessage);
-
-            MessageBox.Show("New Message from: " + message.UserName + " Content: " + messageData.Message);
         }
 
         public bool ServiceSuccessfulJoin() {
@@ -97,6 +94,7 @@ namespace Goatverse.Windows {
             messageData.LobbyCode = "A4231D";
 
             lobbyManagerClient.ServiceSendMessageToLobby(messageData);
+            txtMessage.Clear();
         }
     }
 }

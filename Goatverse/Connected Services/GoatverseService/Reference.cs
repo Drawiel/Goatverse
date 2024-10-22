@@ -230,6 +230,18 @@ namespace Goatverse.GoatverseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/ServiceTrySignIn", ReplyAction="http://tempuri.org/IUsersManager/ServiceTrySignInResponse")]
         System.Threading.Tasks.Task<bool> ServiceTrySignInAsync(Goatverse.GoatverseService.UserData userData);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/ServiceUserExistsByUsername", ReplyAction="http://tempuri.org/IUsersManager/ServiceUserExistsByUsernameResponse")]
+        bool ServiceUserExistsByUsername(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/ServiceUserExistsByUsername", ReplyAction="http://tempuri.org/IUsersManager/ServiceUserExistsByUsernameResponse")]
+        System.Threading.Tasks.Task<bool> ServiceUserExistsByUsernameAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/ServiceVerifyPassword", ReplyAction="http://tempuri.org/IUsersManager/ServiceVerifyPasswordResponse")]
+        bool ServiceVerifyPassword(string password, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/ServiceVerifyPassword", ReplyAction="http://tempuri.org/IUsersManager/ServiceVerifyPasswordResponse")]
+        System.Threading.Tasks.Task<bool> ServiceVerifyPasswordAsync(string password, string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -273,6 +285,22 @@ namespace Goatverse.GoatverseService {
         
         public System.Threading.Tasks.Task<bool> ServiceTrySignInAsync(Goatverse.GoatverseService.UserData userData) {
             return base.Channel.ServiceTrySignInAsync(userData);
+        }
+        
+        public bool ServiceUserExistsByUsername(string userName) {
+            return base.Channel.ServiceUserExistsByUsername(userName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceUserExistsByUsernameAsync(string userName) {
+            return base.Channel.ServiceUserExistsByUsernameAsync(userName);
+        }
+        
+        public bool ServiceVerifyPassword(string password, string username) {
+            return base.Channel.ServiceVerifyPassword(password, username);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceVerifyPasswordAsync(string password, string username) {
+            return base.Channel.ServiceVerifyPasswordAsync(password, username);
         }
     }
     

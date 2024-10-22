@@ -6,9 +6,8 @@
              xmlns:local="clr-namespace:Goatverse.Windows.UserControllers"
              mc:Ignorable="d" 
              Name="chatMessage">
-    <Border CornerRadius="0 10 10 10" Background="{Binding ElementName=messageChat, Path=Color}" Padding="10 7" HorizontalAlignment="Left" Margin="45 5 0 0">
-        <TextBlock Text="{Binding ElementName=messageChat, Path=Message}" FontSize="10" Foreground="#ffffff" VerticalAlignment="Center" Margin="3 0 3 2"
-                   Background="#ff82a3"/>
+    <Border CornerRadius="0 10 10 10" Background="{Binding Color, RelativeSource={RelativeSource AncestorType=UserControl}}" Padding="10 7" HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource AncestorType=UserControl}}" Margin="45 5 0 0">
+        <TextBlock Text="{Binding Message, RelativeSource={RelativeSource AncestorType=UserControl}}" FontSize="10" Foreground="#ffffff" VerticalAlignment="Center" Margin="3 0 3 2"/>
 
     </Border>
 </UserControl>

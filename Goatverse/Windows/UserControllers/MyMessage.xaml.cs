@@ -15,28 +15,28 @@ using System.Windows.Shapes;
 
 namespace Goatverse.Windows.UserControllers {
     /// <summary>
-    /// Interaction logic for ChatMessage.xaml
+    /// Interaction logic for MyMessage.xaml
     /// </summary>
-    public partial class ChatMessage : UserControl {
-        public ChatMessage() {
+    public partial class MyMessage : UserControl {
+        public MyMessage() {
             InitializeComponent();
         }
 
-        public static readonly DependencyProperty MessagePropierty = DependencyProperty.Register("Message", typeof(string), typeof(ChatMessage), new PropertyMetadata(string.Empty));
+        public static readonly DependencyProperty MessagePropierty = DependencyProperty.Register("Message", typeof(string), typeof(MyMessage), new PropertyMetadata(string.Empty));
 
         public string Message {
             get { return (string)GetValue(MessagePropierty); }
             set { SetValue(MessagePropierty, value); }
         }
 
-        public static readonly DependencyProperty ColorPropierty = DependencyProperty.Register("Color", typeof(string), typeof(ChatMessage), new PropertyMetadata(string.Empty));
+        public static readonly DependencyProperty ColorPropierty = DependencyProperty.Register("Color", typeof(string), typeof(MyMessage), new PropertyMetadata(string.Empty));
 
         public string Color {
             get { return (string)GetValue(ColorPropierty); }
             set { SetValue(ColorPropierty, value); }
         }
 
-        public static readonly DependencyProperty HorizontalAlignmentProperty = DependencyProperty.Register("HorizontalAlignment", typeof(string), typeof(ChatMessage), new PropertyMetadata(string.Empty));
+        public static readonly DependencyProperty HorizontalAlignmentProperty = DependencyProperty.Register("HorizontalAlignment", typeof(string), typeof(MyMessage), new PropertyMetadata(string.Empty));
 
         public string HorizontalAlignment {
             get { return (string)GetValue(HorizontalAlignmentProperty); }

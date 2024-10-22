@@ -18,20 +18,29 @@ namespace Goatverse.Windows.UserControllers {
     /// Interaction logic for UserChat.xaml
     /// </summary>
     public partial class UserChat : UserControl {
+
         public UserChat() {
             InitializeComponent();
         }
 
-        public string UserName {
+        public static readonly DependencyProperty UserNamePropierty = DependencyProperty.Register("Username", typeof(string), typeof(UserChat), new PropertyMetadata(string.Empty));
+
+        public string Username {
             get { return (string)GetValue(UserNamePropierty); }
             set { SetValue(UserNamePropierty, value); }
         }
-        public static readonly DependencyProperty UserNamePropierty = DependencyProperty.Register("UserName", typeof(string), typeof(UserChat));
 
         public ImageSource Image {
             get { return (ImageSource)GetValue(ImagePropierty); }
             set { SetValue(ImagePropierty, value); }
         }
         public static readonly DependencyProperty ImagePropierty = DependencyProperty.Register("Image", typeof(ImageSource), typeof(UserChat));
+
+        public static readonly DependencyProperty HorizontalAlignmentProperty = DependencyProperty.Register("HorizontalAlignment", typeof(string), typeof(UserChat), new PropertyMetadata(string.Empty));
+
+        public string HorizontalAlignment {
+            get { return (string)GetValue(HorizontalAlignmentProperty); }
+            set { SetValue(HorizontalAlignmentProperty, value); }
+        }
     }
 }

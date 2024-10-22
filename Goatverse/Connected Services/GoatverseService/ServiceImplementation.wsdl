@@ -77,6 +77,18 @@
   <wsdl:message name="IUsersManager_ServiceTrySignIn_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceTrySignInResponse" />
   </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceUserExistsByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUserExistsByUsername" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceUserExistsByUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUserExistsByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceVerifyPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceVerifyPassword" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceVerifyPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceVerifyPasswordResponse" />
+  </wsdl:message>
   <wsdl:message name="ILobbyManager_ServiceSendMessageToLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceSendMessageToLobby" />
   </wsdl:message>
@@ -115,6 +127,14 @@
     <wsdl:operation name="ServiceTrySignIn">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceTrySignIn" message="tns:IUsersManager_ServiceTrySignIn_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServiceTrySignInResponse" message="tns:IUsersManager_ServiceTrySignIn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUserExistsByUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceUserExistsByUsername" message="tns:IUsersManager_ServiceUserExistsByUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServiceUserExistsByUsernameResponse" message="tns:IUsersManager_ServiceUserExistsByUsername_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceVerifyPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceVerifyPassword" message="tns:IUsersManager_ServiceVerifyPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServiceVerifyPasswordResponse" message="tns:IUsersManager_ServiceVerifyPassword_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILobbyManager">
@@ -155,6 +175,24 @@
     </wsdl:operation>
     <wsdl:operation name="ServiceTrySignIn">
       <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServiceTrySignIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUserExistsByUsername">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServiceUserExistsByUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceVerifyPassword">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServiceVerifyPassword" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

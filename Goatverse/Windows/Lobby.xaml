@@ -74,8 +74,6 @@
                                         <StackPanel x:Name="chatPanel"/>
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
-                                    
-                                
                             </ItemsControl>
                         </Grid>
 
