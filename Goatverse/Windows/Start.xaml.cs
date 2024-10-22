@@ -13,27 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Goatverse.Windows {
-
-    public partial class Profile : Window {
-        public Profile() {
+    /// <summary>
+    /// Lógica de interacción para Start.xaml
+    /// </summary>
+    public partial class Start : Window {
+        public Start() {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e) {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e) {
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {
-
-        }
-
-        private void OnArrowLeftClick(object sender, RoutedEventArgs e) {
-
-        }
-
     }
 }
