@@ -27,19 +27,16 @@ namespace Goatverse.Windows {
         private GoatverseService.LobbyManagerClient lobbyManagerClient;
         public ObservableCollection<UserControl> userControls {  get; set; }
         private string usernamePlayer;
+        private string lobbyCode;
         
 
-        public Lobby(string lobbyCode) {
+        public Lobby(string joinedLobbyCode) {
             InitializeComponent();
-           
-            
+
+            lobbyCode = joinedLobbyCode; 
             UserSession userSession = new UserSession();
             userSession = UserSessionManager.getInstance().getUser();
             usernamePlayer = userSession.Username;
-
-            InstanceContext context = new InstanceContext(this);
-            lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
-            lobbyManagerClient.ServiceConnectToLobby(usernamePlayer,"A4231D");
 
             userControls = new ObservableCollection<UserControl>();
             DataContext = this;
@@ -48,7 +45,7 @@ namespace Goatverse.Windows {
 
         public void ServiceGetMessage(MessageData messageData) {
             Message message = new Message();
-            message.LobbyCode = "A4231D";
+            message.LobbyCode = lobbyCode;
             message.UserName = messageData.Username;
             string color = "LightBlue";
             string horizontalAlignment = "Left";
@@ -91,7 +88,7 @@ namespace Goatverse.Windows {
             GoatverseService.MessageData messageData = new MessageData();
             messageData.Message = messageText;
             messageData.Username = usernamePlayer;
-            messageData.LobbyCode = "A4231D";
+            messageData.LobbyCode = lobbyCode;
 
             lobbyManagerClient.ServiceSendMessageToLobby(messageData);
             txtMessage.Clear();

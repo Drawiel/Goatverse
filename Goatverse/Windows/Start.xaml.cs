@@ -19,7 +19,7 @@ namespace Goatverse.Windows {
     /// <summary>
     /// Lógica de interacción para Start.xaml
     /// </summary>
-    public partial class Start : Window {
+    public partial class Start : Window, GoatverseService.ILobbyManagerCallback{
         private GoatverseService.LobbyManagerClient lobbyManagerClient;
         private string usernamePlayer;
         public Start() {
@@ -39,12 +39,28 @@ namespace Goatverse.Windows {
         private void BtnClickCreateMatch(object sender, RoutedEventArgs e) {
             InstanceContext context = new InstanceContext(this);
             lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
-            lobbyManagerClient.ServiceConnectToLobby(usernamePlayer, "A4231D");
-
             string lobbyCode = GenerateLobbyCode();
-            Lobby lobby = new Lobby(lobbyCode);
-            lobby.Show();
-            this.Close();
+
+            bool lobbyCreated = lobbyManagerClient.ServiceConnectToLobby(usernamePlayer, lobbyCode);
+
+            if (lobbyCreated) {
+                Lobby lobby = new Lobby(lobbyCode);
+                lobby.Show();
+                this.Close();
+            }
+            
+        }
+
+        public void ServiceGetMessage(MessageData messageData) {
+            throw new NotImplementedException();
+        }
+
+        public bool ServiceSuccessfulJoin() {
+            throw new NotImplementedException();
+        }
+
+        public bool ServiceSucessfulLeave() {
+            throw new NotImplementedException();
         }
     }
 }
