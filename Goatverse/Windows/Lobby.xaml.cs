@@ -29,7 +29,7 @@ namespace Goatverse.Windows {
         private string usernamePlayer;
         
 
-        public Lobby() {
+        public Lobby(string lobbyCode) {
             InitializeComponent();
            
             

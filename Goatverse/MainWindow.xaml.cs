@@ -46,8 +46,8 @@ namespace Goatverse
                 UserSession userSession = new UserSession { Username = username};
                 UserSessionManager.getInstance().loginUser(userSession);
 
-                Lobby lobby = new Lobby();
-                lobby.Show();
+                Start start = new Start();
+                start.Show();
                 this.Close();
             } else {
                 textBoxUsername.Text = login.ToString();

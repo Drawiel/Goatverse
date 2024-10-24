@@ -38,10 +38,11 @@
             VerticalAlignment="Center" 
             Click="OnArrowLeftClick" 
             Background="Transparent" 
-            BorderBrush="Transparent" 
+            BorderBrush="Black" 
             ToolTip="Regresar"
             Grid.Column="0"
-            Grid.Row="0">
+            Grid.Row="0"
+            >
 
             <materialDesign:PackIcon Kind="ArrowLeft" Width="80" Height="85" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
@@ -119,10 +120,10 @@
 
                                     </Grid.RowDefinitions>
 
-                                    <TextBox Margin="0,40,0,0" materialDesign:HintAssist.Hint="Nombre de usuario:" materialDesign:HintAssist.IsFloating="True" Text="lsabella04" FontSize="40" TextChanged="TextBox_TextChanged" />
+                                    <TextBox Margin="0,40,0,0" materialDesign:HintAssist.Hint="Nombre de usuario:" materialDesign:HintAssist.IsFloating="True" Text="lsabella04" FontSize="35" TextChanged="TextBox_TextChanged" />
 
-                                    <TextBox Grid.Row="1" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Contraseña Actual:" materialDesign:HintAssist.IsFloating="True" Text=""  FontSize="40" />
-                                    <TextBox Grid.Row="2" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Contraseña Nueva:" materialDesign:HintAssist.IsFloating="True" Text=""  FontSize="40" />
+                                    <TextBox Grid.Row="1" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Contraseña Actual:" materialDesign:HintAssist.IsFloating="True" Text=""  FontSize="35" />
+                                    <TextBox Grid.Row="2" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Contraseña Nueva:" materialDesign:HintAssist.IsFloating="True" Text=""  FontSize="35" />
 
 
                                 </Grid>
