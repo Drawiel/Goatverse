@@ -109,6 +109,9 @@
     <Compile Include="Windows\UserControllers\MyMessage.xaml.cs">
       <DependentUpon>MyMessage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\UserControllers\PlayerCard.xaml.cs">
+      <DependentUpon>PlayerCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\UserControllers\UserChat.xaml.cs">
       <DependentUpon>UserChat.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\UserControllers\MyMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\UserControllers\PlayerCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
