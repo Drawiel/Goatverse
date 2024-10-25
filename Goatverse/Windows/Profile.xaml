@@ -67,9 +67,49 @@
                                     <RowDefinition Height="50*" />
                                     <RowDefinition Height="50*" />
                                 </Grid.RowDefinitions>
-                                <materialDesign:ColorZone VerticalAlignment="Stretch" Mode="Standard">
-                                    <materialDesign:PackIcon Width="580" Height="350" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="AccountCircle" />
-                                </materialDesign:ColorZone>
+
+                                <Viewbox Grid.Row="0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="130*"/>
+                                            <ColumnDefinition Width="300*"/>
+                                            <ColumnDefinition Width="130*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="1">
+                                            <materialDesign:ColorZone VerticalAlignment="Stretch" Mode="Standard">
+                                                <Grid>
+                                                    <Image 
+                                                    x:Name="ProfileImage" 
+                                                    Width="580" 
+                                                    Height="350" 
+                                                    HorizontalAlignment="Center" 
+                                                    VerticalAlignment="Center" 
+                                                    Source="../Multimedia/sword.png"
+                                                    Stretch="Uniform" />
+
+                                                    <Button
+                                                    Margin="10"
+                                                    Background="LightBlue"
+                                                    BorderBrush="Black"
+                                                    BorderThickness="2" 
+                                                    VerticalAlignment="Bottom"
+                                                    HorizontalAlignment="Right"
+                                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                                    ToolTip="Cambiar imagen de perfil"
+                                                    Click="ChangeProfileImage_Click">
+
+                                                        <materialDesign:PackIcon Kind="Pencil" />
+                                                    </Button>
+                                                </Grid>
+                                                
+                                            </materialDesign:ColorZone>
+                                        </Grid>
+                                    </Grid>
+                                </Viewbox>
+                                
+                                
+                                
 
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <TextBlock Text="lsabella04" FontSize="50" />

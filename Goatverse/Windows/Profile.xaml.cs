@@ -34,6 +34,20 @@ namespace Goatverse.Windows {
         private void OnArrowLeftClick(object sender, RoutedEventArgs e) {
 
         }
+        private void ChangeProfileImage_Click(object sender, RoutedEventArgs e) {
+            // Crear un diálogo para seleccionar una imagen
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.Title = "Seleccionar imagen de perfil";
+            dlg.Filter = "Archivos de imagen (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png";
+
+            bool? result = dlg.ShowDialog();
+
+            if(result == true) {
+                // Establecer la nueva imagen
+                ProfileImage.Source = new BitmapImage(new Uri(dlg.FileName));
+            }
+        }
+
 
     }
 }
