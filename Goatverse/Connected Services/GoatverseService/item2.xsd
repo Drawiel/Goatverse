@@ -19,4 +19,15 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MessageData" nillable="true" type="tns:MessageData" />
+  <xs:complexType name="ProfileData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdProfile" type="xs:int" />
+      <xs:element minOccurs="0" name="IdUser" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageId" type="xs:int" />
+      <xs:element minOccurs="0" name="MatchesWon" type="xs:int" />
+      <xs:element minOccurs="0" name="ProfileLevel" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalPoints" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProfileData" nillable="true" type="tns:ProfileData" />
 </xs:schema>

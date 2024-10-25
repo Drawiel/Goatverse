@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Height="1080" 
         Width="1920" 
-        Title="MainWindow"  WindowState="Maximized" ResizeMode="NoResize">
+        Title="MainWindow"  WindowState="Maximized" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Window.Background>
         <ImageBrush ImageSource="Multimedia/login.png"/>
     </Window.Background>

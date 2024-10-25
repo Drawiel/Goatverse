@@ -40,14 +40,9 @@ namespace Goatverse.Windows {
             InstanceContext context = new InstanceContext(this);
             lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
             string lobbyCode = GenerateLobbyCode();
-
-            bool lobbyCreated = lobbyManagerClient.ServiceConnectToLobby(usernamePlayer, lobbyCode);
-
-            if (lobbyCreated) {
-                Lobby lobby = new Lobby(lobbyCode);
-                lobby.Show();
-                this.Close();
-            }
+            Lobby lobby = new Lobby("lobbyCode");
+            lobby.Show();
+            this.Close();
             
         }
 
@@ -61,6 +56,13 @@ namespace Goatverse.Windows {
 
         public bool ServiceSucessfulLeave() {
             throw new NotImplementedException();
+        }
+
+        private void BtnClickProfile(object sender, RoutedEventArgs e) {
+            Profile profile = new Profile();
+            profile.Show();
+            this.Close();
+
         }
     }
 }

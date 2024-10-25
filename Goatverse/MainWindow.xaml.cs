@@ -89,7 +89,7 @@ namespace Goatverse
         private void BtnClickSignIn(object sender, RoutedEventArgs e) {
             GoatverseService.UsersManagerClient usersManagerClient = new GoatverseService.UsersManagerClient();
             string username = textBoxUsernameSignIn.Text;
-            string password = passwordBoxPassword.Password.ToString();
+            string password = passwordBoxPasswordSignIn.Password.ToString();
             string email = textBoxEmail.Text;
 
             GoatverseService.UserData userData = new GoatverseService.UserData();

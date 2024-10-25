@@ -117,10 +117,12 @@
             Grid.Column="2" 
             Grid.Row="1" 
             Margin="300,668,300,42" 
-             Grid.ColumnSpan="2" 
+            Grid.ColumnSpan="2" 
             Grid.RowSpan="2"
-            Width="240"
-            Height="240">
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Width="auto"
+            Height="auto">
             <Border CornerRadius="0 20 20 0">
                 <Button Background="Transparent" BorderBrush="Transparent" Click="BtnClickShowChat">
                     <Button.Template>

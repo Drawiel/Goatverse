@@ -57,7 +57,7 @@
                  VerticalAlignment="Stretch"
                  materialDesign:ElevationAssist.Elevation="Dp0">
 
-                    <materialDesign:Flipper.FrontContent>
+                    <materialDesign:Flipper.BackContent>
 
                         <Viewbox>
                             <Grid Width="600" Height="900">
@@ -97,7 +97,7 @@
                                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                                     Style="{StaticResource MaterialDesignFloatingActionButton}"
                                                     ToolTip="Cambiar imagen de perfil"
-                                                    Click="ChangeProfileImage_Click">
+                                                    Click="BtnClickChangeProfileImage">
 
                                                         <materialDesign:PackIcon Kind="Pencil" />
                                                     </Button>
@@ -112,7 +112,7 @@
                                 
 
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock Text="lsabella04" FontSize="50" />
+                                    <TextBlock Name="txtBlockUsername" Text="lsabella04" FontSize="50" />
                                     <Button Margin="0,4,0,0" Command="{x:Static materialDesign:Flipper.FlipCommand}" Content="EDITAR" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click" FontSize="30" Height="46"/>
                                 </StackPanel>
 
@@ -122,7 +122,7 @@
                                      CornerRadius="30"                           
                                      Padding="10"                           
                                      Background="LightGray">
-                                        <TextBlock Text="Nivel 22" FontSize="40" HorizontalAlignment="Center" />
+                                        <TextBlock Name="txtBlockProfileLevelNumber" Text="22" FontSize="40" HorizontalAlignment="Center" />
                                     </Border>
                                 </StackPanel>
                             </Grid>
@@ -130,9 +130,9 @@
 
 
 
-                    </materialDesign:Flipper.FrontContent>
+                    </materialDesign:Flipper.BackContent>
 
-                    <materialDesign:Flipper.BackContent>
+                    <materialDesign:Flipper.FrontContent>
                         <Viewbox>
                             <Grid Width="600" Height="900">
 
@@ -160,10 +160,10 @@
 
                                     </Grid.RowDefinitions>
 
-                                    <TextBox Margin="0,40,0,0" materialDesign:HintAssist.Hint="Nombre de usuario:" materialDesign:HintAssist.IsFloating="True" Text="lsabella04" FontSize="35" TextChanged="TextBox_TextChanged" />
+                                    <TextBox Name="txtBoxUsername" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Nombre de usuario:" materialDesign:HintAssist.IsFloating="True" Text="lsabella04" FontSize="35" TextChanged="TextBox_TextChanged" />
 
-                                    <TextBox Grid.Row="1" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Contraseña Actual:" materialDesign:HintAssist.IsFloating="True" Text=""  FontSize="35" />
-                                    <TextBox Grid.Row="2" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Contraseña Nueva:" materialDesign:HintAssist.IsFloating="True" Text=""  FontSize="35" />
+                                    <TextBox Name="txtBoxOldPassword" Grid.Row="1" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Contraseña Actual:" materialDesign:HintAssist.IsFloating="True" Text=""  FontSize="35" />
+                                    <TextBox Name="txtNewPassword" Grid.Row="2" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Contraseña Nueva:" materialDesign:HintAssist.IsFloating="True" Text=""  FontSize="35" />
 
 
                                 </Grid>
@@ -179,7 +179,7 @@
                                          materialDesign:ButtonAssist.CornerRadius="25 25 0 0"
                                          IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                          Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
-                                         ToolTip="MaterialDesignRaisedSecondaryButton with Round Top Corners" Margin="0,30,0,0"
+                                         ToolTip="MaterialDesignRaisedSecondaryButton with Round Top Corners" Margin="0,30,0,0" Click="Button_Click_2"
  >
                                             <TextBlock Text="Editar Perfil" />
                                         </Button>
@@ -203,7 +203,7 @@
                         </Viewbox>
 
 
-                    </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper.FrontContent>
 
                 </materialDesign:Flipper>
 

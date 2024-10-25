@@ -58,10 +58,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ServicePasswordChanged">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="userData" nillable="true" type="q3:UserData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServicePasswordChangedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServicePasswordChangedResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ServiceSendMessageToLobby">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="messageData" nillable="true" type="q3:MessageData" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="messageData" nillable="true" type="q4:MessageData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -98,7 +112,7 @@
   <xs:element name="ServiceGetMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="messageData" nillable="true" type="q4:MessageData" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="messageData" nillable="true" type="q5:MessageData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -123,6 +137,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ServiceSucessfulLeaveResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceLoadProfileData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceLoadProfileDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceLoadProfileDataResult" nillable="true" type="q6:ProfileData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

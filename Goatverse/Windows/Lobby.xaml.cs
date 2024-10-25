@@ -25,21 +25,26 @@ namespace Goatverse.Windows {
     public partial class Lobby : Window, GoatverseService.ILobbyManagerCallback {
 
         private GoatverseService.LobbyManagerClient lobbyManagerClient;
-        public ObservableCollection<UserControl> userControls {  get; set; }
+        public ObservableCollection<UserControl> userControls { get; set; }
         private string usernamePlayer;
         private string lobbyCode;
-        
+
 
         public Lobby(string joinedLobbyCode) {
             InitializeComponent();
 
-            lobbyCode = joinedLobbyCode; 
+            lobbyCode = joinedLobbyCode;
             UserSession userSession = new UserSession();
             userSession = UserSessionManager.getInstance().getUser();
             usernamePlayer = userSession.Username;
 
+            InstanceContext context = new InstanceContext(this);
+            lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
+
             userControls = new ObservableCollection<UserControl>();
             DataContext = this;
+
+            lobbyManagerClient.ServiceConnectToLobby(usernamePlayer, lobbyCode);
 
         }
 
@@ -56,14 +61,14 @@ namespace Goatverse.Windows {
             }
 
             var userChat = new UserChat {
-               Username = messageData.Username,
-               HorizontalAlignment = horizontalAlignment,
+                Username = messageData.Username,
+                HorizontalAlignment = horizontalAlignment,
             };
 
             var chatMessage = new ChatMessage {
-               Message = messageData.Message,
-               Color = color,
-               HorizontalAlignment = horizontalAlignment,
+                Message = messageData.Message,
+                Color = color,
+                HorizontalAlignment = horizontalAlignment,
             };
 
             userControls.Add(userChat);
