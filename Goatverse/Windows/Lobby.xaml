@@ -112,34 +112,36 @@
 
         </Border>
 
-        <!--Boton empezar-->
+        <!--Start Button-->
         <Viewbox 
             Grid.Column="2" 
             Grid.Row="1" 
-            Margin="300,668,300,42" 
+
             Grid.ColumnSpan="2" 
             Grid.RowSpan="2"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
             Width="auto"
-            Height="auto">
-            <Border CornerRadius="0 20 20 0">
-                <Button Background="Transparent" BorderBrush="Transparent" Click="BtnClickShowChat">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" 
-                            BorderBrush="{TemplateBinding BorderBrush}" 
-                            BorderThickness="{TemplateBinding BorderThickness}" 
-                            CornerRadius="50">
-                                <Image Source="../Multimedia/sword.png" Stretch="Uniform" />
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </Border>
+            Height="auto"
+            MaxWidth="150" 
+            MaxHeight="150">
+            <Grid>
+                <Border CornerRadius="0 20 20 0">
+                    <Button Background="Transparent" BorderBrush="Transparent" Click="BtnClickShowChat" 
+                    Width="100" 
+                    Height="100"
+                    BorderThickness="2" 
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    ToolTip="Iniciar partida">
+                        <Image Source="../Multimedia/sword.png" Stretch="UniformToFill" />
+                    </Button>
+                </Border>
+            </Grid>
+            
         </Viewbox>
 
-        <!--Botón amigos-->
+        <!--Friends Button />-->
         <Viewbox Grid.Column="0" Grid.Row="0" Margin="0">
             <Border CornerRadius="0 20 20 0">
                 <Button
@@ -149,13 +151,13 @@
                     BorderThickness="2" 
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignFloatingActionButton}"
-                    ToolTip="MaterialDesignFloatingActionButton">
+                    ToolTip="Amigos">
                     <materialDesign:PackIcon Kind="AccountSupervisor" Width="40" Height="40" Margin="5" />
                 </Button>
             </Border>
         </Viewbox>
 
-        <!--Botón configuración-->
+        <!--Setting Button-->
         <Viewbox Grid.Column="5" Grid.Row="0" Margin="0">
             <Border CornerRadius="0 20 20 0">
                 <Button
@@ -165,29 +167,41 @@
                     BorderThickness="2" 
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignFloatingActionButton}"
-                    ToolTip="MaterialDesignFloatingActionButton">
+                    ToolTip="Configuración">
                     <materialDesign:PackIcon Kind="Cog" Width="40" Height="40" Margin="5" />
                 </Button>
             </Border>
         </Viewbox>
 
-        <!--Boton empezar-->
+        <!--Lobby Code-->
         <Viewbox 
         Grid.Column="2" 
         Grid.Row="0" 
         Margin="262,21,262,21" 
-         Grid.ColumnSpan="2">
-            <TextBlock Name="LobbyCodeTextBlock" Text="" FontSize="50" />
+        Grid.ColumnSpan="2"
+        VerticalAlignment="Top"
+        HorizontalAlignment="Center"
+        MaxHeight="70"
+        MaxWidth="100"
+        Width="auto" 
+        Grid.RowSpan="2"
+        Height="auto">    
+            <TextBlock Name="LobbyCodeTextBlock" Text="Lobby" FontSize="70" Margin="5"/>
         </Viewbox>
 
         <Viewbox 
         Grid.Column="2" 
-        Margin="390,96,390,810" 
+        Grid.Row="0"
+        Margin="0,80,0,0" 
         Grid.ColumnSpan="2"
-        Width="60" 
+        VerticalAlignment="Top"
+        HorizontalAlignment="Center"
+        MaxHeight="20"
+        MaxWidth="60"
+        Width="auto" 
         Grid.RowSpan="2"
-        Height="20">
-            <TextBlock Text="Código" FontSize="20" />
+        Height="auto">
+            <TextBlock Text="Código" FontSize="15" />
         </Viewbox>
 
     </Grid>
