@@ -40,7 +40,7 @@ namespace Goatverse.Windows {
             InstanceContext context = new InstanceContext(this);
             lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
             string lobbyCode = GenerateLobbyCode();
-            Lobby lobby = new Lobby("lobbyCode");
+            Lobby lobby = new Lobby(lobbyCode);
             lobby.Show();
             this.Close();
             

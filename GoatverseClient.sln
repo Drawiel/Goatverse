@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goatverse", "Goatverse\Goatverse.csproj", "{20ED7A56-0ED4-4A52-B89A-385ED852CD19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Tests", "Client.Tests\Client.Tests.csproj", "{7F9A974C-98AE-4210-AEB3-91A8AF1C3285}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{20ED7A56-0ED4-4A52-B89A-385ED852CD19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20ED7A56-0ED4-4A52-B89A-385ED852CD19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20ED7A56-0ED4-4A52-B89A-385ED852CD19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F9A974C-98AE-4210-AEB3-91A8AF1C3285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F9A974C-98AE-4210-AEB3-91A8AF1C3285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F9A974C-98AE-4210-AEB3-91A8AF1C3285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F9A974C-98AE-4210-AEB3-91A8AF1C3285}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

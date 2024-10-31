@@ -45,6 +45,7 @@ namespace Goatverse.Windows {
             DataContext = this;
 
             lobbyManagerClient.ServiceConnectToLobby(usernamePlayer, lobbyCode);
+            textBlockLobbyCode.Text = lobbyCode;
 
         }
 
@@ -73,6 +74,7 @@ namespace Goatverse.Windows {
 
             userControls.Add(userChat);
             userControls.Add(chatMessage);
+            scrollViewerChat.ScrollToBottom();
         }
 
         public bool ServiceSuccessfulJoin() {
@@ -88,7 +90,7 @@ namespace Goatverse.Windows {
         }
 
         private void BtnClickSendMessage(object sender, RoutedEventArgs e) {
-            string messageText = txtMessage.Text;
+            string messageText = textBoxMessage.Text;
 
             GoatverseService.MessageData messageData = new MessageData();
             messageData.Message = messageText;
@@ -96,7 +98,8 @@ namespace Goatverse.Windows {
             messageData.LobbyCode = lobbyCode;
 
             lobbyManagerClient.ServiceSendMessageToLobby(messageData);
-            txtMessage.Clear();
+            textBoxMessage.Clear();
+            scrollViewerChat.ScrollToBottom();
         }
     }
 }

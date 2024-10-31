@@ -1,4 +1,5 @@
 ﻿using Goatverse.Logic.Classes;
+using Goatverse.Properties.Langs;
 using Goatverse.Windows;
 using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
@@ -34,8 +35,8 @@ namespace Goatverse
 
         private void BtnClickLogIn(object sender, RoutedEventArgs e) {
             GoatverseService.UsersManagerClient usersManagerClient = new GoatverseService.UsersManagerClient();
-            string username = textBoxUsername.Text;
-            string password = passwordBoxPassword.Password.ToString();
+            string username = textBoxUsernameLogIn.Text;
+            string password = passwordBoxPasswordLogIn.Password.ToString();
 
             GoatverseService.UserData userData = new GoatverseService.UserData();
             userData.Username = username;
@@ -50,7 +51,7 @@ namespace Goatverse
                 start.Show();
                 this.Close();
             } else {
-                textBoxUsername.Text = login.ToString();
+                MessageBox.Show(Lang.messageWrongPassword);
             }
             
         }

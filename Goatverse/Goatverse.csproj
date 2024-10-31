@@ -87,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\Classes\FieldValidator.cs" />
     <Compile Include="Logic\Classes\Message.cs" />
     <Compile Include="Logic\Classes\UserSession.cs" />
     <Compile Include="Logic\Classes\UserSessionManager.cs" />

@@ -331,4 +331,10 @@ Scoring Each player adds up the total value of their herd by counting the points
   <data name="globalGuest" xml:space="preserve">
     <value>Guest</value>
   </data>
+  <data name="globalCreateMatch" xml:space="preserve">
+    <value>Create Match</value>
+  </data>
+  <data name="globalJoinLobby" xml:space="preserve">
+    <value>Join Lobby</value>
+  </data>
 </root>

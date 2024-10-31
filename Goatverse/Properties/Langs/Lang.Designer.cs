@@ -160,6 +160,15 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Match.
+        /// </summary>
+        public static string globalCreateMatch {
+            get {
+                return ResourceManager.GetString("globalCreateMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deck.
         /// </summary>
         public static string globalDeck {
@@ -318,6 +327,15 @@ namespace Goatverse.Properties.Langs {
         public static string globalInvitePlayer {
             get {
                 return ResourceManager.GetString("globalInvitePlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Join Lobby.
+        /// </summary>
+        public static string globalJoinLobby {
+            get {
+                return ResourceManager.GetString("globalJoinLobby", resourceCulture);
             }
         }
         

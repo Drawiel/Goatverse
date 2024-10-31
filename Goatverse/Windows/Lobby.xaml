@@ -52,7 +52,7 @@
 
                     <RowDefinition Height="105*"/>
                 </Grid.RowDefinitions>
-                <ScrollViewer>
+                <ScrollViewer x:Name="scrollViewerChat">
                     <Grid>
 
 
@@ -97,7 +97,7 @@
                     <!--message TextBox-->
                     <Grid>
 
-                        <TextBox x:Name="txtMessage" materialDesign:HintAssist.Hint="{x:Static language:Lang.globalSendMessage}" Panel.ZIndex="1"
+                        <TextBox x:Name="textBoxMessage" materialDesign:HintAssist.Hint="{x:Static language:Lang.globalSendMessage}" Panel.ZIndex="1"
                         Style="{StaticResource MaterialDesignOutlinedTextBox}" BorderThickness="3" FontSize="15" VerticalAlignment="Center"
                         Margin="15 0 30 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Background="LightGray" materialDesign:HintAssist.IsFloating="False"/>
 
@@ -133,7 +133,7 @@
                     BorderThickness="2" 
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignFloatingActionButton}"
-                    ToolTip="Iniciar partida">
+                    ToolTip="{x:Static language:Lang.globalStartGame}">
                         <Image Source="../Multimedia/sword.png" Stretch="UniformToFill" />
                     </Button>
                 </Border>
@@ -151,7 +151,7 @@
                     BorderThickness="2" 
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignFloatingActionButton}"
-                    ToolTip="Amigos">
+                    ToolTip="{x:Static language:Lang.globalFriendList}">
                     <materialDesign:PackIcon Kind="AccountSupervisor" Width="40" Height="40" Margin="5" />
                 </Button>
             </Border>
@@ -167,7 +167,7 @@
                     BorderThickness="2" 
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignFloatingActionButton}"
-                    ToolTip="Configuración">
+                    ToolTip="{x:Static language:Lang.globalSettings}">
                     <materialDesign:PackIcon Kind="Cog" Width="40" Height="40" Margin="5" />
                 </Button>
             </Border>
@@ -186,7 +186,7 @@
         Width="auto" 
         Grid.RowSpan="2"
         Height="auto">    
-            <TextBlock Name="LobbyCodeTextBlock" Text="Lobby" FontSize="70" Margin="5"/>
+            <TextBlock Name="textBlockLobbyCode" Text="Lobby" FontSize="70" Margin="5"/>
         </Viewbox>
 
         <Viewbox 
@@ -201,7 +201,7 @@
         Width="auto" 
         Grid.RowSpan="2"
         Height="auto">
-            <TextBlock Text="Código" FontSize="15" />
+            <TextBlock Text="{x:Static language:Lang.globalLobbyCode}" FontSize="15" />
         </Viewbox>
 
     </Grid>

@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Height="1080" 
         Width="1920" 
-        Title="MainWindow"  WindowState="Maximized" ResizeMode="NoResize" WindowStyle="ToolWindow">
+        Title="MainWindow"  WindowState="Maximized" ResizeMode="NoResize" WindowStyle="None">
     <Window.Background>
         <ImageBrush ImageSource="Multimedia/login.png"/>
     </Window.Background>
@@ -34,12 +34,12 @@
                                Foreground="White" VerticalAlignment="Top" Height="60" Width="250"/>
                 </Viewbox>
                 <Viewbox>
-                    <TextBox Margin="20 10" HorizontalAlignment="Center" x:Name="textBoxUsername" Width="250" Foreground="White"
+                    <TextBox Margin="20 10" HorizontalAlignment="Center" x:Name="textBoxUsernameLogIn" Width="250" Foreground="White"
                                      FontSize="15" materialDesign:HintAssist.Hint="{x:Static language:Lang.globalUsername}"
                                      BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                 </Viewbox>
                 <Viewbox>
-                    <PasswordBox Margin="20 10" HorizontalAlignment="Center" x:Name="passwordBoxPassword" Width="250" Foreground="White"
+                    <PasswordBox Margin="20 10" HorizontalAlignment="Center" x:Name="passwordBoxPasswordLogIn" Width="250" Foreground="White"
                                          FontSize="15" materialDesign:HintAssist.Hint="{x:Static language:Lang.globalPassword}"
                                          BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
                 </Viewbox>

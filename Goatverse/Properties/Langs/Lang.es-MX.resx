@@ -332,4 +332,10 @@ Cada jugador suma el valor total de su rebaño contando los puntos de cada carta
   <data name="globalGuest" xml:space="preserve">
     <value>Invitado</value>
   </data>
+  <data name="globalCreateMatch" xml:space="preserve">
+    <value>Crear partida</value>
+  </data>
+  <data name="globalJoinLobby" xml:space="preserve">
+    <value>Unirse a lobby</value>
+  </data>
 </root>
