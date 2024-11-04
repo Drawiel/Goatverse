@@ -70,5 +70,9 @@ namespace Goatverse.Windows {
         private void BtnClickShowFriends(object sender, RoutedEventArgs e) {
             ViewboxFriends.Visibility = ViewboxFriends.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
         }
+
+        private void BtnClickJoinLobby(object sender, RoutedEventArgs e) {
+            ViewboxJoinLobby.Visibility = ViewboxJoinLobby.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+        }
     }
 }
