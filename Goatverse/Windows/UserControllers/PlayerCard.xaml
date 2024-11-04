@@ -7,23 +7,26 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="200">
     <Grid>
-        <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="15" Padding="10">
+        <Border BorderBrush="Gray" 
+                BorderThickness="2" 
+                CornerRadius="15" 
+                Padding="10"
+                Background="White">
             <Grid>
-                <!-- Nivel superior izquierdo -->
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
                     <TextBlock Text="0" FontSize="16" FontWeight="Bold" Margin="0,0,5,0" />
                     <TextBlock Text="Nivel" FontSize="12" VerticalAlignment="Center" />
                 </StackPanel>
 
-                <!-- Gamertag en la parte superior central -->
-                <TextBlock Text="Gamertag" 
+                <TextBlock 
+                       x:Name="txtBlockGamertag"
+                       Text="Gamertag" 
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Top" 
                        FontSize="18" 
                        FontWeight="Bold"
                        Margin="0,30,0,0" />
 
-                <!-- Imagen en el centro -->
                 <Ellipse Width="100" Height="100" Fill="LightGray" 
                      HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Ellipse.Stroke>
@@ -34,7 +37,6 @@
                     </Ellipse.StrokeThickness>
                 </Ellipse>
 
-                <!-- Nivel inferior derecho -->
                 <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
                     <TextBlock Text="0" FontSize="16" FontWeight="Bold" Margin="0,0,5,0" />
                     <TextBlock Text="Nivel" FontSize="12" VerticalAlignment="Center" />

@@ -98,13 +98,14 @@
         <Viewbox Grid.Column="0" Grid.Row="0" Margin="0">
             <Border CornerRadius="0 20 20 0">
                 <Button
+                    Click="BtnClickShowFriends"
                     Margin="10"
                     Background="LightBlue"
                     BorderBrush="Black"
                     BorderThickness="2" 
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignFloatingActionButton}"
-                    ToolTip="MaterialDesignFloatingActionButton">
+                    ToolTip="Amigos">
                     <materialDesign:PackIcon Kind="AccountSupervisor" Width="40" Height="40" Margin="5" />
                 </Button>
             </Border>
@@ -126,12 +127,22 @@
         </Viewbox>
 
         <Viewbox
+            Name="ViewboxFriends"
+            Visibility="Collapsed"
             Grid.Column="0"
-            Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,546,1" Grid.RowSpan="6">
+            Grid.Row="0" 
+            Grid.ColumnSpan="2" 
+            Margin="0,0,546,1" 
+            Grid.RowSpan="6"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            >
             <Grid
                 Background="White"
                 Width="200"
-                Height="308">
+                Height="308"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch">
                 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150*"/>

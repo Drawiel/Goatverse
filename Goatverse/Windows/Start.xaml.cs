@@ -37,10 +37,12 @@ namespace Goatverse.Windows {
         }
 
         private void BtnClickCreateMatch(object sender, RoutedEventArgs e) {
+            string gamertag = usernamePlayer;
+            var lobbyWindow = new Lobby(gamertag);
             InstanceContext context = new InstanceContext(this);
             lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
             string lobbyCode = GenerateLobbyCode();
-            Lobby lobby = new Lobby(lobbyCode);
+            Lobby lobby = new Lobby("QQQQQQQ");
             lobby.Show();
             this.Close();
             
@@ -63,6 +65,10 @@ namespace Goatverse.Windows {
             profile.Show();
             this.Close();
 
+        }
+
+        private void BtnClickShowFriends(object sender, RoutedEventArgs e) {
+            ViewboxFriends.Visibility = ViewboxFriends.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

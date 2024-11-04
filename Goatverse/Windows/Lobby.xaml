@@ -44,7 +44,15 @@
             </Border>
         </Viewbox>
 
-        <Border Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Height="auto" Margin="173,325,10,0" Grid.Row="1" VerticalAlignment="Stretch" Width="auto" x:Name="BorderChat">
+        <Border Name="BorderChat"
+                Visibility="Visible"
+                Grid.Column="3" 
+                Grid.ColumnSpan="2" 
+                HorizontalAlignment="Stretch" 
+                Height="auto" 
+                Margin="173,325,10,0" 
+                Grid.Row="1" VerticalAlignment="Stretch" 
+                Width="auto">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="340*"/>

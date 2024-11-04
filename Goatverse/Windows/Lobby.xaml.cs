@@ -23,6 +23,9 @@ namespace Goatverse.Windows {
     /// Interaction logic for Lobby.xaml
     /// </summary>
     public partial class Lobby : Window, GoatverseService.ILobbyManagerCallback {
+        private int playerCount = 0;
+        private string ownerGamertag;
+
 
         private GoatverseService.LobbyManagerClient lobbyManagerClient;
         public ObservableCollection<UserControl> userControls { get; set; }
@@ -32,6 +35,7 @@ namespace Goatverse.Windows {
 
         public Lobby(string joinedLobbyCode) {
             InitializeComponent();
+            InitializeLobbyOwner(ownerGamertag);
 
             lobbyCode = joinedLobbyCode;
             UserSession userSession = new UserSession();
@@ -86,6 +90,7 @@ namespace Goatverse.Windows {
         }
 
         private void BtnClickShowChat(object sender, RoutedEventArgs e) {
+            BorderChat.Visibility = BorderChat.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
 
         }
 
@@ -101,5 +106,39 @@ namespace Goatverse.Windows {
             textBoxMessage.Clear();
             scrollViewerChat.ScrollToBottom();
         }
+
+        private void OnPlayerJoined(string gamertag) {
+            AddPlayer(gamertag); 
+        }
+
+        public void AddPlayer(string gamertag) {
+            if(playerCount < 4) 
+            {
+                PlayerCard playerCard = new PlayerCard();
+                playerCard.Gamertag = gamertag;
+                Grid.SetColumn(playerCard, playerCount + 1);
+                Grid.SetRow(playerCard, 1); 
+
+                (this.Content as Grid).Children.Add(playerCard);
+
+                playerCount++; 
+            }
+            else {
+                MessageBox.Show("El lobby está lleno."); 
+            }
+        }
+
+        private void InitializeLobbyOwner(string ownerGamertag) {
+            AddPlayer(ownerGamertag); 
+        }
+
+
+        public void SimulatePlayerJoining() {
+            OnPlayerJoined("Jugador1");
+            OnPlayerJoined("Jugador2");
+            OnPlayerJoined("Jugador3");
+           
+        }
+
     }
 }
