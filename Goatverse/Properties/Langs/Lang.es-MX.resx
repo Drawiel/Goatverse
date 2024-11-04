@@ -338,4 +338,10 @@ Cada jugador suma el valor total de su rebaño contando los puntos de cada carta
   <data name="globalJoinLobby" xml:space="preserve">
     <value>Unirse a lobby</value>
   </data>
+  <data name="messageNotValidPassword" xml:space="preserve">
+    <value>La contraseña requiere una letra minuscula, una mayuscula, al menos un número y al menos un carácter especial</value>
+  </data>
+  <data name="messageExistingUsername" xml:space="preserve">
+    <value>El nombre de usuario ya existe</value>
+  </data>
 </root>

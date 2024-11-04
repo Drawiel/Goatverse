@@ -25,10 +25,8 @@ namespace Goatverse
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
+    public partial class MainWindow : Window {
+        public MainWindow() {
             InitializeMaterialDesign();
             InitializeComponent();
         }
@@ -41,6 +39,16 @@ namespace Goatverse
             GoatverseService.UserData userData = new GoatverseService.UserData();
             userData.Username = username;
             userData.Password = password;
+
+            if (!usersManagerClient.ServiceUserExistsByUsername(username)) {
+                MessageBox.Show(Lang.messageNotExistingUsername);
+                return;
+            }
+
+            if (!usersManagerClient.ServiceVerifyPassword(password, username)) {
+                MessageBox.Show(Lang.messageWrongPassword);
+                return;
+            }
 
             bool login = usersManagerClient.ServiceTryLogin(userData);
             if (login) {
@@ -97,7 +105,17 @@ namespace Goatverse
             userData.Username = username;
             userData.Password = password;
             userData.Email = email;
-            
+
+            if (usersManagerClient.ServiceUserExistsByUsername(username)) {
+                MessageBox.Show(Lang.messageExistingUsername);
+                return;
+            }
+
+            if (!FieldValidator.IsValidPassword(password)) {
+                MessageBox.Show(Lang.messageNotValidPassword);
+                return;
+            }
+
             bool login = usersManagerClient.ServiceTrySignIn(userData);
         }
     }

@@ -37,19 +37,14 @@ namespace Goatverse.Windows {
         }
 
         private void BtnClickCreateMatch(object sender, RoutedEventArgs e) {
-            string gamertag = usernamePlayer;
-            var lobbyWindow = new Lobby(gamertag);
-            InstanceContext context = new InstanceContext(this);
-            lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
             string lobbyCode = GenerateLobbyCode();
-            Lobby lobby = new Lobby("QQQQQQQ");
+            Lobby lobby = new Lobby(lobbyCode);
             lobby.Show();
             this.Close();
             
         }
 
         public void ServiceGetMessage(MessageData messageData) {
-            throw new NotImplementedException();
         }
 
         public bool ServiceSuccessfulJoin() {
@@ -73,6 +68,16 @@ namespace Goatverse.Windows {
 
         private void BtnClickJoinLobby(object sender, RoutedEventArgs e) {
             ViewboxJoinLobby.Visibility = ViewboxJoinLobby.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void BtnClickJoinLobbyWithCode(object sender, RoutedEventArgs e) {
+            string lobbyCode = txtBoxLobbyCodeJoin.Text;
+
+            Lobby lobby = new Lobby(lobbyCode);
+            lobby.Show();
+            this.Close();
+     
+
         }
     }
 }

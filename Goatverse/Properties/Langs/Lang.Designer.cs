@@ -601,6 +601,15 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to That username already exists.
+        /// </summary>
+        public static string messageExistingUsername {
+            get {
+                return ResourceManager.GetString("messageExistingUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The game suffer and unexpected error. .
         /// </summary>
         public static string messageGameError {
@@ -624,6 +633,15 @@ namespace Goatverse.Properties.Langs {
         public static string messageNotExistingUsername {
             get {
                 return ResourceManager.GetString("messageNotExistingUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password requires a lowercase letter, an uppercase letter, a number and a special character.
+        /// </summary>
+        public static string messageNotValidPassword {
+            get {
+                return ResourceManager.GetString("messageNotValidPassword", resourceCulture);
             }
         }
         

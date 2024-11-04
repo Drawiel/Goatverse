@@ -48,6 +48,14 @@ namespace Goatverse.Windows {
             userControls = new ObservableCollection<UserControl>();
             DataContext = this;
 
+            int playersInLobby = lobbyManagerClient.ServiceCountPlayersInLobby(lobbyCode);
+            if (playersInLobby >= 4) {
+                MessageBox.Show("");
+                Start start = new Start();
+                start.Show();
+                this.Close();
+            } 
+
             lobbyManagerClient.ServiceConnectToLobby(usernamePlayer, lobbyCode);
             textBlockLobbyCode.Text = lobbyCode;
 

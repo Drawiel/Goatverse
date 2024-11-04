@@ -139,6 +139,12 @@
   <wsdl:message name="ILobbyManager_ServiceDisconnectFromLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceDisconnectFromLobbyResponse" />
   </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceCountPlayersInLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCountPlayersInLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceCountPlayersInLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCountPlayersInLobbyResponse" />
+  </wsdl:message>
   <wsdl:message name="ILobbyManager_ServiceGetMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ServiceGetMessage" />
   </wsdl:message>
@@ -193,6 +199,10 @@
     <wsdl:operation name="ServiceDisconnectFromLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceDisconnectFromLobby" message="tns:ILobbyManager_ServiceDisconnectFromLobby_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceDisconnectFromLobbyResponse" message="tns:ILobbyManager_ServiceDisconnectFromLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceCountPlayersInLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobby" message="tns:ILobbyManager_ServiceCountPlayersInLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobbyResponse" message="tns:ILobbyManager_ServiceCountPlayersInLobby_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ServiceGetMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceGetMessage" message="tns:ILobbyManager_ServiceGetMessage_OutputCallbackMessage" />
@@ -288,6 +298,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ServiceCountPlayersInLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ServiceGetMessage">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceGetMessage" style="document" />
       <wsdl:output>
@@ -332,7 +351,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DAVID-LAPTOP\isabe</Upn>
+          <Upn>VICTUS-DUAA\daur0</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -341,7 +360,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DAVID-LAPTOP\isabe</Upn>
+          <Upn>VICTUS-DUAA\daur0</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -350,7 +369,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DAVID-LAPTOP\isabe</Upn>
+          <Upn>VICTUS-DUAA\daur0</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

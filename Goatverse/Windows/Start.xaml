@@ -65,7 +65,8 @@
                         Background="#1C5E4A" 
                         BorderBrush="White" 
                         Foreground="White"
-                        FontSize="30" Click="Button_Click">
+                        FontSize="30" 
+                        Click="BtnClickJoinLobby">
                 </Button>
 
                 <Button Grid.Row="2"
@@ -273,9 +274,9 @@
                                 <CheckBox
                                 Visibility="Hidden" />
                                 <TextBox
+                                Name="txtBoxLobbyCodeJoin"
                                 VerticalAlignment="Top"
-                                materialDesign:HintAssist.HelperText="Ingrese el código de partida"
-                                materialDesign:HintAssist.Hint="Código de partida"
+                                materialDesign:HintAssist.Hint="{x:Static language:Lang.globalLobbyCode}"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}">         
                                     <TextBox.Text>
                                         <Binding
@@ -310,7 +311,8 @@
                         BorderThickness="2" 
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignFloatingActionButton}"
-                        ToolTip="MaterialDesignFloatingActionButton">
+                        ToolTip="MaterialDesignFloatingActionButton"
+                        Click="BtnClickJoinLobbyWithCode">
                             <materialDesign:PackIcon Kind="ArrowRight" Width="40" Height="40" Margin="5" />
                         </Button>
                     </Border>
