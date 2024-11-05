@@ -44,16 +44,7 @@ namespace Goatverse.Windows {
             
         }
 
-        public void ServiceGetMessage(MessageData messageData) {
-        }
-
-        public bool ServiceSuccessfulJoin() {
-            throw new NotImplementedException();
-        }
-
-        public bool ServiceSucessfulLeave() {
-            throw new NotImplementedException();
-        }
+        public void ServiceGetMessage(MessageData messageData) { }
 
         private void BtnClickProfile(object sender, RoutedEventArgs e) {
             Profile profile = new Profile();
@@ -71,13 +62,21 @@ namespace Goatverse.Windows {
         }
 
         private void BtnClickJoinLobbyWithCode(object sender, RoutedEventArgs e) {
+            InstanceContext context = new InstanceContext(this);
+            lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
             string lobbyCode = txtBoxLobbyCodeJoin.Text;
 
-            Lobby lobby = new Lobby(lobbyCode);
-            lobby.Show();
-            this.Close();
-     
+            int playersInLobby = lobbyManagerClient.ServiceCountPlayersInLobby(lobbyCode);
+            if (playersInLobby < 4) {
+                Lobby lobby = new Lobby(lobbyCode);
+                lobby.Show();
+                this.Close();
+            } else {
+                MessageBox.Show("");
+            }
 
         }
+
+        public void ServiceUpdatePlayersInLobby(PlayerData[] players) { }
     }
 }

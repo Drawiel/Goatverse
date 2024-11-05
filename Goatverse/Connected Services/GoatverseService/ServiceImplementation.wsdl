@@ -124,6 +124,18 @@
   <wsdl:message name="IUsersManager_ServicePasswordChanged_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServicePasswordChangedResponse" />
   </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceUsernameChanged_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUsernameChanged" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceUsernameChanged_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUsernameChangedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServicePasswordAndUsernameChanged_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServicePasswordAndUsernameChanged" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServicePasswordAndUsernameChanged_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServicePasswordAndUsernameChangedResponse" />
+  </wsdl:message>
   <wsdl:message name="IUsersManager_ServiceGetEmail_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceGetEmail" />
   </wsdl:message>
@@ -183,6 +195,14 @@
     <wsdl:operation name="ServicePasswordChanged">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServicePasswordChanged" message="tns:IUsersManager_ServicePasswordChanged_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServicePasswordChangedResponse" message="tns:IUsersManager_ServicePasswordChanged_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUsernameChanged">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceUsernameChanged" message="tns:IUsersManager_ServiceUsernameChanged_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServiceUsernameChangedResponse" message="tns:IUsersManager_ServiceUsernameChanged_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServicePasswordAndUsernameChanged">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServicePasswordAndUsernameChanged" message="tns:IUsersManager_ServicePasswordAndUsernameChanged_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServicePasswordAndUsernameChangedResponse" message="tns:IUsersManager_ServicePasswordAndUsernameChanged_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ServiceGetEmail">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceGetEmail" message="tns:IUsersManager_ServiceGetEmail_InputMessage" />
@@ -259,6 +279,24 @@
     </wsdl:operation>
     <wsdl:operation name="ServicePasswordChanged">
       <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServicePasswordChanged" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUsernameChanged">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServiceUsernameChanged" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServicePasswordAndUsernameChanged">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServicePasswordAndUsernameChanged" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -344,7 +382,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DAVID-LAPTOP\isabe</Upn>
+          <Upn>VICTUS-DUAA\daur0</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -353,7 +391,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DAVID-LAPTOP\isabe</Upn>
+          <Upn>VICTUS-DUAA\daur0</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -362,7 +400,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DAVID-LAPTOP\isabe</Upn>
+          <Upn>VICTUS-DUAA\daur0</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

@@ -31,8 +31,6 @@ namespace Goatverse.Windows {
             emailInstance = userSession.Email;
             profileManager = new GoatverseService.ProfilesManagerClient();
 
-
-
             /*ProfileData profileData = profileManager.ServiceLoadProfileData(usernamePlayer);
             txtBlockProfileLevelNumber.Text = profileData.ProfileLevel.ToString();
             txtBlockUsername.Text = usernamePlayer;
@@ -85,21 +83,45 @@ namespace Goatverse.Windows {
         private void BtnClickUpdateProfile(object sender, RoutedEventArgs e) {
             try {
                 string newUsername = txtBoxUsername.Text;
+                string oldPassword = pwdBoxOldPassword.Password.ToString();
+                string newPassword = pwdBoxNewPassword.Password.ToString();
+                bool updatedResult = false;
+                userManager = new GoatverseService.UsersManagerClient();
 
                 if(emailInstance != null) {
                     var userData = new UserData {
                         Username = newUsername,  
-                        Email = emailInstance            
+                        Email = emailInstance,
+                        Password = newPassword
                     };
 
-                    //bool passwordVerify = userManager.ServiceVerifyPassword();
-                    bool updateResult = userManager.ServicePasswordChanged(userData);
+                    if (!string.IsNullOrEmpty(oldPassword) && !string.IsNullOrEmpty(newUsername)) {
 
-                    if(updateResult) {
-                        MessageBox.Show("Perfil actualizado exitosamente.");
+                        bool isOldPasswordTrue = userManager.ServiceVerifyPassword(oldPassword, usernamePlayer);
+                        if (isOldPasswordTrue && newPassword != null) { 
+                            updatedResult = userManager.ServicePasswordChanged(userData);
+                        } else {
+                            MessageBox.Show("Problem with password change");
+                        }
+
+                    } else if (!string.IsNullOrEmpty(newUsername) && string.IsNullOrEmpty(oldPassword)) {
+                        updatedResult = userManager.ServiceUsernameChanged(userData);
+
+
+                    } else if (!string.IsNullOrEmpty(newUsername) && !string.IsNullOrEmpty(oldPassword)) {
+
+                        bool isOldPasswordTrue = userManager.ServiceVerifyPassword(oldPassword, usernamePlayer);
+                        if (isOldPasswordTrue && !string.IsNullOrEmpty(newPassword)) {
+                            updatedResult = userManager.ServicePasswordAndUsernameChanged(userData);
+                        } else {
+                            MessageBox.Show("Problem with password change");
+                        }
                     }
-                    else {
-                        MessageBox.Show("Error al actualizar el perfil.");
+                    
+                    if (updatedResult) {
+                        MessageBox.Show("User changed");
+                    } else {
+                        MessageBox.Show("Error: User not changed");
                     }
                 }
                 else {

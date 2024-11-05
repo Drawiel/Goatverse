@@ -35,7 +35,6 @@ namespace Goatverse.Windows {
 
         public Lobby(string joinedLobbyCode) {
             InitializeComponent();
-            InitializeLobbyOwner(ownerGamertag);
 
             lobbyCode = joinedLobbyCode;
             UserSession userSession = new UserSession();
@@ -47,14 +46,6 @@ namespace Goatverse.Windows {
 
             userControls = new ObservableCollection<UserControl>();
             DataContext = this;
-
-            int playersInLobby = lobbyManagerClient.ServiceCountPlayersInLobby(lobbyCode);
-            if (playersInLobby >= 4) {
-                MessageBox.Show("");
-                Start start = new Start();
-                start.Show();
-                this.Close();
-            } 
 
             lobbyManagerClient.ServiceConnectToLobby(usernamePlayer, lobbyCode);
             textBlockLobbyCode.Text = lobbyCode;
@@ -89,14 +80,6 @@ namespace Goatverse.Windows {
             scrollViewerChat.ScrollToBottom();
         }
 
-        public bool ServiceSuccessfulJoin() {
-            throw new NotImplementedException();
-        }
-
-        public bool ServiceSucessfulLeave() {
-            throw new NotImplementedException();
-        }
-
         private void BtnClickShowChat(object sender, RoutedEventArgs e) {
             BorderChat.Visibility = BorderChat.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
 
@@ -115,15 +98,14 @@ namespace Goatverse.Windows {
             scrollViewerChat.ScrollToBottom();
         }
 
-        private void OnPlayerJoined(string gamertag) {
-            AddPlayer(gamertag); 
-        }
-
-        public void AddPlayer(string gamertag) {
+        public void AddPlayer(string gamertag, int level) {
             if(playerCount < 4) 
             {
-                PlayerCard playerCard = new PlayerCard();
-                playerCard.Gamertag = gamertag;
+                PlayerCard playerCard = new PlayerCard() {
+                    Gamertag = gamertag,
+                    Level = level,
+                };
+
                 Grid.SetColumn(playerCard, playerCount + 1);
                 Grid.SetRow(playerCard, 1); 
 
@@ -136,16 +118,20 @@ namespace Goatverse.Windows {
             }
         }
 
-        private void InitializeLobbyOwner(string ownerGamertag) {
-            AddPlayer(ownerGamertag); 
-        }
+        public void ServiceUpdatePlayersInLobby(PlayerData[] players) {
+            int rowToClear = 1;
+            var elementsInRow = (this.Content as Grid).Children.OfType<PlayerCard>().Where(child => Grid.GetRow(child) == rowToClear).ToList();
 
+            foreach (var element in elementsInRow) {
+                (this.Content as Grid).Children.Remove(element);
+                playerCount--;
+            }
 
-        public void SimulatePlayerJoining() {
-            OnPlayerJoined("Jugador1");
-            OnPlayerJoined("Jugador2");
-            OnPlayerJoined("Jugador3");
-           
+            Console.WriteLine("Lista actualizada de jugadores en el lobby:");
+            foreach (var player in players) {
+                Console.WriteLine($"Jugador: {player.Username}, Nivel: {player.Level}");
+                AddPlayer(player.Username, player.Level);
+            }
         }
 
     }

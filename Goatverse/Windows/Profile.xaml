@@ -216,7 +216,7 @@
                                         TextChanged="TextBox_TextChanged" />
 
                                     <PasswordBox 
-                                        Name="txtBoxOldPassword" 
+                                        Name="pwdBoxOldPassword" 
                                         Grid.Row="1" 
                                         Margin="0,40,0,0" 
                                         materialDesign:HintAssist.Hint="Contraseña Actual:" 
@@ -225,7 +225,7 @@
                                         FontSize="35" />
 
                                     <PasswordBox 
-                                        Name="txtNewPassword"
+                                        Name="pwdBoxNewPassword"
                                         Grid.Row="2" 
                                         Margin="0,40,0,0" 
                                         materialDesign:HintAssist.Hint="Contraseña Nueva:" 
@@ -254,7 +254,7 @@
                                             materialDesign:ButtonAssist.CornerRadius="25 25 0 0"
                                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                             Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
-                                            ToolTip="MaterialDesignRaisedSecondaryButton with Round Top Corners" Margin="0,30,0,0" Click="Button_Click_2">
+                                            ToolTip="MaterialDesignRaisedSecondaryButton with Round Top Corners" Margin="0,30,0,0" Click="BtnClickUpdateProfile">
                                             <TextBlock Text="Editar Perfil" />
                                         </Button>
                                     </Grid>

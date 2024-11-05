@@ -52,7 +52,8 @@
                 Height="auto" 
                 Margin="173,325,10,0" 
                 Grid.Row="1" VerticalAlignment="Stretch" 
-                Width="auto">
+                Width="auto"
+                Panel.ZIndex="1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="340*"/>
@@ -131,7 +132,8 @@
             Width="auto"
             Height="auto"
             MaxWidth="150" 
-            MaxHeight="150">
+            MaxHeight="150"
+            Panel.ZIndex="1">
             <Grid>
                 <Border CornerRadius="0 20 20 0">
                     <Button Background="Transparent" BorderBrush="Transparent" Click="BtnClickShowChat" 

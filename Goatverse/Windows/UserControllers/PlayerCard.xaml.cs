@@ -21,27 +21,15 @@ namespace Goatverse.Windows.UserControllers {
         public PlayerCard() {
             InitializeComponent();
         }
-        
-        public static readonly DependencyProperty GamertagProperty = DependencyProperty.Register(
-            "Gamertag", typeof(string), typeof(PlayerCard), new PropertyMetadata("Gamertag"));
+
+        public static readonly DependencyProperty GamertagProperty = DependencyProperty.Register("Gamertag", typeof(string), typeof(PlayerCard), new PropertyMetadata(string.Empty));
 
         public string Gamertag {
             get { return (string)GetValue(GamertagProperty); }
             set { SetValue(GamertagProperty, value); }
         }
 
-        private static void OnGamertagChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
-            var control = d as PlayerCard;
-            control.UpdateGamertag();
-        }
-
-        // Actualiza el TextBlock cuando se cambia el gamertag
-        private void UpdateGamertag() {
-            txtBlockGamertag.Text = Gamertag; // Asegúrate de que el TextBlock tenga el nombre correcto
-        }
-
-        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register(
-            "Level", typeof(int), typeof(PlayerCard), new PropertyMetadata(0));
+        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register("Level", typeof(int), typeof(PlayerCard), new PropertyMetadata(0));
 
         public int Level {
             get { return (int)GetValue(LevelProperty); }
