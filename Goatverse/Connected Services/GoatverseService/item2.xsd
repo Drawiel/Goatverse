@@ -19,6 +19,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MessageData" nillable="true" type="tns:MessageData" />
+  <xs:complexType name="ArrayOfPlayerData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlayerData" nillable="true" type="tns:PlayerData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlayerData" nillable="true" type="tns:ArrayOfPlayerData" />
+  <xs:complexType name="PlayerData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Level" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlayerData" nillable="true" type="tns:PlayerData" />
   <xs:complexType name="ProfileData">
     <xs:sequence>
       <xs:element minOccurs="0" name="IdProfile" type="xs:int" />

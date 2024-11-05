@@ -31,23 +31,32 @@
 
         </Grid.RowDefinitions>
 
-        <Button 
-            Width="80" 
-            Height="85" 
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center" 
-            Click="OnArrowLeftClick" 
-            Background="Transparent" 
-            BorderBrush="Black" 
-            ToolTip="Regresar"
-            Grid.Column="0"
-            Grid.Row="0"
-            >
-
-            <materialDesign:PackIcon Kind="ArrowLeft" Width="80" Height="85" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
-        </Button>
-        <Border  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Height="auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="auto">
+        <Viewbox Grid.Column="0" Grid.Row="0" Margin="0">
+            <Border CornerRadius="0 20 20 0">
+                <Button 
+                    Margin="10"
+                    Background="LightBlue"
+                    BorderBrush="Black"
+                    BorderThickness="2" 
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    Click="OnArrowLeftClick">
+                    <materialDesign:PackIcon 
+                        Kind="ArrowLeft" 
+                        Width="40" 
+                        Height="40" 
+                        Margin="5" />
+                </Button>
+            </Border>
+        </Viewbox>
+        <Border  
+            Grid.Row="1" 
+            Grid.Column="1" 
+            Grid.ColumnSpan="1" 
+            HorizontalAlignment="Stretch" 
+            Height="auto" Margin="0,0,0,0" 
+            VerticalAlignment="Stretch" 
+            Width="auto">
             <Grid>
                 <materialDesign:Flipper
                  Grid.Row="1"
@@ -79,25 +88,25 @@
                                             <materialDesign:ColorZone VerticalAlignment="Stretch" Mode="Standard">
                                                 <Grid>
                                                     <Image 
-                                                    x:Name="ProfileImage" 
-                                                    Width="580" 
-                                                    Height="350" 
-                                                    HorizontalAlignment="Center" 
-                                                    VerticalAlignment="Center" 
-                                                    Source="../Multimedia/sword.png"
-                                                    Stretch="Uniform" />
+                                                        x:Name="ProfileImage" 
+                                                        Width="580" 
+                                                        Height="350" 
+                                                        HorizontalAlignment="Center" 
+                                                        VerticalAlignment="Center" 
+                                                        Source="../Multimedia/sword.png"
+                                                        Stretch="Uniform" />
 
                                                     <Button
-                                                    Margin="10"
-                                                    Background="LightBlue"
-                                                    BorderBrush="Black"
-                                                    BorderThickness="2" 
-                                                    VerticalAlignment="Bottom"
-                                                    HorizontalAlignment="Right"
-                                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                                    ToolTip="Cambiar imagen de perfil"
-                                                    Click="BtnClickChangeProfileImage">
+                                                        Margin="10"
+                                                        Background="LightBlue"
+                                                        BorderBrush="Black"
+                                                        BorderThickness="2" 
+                                                        VerticalAlignment="Bottom"
+                                                        HorizontalAlignment="Right"
+                                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                                        Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                                        ToolTip="Cambiar imagen de perfil"
+                                                        Click="BtnClickChangeProfileImage">
 
                                                         <materialDesign:PackIcon Kind="Pencil" />
                                                     </Button>
@@ -111,18 +120,38 @@
                                 
                                 
 
-                                <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock Name="txtBlockUsername" Text="lsabella04" FontSize="50" />
-                                    <Button Margin="0,4,0,0" Command="{x:Static materialDesign:Flipper.FlipCommand}" Content="EDITAR" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click" FontSize="30" Height="46"/>
+                                <StackPanel 
+                                    Grid.Row="1" 
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center">
+                                    <TextBlock 
+                                        Name="txtBlockUsername" 
+                                        Text="lsabella04" 
+                                        FontSize="50" />
+                                    <Button 
+                                        Margin="0,4,0,0" 
+                                        Command="{x:Static materialDesign:Flipper.FlipCommand}" 
+                                        Content="EDITAR" 
+                                        Style="{StaticResource MaterialDesignFlatButton}" 
+                                        Click="Button_Click" 
+                                        FontSize="30" 
+                                        Height="46"/>
                                 </StackPanel>
 
-                                <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <StackPanel 
+                                    Grid.Row="2" 
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center">
                                     <Border BorderBrush="Black"        
-                                     BorderThickness="2"                          
-                                     CornerRadius="30"                           
-                                     Padding="10"                           
-                                     Background="LightGray">
-                                        <TextBlock Name="txtBlockProfileLevelNumber" Text="22" FontSize="40" HorizontalAlignment="Center" />
+                                        BorderThickness="2"                          
+                                        CornerRadius="30"                           
+                                        Padding="10"                           
+                                        Background="LightGray">
+                                        <TextBlock 
+                                            Name="txtBlockProfileLevelNumber" 
+                                            Text="22" 
+                                            FontSize="40" 
+                                            HorizontalAlignment="Center" />
                                     </Border>
                                 </StackPanel>
                             </Grid>
@@ -142,16 +171,33 @@
                                     <RowDefinition Height="100*" />
                                 </Grid.RowDefinitions>
 
-                                <materialDesign:ColorZone Padding="6" Mode="SecondaryMid">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button HorizontalAlignment="Left" Command="{x:Static materialDesign:Flipper.FlipCommand}" Style="{StaticResource MaterialDesignToolForegroundButton}">
-                                            <materialDesign:PackIcon HorizontalAlignment="Right" Kind="ArrowLeft" />
+                                <materialDesign:ColorZone 
+                                    Padding="6" 
+                                    Mode="SecondaryMid">
+                                    <StackPanel 
+                                        Orientation="Horizontal">
+                                        <Button 
+                                            HorizontalAlignment="Left" 
+                                            Command="{x:Static materialDesign:Flipper.FlipCommand}" 
+                                            Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                            <materialDesign:PackIcon 
+                                                HorizontalAlignment="Right" 
+                                                Kind="ArrowLeft" />
                                         </Button>
-                                        <TextBlock Margin="8,0,0,0" VerticalAlignment="Center" Text="EDITAR USUARIO" />
+                                        <TextBlock 
+                                            Margin="8,0,0,0" 
+                                            VerticalAlignment="Center" 
+                                            Text="EDITAR USUARIO" />
                                     </StackPanel>
                                 </materialDesign:ColorZone>
 
-                                <Grid Grid.Row="1" Width="406" Margin="0,6,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="636">
+                                <Grid 
+                                    Grid.Row="1" 
+                                    Width="406" 
+                                    Margin="0,6,0,0" 
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Top" 
+                                    Height="636">
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
                                         <RowDefinition />
@@ -160,40 +206,70 @@
 
                                     </Grid.RowDefinitions>
 
-                                    <TextBox Name="txtBoxUsername" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Nombre de usuario:" materialDesign:HintAssist.IsFloating="True" Text="lsabella04" FontSize="35" TextChanged="TextBox_TextChanged" />
+                                    <TextBox 
+                                        Name="txtBoxUsername" 
+                                        Margin="0,40,0,0" 
+                                        materialDesign:HintAssist.Hint="Nombre de usuario:" 
+                                        materialDesign:HintAssist.IsFloating="True" 
+                                        Text="" 
+                                        FontSize="35" 
+                                        TextChanged="TextBox_TextChanged" />
 
-                                    <TextBox Name="txtBoxOldPassword" Grid.Row="1" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Contraseña Actual:" materialDesign:HintAssist.IsFloating="True" Text=""  FontSize="35" />
-                                    <TextBox Name="txtNewPassword" Grid.Row="2" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Contraseña Nueva:" materialDesign:HintAssist.IsFloating="True" Text=""  FontSize="35" />
+                                    <PasswordBox 
+                                        Name="txtBoxOldPassword" 
+                                        Grid.Row="1" 
+                                        Margin="0,40,0,0" 
+                                        materialDesign:HintAssist.Hint="Contraseña Actual:" 
+                                        materialDesign:PasswordBoxAssist.Password="{Binding Path=Password1Validated, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" 
+                                        materialDesign:HintAssist.IsFloating="True" 
+                                        FontSize="35" />
+
+                                    <PasswordBox 
+                                        Name="txtNewPassword"
+                                        Grid.Row="2" 
+                                        Margin="0,40,0,0" 
+                                        materialDesign:HintAssist.Hint="Contraseña Nueva:" 
+                                        materialDesign:PasswordBoxAssist.Password="{Binding Path=Password1Validated, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" 
+                                        materialDesign:HintAssist.IsFloating="True" 
+                                        FontSize="35" />
 
 
                                 </Grid>
-                                <Grid Grid.Row="2" Width="450" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="100">
+                                <Grid 
+                                    Grid.Row="2" 
+                                    Width="450" 
+                                    Margin="0,0,0,0" 
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Bottom" 
+                                    Height="100">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
                                         <ColumnDefinition />
 
                                     </Grid.ColumnDefinitions>
-                                    <Grid Width="220">
+                                    <Grid 
+                                        Width="220">
                                         <Button
-                                         Height="70"
-                                         materialDesign:ButtonAssist.CornerRadius="25 25 0 0"
-                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                         Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
-                                         ToolTip="MaterialDesignRaisedSecondaryButton with Round Top Corners" Margin="0,30,0,0" Click="Button_Click_2"
- >
+                                            Height="70"
+                                            materialDesign:ButtonAssist.CornerRadius="25 25 0 0"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
+                                            ToolTip="MaterialDesignRaisedSecondaryButton with Round Top Corners" Margin="0,30,0,0" Click="Button_Click_2">
                                             <TextBlock Text="Editar Perfil" />
                                         </Button>
                                     </Grid>
 
-                                    <Grid Grid.Column="2" Width="220">
+                                    <Grid 
+                                        Grid.Column="2" 
+                                        Width="220">
                                         <Button
-                                         Height="70"
-                                         materialDesign:ButtonAssist.CornerRadius="25 25 0 0"
-                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                         Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
-                                         ToolTip="MaterialDesignRaisedSecondaryButton with Round Top Corners" Margin="0,30,0,0"
-                                         Background="Red" 
-                                         >
+                                             Height="70"
+                                             materialDesign:ButtonAssist.CornerRadius="25 25 0 0"
+                                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                             Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
+                                             ToolTip="MaterialDesignRaisedSecondaryButton with Round Top Corners" 
+                                             Margin="0,30,0,0"
+                                             Background="Red">
                                             <TextBlock Text="Borrar Perfil" />
                                         </Button>
                                     </Grid>

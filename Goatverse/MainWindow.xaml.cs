@@ -52,7 +52,10 @@ namespace Goatverse
 
             bool login = usersManagerClient.ServiceTryLogin(userData);
             if (login) {
-                UserSession userSession = new UserSession { Username = username};
+                UserSession userSession = new UserSession { 
+                    Username = username,
+                    Email = usersManagerClient.ServiceGetEmail(username),
+                };
                 UserSessionManager.getInstance().loginUser(userSession);
 
                 Start start = new Start();

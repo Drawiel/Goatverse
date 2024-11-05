@@ -124,6 +124,12 @@
   <wsdl:message name="IUsersManager_ServicePasswordChanged_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServicePasswordChangedResponse" />
   </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceGetEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetEmail" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceGetEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetEmailResponse" />
+  </wsdl:message>
   <wsdl:message name="ILobbyManager_ServiceSendMessageToLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceSendMessageToLobby" />
   </wsdl:message>
@@ -148,17 +154,8 @@
   <wsdl:message name="ILobbyManager_ServiceGetMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ServiceGetMessage" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManager_ServiceSuccessfulJoin_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ServiceSuccessfulJoin" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyManager_ServiceSuccessfulJoin_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ServiceSuccessfulJoinResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyManager_ServiceSucessfulLeave_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ServiceSucessfulLeave" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyManager_ServiceSucessfulLeave_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ServiceSucessfulLeaveResponse" />
+  <wsdl:message name="ILobbyManager_ServiceUpdatePlayersInLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUpdatePlayersInLobby" />
   </wsdl:message>
   <wsdl:message name="IProfilesManager_ServiceLoadProfileData_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceLoadProfileData" />
@@ -187,6 +184,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServicePasswordChanged" message="tns:IUsersManager_ServicePasswordChanged_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServicePasswordChangedResponse" message="tns:IUsersManager_ServicePasswordChanged_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ServiceGetEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceGetEmail" message="tns:IUsersManager_ServiceGetEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServiceGetEmailResponse" message="tns:IUsersManager_ServiceGetEmail_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILobbyManager">
     <wsdl:operation name="ServiceSendMessageToLobby">
@@ -207,13 +208,8 @@
     <wsdl:operation name="ServiceGetMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceGetMessage" message="tns:ILobbyManager_ServiceGetMessage_OutputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ServiceSuccessfulJoin">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceSuccessfulJoin" message="tns:ILobbyManager_ServiceSuccessfulJoin_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceSuccessfulJoinResponse" message="tns:ILobbyManager_ServiceSuccessfulJoin_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ServiceSucessfulLeave">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceSucessfulLeave" message="tns:ILobbyManager_ServiceSucessfulLeave_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceSucessfulLeaveResponse" message="tns:ILobbyManager_ServiceSucessfulLeave_InputCallbackMessage" />
+    <wsdl:operation name="ServiceUpdatePlayersInLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceUpdatePlayersInLobby" message="tns:ILobbyManager_ServiceUpdatePlayersInLobby_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IProfilesManager">
@@ -270,6 +266,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ServiceGetEmail">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServiceGetEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_ILobbyManager" type="tns:ILobbyManager">
     <wsp:PolicyReference URI="#NetTcpBinding_ILobbyManager_policy" />
@@ -313,20 +318,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ServiceSuccessfulJoin">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceSuccessfulJoin" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ServiceSucessfulLeave">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceSucessfulLeave" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
+    <wsdl:operation name="ServiceUpdatePlayersInLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceUpdatePlayersInLobby" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -351,7 +344,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>VICTUS-DUAA\daur0</Upn>
+          <Upn>DAVID-LAPTOP\isabe</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -360,7 +353,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>VICTUS-DUAA\daur0</Upn>
+          <Upn>DAVID-LAPTOP\isabe</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -369,7 +362,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>VICTUS-DUAA\daur0</Upn>
+          <Upn>DAVID-LAPTOP\isabe</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
