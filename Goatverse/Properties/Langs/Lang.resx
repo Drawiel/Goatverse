@@ -337,4 +337,10 @@ Scoring Each player adds up the total value of their herd by counting the points
   <data name="globalJoinLobby" xml:space="preserve">
     <value>Join Lobby</value>
   </data>
+  <data name="messageNotValidPassword" xml:space="preserve">
+    <value>The password requires a lowercase letter, an uppercase letter, a number and a special character</value>
+  </data>
+  <data name="messageExistingUsername" xml:space="preserve">
+    <value>That username already exists</value>
+  </data>
 </root>
