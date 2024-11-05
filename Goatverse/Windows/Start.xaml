@@ -136,6 +136,35 @@
             </Border>
         </Viewbox>
 
+        <Viewbox 
+        Grid.Column="3" 
+        Grid.Row="5" 
+        Margin="0">
+            <Border 
+                CornerRadius="0 20 20 0">
+                <Button
+                    Margin="10"
+                    Background="LightBlue"
+                    BorderBrush="Black"
+                    BorderThickness="2" 
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    ToolTip="MaterialDesignFloatingActionButton" 
+                    Click="BtnClickLogOut">
+                    <materialDesign:PackIcon 
+                        Kind="ExitToApp"  
+                        RenderTransformOrigin="0.5,0.5" 
+                        Width="40" 
+                        Height="40" 
+                        Margin="5" >
+                        <materialDesign:PackIcon.RenderTransform>
+                            <RotateTransform Angle="180"/>
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+                </Button>
+            </Border>
+        </Viewbox>
+
         <Viewbox
             Name="ViewboxFriends"
             Visibility="Collapsed"

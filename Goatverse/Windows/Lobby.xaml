@@ -136,14 +136,17 @@
             Panel.ZIndex="1">
             <Grid>
                 <Border CornerRadius="0 20 20 0">
-                    <Button Background="Transparent" BorderBrush="Transparent" Click="BtnClickShowChat" 
-                    Width="100" 
-                    Height="100"
-                    BorderThickness="2" 
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                    Style="{StaticResource MaterialDesignFloatingActionButton}"
-                    ToolTip="{x:Static language:Lang.globalStartGame}">
-                        <Image Source="../Multimedia/sword.png" Stretch="UniformToFill" />
+                    <Button 
+                        Background="Transparent" 
+                        BorderBrush="Transparent" 
+                        Click="BtnClickStartMatch" 
+                        Width="100" 
+                        Height="100"
+                        BorderThickness="2" 
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignFloatingActionButton}"
+                        ToolTip="{x:Static language:Lang.globalStartGame}">
+                            <Image Source="../Multimedia/sword.png" Stretch="UniformToFill" />
                     </Button>
                 </Border>
             </Grid>
@@ -180,6 +183,26 @@
                     <materialDesign:PackIcon Kind="Cog" Width="40" Height="40" Margin="5" />
                 </Button>
             </Border>
+        </Viewbox>
+
+        <Viewbox Grid.Column="0" Grid.Row="2" Margin="0">
+            <Grid>
+                <Border CornerRadius="0 20 20 0">
+                    <Button 
+                        Background="LightBlue" 
+                        BorderBrush="Transparent" 
+                        Click="BtnClickLeaveLobby" 
+                        Width="100" 
+                        Height="100"
+                        BorderThickness="2" 
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignFloatingActionButton}"
+                        ToolTip="{x:Static language:Lang.globalExit}"
+                        >
+                        <Image Source="../Multimedia/sword_broke.png" Stretch="UniformToFill" />
+                    </Button>
+                </Border>
+            </Grid>
         </Viewbox>
 
         <!--Lobby Code-->

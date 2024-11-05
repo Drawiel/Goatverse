@@ -133,6 +133,24 @@ namespace Goatverse.Windows {
                 AddPlayer(player.Username, player.Level);
             }
         }
+        private void BtnClickLeaveLobby(object sender, RoutedEventArgs e) {
+            bool disconnectFromLobby = lobbyManagerClient.ServiceDisconnectFromLobby(usernamePlayer, lobbyCode);
+            if(disconnectFromLobby) {
+                Start start = new Start();
+                start.Show();
+                this.Close();
+            } else {
+                MessageBox.Show("Couldn't disconnect from lobby");
+            }
+            
+        }
+
+        private void BtnClickStartMatch(object sender, RoutedEvent e) {
+            Match match = new Match();
+            match.Show();
+            this.Close();
+        }
+
 
     }
 }

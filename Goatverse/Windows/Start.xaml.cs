@@ -78,5 +78,11 @@ namespace Goatverse.Windows {
         }
 
         public void ServiceUpdatePlayersInLobby(PlayerData[] players) { }
+
+        public void BtnClickLogOut(object sender, RoutedEventArgs e) {
+            Start start = new Start();
+            start.Show();
+            this.Close();
+        }
     }
 }
