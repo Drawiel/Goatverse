@@ -344,4 +344,10 @@ Cada jugador suma el valor total de su rebaño contando los puntos de cada carta
   <data name="messageExistingUsername" xml:space="preserve">
     <value>El nombre de usuario ya existe</value>
   </data>
+  <data name="globalOldPassword" xml:space="preserve">
+    <value>Contraseña Antigua</value>
+  </data>
+  <data name="globalNewPassword" xml:space="preserve">
+    <value>Nueva Contraseña</value>
+  </data>
 </root>

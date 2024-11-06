@@ -1,11 +1,13 @@
 ﻿using Goatverse.GoatverseService;
 using Goatverse.Logic.Classes;
 using Goatverse.Windows.UserControllers;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +40,7 @@ namespace Goatverse.Windows {
 
             lobbyCode = joinedLobbyCode;
             UserSession userSession = new UserSession();
-            userSession = UserSessionManager.getInstance().getUser();
+            userSession = UserSessionManager.GetInstance().GetUser();
             usernamePlayer = userSession.Username;
 
             InstanceContext context = new InstanceContext(this);
@@ -48,7 +50,7 @@ namespace Goatverse.Windows {
             DataContext = this;
 
             lobbyManagerClient.ServiceConnectToLobby(usernamePlayer, lobbyCode);
-            textBlockLobbyCode.Text = lobbyCode;
+            chipCopyCode.Content = lobbyCode;
 
         }
 
@@ -145,10 +147,16 @@ namespace Goatverse.Windows {
             
         }
 
-        private void BtnClickStartMatch(object sender, RoutedEvent e) {
+        private void BtnClickStartMatch(object sender, RoutedEventArgs e) {
             Match match = new Match();
             match.Show();
             this.Close();
+        }
+
+        private void BtnClickCopyCode(object sender, RoutedEventArgs e) {
+            string code = chipCopyCode.Content.ToString();
+            Clipboard.SetText(code);
+         
         }
 
 

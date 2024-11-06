@@ -9,19 +9,23 @@ namespace Goatverse.Logic.Classes {
         private static UserSessionManager instance;
         private UserSession user;
 
-        public static UserSessionManager getInstance() {
+        public static UserSessionManager GetInstance() {
             if (instance == null) { 
                 instance = new UserSessionManager();
             }
             return instance;
         }
 
-        public void loginUser(UserSession user) { 
+        public void LoginUser(UserSession user) { 
             this.user = user;
         }
 
-        public UserSession getUser() { 
+        public UserSession GetUser() { 
             return this.user;
+        }
+
+        public void LogoutUser() { 
+            this.user = null;
         }
     }
 }

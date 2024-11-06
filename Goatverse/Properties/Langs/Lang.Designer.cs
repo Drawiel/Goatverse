@@ -403,6 +403,24 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Password.
+        /// </summary>
+        public static string globalNewPassword {
+            get {
+                return ResourceManager.GetString("globalNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old Password.
+        /// </summary>
+        public static string globalOldPassword {
+            get {
+                return ResourceManager.GetString("globalOldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string globalPassword {

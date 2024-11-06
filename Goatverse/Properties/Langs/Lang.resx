@@ -343,4 +343,10 @@ Scoring Each player adds up the total value of their herd by counting the points
   <data name="messageExistingUsername" xml:space="preserve">
     <value>That username already exists</value>
   </data>
+  <data name="globalOldPassword" xml:space="preserve">
+    <value>Old Password</value>
+  </data>
+  <data name="globalNewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
 </root>

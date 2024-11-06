@@ -213,32 +213,21 @@
         Grid.ColumnSpan="2"
         VerticalAlignment="Top"
         HorizontalAlignment="Center"
-        MaxHeight="70"
-        MaxWidth="100"
-        Width="auto" 
-        Grid.RowSpan="2"
-        Height="auto">    
-            <TextBlock 
-                Name="textBlockLobbyCode" 
-                Text="Lobby" 
-                FontSize="70" 
-                Margin="5"
-                Background="LightBlue"/>
-        </Viewbox>
-
-        <Viewbox 
-        Grid.Column="2" 
-        Grid.Row="0"
-        Margin="0,80,0,0" 
-        Grid.ColumnSpan="2"
-        VerticalAlignment="Top"
-        HorizontalAlignment="Center"
-        MaxHeight="20"
-        MaxWidth="60"
         Width="auto" 
         Grid.RowSpan="2"
         Height="auto">
-            <TextBlock Text="{x:Static language:Lang.globalLobbyCode}" FontSize="15" />
+
+            <materialDesign:Chip
+                Click="BtnClickCopyCode"
+                Content="######"
+                Name="chipCopyCode"
+                Margin="10, 10, 10, 10"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+                <materialDesign:Chip.Icon>
+                    <materialDesign:PackIcon Kind="ContentCopy"/>
+                </materialDesign:Chip.Icon>
+            </materialDesign:Chip>
         </Viewbox>
 
     </Grid>

@@ -56,7 +56,7 @@ namespace Goatverse
                     Username = username,
                     Email = usersManagerClient.ServiceGetEmail(username),
                 };
-                UserSessionManager.getInstance().loginUser(userSession);
+                UserSessionManager.GetInstance().LoginUser(userSession);
 
                 Start start = new Start();
                 start.Show();

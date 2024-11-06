@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Goatverse.GoatverseService;
+using Goatverse.Properties.Langs;
 
 namespace Goatverse.Windows {
 
@@ -26,15 +27,14 @@ namespace Goatverse.Windows {
             InitializeComponent();
 
             UserSession userSession = new UserSession();
-            userSession = UserSessionManager.getInstance().getUser();
+            userSession = UserSessionManager.GetInstance().GetUser();
             usernamePlayer = userSession.Username;
             emailInstance = userSession.Email;
             profileManager = new GoatverseService.ProfilesManagerClient();
 
-            /*ProfileData profileData = profileManager.ServiceLoadProfileData(usernamePlayer);
+            ProfileData profileData = profileManager.ServiceLoadProfileData(usernamePlayer);
             txtBlockProfileLevelNumber.Text = profileData.ProfileLevel.ToString();
             txtBlockUsername.Text = usernamePlayer;
-            txtBoxUsername.Text = usernamePlayer;*/
             
         }
 
@@ -96,26 +96,27 @@ namespace Goatverse.Windows {
                     };
 
                     if (!string.IsNullOrEmpty(oldPassword) && !string.IsNullOrEmpty(newUsername)) {
-
-                        bool isOldPasswordTrue = userManager.ServiceVerifyPassword(oldPassword, usernamePlayer);
-                        if (isOldPasswordTrue && newPassword != null) { 
-                            updatedResult = userManager.ServicePasswordChanged(userData);
-                        } else {
-                            MessageBox.Show("Problem with password change");
-                        }
+                        
+                        updatedResult = UpdatePassword(userData, oldPassword);
 
                     } else if (!string.IsNullOrEmpty(newUsername) && string.IsNullOrEmpty(oldPassword)) {
                         updatedResult = userManager.ServiceUsernameChanged(userData);
 
+                        UserSession userSession = new UserSession {
+                            Username = newUsername,
+                            Email = emailInstance,
+                        };
+                        UserSessionManager.GetInstance().LoginUser(userSession);
+                        txtBlockUsername.Text = newUsername;
 
                     } else if (!string.IsNullOrEmpty(newUsername) && !string.IsNullOrEmpty(oldPassword)) {
-
-                        bool isOldPasswordTrue = userManager.ServiceVerifyPassword(oldPassword, usernamePlayer);
-                        if (isOldPasswordTrue && !string.IsNullOrEmpty(newPassword)) {
-                            updatedResult = userManager.ServicePasswordAndUsernameChanged(userData);
-                        } else {
-                            MessageBox.Show("Problem with password change");
-                        }
+                        updatedResult = UpdateUsernameAndPassword(userData, oldPassword);
+                        UserSession userSession = new UserSession {
+                            Username = newUsername,
+                            Email = emailInstance,
+                        };
+                        UserSessionManager.GetInstance().LoginUser(userSession);
+                        txtBlockUsername.Text = newUsername;
                     }
                     
                     if (updatedResult) {
@@ -131,6 +132,34 @@ namespace Goatverse.Windows {
             catch(Exception ex) {
                 MessageBox.Show($"Error al intentar actualizar el perfil: {ex.Message}");
             }
+        }
+
+        private bool UpdatePassword(UserData userData, string oldPassword) {
+            if (userManager.ServiceVerifyPassword(oldPassword, usernamePlayer)) {
+
+                if (FieldValidator.IsValidPassword(userData.Password)) {
+                    return userManager.ServicePasswordChanged(userData);
+                } else {
+                    MessageBox.Show(Lang.messageNotValidPassword);
+                    return false;
+                }
+                
+            }
+            MessageBox.Show("Old Password is Incorrect");
+            return false;
+        }
+
+        private bool UpdateUsernameAndPassword(UserData userData, string oldPassword) {
+            if (userManager.ServiceVerifyPassword(oldPassword, usernamePlayer)) {
+                if (FieldValidator.IsValidPassword(userData.Password)) { 
+                    return userManager.ServicePasswordAndUsernameChanged(userData);
+                } else {
+                    MessageBox.Show(Lang.messageNotValidPassword);
+                    return false;
+                }
+        }
+            MessageBox.Show("Old Password is Incorrect");
+            return false;
         }
     }
 }

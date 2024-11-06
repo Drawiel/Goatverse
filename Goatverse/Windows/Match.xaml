@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Goatverse.Windows"
         mc:Ignorable="d"
-        Title="Match" Height="1080" Width="1920">
+        Title="Match" Height="1080" Width="1920" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized">
  <Window.Resources>
         <!-- Estilo para las cartas que se desplazan al pasar el mouse -->
         <Style x:Key="HoverableCardStyle" TargetType="Border">

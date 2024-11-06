@@ -25,7 +25,7 @@ namespace Goatverse.Windows {
         public Start() {
             InitializeComponent();
             UserSession userSession = new UserSession();
-            userSession = UserSessionManager.getInstance().getUser();
+            userSession = UserSessionManager.GetInstance().GetUser();
             usernamePlayer = userSession.Username;
         }
 
@@ -80,8 +80,9 @@ namespace Goatverse.Windows {
         public void ServiceUpdatePlayersInLobby(PlayerData[] players) { }
 
         public void BtnClickLogOut(object sender, RoutedEventArgs e) {
-            Start start = new Start();
-            start.Show();
+            UserSessionManager.GetInstance().LogoutUser();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
         }
     }
