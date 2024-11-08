@@ -24,12 +24,11 @@ namespace Goatverse.Windows {
 
         private void ToggleCardPosition(object sender, MouseButtonEventArgs e) {
             if(sender is Border card) {
-                // Si la carta está marcada como "Clicked", se restaura; de lo contrario, se desplaza
                 if(card.Tag?.ToString() == "Clicked") {
-                    card.Tag = null; // Elimina el tag para que regrese a su posición original
+                    card.Tag = null; 
                 }
                 else {
-                    card.Tag = "Clicked"; // Marca la carta como desplazada
+                    card.Tag = "Clicked"; 
                 }
             }
         }
@@ -58,6 +57,33 @@ namespace Goatverse.Windows {
 
 
             card.BeginAnimation(FrameworkElement.MarginProperty, marginAnimation);
+        }
+
+        private void ToggleCardSelection(object sender, MouseButtonEventArgs e) {
+            var card = sender as Border;
+            if(card != null) {
+                bool isSelected = (bool)(card.Tag ?? false);
+                card.Tag = !isSelected;
+                card.SetValue(IsSelectedProperty, !isSelected);
+            }
+        }
+
+        public static readonly DependencyProperty IsSelectedProperty =
+            DependencyProperty.RegisterAttached("IsSelected", typeof(bool), typeof(Match), new PropertyMetadata(false));
+
+        public static bool GetIsSelected(UIElement element) {
+            return (bool)element.GetValue(IsSelectedProperty);
+        }
+
+        public static void SetIsSelected(UIElement element, bool value) {
+            element.SetValue(IsSelectedProperty, value);
+        }
+
+        private void Card_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
+            var card = sender as Border;
+            if(card != null) {
+                card.Tag = card.Tag == null ? "Clicked" : null;
+            }
         }
     }
 }
