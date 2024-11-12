@@ -292,6 +292,24 @@
   <ItemGroup>
     <Resource Include="Multimedia\sword_broke.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Multimedia\gato1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Multimedia\gato2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Multimedia\gato3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Multimedia\gato4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Multimedia\gato5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Multimedia\gato6.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

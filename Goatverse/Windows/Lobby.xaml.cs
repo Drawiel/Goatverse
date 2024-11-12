@@ -100,12 +100,17 @@ namespace Goatverse.Windows {
             scrollViewerChat.ScrollToBottom();
         }
 
-        public void AddPlayer(string gamertag, int level) {
-            if(playerCount < 4) 
-            {
+        public void AddPlayer(string gamertag, int level, int imageId) {
+            if(playerCount < 4) {
+                string imagePath = "../../Multimedia/sword.png";
+                if (imageId != 0 && imageId != -1) {
+                    imagePath = $"../../Multimedia/gato{imageId}.png";
+                }
+
                 PlayerCard playerCard = new PlayerCard() {
                     Gamertag = gamertag,
                     Level = level,
+                    ImageSource = new BitmapImage(new Uri(imagePath, UriKind.Relative))
                 };
 
                 Grid.SetColumn(playerCard, playerCount + 1);
@@ -132,9 +137,10 @@ namespace Goatverse.Windows {
             Console.WriteLine("Lista actualizada de jugadores en el lobby:");
             foreach (var player in players) {
                 Console.WriteLine($"Jugador: {player.Username}, Nivel: {player.Level}");
-                AddPlayer(player.Username, player.Level);
+                AddPlayer(player.Username, player.Level, player.ImageId);
             }
         }
+
         private void BtnClickLeaveLobby(object sender, RoutedEventArgs e) {
             bool disconnectFromLobby = lobbyManagerClient.ServiceDisconnectFromLobby(usernamePlayer, lobbyCode);
             if(disconnectFromLobby) {
@@ -158,7 +164,5 @@ namespace Goatverse.Windows {
             Clipboard.SetText(code);
          
         }
-
-
     }
 }

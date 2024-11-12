@@ -225,6 +225,9 @@ namespace Goatverse.GoatverseService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ImageIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int LevelField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -237,6 +240,19 @@ namespace Goatverse.GoatverseService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ImageId {
+            get {
+                return this.ImageIdField;
+            }
+            set {
+                if ((this.ImageIdField.Equals(value) != true)) {
+                    this.ImageIdField = value;
+                    this.RaisePropertyChanged("ImageId");
+                }
             }
         }
         
@@ -651,10 +667,16 @@ namespace Goatverse.GoatverseService {
     public interface IProfilesManager {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceLoadProfileData", ReplyAction="http://tempuri.org/IProfilesManager/ServiceLoadProfileDataResponse")]
-        Goatverse.GoatverseService.ProfileData ServiceLoadProfileData(string userName);
+        Goatverse.GoatverseService.ProfileData ServiceLoadProfileData(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceLoadProfileData", ReplyAction="http://tempuri.org/IProfilesManager/ServiceLoadProfileDataResponse")]
-        System.Threading.Tasks.Task<Goatverse.GoatverseService.ProfileData> ServiceLoadProfileDataAsync(string userName);
+        System.Threading.Tasks.Task<Goatverse.GoatverseService.ProfileData> ServiceLoadProfileDataAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage", ReplyAction="http://tempuri.org/IProfilesManager/ServiceChangeProfileImageResponse")]
+        bool ServiceChangeProfileImage(string username, int imageId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage", ReplyAction="http://tempuri.org/IProfilesManager/ServiceChangeProfileImageResponse")]
+        System.Threading.Tasks.Task<bool> ServiceChangeProfileImageAsync(string username, int imageId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -684,12 +706,20 @@ namespace Goatverse.GoatverseService {
                 base(binding, remoteAddress) {
         }
         
-        public Goatverse.GoatverseService.ProfileData ServiceLoadProfileData(string userName) {
-            return base.Channel.ServiceLoadProfileData(userName);
+        public Goatverse.GoatverseService.ProfileData ServiceLoadProfileData(string username) {
+            return base.Channel.ServiceLoadProfileData(username);
         }
         
-        public System.Threading.Tasks.Task<Goatverse.GoatverseService.ProfileData> ServiceLoadProfileDataAsync(string userName) {
-            return base.Channel.ServiceLoadProfileDataAsync(userName);
+        public System.Threading.Tasks.Task<Goatverse.GoatverseService.ProfileData> ServiceLoadProfileDataAsync(string username) {
+            return base.Channel.ServiceLoadProfileDataAsync(username);
+        }
+        
+        public bool ServiceChangeProfileImage(string username, int imageId) {
+            return base.Channel.ServiceChangeProfileImage(username, imageId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceChangeProfileImageAsync(string username, int imageId) {
+            return base.Channel.ServiceChangeProfileImageAsync(username, imageId);
         }
     }
 }

@@ -36,8 +36,7 @@ namespace Goatverse.Windows.UserControllers {
             set { SetValue(LevelProperty, value); }
         }
 
-        public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register(
-            "ImageSource", typeof(ImageSource), typeof(PlayerCard), new PropertyMetadata(null));
+        public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(PlayerCard), new PropertyMetadata(null));
 
         public ImageSource ImageSource {
             get { return (ImageSource)GetValue(ImageSourceProperty); }

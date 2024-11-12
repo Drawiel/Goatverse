@@ -22,6 +22,8 @@ namespace Goatverse.Windows {
         private string emailInstance;
         private GoatverseService.ProfilesManagerClient profileManager;
         private GoatverseService.UsersManagerClient userManager;
+        private int imageId = -1;
+        private Button lastSelectedButton = null;
 
         public Profile() {
             InitializeComponent();
@@ -32,10 +34,7 @@ namespace Goatverse.Windows {
             emailInstance = userSession.Email;
             profileManager = new GoatverseService.ProfilesManagerClient();
 
-            ProfileData profileData = profileManager.ServiceLoadProfileData(usernamePlayer);
-            txtBlockProfileLevelNumber.Text = profileData.ProfileLevel.ToString();
-            txtBlockUsername.Text = usernamePlayer;
-            
+            LoadProfileData();
         }
 
         private void LoadProfileData() {
@@ -43,22 +42,20 @@ namespace Goatverse.Windows {
                 ProfileData profileData = profileManager.ServiceLoadProfileData(usernamePlayer);
                 txtBlockProfileLevelNumber.Text = profileData.ProfileLevel.ToString();
                 txtBlockUsername.Text = usernamePlayer;
-                txtBoxUsername.Text = usernamePlayer;
+                imageId = profileData.ImageId;
+                Changeimage();
             } catch (Exception ex) {
                 MessageBox.Show($"Error al cargar datos del perfil: {ex.Message}");
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
+        private void Changeimage() {
+            string imagePath = "../Multimedia/sword.png";
+            if (imageId != 0 && imageId != -1) {
+                imagePath = $"../Multimedia/gato{imageId}.png";
+            } 
 
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e) {
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {
-
+            imgProfile.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative)); ;
         }
 
         private void OnArrowLeftClick(object sender, RoutedEventArgs e) {
@@ -66,18 +63,9 @@ namespace Goatverse.Windows {
             start.Show();
             this.Close();
         }
+
         private void BtnClickChangeProfileImage(object sender, RoutedEventArgs e) {
-
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.Title = "Seleccionar imagen de perfil";
-            dlg.Filter = "Archivos de imagen (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png";
-
-            bool? result = dlg.ShowDialog();
-
-            if(result == true) {
-
-                ProfileImage.Source = new BitmapImage(new Uri(dlg.FileName));
-            }
+            ViewboxSelectImage.Visibility = ViewboxSelectImage.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void BtnClickUpdateProfile(object sender, RoutedEventArgs e) {
@@ -160,6 +148,33 @@ namespace Goatverse.Windows {
         }
             MessageBox.Show("Old Password is Incorrect");
             return false;
+        }
+
+        private void BtnClickSaveChanges(object sender, RoutedEventArgs e) {
+            if (imageId != -1) {
+                bool imageChanged = profileManager.ServiceChangeProfileImage(usernamePlayer, imageId);
+
+                if (imageChanged) {
+                    MessageBox.Show("image changed");
+                    Changeimage();
+                } else {
+                    MessageBox.Show("Error");
+                }
+            }
+        }
+
+        private void BtnClickSelectImage(object sender, RoutedEventArgs e) {
+            if (sender is Button clickedButton) {
+                imageId = int.Parse(clickedButton.Tag.ToString());
+
+                if (lastSelectedButton != null) {
+                    lastSelectedButton.BorderBrush = Brushes.Black;
+                }
+                clickedButton.BorderBrush = Brushes.White;
+                lastSelectedButton = clickedButton;
+            }
+
+            Console.WriteLine(imageId);
         }
     }
 }

@@ -349,4 +349,10 @@ Scoring Each player adds up the total value of their herd by counting the points
   <data name="globalNewPassword" xml:space="preserve">
     <value>New Password</value>
   </data>
+  <data name="globalChangeImage" xml:space="preserve">
+    <value>Change Profile Image</value>
+  </data>
+  <data name="globalSaveChanges" xml:space="preserve">
+    <value>Save Changes</value>
+  </data>
 </root>

@@ -115,6 +115,15 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Profile Image.
+        /// </summary>
+        public static string globalChangeImage {
+            get {
+                return ResourceManager.GetString("globalChangeImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Language.
         /// </summary>
         public static string globalChangeLanguage {
@@ -480,6 +489,15 @@ namespace Goatverse.Properties.Langs {
         public static string globalReturn {
             get {
                 return ResourceManager.GetString("globalReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Changes.
+        /// </summary>
+        public static string globalSaveChanges {
+            get {
+                return ResourceManager.GetString("globalSaveChanges", resourceCulture);
             }
         }
         

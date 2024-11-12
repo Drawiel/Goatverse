@@ -121,5 +121,9 @@ namespace Goatverse
 
             bool login = usersManagerClient.ServiceTrySignIn(userData);
         }
+
+        private void BtnClickExit(object sender, RoutedEventArgs e) { 
+            this.Close();
+        }
     }
 }

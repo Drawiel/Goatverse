@@ -175,6 +175,12 @@
   <wsdl:message name="IProfilesManager_ServiceLoadProfileData_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceLoadProfileDataResponse" />
   </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceChangeProfileImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceChangeProfileImage" />
+  </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceChangeProfileImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceChangeProfileImageResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="ServiceTryLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceTryLogin" message="tns:IUsersManager_ServiceTryLogin_InputMessage" />
@@ -236,6 +242,10 @@
     <wsdl:operation name="ServiceLoadProfileData">
       <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceLoadProfileData" message="tns:IProfilesManager_ServiceLoadProfileData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceLoadProfileDataResponse" message="tns:IProfilesManager_ServiceLoadProfileData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceChangeProfileImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage" message="tns:IProfilesManager_ServiceChangeProfileImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImageResponse" message="tns:IProfilesManager_ServiceChangeProfileImage_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -368,6 +378,15 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="ServiceLoadProfileData">
       <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceLoadProfileData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceChangeProfileImage">
+      <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
