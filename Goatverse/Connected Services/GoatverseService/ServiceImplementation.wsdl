@@ -163,6 +163,12 @@
   <wsdl:message name="ILobbyManager_ServiceCountPlayersInLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceCountPlayersInLobbyResponse" />
   </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceCreateLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCreateLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceCreateLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCreateLobbyResponse" />
+  </wsdl:message>
   <wsdl:message name="ILobbyManager_ServiceGetMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ServiceGetMessage" />
   </wsdl:message>
@@ -230,6 +236,10 @@
     <wsdl:operation name="ServiceCountPlayersInLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobby" message="tns:ILobbyManager_ServiceCountPlayersInLobby_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobbyResponse" message="tns:ILobbyManager_ServiceCountPlayersInLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceCreateLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCreateLobby" message="tns:ILobbyManager_ServiceCreateLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCreateLobbyResponse" message="tns:ILobbyManager_ServiceCreateLobby_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ServiceGetMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceGetMessage" message="tns:ILobbyManager_ServiceGetMessage_OutputCallbackMessage" />
@@ -353,6 +363,15 @@
     </wsdl:operation>
     <wsdl:operation name="ServiceCountPlayersInLobby">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceCreateLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceCreateLobby" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
