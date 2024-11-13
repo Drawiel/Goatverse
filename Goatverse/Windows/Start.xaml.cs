@@ -37,10 +37,22 @@ namespace Goatverse.Windows {
         }
 
         private void BtnClickCreateMatch(object sender, RoutedEventArgs e) {
-            string lobbyCode = GenerateLobbyCode();
-            Lobby lobby = new Lobby(lobbyCode);
-            lobby.Show();
-            this.Close();
+            try {
+                InstanceContext context = new InstanceContext(this);
+                lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
+                
+                string lobbyCode = GenerateLobbyCode();
+                bool lobbyCreated = lobbyManagerClient.ServiceCreateLobby(usernamePlayer, lobbyCode);
+                if (lobbyCreated) { 
+                    Lobby lobby = new Lobby(lobbyCode);
+                    lobby.Show();
+                    this.Close();
+                } else {
+                    MessageBox.Show("Lobby already exists");
+                }
+            } catch (FaultException ex) {
+                MessageBox.Show(ex.Message);
+            }
             
         }
 
@@ -62,18 +74,28 @@ namespace Goatverse.Windows {
         }
 
         private void BtnClickJoinLobbyWithCode(object sender, RoutedEventArgs e) {
-            InstanceContext context = new InstanceContext(this);
-            lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
-            string lobbyCode = txtBoxLobbyCodeJoin.Text;
-
-            int playersInLobby = lobbyManagerClient.ServiceCountPlayersInLobby(lobbyCode);
-            if (playersInLobby < 4) {
-                Lobby lobby = new Lobby(lobbyCode);
-                lobby.Show();
-                this.Close();
-            } else {
-                MessageBox.Show("");
+            try {
+                InstanceContext context = new InstanceContext(this);
+                lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
+                string lobbyCode = txtBoxLobbyCodeJoin.Text;
+                bool connectecToLobby = lobbyManagerClient.ServiceConnectToLobby(usernamePlayer, lobbyCode);
+                if (connectecToLobby) { 
+                    int playersInLobby = lobbyManagerClient.ServiceCountPlayersInLobby(lobbyCode);
+                    if (playersInLobby < 4) {
+                        Lobby lobby = new Lobby(lobbyCode);
+                        lobby.Show();
+                        this.Close();
+                    } else {
+                        MessageBox.Show("");
+                    }
+                } else {
+                    MessageBox.Show("Lobby doesn't exists");
+                }
+                
+            } catch (FaultException ex) {
+                MessageBox.Show(ex.Message);
             }
+            
 
         }
 

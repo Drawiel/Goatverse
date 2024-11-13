@@ -222,8 +222,10 @@
                 Content="######"
                 Name="chipCopyCode"
                 Margin="10, 10, 10, 10"
+                Background="AliceBlue"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch">
+                VerticalAlignment="Stretch"
+                ToolTip="{x:Static language:Lang.globalCopyCode}">
                 <materialDesign:Chip.Icon>
                     <materialDesign:PackIcon Kind="ContentCopy"/>
                 </materialDesign:Chip.Icon>

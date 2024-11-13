@@ -589,6 +589,12 @@ namespace Goatverse.GoatverseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobbyResponse")]
         System.Threading.Tasks.Task<int> ServiceCountPlayersInLobbyAsync(string lobbycode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceCreateLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceCreateLobbyResponse")]
+        bool ServiceCreateLobby(string username, string lobbyCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceCreateLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceCreateLobbyResponse")]
+        System.Threading.Tasks.Task<bool> ServiceCreateLobbyAsync(string username, string lobbyCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -659,6 +665,14 @@ namespace Goatverse.GoatverseService {
         
         public System.Threading.Tasks.Task<int> ServiceCountPlayersInLobbyAsync(string lobbycode) {
             return base.Channel.ServiceCountPlayersInLobbyAsync(lobbycode);
+        }
+        
+        public bool ServiceCreateLobby(string username, string lobbyCode) {
+            return base.Channel.ServiceCreateLobby(username, lobbyCode);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceCreateLobbyAsync(string username, string lobbyCode) {
+            return base.Channel.ServiceCreateLobbyAsync(username, lobbyCode);
         }
     }
     
