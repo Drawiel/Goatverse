@@ -17,7 +17,7 @@ namespace Goatverse.Windows {
     /// <summary>
     /// Lógica de interacción para Match.xaml
     /// </summary>
-    public partial class Match : Window {
+    public partial class Match : Window {   
         public Match() {
             InitializeComponent();
         }
@@ -42,7 +42,6 @@ namespace Goatverse.Windows {
                 Duration = TimeSpan.FromSeconds(0.3)
             };
 
-
             card.BeginAnimation(FrameworkElement.MarginProperty, marginAnimation);
         }
 
@@ -54,7 +53,6 @@ namespace Goatverse.Windows {
                 To = new Thickness(10, 0, 10, -20),
                 Duration = TimeSpan.FromSeconds(0.3)
             };
-
 
             card.BeginAnimation(FrameworkElement.MarginProperty, marginAnimation);
         }

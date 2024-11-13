@@ -7,6 +7,11 @@
         xmlns:local="clr-namespace:Goatverse.Windows"
         mc:Ignorable="d"
         Title="Match" Height="1080" Width="1920" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized">
+
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Multimedia/match_3players.png"/>
+    </Window.Background>
+
     <Window.Resources>
         <!-- Estilo para las cartas que se desplazan al pasar el mouse -->
         <Style x:Key="HoverableCardStyle" TargetType="Border">
@@ -56,7 +61,10 @@
         </Style>
     </Window.Resources>
 
-    <Viewbox>
+    <Viewbox
+        Grid.Row="2"
+        Grid.Column="1">
+
         <Grid 
                 Height="1080"
                 Width="1920"
@@ -66,10 +74,10 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*" />
                 <RowDefinition Height="600*" />
-                <RowDefinition Height="100*" />
+                <RowDefinition Height="350*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80*" />
+                <ColumnDefinition Width="160*" />
                 <ColumnDefinition Width="600*" />
                 <ColumnDefinition Width="50*" />
             </Grid.ColumnDefinitions>
@@ -230,21 +238,119 @@
             </Grid>
 
             <!-- Cartas del jugador en la parte inferior -->
-            <Viewbox 
+            <!--<Viewbox 
                 Grid.Column="1" 
                 Grid.Row="2" 
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
-                Margin="0,10,0,10">
+                Margin="0,10,0,10"
+                Stretch="Fill">-->
+
+            <Grid
+                    Grid.Column="1" 
+                    Grid.Row="2" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Stretch" 
+                    Margin="102,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70*" />
+                    <RowDefinition Height="50*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150*" />
+                    <ColumnDefinition Width="700*" />
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="135*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="0"
+                            Grid.Column="0"
+                            Width="200" 
+                            Height="100">
+
+                    <Button
+                            Width="200" 
+                            Height="100" 
+                            HorizontalAlignment="Right" 
+                            VerticalAlignment="Bottom"
+                            Margin="0 0, 105, 0"
+                            Background="#1C5E4A" 
+                            BorderBrush="White" 
+                            Foreground="White"
+                            FontSize="30">
+                    </Button>
+                </StackPanel>
+
+
+                <Canvas
+                    Grid.Row="1" 
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Margin="0 30 1000 0">
+
+                    <materialDesign:Card
+                                 Grid.Row="1" 
+                                Grid.RowSpan="1"
+                                Grid.Column="0"
+                                 Margin="0 30 170 -20"
+                                UniformCornerRadius="15" 
+                                Background="{DynamicResource MaterialDesignPaper}" 
+                                MouseEnter="CardMouseEnter" 
+                                MouseLeave="CardMouseLeave">
+
+                        <StackPanel>
+                            <Border 
+                                    Style="{StaticResource HoverableCardStyle}" 
+                                    Width="120" 
+                                    Height="200" 
+                                    Margin="15" 
+                                    Background="Red">
+                                <TextBlock 
+                                        Text="Jugador Carta 1" 
+                                        FontSize="20" 
+                                        HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+                            </Border>
+                            <Border 
+                                    Style="{StaticResource HoverableCardStyle}" 
+                                    Width="120" 
+                                    Height="200" 
+                                    Margin="15" 
+                                    Background="Blue">
+                                <TextBlock 
+                                        Text="Jugador Carta 2" 
+                                        FontSize="20" 
+                                        HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+                            </Border>
+                            <Border 
+                                    Style="{StaticResource HoverableCardStyle}" 
+                                    Width="120" 
+                                    Height="200" 
+                                    Margin="15" 
+                                    Background="Yellow">
+                                <TextBlock 
+                                        Text="Jugador Carta 3" 
+                                        FontSize="20" 
+                                        HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+                            </Border>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Canvas>
+
                 <StackPanel 
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
                     Orientation="Horizontal" 
                     HorizontalAlignment="Center" 
-                    VerticalAlignment="Center" >
+                    VerticalAlignment="Center">
 
                     <Border 
                         Style="{StaticResource ClickableCardStyle}" 
-                        Width="120" 
-                        Height="180" 
+                        Width="180" 
+                        Height="250" 
                         CornerRadius="10" 
                         Background="#FFFAFA" 
                         Margin="10"
@@ -268,10 +374,11 @@
 
                     <Border 
                         Style="{StaticResource ClickableCardStyle}" 
-                        Width="120" Height="180" 
+                        Width="180" 
+                        Height="250" 
                         CornerRadius="10" 
                         Background="#FFFAFA" 
-                        Margin="10"
+                        Margin="-40, 10, 10, 10"
                         MouseLeftButtonDown="ToggleCardPosition">
                         <Border.Effect>
                             <DropShadowEffect 
@@ -293,11 +400,11 @@
 
                     <Border 
                         Style="{StaticResource ClickableCardStyle}" 
-                        Width="120" 
-                        Height="180" 
+                        Width="180" 
+                        Height="250" 
                         CornerRadius="10" 
                         Background="#FFFAFA" 
-                        Margin="10" 
+                        Margin="-40, 10, 10, 10"
                         MouseLeftButtonDown="ToggleCardPosition">
                         <Border.Effect>
                             <DropShadowEffect 
@@ -319,11 +426,11 @@
 
                     <Border 
                         Style="{StaticResource ClickableCardStyle}" 
-                        Width="120" 
-                        Height="180" 
+                        Width="180" 
+                        Height="250" 
                         CornerRadius="10" 
                         Background="#FFFAFA" 
-                        Margin="10"
+                        Margin="-40, 10, 10, 10"
                         MouseLeftButtonDown="ToggleCardPosition">
                         <Border.Effect>
                             <DropShadowEffect 
@@ -345,11 +452,11 @@
 
                     <Border 
                         Style="{StaticResource ClickableCardStyle}" 
-                        Width="120" 
-                        Height="180" 
+                        Width="180" 
+                        Height="250" 
                         CornerRadius="10" 
                         Background="#FFFAFA" 
-                        Margin="10"
+                         Margin="-40, 10, 10, 10"
                         MouseLeftButtonDown="ToggleCardPosition">
                         <Border.Effect>
                             <DropShadowEffect 
@@ -370,60 +477,46 @@
                     </Border>
 
                 </StackPanel>
-            </Viewbox>
 
-
-
-
-            <!-- Cartas en la esquina inferior izquierda -->
-            <materialDesign:Card 
-                Grid.Row="2" 
-                Grid.Column="0" 
-                Margin="0 0 0 0"  
-                UniformCornerRadius="15" 
-                Background="{DynamicResource MaterialDesignPaper}" 
-                MouseEnter="CardMouseEnter" 
-                MouseLeave="CardMouseLeave">
-
-                <StackPanel>
+                <StackPanel
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Grid.RowSpan="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="0, 0, 0, 0"
+                        >
                     <Border 
-                    Style="{StaticResource HoverableCardStyle}" 
-                    Width="120" 
-                    Height="180" 
-                    Margin="15" 
-                    Background="Red">
-                        <TextBlock 
-                        Text="Jugador Carta 1" 
-                        FontSize="20" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center"/>
+                        Style="{StaticResource ClickableCardStyle}" 
+                        Width="120" 
+                        Height="130" 
+                        CornerRadius="10" 
+                        Background="#FFFAFA" 
+                        Margin="0, 0, 0, 0"
+                        MouseLeftButtonDown="ToggleCardPosition">
+                        <Border.Effect>
+                            <DropShadowEffect 
+                                BlurRadius="10" 
+                                ShadowDepth="5" 
+                                Color="#888" />
+                        </Border.Effect>
+                        <StackPanel 
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Center">
+                            <TextBlock 
+                                Text="Jugador Carta E" 
+                                FontSize="16" 
+                                FontWeight="Bold" 
+                                HorizontalAlignment="Center" 
+                                Margin="5"/>
+                        </StackPanel>
                     </Border>
-                    <Border 
-                    Style="{StaticResource HoverableCardStyle}" 
-                    Width="120" 
-                    Height="180" 
-                    Margin="15" 
-                    Background="Blue">
-                        <TextBlock 
-                        Text="Jugador Carta 2" 
-                        FontSize="20" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center"/>
-                    </Border>
-                    <Border 
-                    Style="{StaticResource HoverableCardStyle}" 
-                    Width="120" 
-                    Height="180" 
-                    Margin="15" 
-                    Background="Yellow">
-                        <TextBlock 
-                        Text="Jugador Carta 3" 
-                        FontSize="20" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center"/>
-                    </Border>
+
                 </StackPanel>
-            </materialDesign:Card>
+            </Grid>
+            <!--</Viewbox>-->
+
+
         </Grid>
     </Viewbox>
 </Window>
