@@ -313,6 +313,9 @@
   <ItemGroup>
     <Resource Include="Multimedia\match_3players.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Multimedia\Cards\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

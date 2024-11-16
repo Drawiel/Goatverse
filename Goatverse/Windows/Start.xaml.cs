@@ -78,25 +78,27 @@ namespace Goatverse.Windows {
                 InstanceContext context = new InstanceContext(this);
                 lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
                 string lobbyCode = txtBoxLobbyCodeJoin.Text;
-                bool connectecToLobby = lobbyManagerClient.ServiceConnectToLobby(usernamePlayer, lobbyCode);
-                if (connectecToLobby) { 
-                    int playersInLobby = lobbyManagerClient.ServiceCountPlayersInLobby(lobbyCode);
-                    if (playersInLobby < 4) {
+
+                int playersInLobby = lobbyManagerClient.ServiceCountPlayersInLobby(lobbyCode);
+                if(playersInLobby != 0) {
+                    if(playersInLobby < 4) {
                         Lobby lobby = new Lobby(lobbyCode);
                         lobby.Show();
                         this.Close();
-                    } else {
+                    }
+                    else {
                         MessageBox.Show("");
                     }
-                } else {
-                    MessageBox.Show("Lobby doesn't exists");
                 }
-                
-            } catch (FaultException ex) {
+                else {
+                    MessageBox.Show("");
+                }
+
+
+            }
+            catch(FaultException ex) {
                 MessageBox.Show(ex.Message);
             }
-            
-
         }
 
         public void ServiceUpdatePlayersInLobby(PlayerData[] players) { }

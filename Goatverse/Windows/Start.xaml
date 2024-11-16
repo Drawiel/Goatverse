@@ -165,9 +165,9 @@
             </Border>
         </Viewbox>
 
-        <Viewbox
+        <!-- <Viewbox
             Name="ViewboxFriends"
-            Visibility="Collapsed"
+            Visibility="Visible"
             Grid.Column="0"
             Grid.Row="0" 
             Grid.ColumnSpan="2" 
@@ -195,12 +195,12 @@
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
 
-                <!--Botón añadir-->
-                <Viewbox Grid.Column="1" 
+                
+        <Viewbox Grid.Column="1" 
                          Grid.Row="0" 
                          Margin="0">
-                    <Border CornerRadius="0 20 20 0">
-                        <Button
+            <Border CornerRadius="0 20 20 0">
+                <Button
                         Margin="10"
                         Background="LightBlue"
                         BorderBrush="Black"
@@ -208,21 +208,21 @@
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignFloatingActionButton}"
                         ToolTip="MaterialDesignFloatingActionButton">
-                            <materialDesign:PackIcon Kind="AccountPlus" />
-                        </Button>
-                    </Border>
-                </Viewbox>
+                    <materialDesign:PackIcon Kind="AccountPlus" />
+                </Button>
+            </Border>
+        </Viewbox>
 
 
 
-                <!--Botón regresar-->
-                <Viewbox 
+       
+        <Viewbox 
                     Grid.Column="1" 
                     Grid.Row="3" 
                     Margin="0">
-                    <Border 
+            <Border 
                         CornerRadius="0 20 20 0">
-                        <Button
+                <Button
                         Margin="10"
                         Background="LightBlue"
                         BorderBrush="Black"
@@ -230,11 +230,114 @@
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignFloatingActionButton}"
                         ToolTip="MaterialDesignFloatingActionButton">
-                            <materialDesign:PackIcon Kind="ArrowLeft" Width="40" Height="40" Margin="5" />
-                        </Button>
-                    </Border>
-                </Viewbox>
-            </Grid>
+                    <materialDesign:PackIcon Kind="ArrowLeft" Width="40" Height="40" Margin="5" />
+                </Button>
+            </Border>
+        </Viewbox>
+    </Grid>
+
+    </Viewbox> -->
+
+        <Viewbox
+            Name="ViewboxFriends"
+            Visibility="Visible"
+            Grid.Column="0"
+            Grid.Row="0" 
+            Grid.ColumnSpan="2" 
+            Margin="0,-10,546,1" 
+            Grid.RowSpan="6"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            >
+            <materialDesign:Card>
+    <TabControl
+        materialDesign:ColorZoneAssist.Mode="Standard"
+        materialDesign:ElevationAssist.Elevation="Dp0"
+        Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+        TabStripPlacement="Right">
+        
+        <!-- Estilo para hacer más pequeña la zona de encabezado -->
+        <TabControl.Resources>
+            <Style TargetType="TabItem">
+                <Setter Property="Width" Value="80"/> <!-- Ajusta este valor según el tamaño deseado -->
+            </Style>
+        </TabControl.Resources>
+
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel 
+                    Width="auto" 
+                    Height="auto">
+                    <materialDesign:PackIcon
+                        Width="15"
+                        Height="15"
+                        HorizontalAlignment="Center"
+                        Kind="Folder" />
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="All Files" FontSize="12"/>
+                </StackPanel>
+            </TabItem.Header>
+            <Grid 
+                Width="100" />
+        </TabItem>
+
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel 
+                    Width="auto" 
+                    Height="auto">
+                    <materialDesign:PackIcon
+                        Width="15"
+                        Height="15"
+                        HorizontalAlignment="Center"
+                        Kind="ClockOutline" />
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Recent" 
+                        FontSize="12"/>
+                </StackPanel>
+            </TabItem.Header>
+        </TabItem>
+
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel 
+                    Width="auto" 
+                    Height="auto">
+                    <materialDesign:PackIcon
+                        Width="15"
+                        Height="15"
+                        HorizontalAlignment="Center"
+                        Kind="Images" />
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Photos" 
+                        FontSize="12" />
+                </StackPanel>
+            </TabItem.Header>
+        </TabItem>
+
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel 
+                    Width="auto" 
+                    Height="auto">
+                    <materialDesign:PackIcon
+                        Width="15"
+                        Height="15"
+                        HorizontalAlignment="Center"
+                        Kind="MusicBoxMultiple" />
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Sounds" 
+                        FontSize="12" />
+                </StackPanel>
+            </TabItem.Header>
+        </TabItem>
+    </TabControl>
+</materialDesign:Card>
+
 
         </Viewbox>
 
