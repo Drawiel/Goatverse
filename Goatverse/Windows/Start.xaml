@@ -247,100 +247,233 @@
             Margin="0,-10,546,1" 
             Grid.RowSpan="6"
             VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
+            HorizontalAlignment="Left"
             >
             <materialDesign:Card>
-    <TabControl
-        materialDesign:ColorZoneAssist.Mode="Standard"
-        materialDesign:ElevationAssist.Elevation="Dp0"
-        Style="{StaticResource MaterialDesignNavigationRailTabControl}"
-        TabStripPlacement="Right">
-        
-        <!-- Estilo para hacer más pequeña la zona de encabezado -->
-        <TabControl.Resources>
-            <Style TargetType="TabItem">
-                <Setter Property="Width" Value="80"/> <!-- Ajusta este valor según el tamaño deseado -->
-            </Style>
-        </TabControl.Resources>
+                <TabControl
+                materialDesign:ColorZoneAssist.Mode="Standard"
+                materialDesign:ElevationAssist.Elevation="Dp0"
+                Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+                TabStripPlacement="Right">
 
-        <TabItem>
-            <TabItem.Header>
-                <StackPanel 
-                    Width="auto" 
-                    Height="auto">
-                    <materialDesign:PackIcon
-                        Width="15"
-                        Height="15"
-                        HorizontalAlignment="Center"
-                        Kind="Folder" />
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        Text="All Files" FontSize="12"/>
-                </StackPanel>
-            </TabItem.Header>
-            <Grid 
-                Width="100" />
-        </TabItem>
+                    <!-- Estilo para hacer más pequeña la zona de encabezado -->
+                    <TabControl.Resources>
+                        <Style 
+                            TargetType="TabItem">
+                            <Setter Property="Width" 
+                                    Value="80"/>
+                            <!-- Ajusta este valor según el tamaño deseado -->
+                        </Style>
+                    </TabControl.Resources>
 
-        <TabItem>
-            <TabItem.Header>
-                <StackPanel 
-                    Width="auto" 
-                    Height="auto">
-                    <materialDesign:PackIcon
-                        Width="15"
-                        Height="15"
-                        HorizontalAlignment="Center"
-                        Kind="ClockOutline" />
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        Text="Recent" 
-                        FontSize="12"/>
-                </StackPanel>
-            </TabItem.Header>
-        </TabItem>
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel 
+                            Width="auto" 
+                            Height="auto">
+                                <materialDesign:PackIcon
+                                Width="15"
+                                    Height="15"
+                                    HorizontalAlignment="Center"
+                                    Kind="AccountGroup" />
+                                <TextBlock
+                                        HorizontalAlignment="Center"
+                                        Text="Amigos" 
+                                        FontSize="12"/>
+                            </StackPanel>
+                        </TabItem.Header>
+                        <Grid 
+                            Height="1080"
+                            Width="400" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="90*"/>
+                                <RowDefinition Height="1200*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150*"/>
+                            </Grid.ColumnDefinitions>
 
-        <TabItem>
-            <TabItem.Header>
-                <StackPanel 
-                    Width="auto" 
-                    Height="auto">
-                    <materialDesign:PackIcon
-                        Width="15"
-                        Height="15"
-                        HorizontalAlignment="Center"
-                        Kind="Images" />
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        Text="Photos" 
-                        FontSize="12" />
-                </StackPanel>
-            </TabItem.Header>
-        </TabItem>
+                            <materialDesign:ColorZone
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Padding="16"
+                                Mode="PrimaryMid">
+                                <DockPanel>
+                                    <StackPanel
+                                        materialDesign:RippleAssist.IsCentered="True"
+                                        Orientation="Horizontal">
+                                        
+                                        <materialDesign:ColorZone
+                                            Margin="16,0,0,0"
+                                            Padding="8,4,8,4"
+                                            Panel.ZIndex="1"
+                                            materialDesign:ElevationAssist.Elevation="Dp2"
+                                            CornerRadius="2"
+                                            Mode="Standard" Width="318">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    
+                                                    <ColumnDefinition Width="30" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Border>
+                                                    <materialDesign:PackIcon
+                                                        VerticalAlignment="Center"
+                                                        HorizontalAlignment="Center"
+                                                        Kind="Search"
+                                                        Opacity=".56" />
+                                                </Border>
+                                                <TextBox
+                                                    Grid.Column="1"
+                                                    MinWidth="200"
+                                                    Margin="8,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    materialDesign:HintAssist.Hint="Build a search bar"
+                                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                                    BorderThickness="0" />
+                                                
+                                            </Grid>
+                                        </materialDesign:ColorZone>
+                                        <Button
+                                            Margin="8,0,0,0"
+                                            Panel.ZIndex="0"
+                                            Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                            <materialDesign:PackIcon
+                                                Kind="Search" />
+                                        </Button>
+                                    </StackPanel>
+                                </DockPanel>
+                            </materialDesign:ColorZone>
 
-        <TabItem>
-            <TabItem.Header>
-                <StackPanel 
-                    Width="auto" 
-                    Height="auto">
-                    <materialDesign:PackIcon
-                        Width="15"
-                        Height="15"
-                        HorizontalAlignment="Center"
-                        Kind="MusicBoxMultiple" />
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        Text="Sounds" 
-                        FontSize="12" />
-                </StackPanel>
-            </TabItem.Header>
-        </TabItem>
-    </TabControl>
-</materialDesign:Card>
 
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel 
+                                Width="auto" 
+                                Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="15"
+                                    Height="15"
+                                    HorizontalAlignment="Center"
+                                    Kind="AccountPlus" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        Text="Agregar" 
+                                        FontSize="12"/>
+                            </StackPanel>
+                        </TabItem.Header>
+                        <Grid 
+                            Height="1080"
+                            Width="400" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="90*"/>
+                                <RowDefinition Height="1200*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <materialDesign:ColorZone
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Padding="16"
+                                Mode="PrimaryMid">
+                                <DockPanel>
+                                    <StackPanel
+                                        materialDesign:RippleAssist.IsCentered="True"
+                                        Orientation="Horizontal">
+                                        <materialDesign:ColorZone
+                                            Margin="16,0,0,0"
+                                            Padding="8,4,8,4"
+                                            Panel.ZIndex="1"
+                                            materialDesign:ElevationAssist.Elevation="Dp2"
+                                            CornerRadius="2"
+                                            Mode="Standard" Width="318">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+
+                                                    <ColumnDefinition Width="30" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Border>
+                                                    <materialDesign:PackIcon
+                                                        VerticalAlignment="Center"
+                                                        HorizontalAlignment="Center"
+                                                        Kind="Search"
+                                                        Opacity=".56" />
+                                                </Border>
+                                                <TextBox
+                                                    Grid.Column="1"
+                                                    MinWidth="200"
+                                                    Margin="8,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    materialDesign:HintAssist.Hint="Build a search bar"
+                                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                                    BorderThickness="0" />
+                                            </Grid>
+                                        </materialDesign:ColorZone>
+                                        <Button
+                                            Margin="8,0,0,0"
+                                            Panel.ZIndex="0"
+                                            Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                            <materialDesign:PackIcon
+                                                Kind="AccountPlus" />
+                                        </Button>
+                                    </StackPanel>
+                                </DockPanel>
+                            </materialDesign:ColorZone>
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel 
+                                Width="auto" 
+                                Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="15"
+                                    Height="15"
+                                    HorizontalAlignment="Center"
+                                    Kind="AccountAlert" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        Text="Solicitudes" 
+                                        FontSize="12" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <Grid 
+                            Height="1080"
+                            Width="400" />
+                    </TabItem>
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel 
+                                Width="auto" 
+                                Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="15"
+                                    Height="15"
+                                    HorizontalAlignment="Center"
+                                    Kind="AccountLock" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        Text="Bloqueados" 
+                                        FontSize="12" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <Grid 
+                            Height="1080"
+                            Width="400" />
+                    </TabItem>
+                </TabControl>
+            </materialDesign:Card>
 
         </Viewbox>
-
+        
         <Viewbox
         Name="ViewboxJoinLobby"
         Visibility="Collapsed"

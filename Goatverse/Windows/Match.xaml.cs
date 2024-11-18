@@ -14,6 +14,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using IOPath = System.IO.Path; // Alias para evitar ambigüedad
 
 namespace Goatverse.Windows {
     /// <summary>
@@ -24,7 +25,7 @@ namespace Goatverse.Windows {
         public Match() {
             InitializeComponent();
             playersCardsStackPlanel = this.FindName("stackPanelPlayersCards") as StackPanel;
-            InitializePlayerCards(5);
+            InitializePlayerCards(4);
         }
 
         private void InitializePlayerCards(int initialCardCount) {
@@ -90,7 +91,13 @@ namespace Goatverse.Windows {
         }
 
         private void BtnClickTakeCard(object sender, RoutedEventArgs e) {
-            int cardCount = stackPanelPlayersCards.Children.Count;
+            int maxCardCount = 5;
+            int currentCardCount = stackPanelPlayersCards.Children.Count;
+
+            if(currentCardCount >= maxCardCount) {
+                MessageBox.Show("No puedes tener más de 5 cartas al mismo tiempo.", "Límite alcanzado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             string randomImagePath = GetRandomCardImagePath();
 
@@ -102,38 +109,38 @@ namespace Goatverse.Windows {
                     ImageSource = new BitmapImage(new Uri(randomImagePath, UriKind.Relative))
                 },
                 Style = (Style)FindResource("ClickableCardStyle"),
-                Margin = new Thickness(-30 - (5 * cardCount), 10, 10, 10),
+                Margin = new Thickness(-30 - (5 * currentCardCount), 10, 10, 10),
                 Effect = new DropShadowEffect {
                     BlurRadius = 10,
                     ShadowDepth = 5,
                     Color = Colors.Gray
                 }
             };
-
             newCard.MouseLeftButtonDown += ToggleCardPosition;
-
             stackPanelPlayersCards.Children.Add(newCard);
         }
 
-
-
         private string GetRandomCardImagePath() {
-            string folderPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../Multimedia/Cards/");
-            var random = new Random();
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-            if(!Directory.Exists(folderPath)) {
-                throw new DirectoryNotFoundException($"La carpeta {folderPath} no existe.");
+                string projectRoot = IOPath.Combine(baseDirectory, @"..\..\..\");
+                string folderPath = IOPath.Combine(projectRoot, "Goatverse", "Multimedia", "Cards");
+                folderPath = IOPath.GetFullPath(folderPath);
+                if(!Directory.Exists(folderPath)) {
+                    throw new DirectoryNotFoundException($"La carpeta {folderPath} no existe.");
+                }
+                var imageFiles = Directory.GetFiles(folderPath, "*.png");
+
+                if(imageFiles.Length == 0) {
+                    throw new InvalidOperationException("No hay imágenes disponibles en la carpeta.");
+                }
+
+                var random = new Random();
+                int randomIndex = random.Next(imageFiles.Length);
+                return imageFiles[randomIndex];
             }
 
-            var imageFiles = Directory.GetFiles(folderPath, "*.png");
 
-            if(imageFiles.Length == 0) {
-                throw new InvalidOperationException("No hay imágenes disponibles en la carpeta.");
-            }
-
-            int randomIndex = random.Next(imageFiles.Length);
-            return imageFiles[randomIndex];
-        }
 
         private void CardMouseEnter(object sender, MouseEventArgs e) {
             var card = sender as MaterialDesignThemes.Wpf.Card;
