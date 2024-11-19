@@ -22,10 +22,11 @@ namespace Goatverse.Windows {
     /// </summary>
     public partial class Match : Window {
         private StackPanel playersCardsStackPlanel;
+        private List<Border> selectedCards = new List<Border>();
         public Match() {
             InitializeComponent();
             playersCardsStackPlanel = this.FindName("stackPanelPlayersCards") as StackPanel;
-            InitializePlayerCards(4);
+            InitializePlayerCards(3);
         }
 
         private void InitializePlayerCards(int initialCardCount) {
@@ -48,7 +49,8 @@ namespace Goatverse.Windows {
                     BlurRadius = 10,
                     ShadowDepth = 5,
                     Color = Colors.Gray
-                }
+                },
+                DataContext = $"Tipo{cardIndex % 2}" // Asigna un identificador único para comparar cartas
             };
 
             newCard.MouseLeftButtonDown += ToggleCardPosition;
@@ -66,29 +68,82 @@ namespace Goatverse.Windows {
             };
             stackPanel.Children.Add(textBlock);
             newCard.Child = stackPanel;
+
             stackPanelPlayersCards.Children.Add(newCard);
         }
 
+
         private void ToggleCardPosition(object sender, MouseButtonEventArgs e) {
             if(sender is Border clickedCard) {
-
-                if(selectedCard != null && selectedCard != clickedCard) {
-                    selectedCard.Margin = new Thickness(selectedCard.Margin.Left, 10, selectedCard.Margin.Right, 10);
-                    selectedCard.Tag = null;
-                }
-
+                // Des-seleccionar carta
                 if(clickedCard.Tag?.ToString() == "Clicked") {
                     clickedCard.Margin = new Thickness(clickedCard.Margin.Left, 10, clickedCard.Margin.Right, 10);
                     clickedCard.Tag = null;
-                    selectedCard = null; 
+                    selectedCards.Remove(clickedCard);
                 }
+                // Seleccionar carta
                 else {
+                    if(selectedCards.Count >= 2) {
+                        MessageBox.Show("Solo puedes seleccionar dos cartas a la vez.", "Límite de selección", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
                     clickedCard.Margin = new Thickness(clickedCard.Margin.Left, -20, clickedCard.Margin.Right, 10);
                     clickedCard.Tag = "Clicked";
-                    selectedCard = clickedCard;
+                    selectedCards.Add(clickedCard);
+
+                    // Si hay dos cartas seleccionadas, verifica si coinciden
+                    if(selectedCards.Count == 2) {
+                        CheckAndStackCards();
+                    }
                 }
             }
         }
+        private void CheckAndStackCards() {
+            if(selectedCards.Count == 2) {
+                var card1 = selectedCards[0];
+                var card2 = selectedCards[1];
+
+                // Validar que las cartas no sean nulas
+                if(card1 == null || card2 == null) {
+                    MessageBox.Show("Ocurrió un error: Una de las cartas seleccionadas no existe.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                // Validar que ambas cartas tengan un DataContext válido
+                if(card1.DataContext == null || card2.DataContext == null) {
+                    MessageBox.Show("Las cartas no tienen información asignada.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                // Comparar las cartas
+                if(card1.DataContext.ToString() == card2.DataContext.ToString()) {
+                    MessageBox.Show("¡Cartas iguales! Se crea un stack.", "Stack creado", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    // Mover cartas al área de stacks
+                    stackPanelPlayersCards.Children.Remove(card1);
+                    stackPanelPlayersCards.Children.Remove(card2);
+
+                    var stackContainer = new StackPanel {
+                        Orientation = Orientation.Vertical,
+                        Margin = new Thickness(10)
+                    };
+                    stackContainer.Children.Add(card1);
+                    stackContainer.Children.Add(card2);
+                    stackPanelPlayerStacks.Children.Add(stackContainer);
+                }
+                else {
+                    MessageBox.Show("Las cartas no coinciden.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+
+                // Reiniciar estado de las cartas seleccionadas
+                foreach(var card in selectedCards) {
+                    card.Margin = new Thickness(card.Margin.Left, 10, card.Margin.Right, 10);
+                    card.Tag = null;
+                }
+                selectedCards.Clear();
+            }
+        }
+
 
         private void BtnClickTakeCard(object sender, RoutedEventArgs e) {
             int maxCardCount = 5;
