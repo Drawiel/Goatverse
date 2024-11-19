@@ -226,6 +226,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\GoatverseService\Goatverse.GoatverseService.PlayerData1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\GoatverseService\Goatverse.GoatverseService.ProfileData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

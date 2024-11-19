@@ -6,6 +6,7 @@ using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -39,31 +40,35 @@ namespace Goatverse
             GoatverseService.UserData userData = new GoatverseService.UserData();
             userData.Username = username;
             userData.Password = password;
+            try {
+                if (!usersManagerClient.ServiceUserExistsByUsername(username)) {
+                    MessageBox.Show(Lang.messageNotExistingUsername);
+                    return;
+                }
 
-            if (!usersManagerClient.ServiceUserExistsByUsername(username)) {
-                MessageBox.Show(Lang.messageNotExistingUsername);
-                return;
+                if (!usersManagerClient.ServiceVerifyPassword(password, username)) {
+                    MessageBox.Show(Lang.messageWrongPassword);
+                    return;
+                }
+
+                bool login = usersManagerClient.ServiceTryLogin(userData);
+                if (login) {
+                    UserSession userSession = new UserSession {
+                        Username = username,
+                        Email = usersManagerClient.ServiceGetEmail(username),
+                    };
+                    UserSessionManager.GetInstance().LoginUser(userSession);
+
+                    Start start = new Start();
+                    start.Show();
+                    this.Close();
+                } else {
+                    MessageBox.Show(Lang.messageWrongPassword);
+                }
+            } catch (EndpointNotFoundException ex) {
+
             }
-
-            if (!usersManagerClient.ServiceVerifyPassword(password, username)) {
-                MessageBox.Show(Lang.messageWrongPassword);
-                return;
-            }
-
-            bool login = usersManagerClient.ServiceTryLogin(userData);
-            if (login) {
-                UserSession userSession = new UserSession { 
-                    Username = username,
-                    Email = usersManagerClient.ServiceGetEmail(username),
-                };
-                UserSessionManager.GetInstance().LoginUser(userSession);
-
-                Start start = new Start();
-                start.Show();
-                this.Close();
-            } else {
-                MessageBox.Show(Lang.messageWrongPassword);
-            }
+            
             
         }
 

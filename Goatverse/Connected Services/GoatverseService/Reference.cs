@@ -736,4 +736,121 @@ namespace Goatverse.GoatverseService {
             return base.Channel.ServiceChangeProfileImageAsync(username, imageId);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GoatverseService.IFriendsManager")]
+    public interface IFriendsManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceSendFriendRequest", ReplyAction="http://tempuri.org/IFriendsManager/ServiceSendFriendRequestResponse")]
+        bool ServiceSendFriendRequest(string username1, string username2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceSendFriendRequest", ReplyAction="http://tempuri.org/IFriendsManager/ServiceSendFriendRequestResponse")]
+        System.Threading.Tasks.Task<bool> ServiceSendFriendRequestAsync(string username1, string username2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceRemoveFriend", ReplyAction="http://tempuri.org/IFriendsManager/ServiceRemoveFriendResponse")]
+        bool ServiceRemoveFriend(string username1, string username2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceRemoveFriend", ReplyAction="http://tempuri.org/IFriendsManager/ServiceRemoveFriendResponse")]
+        System.Threading.Tasks.Task<bool> ServiceRemoveFriendAsync(string username1, string username2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceAcceptFriendRequest", ReplyAction="http://tempuri.org/IFriendsManager/ServiceAcceptFriendRequestResponse")]
+        bool ServiceAcceptFriendRequest(string username1, string username2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceAcceptFriendRequest", ReplyAction="http://tempuri.org/IFriendsManager/ServiceAcceptFriendRequestResponse")]
+        System.Threading.Tasks.Task<bool> ServiceAcceptFriendRequestAsync(string username1, string username2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceGetFriends", ReplyAction="http://tempuri.org/IFriendsManager/ServiceGetFriendsResponse")]
+        Goatverse.GoatverseService.PlayerData[] ServiceGetFriends(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceGetFriends", ReplyAction="http://tempuri.org/IFriendsManager/ServiceGetFriendsResponse")]
+        System.Threading.Tasks.Task<Goatverse.GoatverseService.PlayerData[]> ServiceGetFriendsAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceIsPendingFriendRequest", ReplyAction="http://tempuri.org/IFriendsManager/ServiceIsPendingFriendRequestResponse")]
+        bool ServiceIsPendingFriendRequest(string username1, string username2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceIsPendingFriendRequest", ReplyAction="http://tempuri.org/IFriendsManager/ServiceIsPendingFriendRequestResponse")]
+        System.Threading.Tasks.Task<bool> ServiceIsPendingFriendRequestAsync(string username1, string username2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequest", ReplyAction="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequestResponse")]
+        Goatverse.GoatverseService.PlayerData[] ServiceGetPendingFriendRequest(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequest", ReplyAction="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequestResponse")]
+        System.Threading.Tasks.Task<Goatverse.GoatverseService.PlayerData[]> ServiceGetPendingFriendRequestAsync(string username);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IFriendsManagerChannel : Goatverse.GoatverseService.IFriendsManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class FriendsManagerClient : System.ServiceModel.ClientBase<Goatverse.GoatverseService.IFriendsManager>, Goatverse.GoatverseService.IFriendsManager {
+        
+        public FriendsManagerClient() {
+        }
+        
+        public FriendsManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public FriendsManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public FriendsManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public FriendsManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public bool ServiceSendFriendRequest(string username1, string username2) {
+            return base.Channel.ServiceSendFriendRequest(username1, username2);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceSendFriendRequestAsync(string username1, string username2) {
+            return base.Channel.ServiceSendFriendRequestAsync(username1, username2);
+        }
+        
+        public bool ServiceRemoveFriend(string username1, string username2) {
+            return base.Channel.ServiceRemoveFriend(username1, username2);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceRemoveFriendAsync(string username1, string username2) {
+            return base.Channel.ServiceRemoveFriendAsync(username1, username2);
+        }
+        
+        public bool ServiceAcceptFriendRequest(string username1, string username2) {
+            return base.Channel.ServiceAcceptFriendRequest(username1, username2);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceAcceptFriendRequestAsync(string username1, string username2) {
+            return base.Channel.ServiceAcceptFriendRequestAsync(username1, username2);
+        }
+        
+        public Goatverse.GoatverseService.PlayerData[] ServiceGetFriends(string username) {
+            return base.Channel.ServiceGetFriends(username);
+        }
+        
+        public System.Threading.Tasks.Task<Goatverse.GoatverseService.PlayerData[]> ServiceGetFriendsAsync(string username) {
+            return base.Channel.ServiceGetFriendsAsync(username);
+        }
+        
+        public bool ServiceIsPendingFriendRequest(string username1, string username2) {
+            return base.Channel.ServiceIsPendingFriendRequest(username1, username2);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceIsPendingFriendRequestAsync(string username1, string username2) {
+            return base.Channel.ServiceIsPendingFriendRequestAsync(username1, username2);
+        }
+        
+        public Goatverse.GoatverseService.PlayerData[] ServiceGetPendingFriendRequest(string username) {
+            return base.Channel.ServiceGetPendingFriendRequest(username);
+        }
+        
+        public System.Threading.Tasks.Task<Goatverse.GoatverseService.PlayerData[]> ServiceGetPendingFriendRequestAsync(string username) {
+            return base.Channel.ServiceGetPendingFriendRequestAsync(username);
+        }
+    }
 }

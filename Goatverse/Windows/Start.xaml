@@ -265,7 +265,8 @@
                             <!-- Ajusta este valor según el tamaño deseado -->
                         </Style>
                     </TabControl.Resources>
-
+                    
+                    <!-- Tab amigos -->
                     <TabItem>
                         <TabItem.Header>
                             <StackPanel 
@@ -284,7 +285,8 @@
                         </TabItem.Header>
                         <Grid 
                             Height="1080"
-                            Width="400" >
+                            Width="400" 
+                            x:Name="gridFriends">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="90*"/>
                                 <RowDefinition Height="1200*"/>
@@ -348,7 +350,8 @@
 
                         </Grid>
                     </TabItem>
-
+                    
+                    <!-- Tab agregar -->
                     <TabItem>
                         <TabItem.Header>
                             <StackPanel 
@@ -367,7 +370,8 @@
                         </TabItem.Header>
                         <Grid 
                             Height="1080"
-                            Width="400" >
+                            Width="400" 
+                            x:Name="gridAdd">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="90*"/>
                                 <RowDefinition Height="1200*"/>
@@ -409,8 +413,9 @@
                                                     Grid.Column="1"
                                                     MinWidth="200"
                                                     Margin="8,0,0,0"
+                                                    Name="txtBoxUsernameSearch"
                                                     VerticalAlignment="Center"
-                                                    materialDesign:HintAssist.Hint="Build a search bar"
+                                                    materialDesign:HintAssist.Hint="Send Friend Request"
                                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                                     BorderThickness="0" />
                                             </Grid>
@@ -418,7 +423,8 @@
                                         <Button
                                             Margin="8,0,0,0"
                                             Panel.ZIndex="0"
-                                            Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                            Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                            Click="BtnClickAddFriend">
                                             <materialDesign:PackIcon
                                                 Kind="AccountPlus" />
                                         </Button>
@@ -446,25 +452,26 @@
                         </TabItem.Header>
                         <Grid 
                             Height="1080"
-                            Width="400" />
-                    </TabItem>
+                            Width="400" 
+                            x:Name="gridFriendRequests"/>
+                            </TabItem>
 
-                    <TabItem>
-                        <TabItem.Header>
-                            <StackPanel 
-                                Width="auto" 
-                                Height="auto">
-                                <materialDesign:PackIcon
-                                    Width="15"
-                                    Height="15"
-                                    HorizontalAlignment="Center"
-                                    Kind="AccountLock" />
-                                    <TextBlock
+                            <TabItem>
+                            <TabItem.Header>
+                                <StackPanel 
+                                    Width="auto" 
+                                    Height="auto">
+                                    <materialDesign:PackIcon
+                                        Width="15"
+                                        Height="15"
                                         HorizontalAlignment="Center"
-                                        Text="Bloqueados" 
-                                        FontSize="12" />
-                            </StackPanel>
-                        </TabItem.Header>
+                                        Kind="AccountLock" />
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            Text="Bloqueados" 
+                                            FontSize="12" />
+                                </StackPanel>
+                            </TabItem.Header>
                         <Grid 
                             Height="1080"
                             Width="400" />

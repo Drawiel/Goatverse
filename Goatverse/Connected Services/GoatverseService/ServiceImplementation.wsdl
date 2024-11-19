@@ -87,6 +87,35 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IFriendsManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -187,6 +216,42 @@
   <wsdl:message name="IProfilesManager_ServiceChangeProfileImage_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceChangeProfileImageResponse" />
   </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceSendFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceSendFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceSendFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceSendFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceRemoveFriend_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceRemoveFriend" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceRemoveFriend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceRemoveFriendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceAcceptFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceAcceptFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceAcceptFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceAcceptFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceGetFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetFriends" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceGetFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceIsPendingFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceIsPendingFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceIsPendingFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceIsPendingFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceGetPendingFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetPendingFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceGetPendingFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetPendingFriendRequestResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="ServiceTryLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceTryLogin" message="tns:IUsersManager_ServiceTryLogin_InputMessage" />
@@ -256,6 +321,32 @@
     <wsdl:operation name="ServiceChangeProfileImage">
       <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage" message="tns:IProfilesManager_ServiceChangeProfileImage_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImageResponse" message="tns:IProfilesManager_ServiceChangeProfileImage_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IFriendsManager">
+    <wsdl:operation name="ServiceSendFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceSendFriendRequest" message="tns:IFriendsManager_ServiceSendFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceSendFriendRequestResponse" message="tns:IFriendsManager_ServiceSendFriendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceRemoveFriend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceRemoveFriend" message="tns:IFriendsManager_ServiceRemoveFriend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceRemoveFriendResponse" message="tns:IFriendsManager_ServiceRemoveFriend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceAcceptFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceAcceptFriendRequest" message="tns:IFriendsManager_ServiceAcceptFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceAcceptFriendRequestResponse" message="tns:IFriendsManager_ServiceAcceptFriendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetFriends" message="tns:IFriendsManager_ServiceGetFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetFriendsResponse" message="tns:IFriendsManager_ServiceGetFriends_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceIsPendingFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceIsPendingFriendRequest" message="tns:IFriendsManager_ServiceIsPendingFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceIsPendingFriendRequestResponse" message="tns:IFriendsManager_ServiceIsPendingFriendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetPendingFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequest" message="tns:IFriendsManager_ServiceGetPendingFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequestResponse" message="tns:IFriendsManager_ServiceGetPendingFriendRequest_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -414,6 +505,64 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IFriendsManager" type="tns:IFriendsManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IFriendsManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ServiceSendFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceSendFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceRemoveFriend">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceRemoveFriend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceAcceptFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceAcceptFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetFriends">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceGetFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceIsPendingFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceIsPendingFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetPendingFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ServiceImplementation">
     <wsdl:port name="NetTcpBinding_IUsersManager" binding="tns:NetTcpBinding_IUsersManager">
       <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
@@ -434,6 +583,15 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IProfilesManager" binding="tns:NetTcpBinding_IProfilesManager">
+      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>VICTUS-DUAA\daur0</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IFriendsManager" binding="tns:NetTcpBinding_IFriendsManager">
       <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
