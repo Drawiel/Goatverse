@@ -262,7 +262,6 @@
                             TargetType="TabItem">
                             <Setter Property="Width" 
                                     Value="80"/>
-                            <!-- Ajusta este valor según el tamaño deseado -->
                         </Style>
                     </TabControl.Resources>
                     
@@ -294,7 +293,11 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150*"/>
                             </Grid.ColumnDefinitions>
-
+                            
+                            <StackPanel x:Name="stckPanelFriends" Grid.Row="1">
+                                
+                            </StackPanel>
+                            
                             <materialDesign:ColorZone
                                 Grid.Column="0"
                                 Grid.Row="0"

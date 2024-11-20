@@ -1,5 +1,6 @@
 ﻿using Goatverse.GoatverseService;
 using Goatverse.Logic.Classes;
+using Goatverse.Properties.Langs;
 using Goatverse.Windows.UserControllers;
 using System;
 using System.Collections.Generic;
@@ -56,7 +57,7 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Lobby already exists");
                 }
             } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(Lang.messageDatabaseLostConnection);
             }
             
         }
@@ -102,7 +103,7 @@ namespace Goatverse.Windows {
 
             }
             catch(EndpointNotFoundException ex) {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(Lang.messageDatabaseLostConnection);
             }
         }
 
@@ -117,6 +118,7 @@ namespace Goatverse.Windows {
 
         public void LoadFriends() {
             try {
+                stckPanelFriends.Children.Clear();
                 friendsManagerClient = new GoatverseService.FriendsManagerClient();
                 PlayerData[] friendsIds = friendsManagerClient.ServiceGetFriends(usernamePlayer);
 
@@ -133,11 +135,13 @@ namespace Goatverse.Windows {
                         ImageSource = new BitmapImage(new Uri(imagePath, UriKind.Relative)),
                     };
 
-                    Grid.SetRow(itemFriend, 1);
-                    gridFriends.Children.Add(itemFriend);
+                    itemFriend.ConfigureButtons(isFriend: true, isBlocked: false);
+                    itemFriend.removeButton.Click += (s, e) => BtnClickRemoveFriend(friend.Username);
+
+                    stckPanelFriends.Children.Add(itemFriend);
                 }
-            } catch (EndpointNotFoundException ex) { 
-            
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageDatabaseLostConnection);
             }
             
         }
@@ -165,13 +169,14 @@ namespace Goatverse.Windows {
                 }
                 
             } catch (EndpointNotFoundException ex){
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(Lang.messageDatabaseLostConnection);
             }
             
         }
 
         public void LoadFriendRequest() {
             try {
+                gridFriendRequests.Children.Clear();
                 friendsManagerClient = new GoatverseService.FriendsManagerClient();
                 PlayerData[] friendsRequestsIds = friendsManagerClient.ServiceGetPendingFriendRequest(usernamePlayer);
 
@@ -189,17 +194,49 @@ namespace Goatverse.Windows {
                         
                     };
 
-                    itemFriendRequest.ConfigureButtons(isFriend: false);
+                    itemFriendRequest.ConfigureButtons(isFriend: false, isBlocked: false);
+                    itemFriendRequest.addButton.Click += (s, e) => BtnClickAcceptFriend(friend.Username);
 
                     gridFriendRequests.Children.Add(itemFriendRequest);
                 }
             } catch (EndpointNotFoundException ex) {
-
+                MessageBox.Show(Lang.messageDatabaseLostConnection);
             }
         }
 
-        public void AddFriend() {
+        public void BtnClickAcceptFriend(string usernameSender) {
+            try {
+                friendsManagerClient = new GoatverseService.FriendsManagerClient();
+                bool result = friendsManagerClient.ServiceAcceptFriendRequest(usernameSender, usernamePlayer);
+                if (result) {
+                    MessageBox.Show("Friend Accepted");
+                    LoadFriendRequest();
+                    LoadFriends();
+                } else { 
+                
+                }
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageDatabaseLostConnection);
+            }
+        }
 
+        public void BtnClickRemoveFriend(string usernameFriend) {
+            try {
+                friendsManagerClient = new GoatverseService.FriendsManagerClient();
+                bool friendRemoved = friendsManagerClient.ServiceRemoveFriend(usernameFriend, usernamePlayer);
+                if (friendRemoved) {
+                    MessageBox.Show("Friend Removed");
+                    LoadFriends();
+                } else if (friendRemoved = friendsManagerClient.ServiceRemoveFriend(usernamePlayer, usernameFriend)) {
+                    MessageBox.Show("Friend Removed");
+                    LoadFriends();
+                } else {
+                    MessageBox.Show(" ");
+                }
+
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageDatabaseLostConnection);
+            }
         }
     }
 }

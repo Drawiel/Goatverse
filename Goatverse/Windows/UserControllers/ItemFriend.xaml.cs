@@ -19,13 +19,19 @@ namespace Goatverse.Windows.UserControllers {
 
         public Button removeButton = new Button {
             Content = "Eliminar",
-            Margin = new Thickness(5, 0, 0, 0)
+            Margin = new Thickness(5, 1, 0, 1)
         };
 
         public Button blockButton = new Button {
             Content = "Bloquear",
-            Margin = new Thickness(5, 0, 0, 0)
+            Margin = new Thickness(5, 1, 0, 1)
         };
+
+        public Button unblockButton = new Button {
+            Content = "Desbloquear",
+            Margin = new Thickness(5, 1, 0, 1)
+        };
+
         public ItemFriend() {
             InitializeComponent();
         }
@@ -51,7 +57,7 @@ namespace Goatverse.Windows.UserControllers {
             set { SetValue(ImageProperty, value); }
         }
 
-        public void ConfigureButtons(bool isFriend) {
+        public void ConfigureButtons(bool isFriend, bool isBlocked) {
             stckPanelButtons.Children.Clear();
 
             if (!isFriend) {
@@ -59,22 +65,24 @@ namespace Goatverse.Windows.UserControllers {
                 var icon = new PackIcon { Kind = PackIconKind.AccountPlus, };
 
                 addButton.Content = icon;
-                addButton.Click += (s, e) => MessageBox.Show("Agregar amigo " + Username);
                 stckPanelButtons.Children.Add(addButton);
 
-            } else {
-                
+            } else if(isFriend && !isBlocked){
+                bdr.Height = 70;
                 var iconRemove = new PackIcon { Kind = PackIconKind.AccountRemove, };
 
                 removeButton.Content = iconRemove;
-                removeButton.Click += (s, e) => MessageBox.Show("Eliminar amigo " + Username);
                 stckPanelButtons.Children.Add(removeButton);
 
                 var iconBlock = new PackIcon { Kind = PackIconKind.Block, };
 
                 blockButton.Content = iconBlock;
-                blockButton.Click += (s, e) => MessageBox.Show("Bloquear amigo");
                 stckPanelButtons.Children.Add(blockButton);
+            } else if (isBlocked) {
+                var iconUnblock = new PackIcon { Kind = PackIconKind.LockOpenVariant, };
+
+                blockButton.Content = iconUnblock;
+                stckPanelButtons.Children.Add(unblockButton);
             }
         }
     }

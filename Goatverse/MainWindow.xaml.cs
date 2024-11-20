@@ -33,14 +33,15 @@ namespace Goatverse
         }
 
         private void BtnClickLogIn(object sender, RoutedEventArgs e) {
-            GoatverseService.UsersManagerClient usersManagerClient = new GoatverseService.UsersManagerClient();
-            string username = textBoxUsernameLogIn.Text;
-            string password = passwordBoxPasswordLogIn.Password.ToString();
-
-            GoatverseService.UserData userData = new GoatverseService.UserData();
-            userData.Username = username;
-            userData.Password = password;
             try {
+                GoatverseService.UsersManagerClient usersManagerClient = new GoatverseService.UsersManagerClient();
+                string username = textBoxUsernameLogIn.Text;
+                string password = passwordBoxPasswordLogIn.Password.ToString();
+            
+                GoatverseService.UserData userData = new GoatverseService.UserData();
+                userData.Username = username;
+                userData.Password = password;
+            
                 if (!usersManagerClient.ServiceUserExistsByUsername(username)) {
                     MessageBox.Show(Lang.messageNotExistingUsername);
                     return;
@@ -66,7 +67,7 @@ namespace Goatverse
                     MessageBox.Show(Lang.messageWrongPassword);
                 }
             } catch (EndpointNotFoundException ex) {
-
+                MessageBox.Show(Lang.messageDatabaseLostConnection);
             }
             
             
@@ -104,27 +105,32 @@ namespace Goatverse
         }
 
         private void BtnClickSignIn(object sender, RoutedEventArgs e) {
-            GoatverseService.UsersManagerClient usersManagerClient = new GoatverseService.UsersManagerClient();
-            string username = textBoxUsernameSignIn.Text;
-            string password = passwordBoxPasswordSignIn.Password.ToString();
-            string email = textBoxEmail.Text;
+            try {
+                GoatverseService.UsersManagerClient usersManagerClient = new GoatverseService.UsersManagerClient();
+                string username = textBoxUsernameSignIn.Text;
+                string password = passwordBoxPasswordSignIn.Password.ToString();
+                string email = textBoxEmail.Text;
 
-            GoatverseService.UserData userData = new GoatverseService.UserData();
-            userData.Username = username;
-            userData.Password = password;
-            userData.Email = email;
+                GoatverseService.UserData userData = new GoatverseService.UserData();
+                userData.Username = username;
+                userData.Password = password;
+                userData.Email = email;
 
-            if (usersManagerClient.ServiceUserExistsByUsername(username)) {
-                MessageBox.Show(Lang.messageExistingUsername);
-                return;
+                if (usersManagerClient.ServiceUserExistsByUsername(username)) {
+                    MessageBox.Show(Lang.messageExistingUsername);
+                    return;
+                }
+
+                if (!FieldValidator.IsValidPassword(password)) {
+                    MessageBox.Show(Lang.messageNotValidPassword);
+                    return;
+                }
+
+                bool login = usersManagerClient.ServiceTrySignIn(userData);
+            } catch(EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageDatabaseLostConnection);
             }
-
-            if (!FieldValidator.IsValidPassword(password)) {
-                MessageBox.Show(Lang.messageNotValidPassword);
-                return;
-            }
-
-            bool login = usersManagerClient.ServiceTrySignIn(userData);
+            
         }
 
         private void BtnClickExit(object sender, RoutedEventArgs e) { 

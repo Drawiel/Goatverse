@@ -14,7 +14,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using IOPath = System.IO.Path; // Alias para evitar ambigüedad
+using IOPath = System.IO.Path; 
 
 namespace Goatverse.Windows {
     /// <summary>
@@ -50,7 +50,7 @@ namespace Goatverse.Windows {
                     ShadowDepth = 5,
                     Color = Colors.Gray
                 },
-                DataContext = $"Tipo{cardIndex % 2}" // Asigna un identificador único para comparar cartas
+                DataContext = $"Tipo{cardIndex % 2}" 
             };
 
             newCard.MouseLeftButtonDown += ToggleCardPosition;
@@ -91,7 +91,6 @@ namespace Goatverse.Windows {
                     clickedCard.Tag = "Clicked";
                     selectedCards.Add(clickedCard);
 
-                    // Si hay dos cartas seleccionadas, verifica si coinciden
                     if(selectedCards.Count == 2) {
                         CheckAndStackCards();
                     }
@@ -103,23 +102,19 @@ namespace Goatverse.Windows {
                 var card1 = selectedCards[0];
                 var card2 = selectedCards[1];
 
-                // Validar que las cartas no sean nulas
                 if(card1 == null || card2 == null) {
                     MessageBox.Show("Ocurrió un error: Una de las cartas seleccionadas no existe.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
-                // Validar que ambas cartas tengan un DataContext válido
                 if(card1.DataContext == null || card2.DataContext == null) {
                     MessageBox.Show("Las cartas no tienen información asignada.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
-                // Comparar las cartas
                 if(card1.DataContext.ToString() == card2.DataContext.ToString()) {
                     MessageBox.Show("¡Cartas iguales! Se crea un stack.", "Stack creado", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    // Mover cartas al área de stacks
                     stackPanelPlayersCards.Children.Remove(card1);
                     stackPanelPlayersCards.Children.Remove(card2);
 
@@ -135,7 +130,6 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Las cartas no coinciden.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
 
-                // Reiniciar estado de las cartas seleccionadas
                 foreach(var card in selectedCards) {
                     card.Margin = new Thickness(card.Margin.Left, 10, card.Margin.Right, 10);
                     card.Tag = null;
