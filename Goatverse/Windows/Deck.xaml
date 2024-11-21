@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Goatverse.Windows"
         mc:Ignorable="d"
-        Title="Deck" Height="1080" Width="1920">
+        Title="Deck" Height="1080" Width="1920"  WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized">
     
     <Grid>
         <Grid.ColumnDefinitions>

@@ -503,27 +503,22 @@
                 Margin="0 -52 0 0">
                 <Canvas x:Name="canvas">
                     <Border
-        BorderBrush="Black"
-        BorderThickness="2"
-        Margin="40 0 0 0"
-        Width="290"
-        Height="390">
-                        <Border
-            CornerRadius="20"
-            Background="White"
-            Width="260"
-            Height="360"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center">
-                        </Border>
-                    </Border>
+                        BorderBrush="Black"
+                        BorderThickness="2"
+                        Margin="40 0 0 0"
+                        Width="290"
+                        Height="390">   
+                    
                     <StackPanel 
-        x:Name="stackPanelPlayerStacks" 
-        Orientation="Horizontal" 
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Bottom"
-        Margin="0,10,0,0">
+                        Width="290"
+                        Height="390"
+                        x:Name="stackPanelPlayerStacks" 
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom"
+                        Margin="0,10,0,0">
                     </StackPanel>
+                    </Border>
                 </Canvas>
 
             </Grid>
