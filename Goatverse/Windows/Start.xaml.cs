@@ -238,5 +238,9 @@ namespace Goatverse.Windows {
                 MessageBox.Show(Lang.messageDatabaseLostConnection);
             }
         }
+        public void ServiceStartMatch(PlayerData[] players) { }
+
+        public void ServiceNotifyMatchStart() { }
+
     }
 }

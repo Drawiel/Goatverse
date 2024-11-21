@@ -121,6 +121,7 @@
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
+      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUsersManager_ServiceTryLogin_InputMessage">
@@ -198,11 +199,29 @@
   <wsdl:message name="ILobbyManager_ServiceCreateLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceCreateLobbyResponse" />
   </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceStartMatchFromLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceStartMatchFromLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceStartMatchFromLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceStartMatchFromLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceStartLobbyMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceStartLobbyMatch" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceStartLobbyMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceStartLobbyMatchResponse" />
+  </wsdl:message>
   <wsdl:message name="ILobbyManager_ServiceGetMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ServiceGetMessage" />
   </wsdl:message>
   <wsdl:message name="ILobbyManager_ServiceUpdatePlayersInLobby_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ServiceUpdatePlayersInLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceStartMatch_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceStartMatch" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceNotifyMatchStart_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceNotifyMatchStart" />
   </wsdl:message>
   <wsdl:message name="IProfilesManager_ServiceLoadProfileData_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceLoadProfileData" />
@@ -306,11 +325,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCreateLobby" message="tns:ILobbyManager_ServiceCreateLobby_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCreateLobbyResponse" message="tns:ILobbyManager_ServiceCreateLobby_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ServiceStartMatchFromLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceStartMatchFromLobby" message="tns:ILobbyManager_ServiceStartMatchFromLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceStartMatchFromLobbyResponse" message="tns:ILobbyManager_ServiceStartMatchFromLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceStartLobbyMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatch" message="tns:ILobbyManager_ServiceStartLobbyMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatchResponse" message="tns:ILobbyManager_ServiceStartLobbyMatch_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ServiceGetMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceGetMessage" message="tns:ILobbyManager_ServiceGetMessage_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ServiceUpdatePlayersInLobby">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceUpdatePlayersInLobby" message="tns:ILobbyManager_ServiceUpdatePlayersInLobby_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceStartMatch">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceStartMatch" message="tns:ILobbyManager_ServiceStartMatch_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyMatchStart">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceNotifyMatchStart" message="tns:ILobbyManager_ServiceNotifyMatchStart_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IProfilesManager">
@@ -470,6 +503,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ServiceStartMatchFromLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceStartMatchFromLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceStartLobbyMatch">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ServiceGetMessage">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceGetMessage" style="document" />
       <wsdl:output>
@@ -478,6 +529,18 @@
     </wsdl:operation>
     <wsdl:operation name="ServiceUpdatePlayersInLobby">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceUpdatePlayersInLobby" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceStartMatch">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceStartMatch" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyMatchStart">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceNotifyMatchStart" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -569,7 +632,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>VICTUS-DUAA\daur0</Upn>
+          <Upn>DAVID-LAPTOP\isabe</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -578,7 +641,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>VICTUS-DUAA\daur0</Upn>
+          <Upn>DAVID-LAPTOP\isabe</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -587,7 +650,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>VICTUS-DUAA\daur0</Upn>
+          <Upn>DAVID-LAPTOP\isabe</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -596,7 +659,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>VICTUS-DUAA\daur0</Upn>
+          <Upn>DAVID-LAPTOP\isabe</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

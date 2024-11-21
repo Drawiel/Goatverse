@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
+  <xs:import schemaLocation="http://localhost:8083/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/" />
   <xs:element name="ServiceTryLogin">
     <xs:complexType>
       <xs:sequence>
@@ -117,7 +118,7 @@
   <xs:element name="ServiceSendMessageToLobby">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="messageData" nillable="true" type="q6:MessageData" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="messageData" nillable="true" type="q6:MessageData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -180,10 +181,38 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ServiceStartMatchFromLobby">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceStartMatchFromLobbyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServiceStartMatchFromLobbyResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceStartLobbyMatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceStartLobbyMatchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServiceStartLobbyMatchResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ServiceGetMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="messageData" nillable="true" type="q7:MessageData" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="messageData" nillable="true" type="q7:MessageData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -192,6 +221,18 @@
       <xs:sequence>
         <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="players" nillable="true" type="q8:ArrayOfPlayerData" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceStartMatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="players" nillable="true" type="q9:ArrayOfPlayerData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceNotifyMatchStart">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="ServiceLoadProfileData">
@@ -204,7 +245,7 @@
   <xs:element name="ServiceLoadProfileDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceLoadProfileDataResult" nillable="true" type="q9:ProfileData" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceLoadProfileDataResult" nillable="true" type="q10:ProfileData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -278,7 +319,7 @@
   <xs:element name="ServiceGetFriendsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetFriendsResult" nillable="true" type="q10:ArrayOfPlayerData" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetFriendsResult" nillable="true" type="q11:ArrayOfPlayerData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -307,7 +348,7 @@
   <xs:element name="ServiceGetPendingFriendRequestResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetPendingFriendRequestResult" nillable="true" type="q11:ArrayOfPlayerData" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetPendingFriendRequestResult" nillable="true" type="q12:ArrayOfPlayerData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -252,6 +252,9 @@
     <None Include="Connected Services\GoatverseService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\GoatverseService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\GoatverseService\ServiceImplementation.wsdl" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

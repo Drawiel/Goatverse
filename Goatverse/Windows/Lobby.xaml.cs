@@ -103,7 +103,7 @@ namespace Goatverse.Windows {
         public void AddPlayer(string gamertag, int level, int imageId) {
             if(playerCount < 4) {
                 string imagePath = "../../Multimedia/sword.png";
-                if (imageId != 0 && imageId != -1) {
+                if(imageId != 0 && imageId != -1) {
                     imagePath = $"../../Multimedia/gato{imageId}.png";
                 }
 
@@ -114,14 +114,14 @@ namespace Goatverse.Windows {
                 };
 
                 Grid.SetColumn(playerCard, playerCount + 1);
-                Grid.SetRow(playerCard, 1); 
+                Grid.SetRow(playerCard, 1);
 
                 (this.Content as Grid).Children.Add(playerCard);
 
-                playerCount++; 
+                playerCount++;
             }
             else {
-                MessageBox.Show("El lobby está lleno."); 
+                MessageBox.Show("El lobby está lleno.");
             }
         }
 
@@ -129,16 +129,43 @@ namespace Goatverse.Windows {
             int rowToClear = 1;
             var elementsInRow = (this.Content as Grid).Children.OfType<PlayerCard>().Where(child => Grid.GetRow(child) == rowToClear).ToList();
 
-            foreach (var element in elementsInRow) {
+            foreach(var element in elementsInRow) {
                 (this.Content as Grid).Children.Remove(element);
                 playerCount--;
             }
 
             Console.WriteLine("Lista actualizada de jugadores en el lobby:");
-            foreach (var player in players) {
+            foreach(var player in players) {
                 Console.WriteLine($"Jugador: {player.Username}, Nivel: {player.Level}");
                 AddPlayer(player.Username, player.Level, player.ImageId);
             }
+        }
+
+        private void BtnClickStartMatch(object sender, RoutedEventArgs e) {
+            bool matchStarted = lobbyManagerClient.ServiceStartLobbyMatch(lobbyCode);
+            if(!matchStarted) {
+                MessageBox.Show("Error al iniciar la partida. Verifica si el lobby es válido.");
+            }
+        }
+
+        public void ServiceStartMatch(PlayerData[] players) {
+            Console.WriteLine("La partida ha comenzado.");
+
+            StartMatch();
+            this.Close();
+        }
+
+        private void StartMatch() {
+            MessageBox.Show("Iniciando la partida...");
+            this.Close();
+            Match matchWindow = new Match();
+            matchWindow.Show();
+        }
+
+        private void BtnClickCopyCode(object sender, RoutedEventArgs e) {
+            string code = chipCopyCode.Content.ToString();
+            Clipboard.SetText(code);
+
         }
 
         private void BtnClickLeaveLobby(object sender, RoutedEventArgs e) {
@@ -147,22 +174,19 @@ namespace Goatverse.Windows {
                 Start start = new Start();
                 start.Show();
                 this.Close();
-            } else {
+            }
+            else {
                 MessageBox.Show("Couldn't disconnect from lobby");
             }
-            
+
         }
 
-        private void BtnClickStartMatch(object sender, RoutedEventArgs e) {
-            Match match = new Match();
-            match.Show();
-            this.Close();
-        }
-
-        private void BtnClickCopyCode(object sender, RoutedEventArgs e) {
-            string code = chipCopyCode.Content.ToString();
-            Clipboard.SetText(code);
-         
+        public void ServiceNotifyMatchStart() {
+            Application.Current.Dispatcher.Invoke(() => {
+                Match match = new Match();
+                match.Show();
+                this.Close();
+            });
         }
     }
 }
