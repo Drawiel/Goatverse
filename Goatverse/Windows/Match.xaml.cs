@@ -37,51 +37,17 @@ namespace Goatverse.Windows {
 
         private Border selectedCard = null;
 
-        private void AddCardToPanel(int cardIndex) {
-            var newCard = new Border {
-                Width = 180,
-                Height = 250,
-                CornerRadius = new CornerRadius(10),
-                Background = new SolidColorBrush(Color.FromRgb(255, 250, 250)),
-                Style = (Style)FindResource("ClickableCardStyle"),
-                Margin = new Thickness(-30 - (5 * cardIndex), 10, 10, 10),
-                Effect = new DropShadowEffect {
-                    BlurRadius = 10,
-                    ShadowDepth = 5,
-                    Color = Colors.Gray
-                },
-                DataContext = $"Tipo{cardIndex % 2}" 
-            };
-
-            newCard.MouseLeftButtonDown += ToggleCardPosition;
-
-            var stackPanel = new StackPanel {
-                VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Center
-            };
-            var textBlock = new TextBlock {
-                Text = $"Carta {cardIndex + 1}",
-                FontSize = 16,
-                FontWeight = FontWeights.Bold,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                Margin = new Thickness(5)
-            };
-            stackPanel.Children.Add(textBlock);
-            newCard.Child = stackPanel;
-
-            stackPanelPlayersCards.Children.Add(newCard);
-        }
-
+        
 
         private void ToggleCardPosition(object sender, MouseButtonEventArgs e) {
             if(sender is Border clickedCard) {
-                // Des-seleccionar carta
+                
                 if(clickedCard.Tag?.ToString() == "Clicked") {
                     clickedCard.Margin = new Thickness(clickedCard.Margin.Left, 10, clickedCard.Margin.Right, 10);
                     clickedCard.Tag = null;
                     selectedCards.Remove(clickedCard);
                 }
-                // Seleccionar carta
+                
                 else {
                     if(selectedCards.Count >= 2) {
                         MessageBox.Show("Solo puedes seleccionar dos cartas a la vez.", "Límite de selección", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -118,14 +84,30 @@ namespace Goatverse.Windows {
                     stackPanelPlayersCards.Children.Remove(card1);
                     stackPanelPlayersCards.Children.Remove(card2);
 
+                    var representativeCard = new Border {
+                        Width = 180,
+                        Height = 250,
+                        CornerRadius = new CornerRadius(10),
+                        Background = new SolidColorBrush(Color.FromRgb(200, 200, 200)),
+                        BorderBrush = new SolidColorBrush(Color.FromRgb(50, 50, 50)),
+                        BorderThickness = new Thickness(2),
+                        Margin = new Thickness(10),
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center     
+                    };
+
                     var stackContainer = new StackPanel {
                         Orientation = Orientation.Vertical,
-                        Margin = new Thickness(10)
+                        Margin = new Thickness(10),
+                        HorizontalAlignment = HorizontalAlignment.Center, 
+                        VerticalAlignment = VerticalAlignment.Center,     
+                        Tag = new List<Border> { card1, card2 }
                     };
-                    stackContainer.Children.Add(card1);
-                    stackContainer.Children.Add(card2);
+
+                    stackContainer.Children.Add(representativeCard);
                     stackPanelPlayerStacks.Children.Add(stackContainer);
                 }
+
                 else {
                     MessageBox.Show("Las cartas no coinciden.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
@@ -139,6 +121,57 @@ namespace Goatverse.Windows {
         }
 
 
+        // crear una carta
+        private Border CreateCard(int cardIndex, string randomImagePath = null) {
+            Brush background;
+
+            if(randomImagePath != null) {
+                background = new ImageBrush {
+                    ImageSource = new BitmapImage(new Uri(randomImagePath, UriKind.Relative))
+                };
+            }
+            else {
+                background = new SolidColorBrush(Color.FromRgb(255, 250, 250));
+            }
+
+            return new Border {
+                Width = 180,
+                Height = 250,
+                CornerRadius = new CornerRadius(10),
+                Background = background,
+                Style = (Style)FindResource("ClickableCardStyle"),
+                Margin = new Thickness(-30 - (5 * cardIndex), 10, 10, 10),
+                Effect = new DropShadowEffect {
+                    BlurRadius = 10,
+                    ShadowDepth = 5,
+                    Color = Colors.Gray
+                },
+                DataContext = $"Tipo{cardIndex % 2}" 
+            };
+        }
+
+        // añadir una carta al panel
+        private void AddCardToPanel(int cardIndex) {
+            var newCard = CreateCard(cardIndex); 
+            newCard.MouseLeftButtonDown += ToggleCardPosition;
+
+            var stackPanel = new StackPanel {
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Center
+            };
+            var textBlock = new TextBlock {
+                Text = $"Carta {cardIndex + 1}",
+                FontSize = 16,
+                FontWeight = FontWeights.Bold,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness(5)
+            };
+            stackPanel.Children.Add(textBlock);
+            newCard.Child = stackPanel;
+
+            stackPanelPlayersCards.Children.Add(newCard);
+        }
+
         private void BtnClickTakeCard(object sender, RoutedEventArgs e) {
             int maxCardCount = 5;
             int currentCardCount = stackPanelPlayersCards.Children.Count;
@@ -149,25 +182,12 @@ namespace Goatverse.Windows {
             }
 
             string randomImagePath = GetRandomCardImagePath();
-
-            var newCard = new Border {
-                Width = 180,
-                Height = 250,
-                CornerRadius = new CornerRadius(10),
-                Background = new ImageBrush {
-                    ImageSource = new BitmapImage(new Uri(randomImagePath, UriKind.Relative))
-                },
-                Style = (Style)FindResource("ClickableCardStyle"),
-                Margin = new Thickness(-30 - (5 * currentCardCount), 10, 10, 10),
-                Effect = new DropShadowEffect {
-                    BlurRadius = 10,
-                    ShadowDepth = 5,
-                    Color = Colors.Gray
-                }
-            };
+            var newCard = CreateCard(currentCardCount, randomImagePath);
             newCard.MouseLeftButtonDown += ToggleCardPosition;
+
             stackPanelPlayersCards.Children.Add(newCard);
         }
+
 
         private string GetRandomCardImagePath() {
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
