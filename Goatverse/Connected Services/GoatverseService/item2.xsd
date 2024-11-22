@@ -10,6 +10,15 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserData" nillable="true" type="tns:UserData" />
+  <xs:complexType name="MessageData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LobbyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageData" nillable="true" type="tns:MessageData" />
   <xs:complexType name="ArrayOfPlayerData">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PlayerData" nillable="true" type="tns:PlayerData" />

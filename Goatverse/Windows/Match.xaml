@@ -80,6 +80,14 @@
                 <ColumnDefinition Width="50*" />
             </Grid.ColumnDefinitions>
 
+            <Label 
+                x:Name="lblCurrentTurn" 
+                Content="" 
+                Grid.Column="1"
+                FontSize="50"
+                HorizontalAlignment="Center"/>
+
+
             <!-- Área de descarte 
             <StackPanel 
                 Grid.Row="0" 

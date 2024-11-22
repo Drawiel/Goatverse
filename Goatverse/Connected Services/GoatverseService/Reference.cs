@@ -124,7 +124,7 @@ namespace Goatverse.GoatverseService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MessageData", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MessageData", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
     [System.SerializableAttribute()]
     public partial class MessageData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -585,22 +585,16 @@ namespace Goatverse.GoatverseService {
         System.Threading.Tasks.Task<bool> ServiceDisconnectFromLobbyAsync(string username, string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobbyResponse")]
-        int ServiceCountPlayersInLobby(string lobbycode);
+        int ServiceCountPlayersInLobby(string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobbyResponse")]
-        System.Threading.Tasks.Task<int> ServiceCountPlayersInLobbyAsync(string lobbycode);
+        System.Threading.Tasks.Task<int> ServiceCountPlayersInLobbyAsync(string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceCreateLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceCreateLobbyResponse")]
         bool ServiceCreateLobby(string username, string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceCreateLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceCreateLobbyResponse")]
         System.Threading.Tasks.Task<bool> ServiceCreateLobbyAsync(string username, string lobbyCode);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceStartMatchFromLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceStartMatchFromLobbyResponse")]
-        bool ServiceStartMatchFromLobby(string lobbyCode);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceStartMatchFromLobby", ReplyAction="http://tempuri.org/ILobbyManager/ServiceStartMatchFromLobbyResponse")]
-        System.Threading.Tasks.Task<bool> ServiceStartMatchFromLobbyAsync(string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatch", ReplyAction="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatchResponse")]
         bool ServiceStartLobbyMatch(string lobbyCode);
@@ -677,12 +671,12 @@ namespace Goatverse.GoatverseService {
             return base.Channel.ServiceDisconnectFromLobbyAsync(username, lobbyCode);
         }
         
-        public int ServiceCountPlayersInLobby(string lobbycode) {
-            return base.Channel.ServiceCountPlayersInLobby(lobbycode);
+        public int ServiceCountPlayersInLobby(string lobbyCode) {
+            return base.Channel.ServiceCountPlayersInLobby(lobbyCode);
         }
         
-        public System.Threading.Tasks.Task<int> ServiceCountPlayersInLobbyAsync(string lobbycode) {
-            return base.Channel.ServiceCountPlayersInLobbyAsync(lobbycode);
+        public System.Threading.Tasks.Task<int> ServiceCountPlayersInLobbyAsync(string lobbyCode) {
+            return base.Channel.ServiceCountPlayersInLobbyAsync(lobbyCode);
         }
         
         public bool ServiceCreateLobby(string username, string lobbyCode) {
@@ -691,14 +685,6 @@ namespace Goatverse.GoatverseService {
         
         public System.Threading.Tasks.Task<bool> ServiceCreateLobbyAsync(string username, string lobbyCode) {
             return base.Channel.ServiceCreateLobbyAsync(username, lobbyCode);
-        }
-        
-        public bool ServiceStartMatchFromLobby(string lobbyCode) {
-            return base.Channel.ServiceStartMatchFromLobby(lobbyCode);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ServiceStartMatchFromLobbyAsync(string lobbyCode) {
-            return base.Channel.ServiceStartMatchFromLobbyAsync(lobbyCode);
         }
         
         public bool ServiceStartLobbyMatch(string lobbyCode) {
@@ -725,6 +711,12 @@ namespace Goatverse.GoatverseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage", ReplyAction="http://tempuri.org/IProfilesManager/ServiceChangeProfileImageResponse")]
         System.Threading.Tasks.Task<bool> ServiceChangeProfileImageAsync(string username, int imageId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserId", ReplyAction="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserIdResponse")]
+        Goatverse.GoatverseService.ProfileData ServiceGetProfileByUserId(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserId", ReplyAction="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserIdResponse")]
+        System.Threading.Tasks.Task<Goatverse.GoatverseService.ProfileData> ServiceGetProfileByUserIdAsync(string userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -769,6 +761,14 @@ namespace Goatverse.GoatverseService {
         public System.Threading.Tasks.Task<bool> ServiceChangeProfileImageAsync(string username, int imageId) {
             return base.Channel.ServiceChangeProfileImageAsync(username, imageId);
         }
+        
+        public Goatverse.GoatverseService.ProfileData ServiceGetProfileByUserId(string userId) {
+            return base.Channel.ServiceGetProfileByUserId(userId);
+        }
+        
+        public System.Threading.Tasks.Task<Goatverse.GoatverseService.ProfileData> ServiceGetProfileByUserIdAsync(string userId) {
+            return base.Channel.ServiceGetProfileByUserIdAsync(userId);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -810,6 +810,30 @@ namespace Goatverse.GoatverseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequest", ReplyAction="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequestResponse")]
         System.Threading.Tasks.Task<Goatverse.GoatverseService.PlayerData[]> ServiceGetPendingFriendRequestAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceIsUserBlocked", ReplyAction="http://tempuri.org/IFriendsManager/ServiceIsUserBlockedResponse")]
+        bool ServiceIsUserBlocked(string usernameBlocker, string usernameBlocked);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceIsUserBlocked", ReplyAction="http://tempuri.org/IFriendsManager/ServiceIsUserBlockedResponse")]
+        System.Threading.Tasks.Task<bool> ServiceIsUserBlockedAsync(string usernameBlocker, string usernameBlocked);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceGetBlockedUsers", ReplyAction="http://tempuri.org/IFriendsManager/ServiceGetBlockedUsersResponse")]
+        Goatverse.GoatverseService.PlayerData[] ServiceGetBlockedUsers(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceGetBlockedUsers", ReplyAction="http://tempuri.org/IFriendsManager/ServiceGetBlockedUsersResponse")]
+        System.Threading.Tasks.Task<Goatverse.GoatverseService.PlayerData[]> ServiceGetBlockedUsersAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceRemoveBlock", ReplyAction="http://tempuri.org/IFriendsManager/ServiceRemoveBlockResponse")]
+        bool ServiceRemoveBlock(string usernameBlocker, string usernameBlocked);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceRemoveBlock", ReplyAction="http://tempuri.org/IFriendsManager/ServiceRemoveBlockResponse")]
+        System.Threading.Tasks.Task<bool> ServiceRemoveBlockAsync(string usernameBlocker, string usernameBlocked);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceBlockUser", ReplyAction="http://tempuri.org/IFriendsManager/ServiceBlockUserResponse")]
+        bool ServiceBlockUser(string usernameBlocker, string usernameBlocked);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/ServiceBlockUser", ReplyAction="http://tempuri.org/IFriendsManager/ServiceBlockUserResponse")]
+        System.Threading.Tasks.Task<bool> ServiceBlockUserAsync(string usernameBlocker, string usernameBlocked);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -885,6 +909,38 @@ namespace Goatverse.GoatverseService {
         
         public System.Threading.Tasks.Task<Goatverse.GoatverseService.PlayerData[]> ServiceGetPendingFriendRequestAsync(string username) {
             return base.Channel.ServiceGetPendingFriendRequestAsync(username);
+        }
+        
+        public bool ServiceIsUserBlocked(string usernameBlocker, string usernameBlocked) {
+            return base.Channel.ServiceIsUserBlocked(usernameBlocker, usernameBlocked);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceIsUserBlockedAsync(string usernameBlocker, string usernameBlocked) {
+            return base.Channel.ServiceIsUserBlockedAsync(usernameBlocker, usernameBlocked);
+        }
+        
+        public Goatverse.GoatverseService.PlayerData[] ServiceGetBlockedUsers(string username) {
+            return base.Channel.ServiceGetBlockedUsers(username);
+        }
+        
+        public System.Threading.Tasks.Task<Goatverse.GoatverseService.PlayerData[]> ServiceGetBlockedUsersAsync(string username) {
+            return base.Channel.ServiceGetBlockedUsersAsync(username);
+        }
+        
+        public bool ServiceRemoveBlock(string usernameBlocker, string usernameBlocked) {
+            return base.Channel.ServiceRemoveBlock(usernameBlocker, usernameBlocked);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceRemoveBlockAsync(string usernameBlocker, string usernameBlocked) {
+            return base.Channel.ServiceRemoveBlockAsync(usernameBlocker, usernameBlocked);
+        }
+        
+        public bool ServiceBlockUser(string usernameBlocker, string usernameBlocked) {
+            return base.Channel.ServiceBlockUser(usernameBlocker, usernameBlocked);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceBlockUserAsync(string usernameBlocker, string usernameBlocked) {
+            return base.Channel.ServiceBlockUserAsync(usernameBlocker, usernameBlocked);
         }
     }
 }

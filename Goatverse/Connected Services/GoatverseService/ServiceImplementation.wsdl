@@ -121,7 +121,6 @@
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
-      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUsersManager_ServiceTryLogin_InputMessage">
@@ -199,12 +198,6 @@
   <wsdl:message name="ILobbyManager_ServiceCreateLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceCreateLobbyResponse" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManager_ServiceStartMatchFromLobby_InputMessage">
-    <wsdl:part name="parameters" element="tns:ServiceStartMatchFromLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyManager_ServiceStartMatchFromLobby_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ServiceStartMatchFromLobbyResponse" />
-  </wsdl:message>
   <wsdl:message name="ILobbyManager_ServiceStartLobbyMatch_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceStartLobbyMatch" />
   </wsdl:message>
@@ -234,6 +227,12 @@
   </wsdl:message>
   <wsdl:message name="IProfilesManager_ServiceChangeProfileImage_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceChangeProfileImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceGetProfileByUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetProfileByUserId" />
+  </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceGetProfileByUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetProfileByUserIdResponse" />
   </wsdl:message>
   <wsdl:message name="IFriendsManager_ServiceSendFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceSendFriendRequest" />
@@ -270,6 +269,30 @@
   </wsdl:message>
   <wsdl:message name="IFriendsManager_ServiceGetPendingFriendRequest_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceGetPendingFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceIsUserBlocked_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceIsUserBlocked" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceIsUserBlocked_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceIsUserBlockedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceGetBlockedUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetBlockedUsers" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceGetBlockedUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetBlockedUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceRemoveBlock_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceRemoveBlock" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceRemoveBlock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceRemoveBlockResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceBlockUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceBlockUser" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceBlockUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceBlockUserResponse" />
   </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="ServiceTryLogin">
@@ -325,10 +348,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCreateLobby" message="tns:ILobbyManager_ServiceCreateLobby_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCreateLobbyResponse" message="tns:ILobbyManager_ServiceCreateLobby_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ServiceStartMatchFromLobby">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceStartMatchFromLobby" message="tns:ILobbyManager_ServiceStartMatchFromLobby_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceStartMatchFromLobbyResponse" message="tns:ILobbyManager_ServiceStartMatchFromLobby_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="ServiceStartLobbyMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatch" message="tns:ILobbyManager_ServiceStartLobbyMatch_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatchResponse" message="tns:ILobbyManager_ServiceStartLobbyMatch_OutputMessage" />
@@ -355,6 +374,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage" message="tns:IProfilesManager_ServiceChangeProfileImage_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImageResponse" message="tns:IProfilesManager_ServiceChangeProfileImage_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ServiceGetProfileByUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserId" message="tns:IProfilesManager_ServiceGetProfileByUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserIdResponse" message="tns:IProfilesManager_ServiceGetProfileByUserId_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IFriendsManager">
     <wsdl:operation name="ServiceSendFriendRequest">
@@ -380,6 +403,22 @@
     <wsdl:operation name="ServiceGetPendingFriendRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequest" message="tns:IFriendsManager_ServiceGetPendingFriendRequest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequestResponse" message="tns:IFriendsManager_ServiceGetPendingFriendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceIsUserBlocked">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceIsUserBlocked" message="tns:IFriendsManager_ServiceIsUserBlocked_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceIsUserBlockedResponse" message="tns:IFriendsManager_ServiceIsUserBlocked_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetBlockedUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetBlockedUsers" message="tns:IFriendsManager_ServiceGetBlockedUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetBlockedUsersResponse" message="tns:IFriendsManager_ServiceGetBlockedUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceRemoveBlock">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceRemoveBlock" message="tns:IFriendsManager_ServiceRemoveBlock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceRemoveBlockResponse" message="tns:IFriendsManager_ServiceRemoveBlock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceBlockUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceBlockUser" message="tns:IFriendsManager_ServiceBlockUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceBlockUserResponse" message="tns:IFriendsManager_ServiceBlockUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -503,15 +542,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ServiceStartMatchFromLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceStartMatchFromLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="ServiceStartLobbyMatch">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatch" style="document" />
       <wsdl:input>
@@ -560,6 +590,15 @@
     </wsdl:operation>
     <wsdl:operation name="ServiceChangeProfileImage">
       <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetProfileByUserId">
+      <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserId" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -618,6 +657,42 @@
     </wsdl:operation>
     <wsdl:operation name="ServiceGetPendingFriendRequest">
       <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceIsUserBlocked">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceIsUserBlocked" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetBlockedUsers">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceGetBlockedUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceRemoveBlock">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceRemoveBlock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceBlockUser">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceBlockUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

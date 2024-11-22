@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using IOPath = System.IO.Path; 
 
 namespace Goatverse.Windows {
@@ -23,10 +25,46 @@ namespace Goatverse.Windows {
     public partial class Match : Window {
         private StackPanel playersCardsStackPlanel;
         private List<Border> selectedCards = new List<Border>();
+        private DispatcherTimer turnTimer;
+        private int turnTimeRemaining;
         public Match() {
             InitializeComponent();
             playersCardsStackPlanel = this.FindName("stackPanelPlayersCards") as StackPanel;
+            lblCurrentTurn = this.FindName("lblCurrentTurn") as Label;
             InitializePlayerCards(3);
+
+            turnTimer = new DispatcherTimer();
+            turnTimer.Interval = TimeSpan.FromSeconds(1); 
+            turnTimer.Tick += TurnTimer_Tick;
+            turnTimeRemaining = 10; 
+            UpdateCurrentTurn("Jugador 1"); 
+        }
+
+        private void TurnTimer_Tick(object sender, EventArgs e) {
+            turnTimeRemaining--;
+
+            Debug.WriteLine($"Tiempo restante: {turnTimeRemaining}"); 
+
+            lblCurrentTurn.Content = $"Es el turno de: {turnTimeRemaining} segundos restantes";
+
+            if(turnTimeRemaining <= 0) {
+                turnTimer.Stop();
+                UpdateCurrentTurn("Jugador 2"); 
+                turnTimeRemaining = 30;
+                turnTimer.Start();
+            }
+        }
+
+        public void UpdateCurrentTurn(string currentTurn) {
+            MessageBox.Show($"Llamando a UpdateCurrentTurn: {currentTurn}", "Depuración", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            lblCurrentTurn.Content = $"Es el turno de: {currentTurn}";
+            turnTimeRemaining = 30;
+            turnTimer.Start();
+        }
+
+        public void SyncTimer() {
+            MessageBox.Show("El temporizador ha sido sincronizado.", "Sincronización de temporizador", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void InitializePlayerCards(int initialCardCount) {
@@ -238,4 +276,5 @@ namespace Goatverse.Windows {
         public static readonly DependencyProperty IsSelectedProperty =
             DependencyProperty.RegisterAttached("IsSelected", typeof(bool), typeof(Match), new PropertyMetadata(false));
     }
+
 }
