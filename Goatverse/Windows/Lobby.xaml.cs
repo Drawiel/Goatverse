@@ -33,6 +33,7 @@ namespace Goatverse.Windows {
         public ObservableCollection<UserControl> userControls { get; set; }
         private string usernamePlayer;
         private string lobbyCode;
+        private PlayerData[] playersList;
 
 
         public Lobby(string joinedLobbyCode) {
@@ -139,6 +140,8 @@ namespace Goatverse.Windows {
                 Console.WriteLine($"Jugador: {player.Username}, Nivel: {player.Level}");
                 AddPlayer(player.Username, player.Level, player.ImageId);
             }
+
+            playersList = players;
         }
 
         private void BtnClickStartMatch(object sender, RoutedEventArgs e) {
@@ -158,7 +161,7 @@ namespace Goatverse.Windows {
         private void StartMatch() {
             MessageBox.Show("Iniciando la partida...");
             this.Close();
-            Match matchWindow = new Match();
+            Match matchWindow = new Match(playersList, lobbyCode);
             matchWindow.Show();
         }
 
@@ -183,7 +186,7 @@ namespace Goatverse.Windows {
 
         public void ServiceNotifyMatchStart() {
             Application.Current.Dispatcher.Invoke(() => {
-                Match match = new Match();
+                Match match = new Match(playersList, lobbyCode);
                 match.Show();
                 this.Close();
             });

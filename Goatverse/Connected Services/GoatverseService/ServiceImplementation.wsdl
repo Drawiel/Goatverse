@@ -116,11 +116,70 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IMatchManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ICardsManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
+      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUsersManager_ServiceTryLogin_InputMessage">
@@ -294,6 +353,81 @@
   <wsdl:message name="IFriendsManager_ServiceBlockUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceBlockUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceCreateMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCreateMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceCreateMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCreateMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetMatchById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetMatchById" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetMatchById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetMatchByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceUpdateMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUpdateMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceUpdateMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUpdateMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetRecentMatches_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetRecentMatches" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetRecentMatches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetRecentMatchesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetCards_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetCards" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetCards_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetCardsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceInitializeGameTurns_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceInitializeGameTurns" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceNotifyEndTurn_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceNotifyEndTurn" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetCurrentTurn_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetCurrentTurn" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetCurrentTurn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetCurrentTurnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceNotifyEndGame_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceNotifyEndGame" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceUpdateCurrentTurn_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUpdateCurrentTurn" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceSyncTimer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceSyncTimer" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceGetAllCards_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetAllCards" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceGetAllCards_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetAllCardsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceGetCardById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetCardById" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceGetCardById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetCardByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceAddCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceAddCard" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceAddCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceAddCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceDeleteCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceDeleteCard" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceDeleteCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceDeleteCardResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="ServiceTryLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceTryLogin" message="tns:IUsersManager_ServiceTryLogin_InputMessage" />
@@ -419,6 +553,65 @@
     <wsdl:operation name="ServiceBlockUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceBlockUser" message="tns:IFriendsManager_ServiceBlockUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceBlockUserResponse" message="tns:IFriendsManager_ServiceBlockUser_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMatchManager">
+    <wsdl:operation name="ServiceCreateMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceCreateMatch" message="tns:IMatchManager_ServiceCreateMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceCreateMatchResponse" message="tns:IMatchManager_ServiceCreateMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetMatchById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetMatchById" message="tns:IMatchManager_ServiceGetMatchById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetMatchByIdResponse" message="tns:IMatchManager_ServiceGetMatchById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUpdateMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceUpdateMatch" message="tns:IMatchManager_ServiceUpdateMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceUpdateMatchResponse" message="tns:IMatchManager_ServiceUpdateMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetRecentMatches">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetRecentMatches" message="tns:IMatchManager_ServiceGetRecentMatches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetRecentMatchesResponse" message="tns:IMatchManager_ServiceGetRecentMatches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetCards">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetCards" message="tns:IMatchManager_ServiceGetCards_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetCardsResponse" message="tns:IMatchManager_ServiceGetCards_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceInitializeGameTurns">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceInitializeGameTurns" message="tns:IMatchManager_ServiceInitializeGameTurns_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyEndTurn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceNotifyEndTurn" message="tns:IMatchManager_ServiceNotifyEndTurn_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetCurrentTurn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetCurrentTurn" message="tns:IMatchManager_ServiceGetCurrentTurn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetCurrentTurnResponse" message="tns:IMatchManager_ServiceGetCurrentTurn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyEndGame">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceNotifyEndGame" message="tns:IMatchManager_ServiceNotifyEndGame_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUpdateCurrentTurn">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceUpdateCurrentTurn" message="tns:IMatchManager_ServiceUpdateCurrentTurn_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceSyncTimer">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceSyncTimer" message="tns:IMatchManager_ServiceSyncTimer_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICardsManager">
+    <wsdl:operation name="ServiceGetAllCards">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICardsManager/ServiceGetAllCards" message="tns:ICardsManager_ServiceGetAllCards_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICardsManager/ServiceGetAllCardsResponse" message="tns:ICardsManager_ServiceGetAllCards_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetCardById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICardsManager/ServiceGetCardById" message="tns:ICardsManager_ServiceGetCardById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICardsManager/ServiceGetCardByIdResponse" message="tns:ICardsManager_ServiceGetCardById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceAddCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICardsManager/ServiceAddCard" message="tns:ICardsManager_ServiceAddCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICardsManager/ServiceAddCardResponse" message="tns:ICardsManager_ServiceAddCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceDeleteCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICardsManager/ServiceDeleteCard" message="tns:ICardsManager_ServiceDeleteCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICardsManager/ServiceDeleteCardResponse" message="tns:ICardsManager_ServiceDeleteCard_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -701,13 +894,141 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IMatchManager" type="tns:IMatchManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IMatchManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ServiceCreateMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceCreateMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetMatchById">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceGetMatchById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUpdateMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceUpdateMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetRecentMatches">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceGetRecentMatches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetCards">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceGetCards" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceInitializeGameTurns">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceInitializeGameTurns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyEndTurn">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceNotifyEndTurn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetCurrentTurn">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceGetCurrentTurn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyEndGame">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceNotifyEndGame" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUpdateCurrentTurn">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceUpdateCurrentTurn" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceSyncTimer">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceSyncTimer" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ICardsManager" type="tns:ICardsManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_ICardsManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ServiceGetAllCards">
+      <soap12:operation soapAction="http://tempuri.org/ICardsManager/ServiceGetAllCards" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetCardById">
+      <soap12:operation soapAction="http://tempuri.org/ICardsManager/ServiceGetCardById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceAddCard">
+      <soap12:operation soapAction="http://tempuri.org/ICardsManager/ServiceAddCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceDeleteCard">
+      <soap12:operation soapAction="http://tempuri.org/ICardsManager/ServiceDeleteCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ServiceImplementation">
     <wsdl:port name="NetTcpBinding_IUsersManager" binding="tns:NetTcpBinding_IUsersManager">
       <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DAVID-LAPTOP\isabe</Upn>
+          <Upn>RORY\isabe</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -716,7 +1037,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DAVID-LAPTOP\isabe</Upn>
+          <Upn>RORY\isabe</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -725,7 +1046,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DAVID-LAPTOP\isabe</Upn>
+          <Upn>RORY\isabe</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -734,7 +1055,25 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DAVID-LAPTOP\isabe</Upn>
+          <Upn>RORY\isabe</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IMatchManager" binding="tns:NetTcpBinding_IMatchManager">
+      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>RORY\isabe</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ICardsManager" binding="tns:NetTcpBinding_ICardsManager">
+      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>RORY\isabe</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

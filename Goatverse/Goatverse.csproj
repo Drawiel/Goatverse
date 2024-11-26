@@ -237,6 +237,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\GoatverseService\Goatverse.GoatverseService.CardData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GoatverseService\Goatverse.GoatverseService.MatchData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\GoatverseService\Goatverse.GoatverseService.PlayerData1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -250,6 +256,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\GoatverseService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GoatverseService\item3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\GoatverseService\ServiceImplementation.wsdl" />

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
+  <xs:import schemaLocation="http://localhost:8083/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="ServiceTryLogin">
     <xs:complexType>
       <xs:sequence>
@@ -407,6 +408,180 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ServiceBlockUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceCreateMatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceCreateMatchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceCreateMatchResult" nillable="true" type="q15:MatchData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceGetMatchById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceGetMatchByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetMatchByIdResult" nillable="true" type="q16:MatchData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceUpdateMatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idWinner" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="endTime" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceUpdateMatchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServiceUpdateMatchResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceGetRecentMatches">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="topN" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceGetRecentMatchesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetRecentMatchesResult" nillable="true" type="q17:ArrayOfMatchData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceGetCards">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceGetCardsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetCardsResult" nillable="true" type="q18:ArrayOfCardData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceInitializeGameTurns">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameCode" nillable="true" type="xs:string" />
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="gamertags" nillable="true" type="q19:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceNotifyEndTurn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="currentGamertag" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceGetCurrentTurn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceGetCurrentTurnResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServiceGetCurrentTurnResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceNotifyEndGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="winnerUsername" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceUpdateCurrentTurn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="currentTurn" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceSyncTimer">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceGetAllCards">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceGetAllCardsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetAllCardsResult" nillable="true" type="q20:ArrayOfCardData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceGetCardById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceGetCardByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetCardByIdResult" nillable="true" type="q21:CardData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceAddCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="cardData" nillable="true" type="q22:CardData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceAddCardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServiceAddCardResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceDeleteCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceDeleteCardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServiceDeleteCardResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

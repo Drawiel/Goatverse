@@ -417,6 +417,240 @@ namespace Goatverse.GoatverseService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MatchData", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
+    [System.SerializableAttribute()]
+    public partial class MatchData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> EndTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdMatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdWinnerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> StartTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> EndTime {
+            get {
+                return this.EndTimeField;
+            }
+            set {
+                if ((this.EndTimeField.Equals(value) != true)) {
+                    this.EndTimeField = value;
+                    this.RaisePropertyChanged("EndTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdMatch {
+            get {
+                return this.IdMatchField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdMatchField, value) != true)) {
+                    this.IdMatchField = value;
+                    this.RaisePropertyChanged("IdMatch");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdWinner {
+            get {
+                return this.IdWinnerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdWinnerField, value) != true)) {
+                    this.IdWinnerField = value;
+                    this.RaisePropertyChanged("IdWinner");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> StartTime {
+            get {
+                return this.StartTimeField;
+            }
+            set {
+                if ((this.StartTimeField.Equals(value) != true)) {
+                    this.StartTimeField = value;
+                    this.RaisePropertyChanged("StartTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CardData", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
+    [System.SerializableAttribute()]
+    public partial class CardData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CardNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CardTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EffectDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdCardField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ImageCardIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PointsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CardName {
+            get {
+                return this.CardNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardNameField, value) != true)) {
+                    this.CardNameField = value;
+                    this.RaisePropertyChanged("CardName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CardType {
+            get {
+                return this.CardTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardTypeField, value) != true)) {
+                    this.CardTypeField = value;
+                    this.RaisePropertyChanged("CardType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EffectDescription {
+            get {
+                return this.EffectDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EffectDescriptionField, value) != true)) {
+                    this.EffectDescriptionField = value;
+                    this.RaisePropertyChanged("EffectDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdCard {
+            get {
+                return this.IdCardField;
+            }
+            set {
+                if ((this.IdCardField.Equals(value) != true)) {
+                    this.IdCardField = value;
+                    this.RaisePropertyChanged("IdCard");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ImageCardId {
+            get {
+                return this.ImageCardIdField;
+            }
+            set {
+                if ((this.ImageCardIdField.Equals(value) != true)) {
+                    this.ImageCardIdField = value;
+                    this.RaisePropertyChanged("ImageCardId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Points {
+            get {
+                return this.PointsField;
+            }
+            set {
+                if ((this.PointsField.Equals(value) != true)) {
+                    this.PointsField = value;
+                    this.RaisePropertyChanged("Points");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GoatverseService.IUsersManager")]
     public interface IUsersManager {
@@ -941,6 +1175,254 @@ namespace Goatverse.GoatverseService {
         
         public System.Threading.Tasks.Task<bool> ServiceBlockUserAsync(string usernameBlocker, string usernameBlocked) {
             return base.Channel.ServiceBlockUserAsync(usernameBlocker, usernameBlocked);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GoatverseService.IMatchManager", CallbackContract=typeof(Goatverse.GoatverseService.IMatchManagerCallback))]
+    public interface IMatchManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceCreateMatch", ReplyAction="http://tempuri.org/IMatchManager/ServiceCreateMatchResponse")]
+        Goatverse.GoatverseService.MatchData ServiceCreateMatch(System.DateTime startTime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceCreateMatch", ReplyAction="http://tempuri.org/IMatchManager/ServiceCreateMatchResponse")]
+        System.Threading.Tasks.Task<Goatverse.GoatverseService.MatchData> ServiceCreateMatchAsync(System.DateTime startTime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceGetMatchById", ReplyAction="http://tempuri.org/IMatchManager/ServiceGetMatchByIdResponse")]
+        Goatverse.GoatverseService.MatchData ServiceGetMatchById(string matchId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceGetMatchById", ReplyAction="http://tempuri.org/IMatchManager/ServiceGetMatchByIdResponse")]
+        System.Threading.Tasks.Task<Goatverse.GoatverseService.MatchData> ServiceGetMatchByIdAsync(string matchId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceUpdateMatch", ReplyAction="http://tempuri.org/IMatchManager/ServiceUpdateMatchResponse")]
+        bool ServiceUpdateMatch(string matchId, string idWinner, System.Nullable<System.DateTime> endTime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceUpdateMatch", ReplyAction="http://tempuri.org/IMatchManager/ServiceUpdateMatchResponse")]
+        System.Threading.Tasks.Task<bool> ServiceUpdateMatchAsync(string matchId, string idWinner, System.Nullable<System.DateTime> endTime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceGetRecentMatches", ReplyAction="http://tempuri.org/IMatchManager/ServiceGetRecentMatchesResponse")]
+        Goatverse.GoatverseService.MatchData[] ServiceGetRecentMatches(int topN);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceGetRecentMatches", ReplyAction="http://tempuri.org/IMatchManager/ServiceGetRecentMatchesResponse")]
+        System.Threading.Tasks.Task<Goatverse.GoatverseService.MatchData[]> ServiceGetRecentMatchesAsync(int topN);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceGetCards", ReplyAction="http://tempuri.org/IMatchManager/ServiceGetCardsResponse")]
+        Goatverse.GoatverseService.CardData[] ServiceGetCards();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceGetCards", ReplyAction="http://tempuri.org/IMatchManager/ServiceGetCardsResponse")]
+        System.Threading.Tasks.Task<Goatverse.GoatverseService.CardData[]> ServiceGetCardsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceInitializeGameTurns")]
+        void ServiceInitializeGameTurns(string gameCode, string[] gamertags);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceInitializeGameTurns")]
+        System.Threading.Tasks.Task ServiceInitializeGameTurnsAsync(string gameCode, string[] gamertags);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceNotifyEndTurn")]
+        void ServiceNotifyEndTurn(string gameCode, string currentGamertag);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceNotifyEndTurn")]
+        System.Threading.Tasks.Task ServiceNotifyEndTurnAsync(string gameCode, string currentGamertag);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceGetCurrentTurn", ReplyAction="http://tempuri.org/IMatchManager/ServiceGetCurrentTurnResponse")]
+        string ServiceGetCurrentTurn(string gameCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceGetCurrentTurn", ReplyAction="http://tempuri.org/IMatchManager/ServiceGetCurrentTurnResponse")]
+        System.Threading.Tasks.Task<string> ServiceGetCurrentTurnAsync(string gameCode);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IMatchManagerCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceNotifyEndGame")]
+        void ServiceNotifyEndGame(string matchId, string winnerUsername);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceUpdateCurrentTurn")]
+        void ServiceUpdateCurrentTurn(string currentTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceSyncTimer")]
+        void ServiceSyncTimer();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IMatchManagerChannel : Goatverse.GoatverseService.IMatchManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class MatchManagerClient : System.ServiceModel.DuplexClientBase<Goatverse.GoatverseService.IMatchManager>, Goatverse.GoatverseService.IMatchManager {
+        
+        public MatchManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public MatchManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public MatchManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MatchManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MatchManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public Goatverse.GoatverseService.MatchData ServiceCreateMatch(System.DateTime startTime) {
+            return base.Channel.ServiceCreateMatch(startTime);
+        }
+        
+        public System.Threading.Tasks.Task<Goatverse.GoatverseService.MatchData> ServiceCreateMatchAsync(System.DateTime startTime) {
+            return base.Channel.ServiceCreateMatchAsync(startTime);
+        }
+        
+        public Goatverse.GoatverseService.MatchData ServiceGetMatchById(string matchId) {
+            return base.Channel.ServiceGetMatchById(matchId);
+        }
+        
+        public System.Threading.Tasks.Task<Goatverse.GoatverseService.MatchData> ServiceGetMatchByIdAsync(string matchId) {
+            return base.Channel.ServiceGetMatchByIdAsync(matchId);
+        }
+        
+        public bool ServiceUpdateMatch(string matchId, string idWinner, System.Nullable<System.DateTime> endTime) {
+            return base.Channel.ServiceUpdateMatch(matchId, idWinner, endTime);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceUpdateMatchAsync(string matchId, string idWinner, System.Nullable<System.DateTime> endTime) {
+            return base.Channel.ServiceUpdateMatchAsync(matchId, idWinner, endTime);
+        }
+        
+        public Goatverse.GoatverseService.MatchData[] ServiceGetRecentMatches(int topN) {
+            return base.Channel.ServiceGetRecentMatches(topN);
+        }
+        
+        public System.Threading.Tasks.Task<Goatverse.GoatverseService.MatchData[]> ServiceGetRecentMatchesAsync(int topN) {
+            return base.Channel.ServiceGetRecentMatchesAsync(topN);
+        }
+        
+        public Goatverse.GoatverseService.CardData[] ServiceGetCards() {
+            return base.Channel.ServiceGetCards();
+        }
+        
+        public System.Threading.Tasks.Task<Goatverse.GoatverseService.CardData[]> ServiceGetCardsAsync() {
+            return base.Channel.ServiceGetCardsAsync();
+        }
+        
+        public void ServiceInitializeGameTurns(string gameCode, string[] gamertags) {
+            base.Channel.ServiceInitializeGameTurns(gameCode, gamertags);
+        }
+        
+        public System.Threading.Tasks.Task ServiceInitializeGameTurnsAsync(string gameCode, string[] gamertags) {
+            return base.Channel.ServiceInitializeGameTurnsAsync(gameCode, gamertags);
+        }
+        
+        public void ServiceNotifyEndTurn(string gameCode, string currentGamertag) {
+            base.Channel.ServiceNotifyEndTurn(gameCode, currentGamertag);
+        }
+        
+        public System.Threading.Tasks.Task ServiceNotifyEndTurnAsync(string gameCode, string currentGamertag) {
+            return base.Channel.ServiceNotifyEndTurnAsync(gameCode, currentGamertag);
+        }
+        
+        public string ServiceGetCurrentTurn(string gameCode) {
+            return base.Channel.ServiceGetCurrentTurn(gameCode);
+        }
+        
+        public System.Threading.Tasks.Task<string> ServiceGetCurrentTurnAsync(string gameCode) {
+            return base.Channel.ServiceGetCurrentTurnAsync(gameCode);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GoatverseService.ICardsManager")]
+    public interface ICardsManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICardsManager/ServiceGetAllCards", ReplyAction="http://tempuri.org/ICardsManager/ServiceGetAllCardsResponse")]
+        Goatverse.GoatverseService.CardData[] ServiceGetAllCards();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICardsManager/ServiceGetAllCards", ReplyAction="http://tempuri.org/ICardsManager/ServiceGetAllCardsResponse")]
+        System.Threading.Tasks.Task<Goatverse.GoatverseService.CardData[]> ServiceGetAllCardsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICardsManager/ServiceGetCardById", ReplyAction="http://tempuri.org/ICardsManager/ServiceGetCardByIdResponse")]
+        Goatverse.GoatverseService.CardData ServiceGetCardById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICardsManager/ServiceGetCardById", ReplyAction="http://tempuri.org/ICardsManager/ServiceGetCardByIdResponse")]
+        System.Threading.Tasks.Task<Goatverse.GoatverseService.CardData> ServiceGetCardByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICardsManager/ServiceAddCard", ReplyAction="http://tempuri.org/ICardsManager/ServiceAddCardResponse")]
+        bool ServiceAddCard(Goatverse.GoatverseService.CardData cardData);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICardsManager/ServiceAddCard", ReplyAction="http://tempuri.org/ICardsManager/ServiceAddCardResponse")]
+        System.Threading.Tasks.Task<bool> ServiceAddCardAsync(Goatverse.GoatverseService.CardData cardData);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICardsManager/ServiceDeleteCard", ReplyAction="http://tempuri.org/ICardsManager/ServiceDeleteCardResponse")]
+        bool ServiceDeleteCard(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICardsManager/ServiceDeleteCard", ReplyAction="http://tempuri.org/ICardsManager/ServiceDeleteCardResponse")]
+        System.Threading.Tasks.Task<bool> ServiceDeleteCardAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICardsManagerChannel : Goatverse.GoatverseService.ICardsManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CardsManagerClient : System.ServiceModel.ClientBase<Goatverse.GoatverseService.ICardsManager>, Goatverse.GoatverseService.ICardsManager {
+        
+        public CardsManagerClient() {
+        }
+        
+        public CardsManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public CardsManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CardsManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CardsManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Goatverse.GoatverseService.CardData[] ServiceGetAllCards() {
+            return base.Channel.ServiceGetAllCards();
+        }
+        
+        public System.Threading.Tasks.Task<Goatverse.GoatverseService.CardData[]> ServiceGetAllCardsAsync() {
+            return base.Channel.ServiceGetAllCardsAsync();
+        }
+        
+        public Goatverse.GoatverseService.CardData ServiceGetCardById(int id) {
+            return base.Channel.ServiceGetCardById(id);
+        }
+        
+        public System.Threading.Tasks.Task<Goatverse.GoatverseService.CardData> ServiceGetCardByIdAsync(int id) {
+            return base.Channel.ServiceGetCardByIdAsync(id);
+        }
+        
+        public bool ServiceAddCard(Goatverse.GoatverseService.CardData cardData) {
+            return base.Channel.ServiceAddCard(cardData);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceAddCardAsync(Goatverse.GoatverseService.CardData cardData) {
+            return base.Channel.ServiceAddCardAsync(cardData);
+        }
+        
+        public bool ServiceDeleteCard(int id) {
+            return base.Channel.ServiceDeleteCard(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceDeleteCardAsync(int id) {
+            return base.Channel.ServiceDeleteCardAsync(id);
         }
     }
 }

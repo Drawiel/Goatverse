@@ -44,4 +44,37 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ProfileData" nillable="true" type="tns:ProfileData" />
+  <xs:complexType name="MatchData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdMatch" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdWinner" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MatchData" nillable="true" type="tns:MatchData" />
+  <xs:complexType name="ArrayOfMatchData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MatchData" nillable="true" type="tns:MatchData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMatchData" nillable="true" type="tns:ArrayOfMatchData" />
+  <xs:complexType name="ArrayOfCardData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardData" nillable="true" type="tns:CardData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardData" nillable="true" type="tns:ArrayOfCardData" />
+  <xs:complexType name="CardData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EffectDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdCard" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageCardId" type="xs:int" />
+      <xs:element minOccurs="0" name="Points" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardData" nillable="true" type="tns:CardData" />
 </xs:schema>
