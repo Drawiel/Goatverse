@@ -22,6 +22,8 @@ namespace Goatverse.Windows {
     /// Lógica de interacción para Start.xaml
     /// </summary>
     public partial class Start : Window, GoatverseService.ILobbyManagerCallback{
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private GoatverseService.LobbyManagerClient lobbyManagerClient;
         GoatverseService.FriendsManagerClient friendsManagerClient;
         private string usernamePlayer;
@@ -57,9 +59,19 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Lobby already exists");
                 }
             } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageDatabaseLostConnection);
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
             }
-            
+
         }
 
         public void ServiceGetMessage(MessageData messageData) { }
@@ -101,9 +113,18 @@ namespace Goatverse.Windows {
                 }
 
 
-            }
-            catch(EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageDatabaseLostConnection);
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
             }
         }
 
@@ -141,9 +162,19 @@ namespace Goatverse.Windows {
                     stckPanelFriends.Children.Add(itemFriend);
                 }
             } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageDatabaseLostConnection);
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
             }
-            
+
         }
 
         private void BtnClickAddFriend(object sender, RoutedEventArgs e) {
@@ -168,10 +199,20 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Already sent");
                 }
                 
-            } catch (EndpointNotFoundException ex){
-                MessageBox.Show(Lang.messageDatabaseLostConnection);
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
             }
-            
+
         }
 
         public void LoadFriendRequest() {
@@ -200,7 +241,17 @@ namespace Goatverse.Windows {
                     gridFriendRequests.Children.Add(itemFriendRequest);
                 }
             } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageDatabaseLostConnection);
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
             }
         }
 
@@ -216,7 +267,17 @@ namespace Goatverse.Windows {
                 
                 }
             } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageDatabaseLostConnection);
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
             }
         }
 
@@ -235,7 +296,17 @@ namespace Goatverse.Windows {
                 }
 
             } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageDatabaseLostConnection);
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
             }
         }
         public void ServiceStartMatch(PlayerData[] players) { }

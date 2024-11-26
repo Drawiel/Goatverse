@@ -619,11 +619,11 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The game lost connection to the Database. Check your connection and try again later.
+        ///   Looks up a localized string similar to The Server took too long to respond, try again later.
         /// </summary>
-        public static string messageDatabaseLostConnection {
+        public static string messageConnectionTookTooLong {
             get {
-                return ResourceManager.GetString("messageDatabaseLostConnection", resourceCulture);
+                return ResourceManager.GetString("messageConnectionTookTooLong", resourceCulture);
             }
         }
         
@@ -682,6 +682,24 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The game lost connection to the Server. Check your connection and try again later.
+        /// </summary>
+        public static string messageServerLostConnection {
+            get {
+                return ResourceManager.GetString("messageServerLostConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unexpected error has ocurred, if the problem persist contact customer support.
+        /// </summary>
+        public static string messageUnexpectedError {
+            get {
+                return ResourceManager.GetString("messageUnexpectedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The password is incorrect.
         /// </summary>
         public static string messageWrongPassword {
@@ -698,7 +716,7 @@ namespace Goatverse.Properties.Langs {
         ///Winning a duel.
         ///Duel 
         ///You may attack the top stack of an opponent&apos;s herd by producing a goat from your hand (or a wild card) that MATCHES the goat on top of the opponent&apos;s herd. If able, the opponent may choose to defend with an identical goat or a wild card (all wild cards are equally powerful, regardless of point value).
-        ///Continue alternating until someone can no longer play or chooses not to Duel [rest of string was truncated]&quot;;.
+        ///Continue alternating until someone can no longer play or chooses not  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string tutorialHowToPlay {
             get {

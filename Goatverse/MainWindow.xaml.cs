@@ -27,6 +27,8 @@ namespace Goatverse
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public MainWindow() {
             InitializeMaterialDesign();
             InitializeComponent();
@@ -37,11 +39,11 @@ namespace Goatverse
                 GoatverseService.UsersManagerClient usersManagerClient = new GoatverseService.UsersManagerClient();
                 string username = textBoxUsernameLogIn.Text;
                 string password = passwordBoxPasswordLogIn.Password.ToString();
-            
+
                 GoatverseService.UserData userData = new GoatverseService.UserData();
                 userData.Username = username;
                 userData.Password = password;
-            
+
                 if (!usersManagerClient.ServiceUserExistsByUsername(username)) {
                     MessageBox.Show(Lang.messageNotExistingUsername);
                     return;
@@ -67,7 +69,17 @@ namespace Goatverse
                     MessageBox.Show(Lang.messageWrongPassword);
                 }
             } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageDatabaseLostConnection);
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) { 
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
             }
             
             
@@ -127,10 +139,22 @@ namespace Goatverse
                 }
 
                 bool login = usersManagerClient.ServiceTrySignIn(userData);
-            } catch(EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageDatabaseLostConnection);
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+
+            } catch (CommunicationException ex) { 
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
             }
-            
+
         }
 
         private void BtnClickExit(object sender, RoutedEventArgs e) { 

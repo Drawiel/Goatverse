@@ -14,10 +14,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Goatverse.GoatverseService;
 using Goatverse.Properties.Langs;
+using System.ServiceModel;
 
 namespace Goatverse.Windows {
 
     public partial class Profile : Window{
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private string usernamePlayer;
         private string emailInstance;
         private GoatverseService.ProfilesManagerClient profileManager;
@@ -44,8 +47,18 @@ namespace Goatverse.Windows {
                 txtBlockUsername.Text = usernamePlayer;
                 imageId = profileData.ImageId;
                 Changeimage();
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show($"Error al cargar datos del perfil: {ex.Message}");
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
             }
         }
 
@@ -116,38 +129,81 @@ namespace Goatverse.Windows {
                 else {
                     MessageBox.Show("No se pudo recuperar el correo electrónico.");
                 }
-            }
-            catch(Exception ex) {
-                MessageBox.Show($"Error al intentar actualizar el perfil: {ex.Message}");
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
             }
         }
 
         private bool UpdatePassword(UserData userData, string oldPassword) {
-            if (userManager.ServiceVerifyPassword(oldPassword, usernamePlayer)) {
+            try {
+                if (userManager.ServiceVerifyPassword(oldPassword, usernamePlayer)) {
 
-                if (FieldValidator.IsValidPassword(userData.Password)) {
-                    return userManager.ServicePasswordChanged(userData);
-                } else {
-                    MessageBox.Show(Lang.messageNotValidPassword);
-                    return false;
+                    if (FieldValidator.IsValidPassword(userData.Password)) {
+                        return userManager.ServicePasswordChanged(userData);
+                    } else {
+                        MessageBox.Show(Lang.messageNotValidPassword);
+                        return false;
+                    }
+
                 }
-                
+                MessageBox.Show("Old Password is Incorrect");
+                return false;
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+                return false;
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+                return false;
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+                return false;
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
             }
-            MessageBox.Show("Old Password is Incorrect");
-            return false;
         }
 
         private bool UpdateUsernameAndPassword(UserData userData, string oldPassword) {
-            if (userManager.ServiceVerifyPassword(oldPassword, usernamePlayer)) {
-                if (FieldValidator.IsValidPassword(userData.Password)) { 
-                    return userManager.ServicePasswordAndUsernameChanged(userData);
-                } else {
-                    MessageBox.Show(Lang.messageNotValidPassword);
-                    return false;
+            try {
+                if (userManager.ServiceVerifyPassword(oldPassword, usernamePlayer)) {
+                    if (FieldValidator.IsValidPassword(userData.Password)) {
+                        return userManager.ServicePasswordAndUsernameChanged(userData);
+                    } else {
+                        MessageBox.Show(Lang.messageNotValidPassword);
+                        return false;
+                    }
                 }
-        }
-            MessageBox.Show("Old Password is Incorrect");
-            return false;
+                MessageBox.Show("Old Password is Incorrect");
+                return false;
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+                return false;
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+                return false;
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+                return false;
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
+            }
         }
 
         private void BtnClickSaveChanges(object sender, RoutedEventArgs e) {
