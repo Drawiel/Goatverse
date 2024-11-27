@@ -276,8 +276,8 @@
   <data name="messageConfirmChanges" xml:space="preserve">
     <value>&#x8;¿Confirmar cambios?</value>
   </data>
-  <data name="messageDatabaseLostConnection" xml:space="preserve">
-    <value>&#x8;El juego ha perdido la conexión con la base de datos. Revisa tu conexión y vuelve a intentar más tarde</value>
+  <data name="messageServerLostConnection" xml:space="preserve">
+    <value>&#x8;El juego ha perdido la conexión con el servidor. Revisa tu conexión y vuelve a intentar más tarde</value>
   </data>
   <data name="messageEmailInUse" xml:space="preserve">
     <value>&#x8;El correo ya esta vinculado a una cuenta</value>
@@ -355,5 +355,11 @@ Cada jugador suma el valor total de su rebaño contando los puntos de cada carta
   </data>
   <data name="globalSaveChanges" xml:space="preserve">
     <value>Guardar cambios</value>
+  </data>
+  <data name="messageConnectionTookTooLong" xml:space="preserve">
+    <value>El servidor tardó mucho en responder, vuelva a intentar después</value>
+  </data>
+  <data name="messageUnexpectedError" xml:space="preserve">
+    <value>Ocurrió un error inesperado, si el problema persiste, contacte a soporte de cliente</value>
   </data>
 </root>

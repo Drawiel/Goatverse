@@ -276,8 +276,8 @@
   <data name="messageConfirmChanges" xml:space="preserve">
     <value>Confirm your changes?</value>
   </data>
-  <data name="messageDatabaseLostConnection" xml:space="preserve">
-    <value>The game lost connection to the Database. Check your connection and try again later</value>
+  <data name="messageServerLostConnection" xml:space="preserve">
+    <value>The game lost connection to the Server. Check your connection and try again later</value>
   </data>
   <data name="messageEmailInUse" xml:space="preserve">
     <value>The email is already linked to an account</value>
@@ -354,5 +354,11 @@ Scoring Each player adds up the total value of their herd by counting the points
   </data>
   <data name="globalSaveChanges" xml:space="preserve">
     <value>Save changes</value>
+  </data>
+  <data name="messageConnectionTookTooLong" xml:space="preserve">
+    <value>The server took too long to respond, try again later</value>
+  </data>
+  <data name="messageUnexpectedError" xml:space="preserve">
+    <value>An unexpected error has ocurred, if the problem persist contact customer support</value>
   </data>
 </root>
