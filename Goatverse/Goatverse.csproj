@@ -117,6 +117,15 @@
     <Compile Include="Windows\UserControllers\ChatSeparator.xaml.cs">
       <DependentUpon>ChatSeparator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\UserControllers\ConfirmationMessage.xaml.cs">
+      <DependentUpon>ConfirmationMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UserControllers\ErrorMessage.xaml.cs">
+      <DependentUpon>ErrorMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UserControllers\InformationMessage.xaml.cs">
+      <DependentUpon>InformationMessage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\UserControllers\ItemFriend.xaml.cs">
       <DependentUpon>ItemFriend.xaml</DependentUpon>
     </Compile>
@@ -172,6 +181,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\UserControllers\ChatSeparator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\UserControllers\ConfirmationMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\UserControllers\ErrorMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\UserControllers\InformationMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -343,9 +364,14 @@
   <ItemGroup>
     <Resource Include="Multimedia\match_3players.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Multimedia\Cards\mastergoat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Multimedia\errorMessageBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Multimedia\bellGoatLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
