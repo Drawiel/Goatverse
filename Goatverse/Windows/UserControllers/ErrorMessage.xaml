@@ -8,20 +8,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Multimedia/errorMessageBackground.png" Stretch="Fill" />
-        </Grid.Background>
 
         <Grid>
             <StackPanel Width="310" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0">
-                <TextBlock Text=""
+                <TextBlock Text="{Binding Title, RelativeSource={RelativeSource AncestorType=UserControl}}"
                            FontSize="50"
                            FontWeight="Bold"
                            Foreground="White"
                            Margin="0,0,0,10"
                            HorizontalAlignment="Center"/>
-                
-                <TextBlock Text=""
+
+                <TextBlock Text="{Binding Message, RelativeSource={RelativeSource AncestorType=UserControl}}"
                            FontSize="15"
                            Foreground="White"
                            Margin="0,0,0,5"

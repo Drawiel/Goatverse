@@ -173,6 +173,7 @@ namespace Goatverse.Windows {
             } catch (Exception ex) {
                 MessageBox.Show(Lang.messageUnexpectedError);
                 log.Error(ex.Message);
+                return false;
             }
         }
 
@@ -203,6 +204,7 @@ namespace Goatverse.Windows {
             } catch (Exception ex) {
                 MessageBox.Show(Lang.messageUnexpectedError);
                 log.Error(ex.Message);
+                return false;
             }
         }
 

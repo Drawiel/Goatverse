@@ -18,14 +18,32 @@ namespace Goatverse.Windows.UserControllers {
     /// Lógica de interacción para ErrorMessage.xaml
     /// </summary>
     public partial class ErrorMessage : UserControl {
-        public ErrorMessage(){
+        public static readonly DependencyProperty TitleProperty =
+            DependencyProperty.Register("Title", typeof(string), typeof(ErrorMessage), new PropertyMetadata(string.Empty));
+
+        public static readonly DependencyProperty MessageProperty =
+            DependencyProperty.Register("Message", typeof(string), typeof(ErrorMessage), new PropertyMetadata(string.Empty));
+
+        public string Title
+        {
+            get => (string)GetValue(TitleProperty);
+            set => SetValue(TitleProperty, value);
+        }
+
+        public string Message
+        {
+            get => (string)GetValue(MessageProperty);
+            set => SetValue(MessageProperty, value);
+        }
+
+        public ErrorMessage()
+        {
             InitializeComponent();
         }
 
-        private void BtnClickAccept(object sender, RoutedEventArgs e) {
-            if (this.Parent is Panel parentPanel) {
-                parentPanel.Children.Remove(this);
-            }
+        private void BtnClickAccept(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed; // Ocultar el mensaje al aceptar
         }
 
     }
