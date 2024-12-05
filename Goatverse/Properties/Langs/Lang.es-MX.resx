@@ -362,4 +362,22 @@ Cada jugador suma el valor total de su rebaño contando los puntos de cada carta
   <data name="messageUnexpectedError" xml:space="preserve">
     <value>Ocurrió un error inesperado, si el problema persiste, contacte a soporte de cliente</value>
   </data>
+  <data name="globalPending" xml:space="preserve">
+    <value>Pendiente</value>
+  </data>
+  <data name="globalBlocked" xml:space="preserve">
+    <value>Bloqueado</value>
+  </data>
+  <data name="messageNotValidEmail" xml:space="preserve">
+    <value>No ha ingresado un correo valido</value>
+  </data>
+  <data name="messageBlockedByUser" xml:space="preserve">
+    <value>Has sido bloqueado por este usuario</value>
+  </data>
+  <data name="messageGamesRequiresRestart" xml:space="preserve">
+    <value>El juego requiere reiniciarse para efectuar los cambios</value>
+  </data>
+  <data name="messageSuccessfulSignIn" xml:space="preserve">
+    <value>Registro exitoso</value>
+  </data>
 </root>

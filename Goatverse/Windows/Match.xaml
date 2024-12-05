@@ -240,7 +240,7 @@
 
             <Grid
                     Name="gridPlayerActions"
-                    IsEnabled="False"
+                    IsEnabled="True"
                     Grid.Column="1" 
                     Grid.Row="2" 
                     VerticalAlignment="Center" 

@@ -60,7 +60,7 @@ namespace Goatverse.Windows.UserControllers {
         public void ConfigureButtons(bool isFriend, bool isBlocked) {
             stckPanelButtons.Children.Clear();
 
-            if (!isFriend) {
+            if (!isFriend && !isBlocked) {
 
                 var icon = new PackIcon { Kind = PackIconKind.AccountPlus, };
 
@@ -81,7 +81,7 @@ namespace Goatverse.Windows.UserControllers {
             } else if (isBlocked) {
                 var iconUnblock = new PackIcon { Kind = PackIconKind.LockOpenVariant, };
 
-                blockButton.Content = iconUnblock;
+                unblockButton.Content = iconUnblock;
                 stckPanelButtons.Children.Add(unblockButton);
             }
         }

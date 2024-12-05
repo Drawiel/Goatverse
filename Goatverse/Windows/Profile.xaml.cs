@@ -68,7 +68,7 @@ namespace Goatverse.Windows {
                 imagePath = $"../Multimedia/gato{imageId}.png";
             } 
 
-            imgProfile.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative)); ;
+            imgProfile.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
         }
 
         private void OnArrowLeftClick(object sender, RoutedEventArgs e) {

@@ -33,8 +33,19 @@ namespace Goatverse.Windows {
             UserSession userSession = new UserSession();
             userSession = UserSessionManager.GetInstance().GetUser();
             usernamePlayer = userSession.Username;
-            LoadFriends();
-            LoadFriendRequest();
+            
+            if (!usernamePlayer.Contains("Guest")) {
+                LoadFriends();
+                LoadFriendRequest();
+                LoadBlockedUsers();
+            } else {
+                btnCreateMatch.Visibility = Visibility.Collapsed;
+                viewboxFriends.Visibility = Visibility.Collapsed;
+                btnFriends.Visibility = Visibility.Collapsed;
+                btnProfile.Visibility = Visibility.Collapsed;
+            }
+            
+            
         }
 
         private string GenerateLobbyCode(int length = 6) {
@@ -84,7 +95,7 @@ namespace Goatverse.Windows {
         }
 
         private void BtnClickShowFriends(object sender, RoutedEventArgs e) {
-            ViewboxFriends.Visibility = ViewboxFriends.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+            viewboxFriends.Visibility = viewboxFriends.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void BtnClickJoinLobby(object sender, RoutedEventArgs e) {
@@ -158,6 +169,7 @@ namespace Goatverse.Windows {
 
                     itemFriend.ConfigureButtons(isFriend: true, isBlocked: false);
                     itemFriend.removeButton.Click += (s, e) => BtnClickRemoveFriend(friend.Username);
+                    itemFriend.blockButton.Click += (s, e) => BtnClickBlockUser(friend.Username);
 
                     stckPanelFriends.Children.Add(itemFriend);
                 }
@@ -182,6 +194,12 @@ namespace Goatverse.Windows {
             string requestSendTo = txtBoxUsernameSearch.Text;
 
             try {
+                bool blocked = friendsManagerClient.ServiceIsUserBlocked(requestSendTo, usernamePlayer);
+                if (blocked) {
+                    MessageBox.Show(Lang.messageBlockedByUser);
+                    return;
+                } 
+
                 bool alreadySended = friendsManagerClient.ServiceIsPendingFriendRequest(usernamePlayer, requestSendTo);
                 bool alreadyReceived = friendsManagerClient.ServiceIsPendingFriendRequest(requestSendTo, usernamePlayer);
                 if (!alreadySended) {
@@ -230,7 +248,7 @@ namespace Goatverse.Windows {
 
                     ItemFriend itemFriendRequest = new ItemFriend() {
                         Username = friend.Username,
-                        Status = "Pending",
+                        Status = Lang.globalPending,
                         ImageSource = new BitmapImage(new Uri(imagePath, UriKind.Relative)),
                         
                     };
@@ -309,9 +327,100 @@ namespace Goatverse.Windows {
                 log.Error(ex.Message);
             }
         }
+
         public void ServiceStartMatch(PlayerData[] players) { }
 
         public void ServiceNotifyMatchStart() { }
+
+        public void LoadBlockedUsers() { 
+            try {
+                gridBlockedUsers.Children.Clear();
+                friendsManagerClient = new GoatverseService.FriendsManagerClient();
+                PlayerData[] blockedUsersId = friendsManagerClient.ServiceGetBlockedUsers(usernamePlayer);
+
+                foreach (PlayerData blockedUser in blockedUsersId) {
+
+                    string imagePath = "../../Multimedia/sword.png";
+                    if (blockedUser.ImageId != 0 && blockedUser.ImageId != -1) {
+                        imagePath = $"../../Multimedia/gato{blockedUser.ImageId}.png";
+                    }
+
+                    ItemFriend itemFriendRequest = new ItemFriend() {
+                        Username = blockedUser.Username,
+                        Status = Lang.globalBlocked,
+                        ImageSource = new BitmapImage(new Uri(imagePath, UriKind.Relative)),
+
+                    };
+
+                    itemFriendRequest.ConfigureButtons(isFriend: false, isBlocked: true);
+                    itemFriendRequest.unblockButton.Click += (s, e) => BtnClickRemoveBlock(blockedUser.Username);
+
+                    gridBlockedUsers.Children.Add(itemFriendRequest);
+                }
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
+            }
+        }
+
+        public void BtnClickRemoveBlock(string username) {
+            try {
+                friendsManagerClient = new GoatverseService.FriendsManagerClient();
+                bool friendRemoved = friendsManagerClient.ServiceRemoveBlock(username, usernamePlayer);
+                if (friendRemoved) {
+                    MessageBox.Show("Block removed");
+                    LoadBlockedUsers();
+                } else {
+                    MessageBox.Show(" ");
+                }
+
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
+            }
+        }
+
+        public void BtnClickBlockUser(string username) {
+            try {
+                friendsManagerClient = new GoatverseService.FriendsManagerClient();
+                bool friendRemoved = friendsManagerClient.ServiceBlockUser(username, usernamePlayer);
+                if (friendRemoved) {
+                    MessageBox.Show("User Blocked");
+                    LoadFriends();
+                    LoadBlockedUsers();
+                } else {
+                    MessageBox.Show(" ");
+                }
+
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
+            }
+        }
 
     }
 }

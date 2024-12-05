@@ -361,4 +361,22 @@ Scoring Each player adds up the total value of their herd by counting the points
   <data name="messageUnexpectedError" xml:space="preserve">
     <value>An unexpected error has ocurred, if the problem persist contact customer support</value>
   </data>
+  <data name="globalPending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="globalBlocked" xml:space="preserve">
+    <value>Blocked</value>
+  </data>
+  <data name="messageNotValidEmail" xml:space="preserve">
+    <value>Didn't enter a valid email adress</value>
+  </data>
+  <data name="messageBlockedByUser" xml:space="preserve">
+    <value>You are blocked by this user</value>
+  </data>
+  <data name="messageGamesRequiresRestart" xml:space="preserve">
+    <value>The game requires a restart for the changes to make affect</value>
+  </data>
+  <data name="messageSuccessfulSignIn" xml:space="preserve">
+    <value>Successful Sign In</value>
+  </data>
 </root>

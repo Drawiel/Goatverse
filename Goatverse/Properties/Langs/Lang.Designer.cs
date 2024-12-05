@@ -97,6 +97,15 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Blocked.
+        /// </summary>
+        public static string globalBlocked {
+            get {
+                return ResourceManager.GetString("globalBlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string globalCancel {
@@ -439,6 +448,15 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pending.
+        /// </summary>
+        public static string globalPending {
+            get {
+                return ResourceManager.GetString("globalPending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Play Again.
         /// </summary>
         public static string globalPlayAgain {
@@ -610,6 +628,15 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are blocked by this user.
+        /// </summary>
+        public static string messageBlockedByUser {
+            get {
+                return ResourceManager.GetString("messageBlockedByUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm your changes?.
         /// </summary>
         public static string messageConfirmChanges {
@@ -655,6 +682,15 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The game requires a restart for the changes to make affect.
+        /// </summary>
+        public static string messageGamesRequiresRestart {
+            get {
+                return ResourceManager.GetString("messageGamesRequiresRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Internet connection required. Check your connection and try again..
         /// </summary>
         public static string messageLostInternetConnection {
@@ -673,6 +709,15 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Didn&apos;t enter a valid email adress.
+        /// </summary>
+        public static string messageNotValidEmail {
+            get {
+                return ResourceManager.GetString("messageNotValidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The password requires a lowercase letter, an uppercase letter, a number and a special character.
         /// </summary>
         public static string messageNotValidPassword {
@@ -687,6 +732,15 @@ namespace Goatverse.Properties.Langs {
         public static string messageServerLostConnection {
             get {
                 return ResourceManager.GetString("messageServerLostConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successful Sign In.
+        /// </summary>
+        public static string messageSuccessfulSignIn {
+            get {
+                return ResourceManager.GetString("messageSuccessfulSignIn", resourceCulture);
             }
         }
         

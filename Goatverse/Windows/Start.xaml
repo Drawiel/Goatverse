@@ -52,7 +52,8 @@
                         Background="#1C5E4A" 
                         BorderBrush="White" 
                         Foreground="White"
-                        FontSize="30" Click="BtnClickCreateMatch">
+                        FontSize="30" Click="BtnClickCreateMatch"
+                        x:Name="btnCreateMatch">
                 </Button>
 
                 <Button Grid.Row="1"        
@@ -66,7 +67,8 @@
                         BorderBrush="White" 
                         Foreground="White"
                         FontSize="30" 
-                        Click="BtnClickJoinLobby">
+                        Click="BtnClickJoinLobby"
+                        x:Name="btnJoinLobby">
                 </Button>
 
                 <Button Grid.Row="2"
@@ -79,7 +81,8 @@
                         Background="#1C5E4A" 
                         BorderBrush="White" 
                         Foreground="White"
-                        FontSize="30">
+                        FontSize="30"
+                        x:Name="btnDeck">
                 </Button>
 
                 <Button Grid.Row="3" 
@@ -92,7 +95,8 @@
                         Background="#1C5E4A" 
                         BorderBrush="White" 
                         Foreground="White"
-                        FontSize="30">
+                        FontSize="30"
+                        x:Name="btnSettings">
                 </Button>
             </Grid>
 
@@ -104,6 +108,7 @@
             Margin="0">
             <Border CornerRadius="0 20 20 0">
                 <Button
+                    x:Name="btnFriends"
                     Click="BtnClickShowFriends"
                     Margin="10"
                     Background="LightBlue"
@@ -124,6 +129,7 @@
             <Border 
                 CornerRadius="0 20 20 0">
                 <Button
+                    x:Name="btnProfile"
                     Margin="10"
                     Background="LightBlue"
                     BorderBrush="Black"
@@ -239,7 +245,7 @@
     </Viewbox> -->
 
         <Viewbox
-            Name="ViewboxFriends"
+            x:Name="viewboxFriends"
             Visibility="Visible"
             Grid.Column="0"
             Grid.Row="0" 
@@ -477,7 +483,8 @@
                             </TabItem.Header>
                         <Grid 
                             Height="1080"
-                            Width="400" />
+                            Width="400" 
+                            x:Name="gridBlockedUsers"/>
                     </TabItem>
                 </TabControl>
             </materialDesign:Card>

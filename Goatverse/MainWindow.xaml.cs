@@ -1,4 +1,5 @@
-﻿using Goatverse.Logic.Classes;
+﻿using Goatverse.GoatverseService;
+using Goatverse.Logic.Classes;
 using Goatverse.Properties.Langs;
 using Goatverse.Windows;
 using MaterialDesignColors;
@@ -138,7 +139,15 @@ namespace Goatverse
                     return;
                 }
 
+                if (!FieldValidator.IsValidEmail(email)) { 
+                    MessageBox.Show(Lang.messageNotValidEmail);
+                    return;
+                }
+
                 bool login = usersManagerClient.ServiceTrySignIn(userData);
+                if (login) { 
+                    MessageBox.Show(Lang.messageSuccessfulSignIn);
+                } 
             } catch (EndpointNotFoundException ex) {
                 MessageBox.Show(Lang.messageServerLostConnection);
                 log.Error(ex.Message);
@@ -159,6 +168,19 @@ namespace Goatverse
 
         private void BtnClickExit(object sender, RoutedEventArgs e) { 
             this.Close();
+        }
+
+        private void BtnClickPlayAsGuest(object sender, RoutedEventArgs e) { 
+            string username = "Guest " + textBoxUsernameGuest.Text;
+            UserSession userSession = new UserSession {
+                Username = username,
+            };
+            UserSessionManager.GetInstance().LoginUser(userSession);
+
+            Start start = new Start();
+            start.Show();
+            this.Close();
+
         }
     }
 }
