@@ -96,7 +96,8 @@
                         BorderBrush="White" 
                         Foreground="White"
                         FontSize="30"
-                        x:Name="btnSettings">
+                        x:Name="btnClickSettings" 
+                        Click="BtnClickSettings">
                 </Button>
             </Grid>
 
@@ -171,82 +172,9 @@
             </Border>
         </Viewbox>
 
-        <!-- <Viewbox
-            Name="ViewboxFriends"
-            Visibility="Visible"
-            Grid.Column="0"
-            Grid.Row="0" 
-            Grid.ColumnSpan="2" 
-            Margin="0,0,546,1" 
-            Grid.RowSpan="6"
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
-            >
-            <Grid
-                Background="White"
-                Width="200"
-                Height="308"
-                VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150*"/>
-                    <ColumnDefinition Width="30*"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-
-                
-        <Viewbox Grid.Column="1" 
-                         Grid.Row="0" 
-                         Margin="0">
-            <Border CornerRadius="0 20 20 0">
-                <Button
-                        Margin="10"
-                        Background="LightBlue"
-                        BorderBrush="Black"
-                        BorderThickness="2" 
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Style="{StaticResource MaterialDesignFloatingActionButton}"
-                        ToolTip="MaterialDesignFloatingActionButton">
-                    <materialDesign:PackIcon Kind="AccountPlus" />
-                </Button>
-            </Border>
-        </Viewbox>
-
-
-
-       
-        <Viewbox 
-                    Grid.Column="1" 
-                    Grid.Row="3" 
-                    Margin="0">
-            <Border 
-                        CornerRadius="0 20 20 0">
-                <Button
-                        Margin="10"
-                        Background="LightBlue"
-                        BorderBrush="Black"
-                        BorderThickness="2" 
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Style="{StaticResource MaterialDesignFloatingActionButton}"
-                        ToolTip="MaterialDesignFloatingActionButton">
-                    <materialDesign:PackIcon Kind="ArrowLeft" Width="40" Height="40" Margin="5" />
-                </Button>
-            </Border>
-        </Viewbox>
-    </Grid>
-
-    </Viewbox> -->
-
         <Viewbox
             x:Name="viewboxFriends"
-            Visibility="Visible"
+            Visibility="Collapsed"
             Grid.Column="0"
             Grid.Row="0" 
             Grid.ColumnSpan="2" 
@@ -573,7 +501,6 @@
                         </Grid>
                     </Grid>
 
-
                 </Viewbox>
 
                 <!--Botón unirse-->
@@ -599,6 +526,133 @@
                         </Button>
                     </Border>
                 </Viewbox>
+            </Grid>
+
+        </Viewbox>
+        <Viewbox
+        Name="ViewboxSettings"
+        Visibility="Collapsed"
+        Grid.Column="1"
+        Grid.Row="3" 
+        Grid.ColumnSpan="1" 
+        Margin="546,0,0,1" 
+        Grid.RowSpan="1"
+        VerticalAlignment="Stretch"
+        HorizontalAlignment="Stretch">
+            <Grid
+            Background="White"
+            Width="200"
+            Height="151">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150*"/>
+                    
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <!--Top section-->
+                <Viewbox 
+                  Grid.Column="1" 
+                 Grid.Row="0" 
+                 Margin="0">
+                    <Border 
+                        CornerRadius="0 20 20 0">
+                        <TextBlock 
+                            Text="{x:Static language:Lang.globalSettings}"
+                            FontSize="1" 
+                            FontWeight="Bold" 
+                            Margin="0,0,0,0"/>
+                    </Border>
+                </Viewbox>
+
+                <Viewbox
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="10,20,10,20"
+                    >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="50*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid>
+
+                            <StackPanel
+                                Grid.Column="1">
+                                <TextBlock
+                                VerticalAlignment="Center"
+                                    Text="{x:Static language:Lang.messageGamesRequiresRestart}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+
+                        </Grid>
+                    </Grid>
+                    
+
+                </Viewbox>
+
+                <Viewbox 
+                Grid.Column="1" 
+                Grid.Row="2" 
+                Margin="0"
+                HorizontalAlignment="Center">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            HorizontalAlignment="Left"
+                            Margin="5"
+                            Grid.Column="0"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="MaterialDesignRaisedButton with Round Corners"
+                            Click="BtnClickChangeLanguajeToSpanish">
+                            <TextBlock
+                                Text="Español" />
+                        </Button>
+
+                        <Button
+                            HorizontalAlignment="Right"
+                            Margin="5"
+                            Grid.Column="1"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="MaterialDesignRaisedButton with Round Corners"
+                            Click="BtnClickChangeLanguajeToEnglish">
+                            <TextBlock
+                                Text="Inglés" />
+                        </Button>
+
+                    </Grid>
+                </Viewbox>
+
+                <Grid
+                    Grid.Row="4">
+                    <materialDesign:Snackbar
+                            x:Name="SnackbarFive"
+                            HorizontalAlignment="Stretch">
+                        <materialDesign:SnackbarMessage
+                                ActionContent="OK"
+                                Content="{x:Static language:Lang.messageGamesRequiresRestart}" />
+                    </materialDesign:Snackbar>
+                </Grid>
             </Grid>
 
         </Viewbox>

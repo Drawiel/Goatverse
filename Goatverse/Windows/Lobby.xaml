@@ -28,7 +28,7 @@
             <RowDefinition Height="130*"/>
         </Grid.RowDefinitions>
 
-        <Viewbox Grid.Column="5" Grid.ColumnSpan="5" Grid.Row="3" Margin="0">
+        <Viewbox Grid.Column="5" Grid.ColumnSpan="5" Grid.Row="3" Margin="0 0 0 -50">
             <Border CornerRadius="0 20 20 0">
                 <Button
                 Margin="10"
@@ -154,7 +154,8 @@
         </Viewbox>
 
         <!--Friends Button />-->
-        <Viewbox Grid.Column="0" Grid.Row="0" Margin="0">
+        <Viewbox 
+            Grid.Column="0" Grid.Row="0" Margin="0 -50 0 0">
             <Border CornerRadius="0 20 20 0">
                 <Button
                     Margin="10"
@@ -170,7 +171,7 @@
         </Viewbox>
 
         <!--Setting Button-->
-        <Viewbox Grid.Column="5" Grid.Row="0" Margin="0">
+        <Viewbox Grid.Column="5" Grid.Row="0" Margin="0 -50 0 0">
             <Border CornerRadius="0 20 20 0">
                 <Button
                     Margin="10"
@@ -185,7 +186,7 @@
             </Border>
         </Viewbox>
 
-        <Viewbox Grid.Column="0" Grid.Row="2" Margin="0">
+        <Viewbox Grid.Column="0" Grid.Row="2" Margin="0 0 0 -30">
             <Grid>
                 <Border CornerRadius="0 20 20 0">
                     <Button 

@@ -102,6 +102,10 @@ namespace Goatverse.Windows {
             ViewboxJoinLobby.Visibility = ViewboxJoinLobby.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
         }
 
+        private void BtnClickSettings(object sender, RoutedEventArgs e) {
+            ViewboxSettings.Visibility = ViewboxSettings.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+        }
+
         private void BtnClickJoinLobbyWithCode(object sender, RoutedEventArgs e) {
             try {
                 InstanceContext context = new InstanceContext(this);
@@ -420,6 +424,16 @@ namespace Goatverse.Windows {
                 MessageBox.Show(Lang.messageUnexpectedError);
                 log.Error(ex.Message);
             }
+        }
+
+        private void BtnClickChangeLanguajeToSpanish(object sender, RoutedEventArgs e) {
+            Properties.Settings.Default.languageCode = "es-MX";
+            Properties.Settings.Default.Save();
+        }
+
+        private void BtnClickChangeLanguajeToEnglish(object sender, RoutedEventArgs e) {
+            Properties.Settings.Default.languageCode = "en-US";
+            Properties.Settings.Default.Save();
         }
 
     }
