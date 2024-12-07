@@ -30,8 +30,6 @@ namespace Goatverse.Windows {
 
         private int playerCount = 0;
         private string ownerGamertag;
-
-
         private GoatverseService.LobbyManagerClient lobbyManagerClient;
         public ObservableCollection<UserControl> userControls { get; set; }
         private string usernamePlayer;
@@ -40,7 +38,7 @@ namespace Goatverse.Windows {
 
 
         public Lobby(string joinedLobbyCode) {
-            InitializeComponent();
+            
 
             lobbyCode = joinedLobbyCode;
             UserSession userSession = new UserSession();
@@ -56,19 +54,36 @@ namespace Goatverse.Windows {
                 DataContext = this;
 
                 lobbyManagerClient.ServiceConnectToLobby(usernamePlayer, lobbyCode);
+                InitializeComponent();
                 chipCopyCode.Content = lobbyCode;
             } catch (EndpointNotFoundException ex) {
                 MessageBox.Show(Lang.messageServerLostConnection);
                 log.Error(ex.Message);
+                Start start = new Start();
+                start.Show();
+                this.Close();
+
             } catch (TimeoutException ex) {
                 MessageBox.Show(Lang.messageConnectionTookTooLong);
                 log.Error(ex.Message);
+                Start start = new Start();
+                start.Show();
+                this.Close();
+
             } catch (CommunicationException ex) {
                 MessageBox.Show(Lang.messageLostInternetConnection);
                 log.Error(ex.Message);
+                Start start = new Start();
+                start.Show();
+                this.Close();
+
             } catch (Exception ex) {
+                
                 MessageBox.Show(Lang.messageUnexpectedError);
                 log.Error(ex.Message);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -205,9 +220,9 @@ namespace Goatverse.Windows {
 
         private void BtnClickStartMatch(object sender, RoutedEventArgs e) {
             try {
-                bool matchStarted = lobbyManagerClient.ServiceStartLobbyMatch(lobbyCode);
+                bool matchStarted = lobbyManagerClient.ServiceStartLobbyMatch(lobbyCode, usernamePlayer);
                 if (!matchStarted) {
-                    MessageBox.Show("Error al iniciar la partida. Verifica si el lobby es válido.");
+                    MessageBox.Show(Lang.messageLobbyOwnerStartGame);
                 }
             } catch (EndpointNotFoundException ex) {
                 MessageBox.Show(Lang.messageServerLostConnection);
@@ -292,5 +307,66 @@ namespace Goatverse.Windows {
                 log.Error(ex.Message);
             }
         }
+
+        public void ServiceNotifyLobbyOwner(string owner) {
+            try {
+                Application.Current.Dispatcher.Invoke(() => {
+                    ownerGamertag = owner;
+                    Console.WriteLine($"Nuevo propietario del lobby: {owner}");
+
+                    btnStartMatch.IsEnabled = ownerGamertag == usernamePlayer;
+
+                    if (ownerGamertag == usernamePlayer) {
+                        MessageBox.Show("Ahora eres el propietario del lobby. Puedes iniciar la partida.");
+                    }
+                });
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
+            }
+        }
+
+        public void ServiceOwnerLeftLobby(string newOwner) {
+            try {
+                Application.Current.Dispatcher.Invoke(() => {
+                    if (string.IsNullOrEmpty(newOwner)) {
+                        MessageBox.Show("El lobby se ha cerrado porque no hay más jugadores.");
+                        Start startWindow = new Start();
+                        startWindow.Show();
+                        this.Close();
+                        return;
+                    }
+
+                    ownerGamertag = newOwner;
+                    btnStartMatch.IsEnabled = ownerGamertag == usernamePlayer;
+
+                    if (ownerGamertag == usernamePlayer) {
+                        MessageBox.Show("Ahora eres el propietario del lobby.");
+                    }
+                });
+            } catch (EndpointNotFoundException ex) {
+                MessageBox.Show(Lang.messageServerLostConnection);
+                log.Error(ex.Message);
+            } catch (TimeoutException ex) {
+                MessageBox.Show(Lang.messageConnectionTookTooLong);
+                log.Error(ex.Message);
+            } catch (CommunicationException ex) {
+                MessageBox.Show(Lang.messageLostInternetConnection);
+                log.Error(ex.Message);
+            } catch (Exception ex) {
+                MessageBox.Show(Lang.messageUnexpectedError);
+                log.Error(ex.Message);
+            }
+        }
     }
+
 }

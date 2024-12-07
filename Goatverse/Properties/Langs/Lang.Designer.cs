@@ -691,6 +691,24 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The lobby you are trying to join doesn&apos;t exists.
+        /// </summary>
+        public static string messageLobbyNotExists {
+            get {
+                return ResourceManager.GetString("messageLobbyNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only the owner of the lobby can start the game.
+        /// </summary>
+        public static string messageLobbyOwnerStartGame {
+            get {
+                return ResourceManager.GetString("messageLobbyOwnerStartGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Internet connection required. Check your connection and try again..
         /// </summary>
         public static string messageLostInternetConnection {

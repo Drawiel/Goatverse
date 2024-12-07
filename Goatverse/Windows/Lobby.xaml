@@ -145,8 +145,9 @@
                         BorderThickness="2" 
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignFloatingActionButton}"
-                        ToolTip="{x:Static language:Lang.globalStartGame}">
-                            <Image Source="../Multimedia/sword.png" Stretch="UniformToFill" />
+                        ToolTip="{x:Static language:Lang.globalStartGame}"
+                        x:Name="btnStartMatch">
+                        <Image Source="../Multimedia/sword.png" Stretch="UniformToFill" />
                     </Button>
                 </Border>
             </Grid>

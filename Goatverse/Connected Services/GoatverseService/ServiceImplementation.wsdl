@@ -275,6 +275,9 @@
   <wsdl:message name="ILobbyManager_ServiceNotifyMatchStart_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ServiceNotifyMatchStart" />
   </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceOwnerLeftLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceOwnerLeftLobby" />
+  </wsdl:message>
   <wsdl:message name="IProfilesManager_ServiceLoadProfileData_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceLoadProfileData" />
   </wsdl:message>
@@ -497,6 +500,9 @@
     </wsdl:operation>
     <wsdl:operation name="ServiceNotifyMatchStart">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceNotifyMatchStart" message="tns:ILobbyManager_ServiceNotifyMatchStart_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceOwnerLeftLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceOwnerLeftLobby" message="tns:ILobbyManager_ServiceOwnerLeftLobby_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IProfilesManager">
@@ -764,6 +770,12 @@
     </wsdl:operation>
     <wsdl:operation name="ServiceNotifyMatchStart">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceNotifyMatchStart" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceOwnerLeftLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceOwnerLeftLobby" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

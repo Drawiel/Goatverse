@@ -379,4 +379,10 @@ Scoring Each player adds up the total value of their herd by counting the points
   <data name="messageSuccessfulSignIn" xml:space="preserve">
     <value>Successfull Sign In</value>
   </data>
+  <data name="messageLobbyNotExists" xml:space="preserve">
+    <value>The lobby you are trying to join doesn't exists</value>
+  </data>
+  <data name="messageLobbyOwnerStartGame" xml:space="preserve">
+    <value>Only the owner of the lobby can start the game</value>
+  </data>
 </root>

@@ -124,7 +124,7 @@ namespace Goatverse.Windows {
                     }
                 }
                 else {
-                    MessageBox.Show("");
+                    MessageBox.Show(Lang.messageLobbyNotExists);
                 }
 
 
@@ -436,5 +436,6 @@ namespace Goatverse.Windows {
             Properties.Settings.Default.Save();
         }
 
+        public void ServiceOwnerLeftLobby(string newOwner) { }
     }
 }

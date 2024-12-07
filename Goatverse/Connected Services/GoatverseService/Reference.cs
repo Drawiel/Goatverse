@@ -831,10 +831,10 @@ namespace Goatverse.GoatverseService {
         System.Threading.Tasks.Task<bool> ServiceCreateLobbyAsync(string username, string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatch", ReplyAction="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatchResponse")]
-        bool ServiceStartLobbyMatch(string lobbyCode);
+        bool ServiceStartLobbyMatch(string lobbyCode, string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatch", ReplyAction="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatchResponse")]
-        System.Threading.Tasks.Task<bool> ServiceStartLobbyMatchAsync(string lobbyCode);
+        System.Threading.Tasks.Task<bool> ServiceStartLobbyMatchAsync(string lobbyCode, string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -851,6 +851,9 @@ namespace Goatverse.GoatverseService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/ServiceNotifyMatchStart")]
         void ServiceNotifyMatchStart();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/ServiceOwnerLeftLobby")]
+        void ServiceOwnerLeftLobby(string newOwner);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -921,12 +924,12 @@ namespace Goatverse.GoatverseService {
             return base.Channel.ServiceCreateLobbyAsync(username, lobbyCode);
         }
         
-        public bool ServiceStartLobbyMatch(string lobbyCode) {
-            return base.Channel.ServiceStartLobbyMatch(lobbyCode);
+        public bool ServiceStartLobbyMatch(string lobbyCode, string username) {
+            return base.Channel.ServiceStartLobbyMatch(lobbyCode, username);
         }
         
-        public System.Threading.Tasks.Task<bool> ServiceStartLobbyMatchAsync(string lobbyCode) {
-            return base.Channel.ServiceStartLobbyMatchAsync(lobbyCode);
+        public System.Threading.Tasks.Task<bool> ServiceStartLobbyMatchAsync(string lobbyCode, string username) {
+            return base.Channel.ServiceStartLobbyMatchAsync(lobbyCode, username);
         }
     }
     
