@@ -324,7 +324,7 @@ Puntaje
 Cada jugador suma el valor total de su rebaño contando los puntos de cada carta de cabra de su rebaño (el valor en puntos se muestra en la esquina de cada carta). ¡El jugador con más puntos gana!"</value>
   </data>
   <data name="globalWelcome" xml:space="preserve">
-    <value>Bienvenido</value>
+    <value>Comodín</value>
   </data>
   <data name="globalCreateAccount" xml:space="preserve">
     <value>Crear cuenta</value>
@@ -385,5 +385,47 @@ Cada jugador suma el valor total de su rebaño contando los puntos de cada carta
   </data>
   <data name="messageLobbyOwnerStartGame" xml:space="preserve">
     <value>Solo el dueño de la lobby puede iniciar la partida</value>
+  </data>
+  <data name="globalRecentMatches" xml:space="preserve">
+    <value>Partidas recientes (últimas 10)</value>
+  </data>
+  <data name="globalStatistics" xml:space="preserve">
+    <value>Estadísticas</value>
+  </data>
+  <data name="globalGoats" xml:space="preserve">
+    <value>Cabra</value>
+  </data>
+  <data name="globalAction" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="globalWild" xml:space="preserve">
+    <value>Comodín</value>
+  </data>
+  <data name="globalHistoryGoat" xml:space="preserve">
+    <value>Es solo una cabra.</value>
+  </data>
+  <data name="globalHistoryGoatSalvatore" xml:space="preserve">
+    <value>Goat Salvatore nació en un pueblo destruido por invasores. Tras perderlo todo, juró venganza y se entrenó en el arte del sigilo y la estrategia. Vistiendo una capa de cabra de lana y empuñando un cuchillo forjado, se infiltró en las filas enemigas, desmantelando sus planes. Ahora, se mueve en las sombras, protegiendo a los inocentes y asegurándose de que los secretos de su pueblo nunca caigan en las manos equivocadas.</value>
+  </data>
+  <data name="globalHistoryNotpacGoat" xml:space="preserve">
+    <value>Notpac-Goat se perdió en un laberinto mágico, perseguido por sombras. Pero en lugar de huir, comenzó a devorar todo lo que encontraba a su paso, ganando fuerza con cada paso. Ahora corre a través de los pasillos, escapando y destruyendo todo lo que se cruce en su camino, su luz creciendo con cada victoria.</value>
+  </data>
+  <data name="globalHistoryGoatSlayer" xml:space="preserve">
+    <value>Goat Slayer es una cabra imparable, forjada en la lucha contra las fuerzas oscuras que amenazan Capraterra. Armada con cuernos afilados y una furia implacable, combate monstruos y criaturas infernales que emergen de las profundidades del mundo. Cada batalla la hace más fuerte, y su nombre se ha convertido en una leyenda entre aquellos que luchan contra las sombras. Ningún enemigo puede detenerla.</value>
+  </data>
+  <data name="globalHistoryPlumberGoat" xml:space="preserve">
+    <value>Pumber Goat es una cabra experta en fontanería, conocida por su habilidad para resolver los problemas de tuberías más complicados en Capraterra. Con su caja de herramientas y destreza, se adentra en los túneles y conductos más oscuros, arreglando fugas, desatascando desagües y enfrentándose a criaturas acuáticas que acechan en las alcantarillas. Siempre con una sonrisa y su gorra de fontanera, Pumber Goat mantiene el flujo de Capraterra en funcionamiento, afrontando cada desafío con ingenio y valentía.</value>
+  </data>
+  <data name="globalHistoryGoatink" xml:space="preserve">
+    <value>Goatink es una cabra misteriosa que lleva una antigua herencia, marcada por un gran destino. Con su capa verde y arco, viaja a través de bosques, montañas y ruinas olvidadas en busca de artefactos mágicos para salvar Capraterra. Guiada por una fuerza sobrenatural, enfrenta monstruos, resuelve acertijos y se adentra en lugares prohibidos, desvelando los secretos de una civilización antigua. Goatink es más que una heroína; es la esperanza que Capraterra necesita para restaurar el equilibrio perdido.</value>
+  </data>
+  <data name="globalHistoryG.T.A" xml:space="preserve">
+    <value>G.T.A.-Goat Tactical Assault es una cabra de élite conocida por su astucia y habilidades estratégicas. Criada en las calles de Capraterra, se unió a una organización secreta de tácticos expertos, entrenada en sigilo, conducción y combate. Armada con equipo de última tecnología, infiltra territorios enemigos, desmantelando operaciones criminales y enfrentándose a bandas rebeldes. Con un estilo imparable y una actitud desafiante, G.T.A.-Goat es la pesadilla de los criminales, siempre un paso adelante en su misión de restaurar el orden en su mundo.</value>
+  </data>
+  <data name="globalHistoryGoatzzz" xml:space="preserve">
+    <value>Goatzzz es una cabra explosiva nacida en las profundidades de las cavernas de Capraterra. Su cuerpo, cubierto de una extraña energía, brilla en la oscuridad mientras se desliza hacia su objetivo. Con cada paso, su tensión aumenta hasta que, en el momento menos esperado, ¡explota en una enorme detonación! Con su mirada fija y paso silencioso, Goatzzz acecha en los rincones del mundo, lista para destruir todo a su paso, dejando un rastro de caos detrás. Nadie sabe cuándo ni dónde atacará, pero todos saben que su explosión será devastadora.</value>
+  </data>
+  <data name="globalHistoryMasterGoat" xml:space="preserve">
+    <value>Master Goat es una cabra legendaria, forjada en la batalla y diseñada para proteger su hogar. Criada en un mundo devastado por invasores, se unió a un programa secreto que la transformó en una guerrera imparable. Con una armadura avanzada y cuernos afilados como una espada, Master Goat lidera su rebaño contra las fuerzas oscuras, enfrentándose a criaturas colosales y monstruos en el campo de batalla. Su presencia es un faro de esperanza, y su misión es clara: salvar su hogar de la destrucción total, sin importar el costo.</value>
   </data>
 </root>

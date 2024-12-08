@@ -385,4 +385,46 @@ Scoring Each player adds up the total value of their herd by counting the points
   <data name="messageLobbyOwnerStartGame" xml:space="preserve">
     <value>Only the owner of the lobby can start the game</value>
   </data>
+  <data name="globalRecentMatches" xml:space="preserve">
+    <value>Recent Games (last 10)</value>
+  </data>
+  <data name="globalStatistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="globalGoats" xml:space="preserve">
+    <value>Goats</value>
+  </data>
+  <data name="globalAction" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="globalWild" xml:space="preserve">
+    <value>Wild</value>
+  </data>
+  <data name="globalHistoryGoat" xml:space="preserve">
+    <value>It's just a goat.</value>
+  </data>
+  <data name="globalHistoryGoatSalvatore" xml:space="preserve">
+    <value>Goat Salvatore was born in a village destroyed by invaders. After losing everything, he swore revenge and trained in the art of stealth and strategy. Donning a woolen goat cape and wielding a forged knife, he infiltrated enemy ranks, dismantling their plans. Now, he moves in the shadows, protecting the innocent and ensuring his people’s secrets never fall into the wrong hands.</value>
+  </data>
+  <data name="globalHistoryNotpacGoat" xml:space="preserve">
+    <value>Notpac-Goat got lost in a magical maze, chased by shadows. But instead of running, it began devouring everything in its path, gaining strength with each step. Now it races through the corridors, escaping and destroying whatever crosses its way, its light growing with every victory.</value>
+  </data>
+  <data name="globalHistoryGoatSlayer" xml:space="preserve">
+    <value>Goat Slayer is an unstoppable goat, forged in the fight against the dark forces threatening Capraterra. Armed with sharp horns and relentless fury, she battles monsters and infernal creatures emerging from the depths of the world. Each battle makes her stronger, and her name has become a legend among those fighting the shadows. No enemy can stop her.</value>
+  </data>
+  <data name="globalHistoryPlumberGoat" xml:space="preserve">
+    <value>Pumber Goat is a plumbing expert goat, renowned for her ability to solve the most complicated pipe problems in Capraterra. With her toolbox and skill, she ventures into the darkest tunnels and ducts, fixing leaks, unclogging drains, and facing aquatic creatures lurking in the sewers. Always with a smile and her plumber’s cap, Pumber Goat keeps Capraterra’s flow running, tackling every challenge with ingenuity and bravery.</value>
+  </data>
+  <data name="globalHistoryGoatink" xml:space="preserve">
+    <value>Goatink is a mysterious goat carrying an ancient legacy, marked by a grand destiny. With her green cloak and bow, she travels through forests, mountains, and forgotten ruins in search of magical artifacts to save Capraterra. Guided by a supernatural force, she faces monsters, solves puzzles, and delves into forbidden places, unraveling the secrets of an ancient civilization. Goatink is more than a heroine; she is the hope Capraterra needs to restore lost balance.</value>
+  </data>
+  <data name="globalHistoryG.T.A" xml:space="preserve">
+    <value>G.T.A.-Goat Tactical Assault is an elite goat known for her cunning and strategic skills. Raised in the streets of Capraterra, she joined a secret organization of expert tacticians, trained in stealth, driving, and combat. Armed with cutting-edge equipment, she infiltrates enemy territories, dismantling criminal operations and confronting rogue gangs. With an unstoppable style and a defiant attitude, G.T.A.-Goat is the nightmare of criminals, always one step ahead in her mission to restore order to her world.</value>
+  </data>
+  <data name="globalHistoryGoatzzz" xml:space="preserve">
+    <value>Goatzzz is an explosive goat born in the depths of Capraterra’s caves. Her body, covered in strange energy, glows in the dark as she sneaks toward her target. With every step, her tension builds until, at the least expected moment, she explodes in a massive detonation! With her fixed gaze and silent stride, Goatzzz lurks in the corners of the world, ready to destroy everything in her path, leaving a trail of chaos behind. No one knows when or where she will strike, but everyone knows her explosion will be devastating.</value>
+  </data>
+  <data name="globalHistoryMasterGoat" xml:space="preserve">
+    <value>Master Goat is a legendary goat, forged in battle and designed to protect his home. Raised in a world ravaged by invaders, she joined a secret program that transformed her into an unstoppable warrior. With advanced armor and horns sharp as a sword, Master Goat leads her herd against the dark forces, facing colossal creatures and monsters on the battlefield. Her presence is a beacon of hope, and her mission is clear: save her home from total destruction, no matter the cost.</value>
+  </data>
 </root>

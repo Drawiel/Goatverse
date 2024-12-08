@@ -129,9 +129,6 @@
     <Compile Include="Windows\UserControllers\ItemFriend.xaml.cs">
       <DependentUpon>ItemFriend.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\UserControllers\MyMessage.xaml.cs">
-      <DependentUpon>MyMessage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\UserControllers\PlayerCard.xaml.cs">
       <DependentUpon>PlayerCard.xaml</DependentUpon>
     </Compile>
@@ -197,10 +194,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\UserControllers\ItemFriend.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\UserControllers\MyMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -366,13 +359,13 @@
     <Resource Include="Multimedia\match_3players.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Multimedia\Cards\mastergoat.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Multimedia\errorMessageBackground.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Multimedia\bellGoatLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Multimedia\Cards\Master Goat.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
