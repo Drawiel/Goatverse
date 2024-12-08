@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Goatverse.GoatverseService;
+using Goatverse.Logic.Classes;
 
 namespace Goatverse.Windows {
     /// <summary>
@@ -20,10 +21,11 @@ namespace Goatverse.Windows {
     /// </summary>
     public partial class Deck : Window {
         private GoatverseService.CardsManagerClient cardsManager;
+        private ResourceManager resourceManager = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(Deck).Assembly);
+
         public Deck() {
             InitializeComponent();
             cardsManager = new GoatverseService.CardsManagerClient();
-            ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
         }
 
         public void BtnClickGoat(object sender, RoutedEventArgs e) {
@@ -33,8 +35,8 @@ namespace Goatverse.Windows {
                 string imagePath = "../Multimedia/Cards/Master Goat.png";
 
                 if(card != null) {
-                    ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
-                    string globalHistory = test.GetString("globalHistoryGoat");
+                    
+                    string globalHistory = resourceManager.GetString("globalHistoryGoat");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -44,7 +46,7 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Card not found.");
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -55,8 +57,8 @@ namespace Goatverse.Windows {
                 string imagePath = "../Multimedia/Cards/Master Goat.png";
 
                 if(card != null) {
-                    ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
-                    string globalHistory = test.GetString("globalHistoryGoatSalvatore");
+                    
+                    string globalHistory = resourceManager.GetString("globalHistoryGoatSalvatore");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -66,7 +68,7 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Card not found.");
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -77,8 +79,8 @@ namespace Goatverse.Windows {
                 string imagePath = "../Multimedia/Cards/Master Goat.png";
 
                 if(card != null) {
-                    ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
-                    string globalHistory = test.GetString("globalHistoryNotpacGoat");
+                    
+                    string globalHistory = resourceManager.GetString("globalHistoryNotpacGoat");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -88,7 +90,7 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Card not found.");
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -99,8 +101,8 @@ namespace Goatverse.Windows {
                 string imagePath = "../Multimedia/Cards/Master Goat.png";
 
                 if(card != null) {
-                    ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
-                    string globalHistory = test.GetString("globalHistoryGoatSlayer");
+                    
+                    string globalHistory = resourceManager.GetString("globalHistoryGoatSlayer");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -110,7 +112,7 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Card not found.");
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -121,8 +123,8 @@ namespace Goatverse.Windows {
                 string imagePath = "../Multimedia/Cards/Master Goat.png";
 
                 if(card != null) {
-                    ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
-                    string globalHistory = test.GetString("globalHistoryPlumberGoat");
+                    
+                    string globalHistory = resourceManager.GetString("globalHistoryPlumberGoat");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -132,7 +134,7 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Card not found.");
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -143,8 +145,8 @@ namespace Goatverse.Windows {
                 string imagePath = "../Multimedia/Cards/Master Goat.png";
 
                 if(card != null) {
-                    ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
-                    string globalHistory = test.GetString("globalHistoryGoatLink");
+                    
+                    string globalHistory = resourceManager.GetString("globalHistoryGoatLink");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -154,7 +156,7 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Card not found.");
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -165,8 +167,8 @@ namespace Goatverse.Windows {
                 string imagePath = "../Multimedia/Cards/Master Goat.png";
 
                 if(card != null) {
-                    ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
-                    string globalHistory = test.GetString("globalHistoryG.T.A.");
+                    
+                    string globalHistory = resourceManager.GetString("globalHistoryG.T.A.");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -176,7 +178,7 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Card not found.");
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -187,8 +189,8 @@ namespace Goatverse.Windows {
                 string imagePath = "../Multimedia/Cards/Master Goat.png";
 
                 if(card != null) {
-                    ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
-                    string globalHistory = test.GetString("globalHistoryGoatzzz");
+                    
+                    string globalHistory = resourceManager.GetString("globalHistoryGoatzzz");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -197,8 +199,8 @@ namespace Goatverse.Windows {
                 else {
                     MessageBox.Show("Card not found.");
                 }
-            } catch(Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+            } catch (Exception ex) {
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -209,8 +211,8 @@ namespace Goatverse.Windows {
                 string imagePath = "../Multimedia/Cards/Master Goat.png";
 
                 if(card != null) {
-                    ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
-                    string globalHistory = test.GetString("globalHistoryMasterGoat");
+                    
+                    string globalHistory = resourceManager.GetString("globalHistoryMasterGoat");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -220,7 +222,7 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Card not found.");
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -231,8 +233,8 @@ namespace Goatverse.Windows {
                 string imagePath = "../Multimedia/Cards/Master Goat.png";
 
                 if(card != null) {
-                    ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
-                    string globalHistory = test.GetString("globalHistoryMasterGoat");
+                    
+                    string globalHistory = resourceManager.GetString("globalHistoryMasterGoat");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -242,7 +244,7 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Card not found.");
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -253,8 +255,8 @@ namespace Goatverse.Windows {
                 string imagePath = "../Multimedia/Cards/Master Goat.png";
 
                 if(card != null) {
-                    ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
-                    string globalHistory = test.GetString("globalHistoryMasterGoat");
+                    
+                    string globalHistory = resourceManager.GetString("globalHistoryMasterGoat");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -263,8 +265,8 @@ namespace Goatverse.Windows {
                 else {
                     MessageBox.Show("Card not found.");
                 }
-            } catch(Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+            } catch (Exception ex) {
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -275,8 +277,8 @@ namespace Goatverse.Windows {
                 string imagePath = "../Multimedia/Cards/Master Goat.png";
 
                 if(card != null) {
-                    ResourceManager test = new ResourceManager("Goatverse.Properties.Langs.Lang", typeof(MainWindow).Assembly);
-                    string globalHistory = test.GetString("globalHistoryMasterGoat");
+                    
+                    string globalHistory = resourceManager.GetString("globalHistoryMasterGoat");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -286,7 +288,7 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Card not found.");
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                ExceptionHandler.HandleServiceException(ex);  
             }
         }
 

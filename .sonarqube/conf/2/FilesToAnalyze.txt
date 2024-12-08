@@ -1,0 +1,7 @@
+﻿C:\Users\daur0\source\repos\Goatverse\Client.Tests\FieldValidatorTest.cs
+C:\Users\daur0\source\repos\Goatverse\Client.Tests\Properties\AssemblyInfo.cs
+C:\Users\daur0\source\repos\Goatverse\packages\MSTest.TestAdapter.2.2.10\build\_common\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\daur0\source\repos\Goatverse\packages\MSTest.TestAdapter.2.2.10\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\daur0\source\repos\Goatverse\packages\MSTest.TestAdapter.2.2.10\build\net46\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\daur0\source\repos\Goatverse\packages\MSTest.TestAdapter.2.2.10\build\net46\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\daur0\source\repos\Goatverse\Client.Tests\packages.config

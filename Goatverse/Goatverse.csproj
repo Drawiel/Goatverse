@@ -91,6 +91,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\Classes\ExceptionHandler.cs" />
     <Compile Include="Logic\Classes\FieldValidator.cs" />
     <Compile Include="Logic\Classes\Message.cs" />
     <Compile Include="Logic\Classes\UserSession.cs" />
@@ -148,7 +149,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Logic\Classes\Card.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

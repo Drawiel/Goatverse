@@ -22,7 +22,6 @@ namespace Goatverse.Windows {
     /// Lógica de interacción para Start.xaml
     /// </summary>
     public partial class Start : Window, GoatverseService.ILobbyManagerCallback{
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private GoatverseService.LobbyManagerClient lobbyManagerClient;
         GoatverseService.FriendsManagerClient friendsManagerClient;
@@ -30,8 +29,7 @@ namespace Goatverse.Windows {
 
         public Start() {
             InitializeComponent();
-            UserSession userSession = new UserSession();
-            userSession = UserSessionManager.GetInstance().GetUser();
+            UserSession userSession = UserSessionManager.GetInstance().GetUser();
             usernamePlayer = userSession.Username;
             
             if (!usernamePlayer.Contains("Guest")) {
@@ -48,7 +46,7 @@ namespace Goatverse.Windows {
             
         }
 
-        private string GenerateLobbyCode(int length = 6) {
+        private static string GenerateLobbyCode(int length = 6) {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             Random random = new Random();
             return new string(Enumerable.Repeat(chars, length)
@@ -69,18 +67,8 @@ namespace Goatverse.Windows {
                 } else {
                     MessageBox.Show("Lobby already exists");
                 }
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
 
         }
@@ -128,18 +116,8 @@ namespace Goatverse.Windows {
                 }
 
 
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -177,18 +155,8 @@ namespace Goatverse.Windows {
 
                     stckPanelFriends.Children.Add(itemFriend);
                 }
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
 
         }
@@ -221,18 +189,8 @@ namespace Goatverse.Windows {
                     MessageBox.Show("Already sent");
                 }
                 
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
 
         }
@@ -262,18 +220,8 @@ namespace Goatverse.Windows {
 
                     gridFriendRequests.Children.Add(itemFriendRequest);
                 }
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -286,20 +234,10 @@ namespace Goatverse.Windows {
                     LoadFriendRequest();
                     LoadFriends();
                 } else { 
-                
+                    MessageBox.Show(Lang.messageGameError);
                 }
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -307,28 +245,15 @@ namespace Goatverse.Windows {
             try {
                 friendsManagerClient = new GoatverseService.FriendsManagerClient();
                 bool friendRemoved = friendsManagerClient.ServiceRemoveFriend(usernameFriend, usernamePlayer);
-                if (friendRemoved) {
-                    MessageBox.Show("Friend Removed");
-                    LoadFriends();
-                } else if (friendRemoved = friendsManagerClient.ServiceRemoveFriend(usernamePlayer, usernameFriend)) {
+                if (friendRemoved || friendsManagerClient.ServiceRemoveFriend(usernamePlayer, usernameFriend)){
                     MessageBox.Show("Friend Removed");
                     LoadFriends();
                 } else {
-                    MessageBox.Show(" ");
+                    MessageBox.Show(Lang.messageGameError);
                 }
 
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -361,15 +286,8 @@ namespace Goatverse.Windows {
 
                     gridBlockedUsers.Children.Add(itemFriendRequest);
                 }
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -384,18 +302,8 @@ namespace Goatverse.Windows {
                     MessageBox.Show(" ");
                 }
 
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -411,29 +319,22 @@ namespace Goatverse.Windows {
                     MessageBox.Show(" ");
                 }
 
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
-        private void BtnClickChangeLanguajeToSpanish(object sender, RoutedEventArgs e) {
+        public void BtnClickChangeLanguajeToSpanish(object sender, RoutedEventArgs e) {
             Properties.Settings.Default.languageCode = "es-MX";
             Properties.Settings.Default.Save();
+            MessageBox.Show(Lang.messageGamesRequiresRestart);
         }
 
-        private void BtnClickChangeLanguajeToEnglish(object sender, RoutedEventArgs e) {
+        public void BtnClickChangeLanguajeToEnglish(object sender, RoutedEventArgs e) {
             Properties.Settings.Default.languageCode = "en-US";
             Properties.Settings.Default.Save();
+            MessageBox.Show(Lang.messageGamesRequiresRestart);
+
         }
 
         public void ServiceOwnerLeftLobby(string newOwner) { }

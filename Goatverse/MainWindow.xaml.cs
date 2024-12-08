@@ -2,6 +2,8 @@
 using Goatverse.Logic.Classes;
 using Goatverse.Properties.Langs;
 using Goatverse.Windows;
+using log4net.Config;
+using log4net;
 using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -28,10 +30,8 @@ namespace Goatverse
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public MainWindow() {
-            InitializeMaterialDesign();
             InitializeComponent();
         }
 
@@ -69,21 +69,11 @@ namespace Goatverse
                 } else {
                     MessageBox.Show(Lang.messageWrongPassword);
                 }
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
-            } catch (Exception ex) { 
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+            } catch (Exception ex) {
+                ExceptionHandler.HandleServiceException(ex);
             }
-            
-            
+
+
         }
 
         private void CardMouseEnter(object sender, MouseEventArgs e) {
@@ -110,11 +100,6 @@ namespace Goatverse
 
 
             card.BeginAnimation(FrameworkElement.MarginProperty, marginAnimation);
-        }
-
-        private void InitializeMaterialDesign() {
-            var card = new MaterialDesignThemes.Wpf.Card();
-            var hue = new Hue("Dummy", Colors.Black, Colors.White);
         }
 
         private void BtnClickSignIn(object sender, RoutedEventArgs e) {
@@ -148,20 +133,8 @@ namespace Goatverse
                 if (login) { 
                     MessageBox.Show(Lang.messageSuccessfulSignIn);
                 } 
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-
-            } catch (CommunicationException ex) { 
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
 
         }

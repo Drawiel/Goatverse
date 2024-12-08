@@ -36,11 +36,5 @@ namespace Goatverse.Windows.UserControllers {
         }
         public static readonly DependencyProperty ImagePropierty = DependencyProperty.Register("Image", typeof(ImageSource), typeof(UserChat));
 
-        public static readonly DependencyProperty HorizontalAlignmentProperty = DependencyProperty.Register("HorizontalAlignment", typeof(string), typeof(UserChat), new PropertyMetadata(string.Empty));
-
-        public string HorizontalAlignment {
-            get { return (string)GetValue(HorizontalAlignmentProperty); }
-            set { SetValue(HorizontalAlignmentProperty, value); }
-        }
     }
 }

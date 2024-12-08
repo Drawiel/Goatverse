@@ -26,12 +26,11 @@ namespace Goatverse.Windows {
     /// Interaction logic for Lobby.xaml
     /// </summary>
     public partial class Lobby : Window, GoatverseService.ILobbyManagerCallback {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private int playerCount = 0;
         private string ownerGamertag;
         private GoatverseService.LobbyManagerClient lobbyManagerClient;
-        public ObservableCollection<UserControl> userControls { get; set; }
+        public ObservableCollection<UserControl> UserControls { get; set; }
         private string usernamePlayer;
         private string lobbyCode;
         private PlayerData[] playersList;
@@ -41,63 +40,38 @@ namespace Goatverse.Windows {
             
 
             lobbyCode = joinedLobbyCode;
-            UserSession userSession = new UserSession();
-            userSession = UserSessionManager.GetInstance().GetUser();
+            UserSession userSession = UserSessionManager.GetInstance().GetUser();
             usernamePlayer = userSession.Username;
             try {
-
-
                 InstanceContext context = new InstanceContext(this);
                 lobbyManagerClient = new GoatverseService.LobbyManagerClient(context);
-
-                userControls = new ObservableCollection<UserControl>();
+                UserControls = new ObservableCollection<UserControl>();
                 DataContext = this;
 
                 lobbyManagerClient.ServiceConnectToLobby(usernamePlayer, lobbyCode);
                 InitializeComponent();
                 chipCopyCode.Content = lobbyCode;
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-                Start start = new Start();
-                start.Show();
-                this.Close();
-
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-                Start start = new Start();
-                start.Show();
-                this.Close();
-
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
-                Start start = new Start();
-                start.Show();
-                this.Close();
-
             } catch (Exception ex) {
-                
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
                 Start start = new Start();
                 start.Show();
                 this.Close();
+                
             }
         }
 
         public void ServiceGetMessage(MessageData messageData) {
             try {
-                Message message = new Message();
-                message.LobbyCode = lobbyCode;
-                message.UserName = messageData.Username;
+                Message message = new Message {
+                    LobbyCode = lobbyCode,
+                    UserName = messageData.Username
+                };
                 string color = "LightBlue";
-                string horizontalAlignment = "Left";
+                HorizontalAlignment horizontalAlignment = HorizontalAlignment.Left;
 
                 if (message.UserName == usernamePlayer) {
                     color = "LightGray";
-                    horizontalAlignment = "Right";
+                    horizontalAlignment = HorizontalAlignment.Right;
                 }
 
                 var userChat = new UserChat {
@@ -111,21 +85,11 @@ namespace Goatverse.Windows {
                     HorizontalAlignment = horizontalAlignment,
                 };
 
-                userControls.Add(userChat);
-                userControls.Add(chatMessage);
+                UserControls.Add(userChat);
+                UserControls.Add(chatMessage);
                 scrollViewerChat.ScrollToBottom();
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -146,18 +110,8 @@ namespace Goatverse.Windows {
                 lobbyManagerClient.ServiceSendMessageToLobby(messageData);
                 textBoxMessage.Clear();
                 scrollViewerChat.ScrollToBottom();
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -203,18 +157,8 @@ namespace Goatverse.Windows {
                 }
 
                 playersList = players;
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -224,18 +168,8 @@ namespace Goatverse.Windows {
                 if (!matchStarted) {
                     MessageBox.Show(Lang.messageLobbyOwnerStartGame);
                 }
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -271,18 +205,8 @@ namespace Goatverse.Windows {
                 } else {
                     MessageBox.Show("Couldn't disconnect from lobby");
                 }
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -293,18 +217,8 @@ namespace Goatverse.Windows {
                     match.Show();
                     this.Close();
                 });
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -320,18 +234,8 @@ namespace Goatverse.Windows {
                         MessageBox.Show("Ahora eres el propietario del lobby. Puedes iniciar la partida.");
                     }
                 });
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -353,18 +257,8 @@ namespace Goatverse.Windows {
                         MessageBox.Show("Ahora eres el propietario del lobby.");
                     }
                 });
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
     }

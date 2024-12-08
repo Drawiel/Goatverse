@@ -1,0 +1,74 @@
+﻿C:\Users\daur0\source\repos\Goatverse\Goatverse\App.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Logic\Classes\ExceptionHandler.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Logic\Classes\FieldValidator.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Logic\Classes\Message.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Logic\Classes\UserSession.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Logic\Classes\UserSessionManager.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\ScreenSizeToFontSizeConverter.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\Deck.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\Lobby.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\Match.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\Profile.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\Start.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\ChatMessage.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\ChatSeparator.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\ConfirmationMessage.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\ErrorMessage.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\InformationMessage.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\ItemFriend.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\PlayerCard.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\UserChat.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\App.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\MainWindow.xaml.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Properties\AssemblyInfo.cs
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Properties\Langs\Lang.resx
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Properties\Resources.resx
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Properties\Langs\Lang.en-US.resx
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Properties\Langs\Lang.es-MX.resx
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\Goatverse.GoatverseService.CardData.datasource
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\Goatverse.GoatverseService.MatchData.datasource
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\Goatverse.GoatverseService.PlayerData1.datasource
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\Goatverse.GoatverseService.ProfileData.datasource
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\item.xsd
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\item1.xsd
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\item2.xsd
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\item3.xsd
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\ServiceImplementation.wsdl
+C:\Users\daur0\source\repos\Goatverse\Goatverse\log4net.config
+C:\Users\daur0\source\repos\Goatverse\Goatverse\packages.config
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Properties\Settings.settings
+C:\Users\daur0\source\repos\Goatverse\Goatverse\App.config
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\item.disco
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\configuration91.svcinfo
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\configuration.svcinfo
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Connected Services\GoatverseService\Reference.svcmap
+C:\Users\daur0\source\repos\Goatverse\Goatverse\MainWindow.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\Deck.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\Lobby.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\Match.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\Profile.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\Start.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\ChatMessage.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\ChatSeparator.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\ConfirmationMessage.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\ErrorMessage.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\InformationMessage.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\ItemFriend.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\PlayerCard.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Windows\UserControllers\UserChat.xaml
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\login.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\chat_logo.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\start.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\sword.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\lobby.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\sword_broke.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\gato1.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\gato2.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\gato3.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\gato4.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\gato5.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\gato6.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\match_3players.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\errorMessageBackground.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\bellGoatLogo.png
+C:\Users\daur0\source\repos\Goatverse\Goatverse\Multimedia\Cards\Master Goat.png

@@ -19,7 +19,6 @@ using System.ServiceModel;
 namespace Goatverse.Windows {
 
     public partial class Profile : Window{
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private string usernamePlayer;
         private string emailInstance;
@@ -31,8 +30,7 @@ namespace Goatverse.Windows {
         public Profile() {
             InitializeComponent();
 
-            UserSession userSession = new UserSession();
-            userSession = UserSessionManager.GetInstance().GetUser();
+            UserSession userSession = UserSessionManager.GetInstance().GetUser();
             usernamePlayer = userSession.Username;
             emailInstance = userSession.Email;
             profileManager = new GoatverseService.ProfilesManagerClient();
@@ -47,18 +45,8 @@ namespace Goatverse.Windows {
                 txtBlockUsername.Text = usernamePlayer;
                 imageId = profileData.ImageId;
                 Changeimage();
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+               ExceptionHandler.HandleServiceException(ex);
             }
         }
 
@@ -82,65 +70,55 @@ namespace Goatverse.Windows {
         }
 
         private void BtnClickUpdateProfile(object sender, RoutedEventArgs e) {
+            string newUsername = txtBoxUsername.Text;
+            string oldPassword = pwdBoxOldPassword.Password.ToString();
+            string newPassword = pwdBoxNewPassword.Password.ToString();
+
+            if (string.IsNullOrEmpty(emailInstance)) {
+                MessageBox.Show("No se pudo recuperar el correo electrónico.");
+                return;
+            }
+
+            userManager = new GoatverseService.UsersManagerClient();
+            var userData = new UserData {
+                Username = newUsername,
+                Email = emailInstance,
+                Password = newPassword
+            };
+
+            bool updatedResult = UpdateUserProfile(userData, newUsername, oldPassword);
+
+            if (updatedResult) {
+                MessageBox.Show("User changed");
+                UpdateUserSession(newUsername, emailInstance);
+            } else {
+                MessageBox.Show("Error: User not changed");
+            }
+        }
+
+        private void UpdateUserSession(string username, string email) {
+            var userSession = new UserSession {
+                Username = username,
+                Email = email
+            };
+            UserSessionManager.GetInstance().LoginUser(userSession);
+            txtBlockUsername.Text = username;
+        }
+
+        private bool UpdateUserProfile(UserData userData, string newUsername, string oldPassword) {
             try {
-                string newUsername = txtBoxUsername.Text;
-                string oldPassword = pwdBoxOldPassword.Password.ToString();
-                string newPassword = pwdBoxNewPassword.Password.ToString();
-                bool updatedResult = false;
-                userManager = new GoatverseService.UsersManagerClient();
-
-                if(emailInstance != null) {
-                    var userData = new UserData {
-                        Username = newUsername,  
-                        Email = emailInstance,
-                        Password = newPassword
-                    };
-
-                    if (!string.IsNullOrEmpty(oldPassword) && !string.IsNullOrEmpty(newUsername)) {
-                        
-                        updatedResult = UpdatePassword(userData, oldPassword);
-
-                    } else if (!string.IsNullOrEmpty(newUsername) && string.IsNullOrEmpty(oldPassword)) {
-                        updatedResult = userManager.ServiceUsernameChanged(userData);
-
-                        UserSession userSession = new UserSession {
-                            Username = newUsername,
-                            Email = emailInstance,
-                        };
-                        UserSessionManager.GetInstance().LoginUser(userSession);
-                        txtBlockUsername.Text = newUsername;
-
-                    } else if (!string.IsNullOrEmpty(newUsername) && !string.IsNullOrEmpty(oldPassword)) {
-                        updatedResult = UpdateUsernameAndPassword(userData, oldPassword);
-                        UserSession userSession = new UserSession {
-                            Username = newUsername,
-                            Email = emailInstance,
-                        };
-                        UserSessionManager.GetInstance().LoginUser(userSession);
-                        txtBlockUsername.Text = newUsername;
-                    }
-                    
-                    if (updatedResult) {
-                        MessageBox.Show("User changed");
-                    } else {
-                        MessageBox.Show("Error: User not changed");
-                    }
+                if (!string.IsNullOrEmpty(newUsername) && !string.IsNullOrEmpty(oldPassword)) {
+                    return UpdateUsernameAndPassword(userData, oldPassword);
+                } else if (!string.IsNullOrEmpty(newUsername)) {
+                    return userManager.ServiceUsernameChanged(userData);
+                } else if (!string.IsNullOrEmpty(oldPassword)) {
+                    return UpdatePassword(userData, oldPassword);
                 }
-                else {
-                    MessageBox.Show("No se pudo recuperar el correo electrónico.");
-                }
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
+
+                return false;
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
+                return false;
             }
         }
 
@@ -158,21 +136,8 @@ namespace Goatverse.Windows {
                 }
                 MessageBox.Show("Old Password is Incorrect");
                 return false;
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-                return false;
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-                return false;
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
-                return false;
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
                 return false;
             }
         }
@@ -189,35 +154,26 @@ namespace Goatverse.Windows {
                 }
                 MessageBox.Show("Old Password is Incorrect");
                 return false;
-            } catch (EndpointNotFoundException ex) {
-                MessageBox.Show(Lang.messageServerLostConnection);
-                log.Error(ex.Message);
-                return false;
-            } catch (TimeoutException ex) {
-                MessageBox.Show(Lang.messageConnectionTookTooLong);
-                log.Error(ex.Message);
-                return false;
-            } catch (CommunicationException ex) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
-                log.Error(ex.Message);
-                return false;
             } catch (Exception ex) {
-                MessageBox.Show(Lang.messageUnexpectedError);
-                log.Error(ex.Message);
+                ExceptionHandler.HandleServiceException(ex);
                 return false;
             }
         }
 
         private void BtnClickSaveChanges(object sender, RoutedEventArgs e) {
-            if (imageId != -1) {
-                bool imageChanged = profileManager.ServiceChangeProfileImage(usernamePlayer, imageId);
+            try {
+                if (imageId != -1) {
+                    bool imageChanged = profileManager.ServiceChangeProfileImage(usernamePlayer, imageId);
 
-                if (imageChanged) {
-                    MessageBox.Show("image changed");
-                    Changeimage();
-                } else {
-                    MessageBox.Show("Error");
+                    if (imageChanged) {
+                        MessageBox.Show("image changed");
+                        Changeimage();
+                    } else {
+                        MessageBox.Show("Error");
+                    }
                 }
+            } catch (Exception ex) {
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 

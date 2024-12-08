@@ -35,12 +35,5 @@ namespace Goatverse.Windows.UserControllers {
             get { return (string)GetValue(ColorPropierty); }
             set { SetValue(ColorPropierty, value); }
         }
-
-        public static readonly DependencyProperty HorizontalAlignmentProperty = DependencyProperty.Register("HorizontalAlignment", typeof(string), typeof(ChatMessage), new PropertyMetadata(string.Empty));
-
-        public string HorizontalAlignment {
-            get { return (string)GetValue(HorizontalAlignmentProperty); }
-            set { SetValue(HorizontalAlignmentProperty, value); }
-        }
     }
 }
