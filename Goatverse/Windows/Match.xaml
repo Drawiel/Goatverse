@@ -79,13 +79,24 @@
                 <ColumnDefinition Width="600*" />
                 <ColumnDefinition Width="50*" />
             </Grid.ColumnDefinitions>
-
-            <Label 
+            <WrapPanel 
+                Grid.Column="1" 
+                HorizontalAlignment="Center">
+                
+                <Label 
                 x:Name="lblCurrentTurn" 
-                Content="" 
+                Content="lblCurrentTurn" 
                 Grid.Column="1"
                 FontSize="50"
                 HorizontalAlignment="Center"/>
+            <Label 
+                x:Name="lblTimeRemaining" 
+                Content="time" 
+                Grid.Column="1"
+                FontSize="50"
+                HorizontalAlignment="Center"/>
+            </WrapPanel>
+            
 
 
             <!-- Área de descarte 

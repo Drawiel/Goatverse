@@ -100,16 +100,19 @@ namespace Goatverse.Windows {
 
         private void BtnClickSendMessage(object sender, RoutedEventArgs e) {
             try {
-                string messageText = textBoxMessage.Text;
+                if (!string.IsNullOrEmpty(textBoxMessage.Text)) { 
+                    string messageText = textBoxMessage.Text;
 
-                GoatverseService.MessageData messageData = new MessageData();
-                messageData.Message = messageText;
-                messageData.Username = usernamePlayer;
-                messageData.LobbyCode = lobbyCode;
+                    GoatverseService.MessageData messageData = new MessageData();
+                    messageData.Message = messageText;
+                    messageData.Username = usernamePlayer;
+                    messageData.LobbyCode = lobbyCode;
 
-                lobbyManagerClient.ServiceSendMessageToLobby(messageData);
-                textBoxMessage.Clear();
-                scrollViewerChat.ScrollToBottom();
+                    lobbyManagerClient.ServiceSendMessageToLobby(messageData);
+                    textBoxMessage.Clear();
+                    scrollViewerChat.ScrollToBottom();
+                }
+                
             } catch (Exception ex) {
                 ExceptionHandler.HandleServiceException(ex);
             }
@@ -183,7 +186,7 @@ namespace Goatverse.Windows {
         private void StartMatch() {
             MessageBox.Show("Iniciando la partida...");
             this.Close();
-            Match matchWindow = new Match(playersList, lobbyCode);
+            Match matchWindow = new Match(playersList, lobbyCode, ownerGamertag);
             matchWindow.Show();
         }
 
@@ -213,7 +216,7 @@ namespace Goatverse.Windows {
         public void ServiceNotifyMatchStart() {
             try {
                 Application.Current.Dispatcher.Invoke(() => {
-                    Match match = new Match(playersList, lobbyCode);
+                    Match match = new Match(playersList, lobbyCode, ownerGamertag);
                     match.Show();
                     this.Close();
                 });

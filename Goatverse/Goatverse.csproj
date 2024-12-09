@@ -272,9 +272,6 @@
     <None Include="Connected Services\GoatverseService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GoatverseService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\GoatverseService\ServiceImplementation.wsdl" />
     <None Include="log4net.config" />
     <None Include="packages.config" />
@@ -306,9 +303,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\GoatverseService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\GoatverseService\item.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\GoatverseService\configuration91.svcinfo" />
@@ -366,6 +360,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Multimedia\Cards\Master Goat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\GoatverseService\item.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />

@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Goatverse.GoatverseService;
+using Goatverse.Logic.Classes;
 using IOPath = System.IO.Path; 
 
 namespace Goatverse.Windows {
@@ -29,65 +30,54 @@ namespace Goatverse.Windows {
         private List<Border> selectedCards = new List<Border>();
         private DispatcherTimer turnTimer;
         private int turnTimeRemaining;
+        private string lobbyCode;
+        private string usernamePlayer;
+        private string currentTurnPlayer;
+
 
         private GoatverseService.MatchManagerClient matchManagerClient;
 
-        public Match(PlayerData[] playersList, string lobbyCode) {
+        public Match(PlayerData[] playersList, string lobbyCode, string ownerGamertag) {
+            UserSession userSession = UserSessionManager.GetInstance().GetUser();
+            usernamePlayer = userSession.Username;
             InitializeComponent();
             playersCardsStackPlanel = this.FindName("stackPanelPlayersCards") as StackPanel;
             lblCurrentTurn = this.FindName("lblCurrentTurn") as Label;
-            InitializePlayerCards(3);
-
+            this.lobbyCode = lobbyCode;
             turnTimer = new DispatcherTimer();
             turnTimer.Interval = TimeSpan.FromSeconds(1); 
             turnTimer.Tick += TurnTimer_Tick;
             turnTimeRemaining = 10;
-            //UpdateCurrentTurn("Jugador 1");
             InstanceContext context = new InstanceContext(this);
             matchManagerClient = new GoatverseService.MatchManagerClient(context);
-
-            string [] usernames = GetUsernames(playersList);
-            matchManagerClient.ServiceInitializeGameTurns(lobbyCode, usernames);
-        }
-
-        public string[] GetUsernames(PlayerData[] playersList){
-            string[] usernames = new string[playersList.Length];
-
-            for (int i = 0; i < playersList.Length; i++){
-                usernames[i] = playersList[i].Username;
-            }
-            return usernames;
-        }
-
-
-        private void GenerateTurnOrder() { 
-
+            matchManagerClient.ServiceConnectToGame(usernamePlayer, lobbyCode);
+            matchManagerClient.ServiceInitializeGameTurns(lobbyCode);
         }
 
         private void TurnTimer_Tick(object sender, EventArgs e) {
             turnTimeRemaining--;
+            if (turnTimeRemaining > 0) {
+                Debug.WriteLine($"Tiempo restante: {turnTimeRemaining}");
+                lblTimeRemaining.Content = $"Tiempo restante: {turnTimeRemaining} segundos";
 
-            Debug.WriteLine($"Tiempo restante: {turnTimeRemaining}"); 
-
-            lblCurrentTurn.Content = $"Es el turno de: {turnTimeRemaining} segundos restantes";
-
-            if(turnTimeRemaining <= 0) {
+            } else {
+                matchManagerClient.ServiceNotifyEndTurn(lobbyCode, currentTurnPlayer);
                 turnTimer.Stop();
-                //UpdateCurrentTurn("Jugador 2"); 
-                turnTimeRemaining = 30;
-                turnTimer.Start();
             }
         }
 
-        /*public void UpdateCurrentTurn(string currentTurn) {
-            lblCurrentTurn.Content = $"Es el turno de: {currentTurn}";
+        public void UpdateCurrentTurn(string currentTurn) {
+            Application.Current.Dispatcher.Invoke(() => {
+                lblCurrentTurn.Content = $"Es el turno de: {currentTurn}";
+            });
+            currentTurnPlayer = currentTurn;
             turnTimeRemaining = 30;
             turnTimer.Start();
         }
 
         public void SyncTimer() {
             MessageBox.Show("El temporizador ha sido sincronizado.", "Sincronización de temporizador", MessageBoxButton.OK, MessageBoxImage.Information);
-        }*/
+        }
 
         private void InitializePlayerCards(int initialCardCount) {
             for(int i = 0; i < initialCardCount; i++) {
@@ -294,16 +284,17 @@ namespace Goatverse.Windows {
             card.BeginAnimation(FrameworkElement.MarginProperty, marginAnimation);
         }
 
-        public void ServiceNotifyEndGame(string matchId, string winnerUsername) { // Muestra el ganador de la partida y regresa todos al lobby
+        public void ServiceNotifyEndGame(string matchId, string winnerUsername) {
             throw new NotImplementedException();
         }
 
-        public void ServiceUpdateCurrentTurn(string currentTurn) { // Cambiar el turno, que pase el turno, notifique el turno de quien va y habilitar al jugador
-            throw new NotImplementedException();
+        public void ServiceUpdateCurrentTurn(string currentTurn) {
+            UpdateCurrentTurn(currentTurn);
         }
 
         public void ServiceSyncTimer() {
-            throw new NotImplementedException(); // ver el tiempo de cada jugador, mover el contador de todos los jugadores para que esté bien
+            turnTimeRemaining = 30;
+            turnTimer.Start();
         }
     }
 
