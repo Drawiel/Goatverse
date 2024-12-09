@@ -145,15 +145,16 @@ namespace Goatverse
 
         private void BtnClickPlayAsGuest(object sender, RoutedEventArgs e) { 
             string username = "Guest " + textBoxUsernameGuest.Text;
-            UserSession userSession = new UserSession {
-                Username = username,
-            };
-            UserSessionManager.GetInstance().LoginUser(userSession);
+            if (!string.IsNullOrEmpty(textBoxUsernameGuest.Text.Trim())) { 
+                UserSession userSession = new UserSession {
+                    Username = username,
+                };
+                UserSessionManager.GetInstance().LoginUser(userSession);
 
-            Start start = new Start();
-            start.Show();
-            this.Close();
-
+                Start start = new Start();
+                start.Show();
+                this.Close();
+            }
         }
     }
 }

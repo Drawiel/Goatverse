@@ -1209,17 +1209,11 @@ namespace Goatverse.GoatverseService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceGetRecentMatches", ReplyAction="http://tempuri.org/IMatchManager/ServiceGetRecentMatchesResponse")]
         System.Threading.Tasks.Task<Goatverse.GoatverseService.MatchData[]> ServiceGetRecentMatchesAsync(int topN);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceGetCards", ReplyAction="http://tempuri.org/IMatchManager/ServiceGetCardsResponse")]
-        Goatverse.GoatverseService.CardData[] ServiceGetCards();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceGetCards", ReplyAction="http://tempuri.org/IMatchManager/ServiceGetCardsResponse")]
-        System.Threading.Tasks.Task<Goatverse.GoatverseService.CardData[]> ServiceGetCardsAsync();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceInitializeGameTurns")]
+        void ServiceInitializeGameTurns(string gameCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceInitializeGameTurns")]
-        void ServiceInitializeGameTurns(string gameCode, string[] gamertags);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceInitializeGameTurns")]
-        System.Threading.Tasks.Task ServiceInitializeGameTurnsAsync(string gameCode, string[] gamertags);
+        System.Threading.Tasks.Task ServiceInitializeGameTurnsAsync(string gameCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceNotifyEndTurn")]
         void ServiceNotifyEndTurn(string gameCode, string currentGamertag);
@@ -1232,6 +1226,12 @@ namespace Goatverse.GoatverseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceGetCurrentTurn", ReplyAction="http://tempuri.org/IMatchManager/ServiceGetCurrentTurnResponse")]
         System.Threading.Tasks.Task<string> ServiceGetCurrentTurnAsync(string gameCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceConnectToGame", ReplyAction="http://tempuri.org/IMatchManager/ServiceConnectToGameResponse")]
+        bool ServiceConnectToGame(string username, string lobbyCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceConnectToGame", ReplyAction="http://tempuri.org/IMatchManager/ServiceConnectToGameResponse")]
+        System.Threading.Tasks.Task<bool> ServiceConnectToGameAsync(string username, string lobbyCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1307,20 +1307,12 @@ namespace Goatverse.GoatverseService {
             return base.Channel.ServiceGetRecentMatchesAsync(topN);
         }
         
-        public Goatverse.GoatverseService.CardData[] ServiceGetCards() {
-            return base.Channel.ServiceGetCards();
+        public void ServiceInitializeGameTurns(string gameCode) {
+            base.Channel.ServiceInitializeGameTurns(gameCode);
         }
         
-        public System.Threading.Tasks.Task<Goatverse.GoatverseService.CardData[]> ServiceGetCardsAsync() {
-            return base.Channel.ServiceGetCardsAsync();
-        }
-        
-        public void ServiceInitializeGameTurns(string gameCode, string[] gamertags) {
-            base.Channel.ServiceInitializeGameTurns(gameCode, gamertags);
-        }
-        
-        public System.Threading.Tasks.Task ServiceInitializeGameTurnsAsync(string gameCode, string[] gamertags) {
-            return base.Channel.ServiceInitializeGameTurnsAsync(gameCode, gamertags);
+        public System.Threading.Tasks.Task ServiceInitializeGameTurnsAsync(string gameCode) {
+            return base.Channel.ServiceInitializeGameTurnsAsync(gameCode);
         }
         
         public void ServiceNotifyEndTurn(string gameCode, string currentGamertag) {
@@ -1337,6 +1329,14 @@ namespace Goatverse.GoatverseService {
         
         public System.Threading.Tasks.Task<string> ServiceGetCurrentTurnAsync(string gameCode) {
             return base.Channel.ServiceGetCurrentTurnAsync(gameCode);
+        }
+        
+        public bool ServiceConnectToGame(string username, string lobbyCode) {
+            return base.Channel.ServiceConnectToGame(username, lobbyCode);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ServiceConnectToGameAsync(string username, string lobbyCode) {
+            return base.Channel.ServiceConnectToGameAsync(username, lobbyCode);
         }
     }
     
