@@ -18,14 +18,16 @@ using System.ServiceModel;
 
 namespace Goatverse.Windows {
 
-    public partial class Profile : Window{
+    public partial class Profile : Window, GoatverseService.IMatchManagerCallback {
 
         private string usernamePlayer;
         private string emailInstance;
         private GoatverseService.ProfilesManagerClient profileManager;
         private GoatverseService.UsersManagerClient userManager;
+        private GoatverseService.MatchManagerClient matchManager;
         private int imageId = -1;
         private Button lastSelectedButton = null;
+        public List<MatchData> RecentMatches { get; set; }
 
         public Profile() {
             InitializeComponent();
@@ -34,8 +36,11 @@ namespace Goatverse.Windows {
             usernamePlayer = userSession.Username;
             emailInstance = userSession.Email;
             profileManager = new GoatverseService.ProfilesManagerClient();
+            matchManager = new GoatverseService.MatchManagerClient(new InstanceContext(this));
+
 
             LoadProfileData();
+            LoadRecentMatches();  // Llamada al nuevo método para cargar las partidas recientes
         }
 
         private void LoadProfileData() {
@@ -50,6 +55,23 @@ namespace Goatverse.Windows {
             }
         }
 
+        // Implementación del método de la interfaz de callback
+        public void OnMatchDataReceived(MatchData matchData) {
+            // Lógica para manejar los datos de la partida
+        }
+
+        private void LoadRecentMatches() {
+            try {
+                // Usamos 'matchManager' que está correctamente inicializado
+                RecentMatches = matchManager.ServiceGetRecentMatches(10).ToList();
+
+                // Asignar los datos al control
+                RecentMatchesControl.ItemsSource = RecentMatches;
+            } catch(Exception ex) {
+                MessageBox.Show($"Error al cargar las partidas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void Changeimage() {
             string imagePath = "../Multimedia/sword.png";
             if (imageId != 0 && imageId != -1) {
@@ -59,7 +81,7 @@ namespace Goatverse.Windows {
             imgProfile.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
         }
 
-        private void OnArrowLeftClick(object sender, RoutedEventArgs e) {
+        private void BtnClickGoBack(object sender, RoutedEventArgs e) {
             Start start = new Start();
             start.Show();
             this.Close();
@@ -189,6 +211,18 @@ namespace Goatverse.Windows {
             }
 
             Console.WriteLine(imageId);
+        }
+
+        public void ServiceNotifyEndGame(string matchId, string winnerUsername) {
+            throw new NotImplementedException();
+        }
+
+        public void ServiceUpdateCurrentTurn(string currentTurn) {
+            throw new NotImplementedException();
+        }
+
+        public void ServiceSyncTimer() {
+            throw new NotImplementedException();
         }
     }
 }

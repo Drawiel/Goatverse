@@ -15,6 +15,10 @@
         <sys:Double x:Key="ButtonHeight">40</sys:Double>
     </Window.Resources>
 
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Multimedia/deck.png"/>
+    </Window.Background>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80*"/>
@@ -38,6 +42,7 @@
             Grid.Column="3"
             Grid.Row="1" 
             Grid.ColumnSpan="2"
+            Panel.ZIndex="100"
 >
             <Grid Background="#889ea9">
 
@@ -237,7 +242,7 @@
                     BorderThickness="2" 
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignFloatingActionButton}"
-                    Click="OnArrowLeftClick">
+                    Click="BtnClickGoBack">
                     <materialDesign:PackIcon 
                         Kind="ArrowLeft" 
                         Width="40" 
@@ -482,114 +487,92 @@
         </Border>
 
         <Grid
+            Grid.Column="3"
             Grid.Row="1"
-            Grid.Column="3">
+            Background="#80FFFFFF">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"/>
-                <RowDefinition Height="100*"/>
+                <RowDefinition Height="90*"/>
             </Grid.RowDefinitions>
 
+            <!-- Título -->
             <TextBlock
-                Grid.Row="0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Text="{x:Static language:Lang.globalRecentMatches}"
-                FontSize="40"/>
+            Grid.Row="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="Partidas Recientes"
+            FontSize="40"
+            Margin="10,0"/>
 
-            <Grid
-                Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="10*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <!-- Contenedor para partidas -->
+            <ItemsControl x:Name="RecentMatchesControl" Grid.Row="1" ItemsSource="{Binding RecentMatches}">
+                <!-- Diseño de las partidas -->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Gray" BorderThickness="1" Margin="5" Padding="10">
+                            <StackPanel Orientation="Vertical">
+                                <!-- ID de Partida -->
+                                <TextBlock 
+                                Text="Partida ID: " 
+                                FontWeight="Bold" 
+                                FontSize="18" 
+                                Foreground="Black"/>
+                                <TextBlock 
+                                Text="{Binding IdMatch}" 
+                                FontSize="16" 
+                                Foreground="Gray"/>
 
-                <TextBlock
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Text="1"
-                    FontSize="70"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBlock
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Text="2"
-                    FontSize="70"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBlock
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Text="3"
-                    FontSize="70"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBlock
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Text="4"
-                    FontSize="70"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBlock
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Text="5"
-                    FontSize="70"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBlock
-                    Grid.Row="0"
-                    Grid.Column="2"
-                    Text="6"
-                    FontSize="70"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBlock
-                    Grid.Row="1"
-                    Grid.Column="2"
-                    Text="7"
-                    FontSize="70"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBlock
-                    Grid.Row="2"
-                    Grid.Column="2"
-                    Text="8"
-                    FontSize="70"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBlock
-                    Grid.Row="3"
-                    Grid.Column="2"
-                    Text="9"
-                    FontSize="70"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBlock
-                    Grid.Row="4"
-                    Grid.Column="2"
-                    Text="10"
-                    FontSize="70"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-            </Grid>
+                                <!-- Hora de Inicio -->
+                                <TextBlock 
+                                Text="Inicio: " 
+                                FontWeight="Bold" 
+                                FontSize="18" 
+                                Foreground="Black"/>
+                                <TextBlock 
+                                Text="{Binding StartTime, StringFormat={}{0:dd/MM/yyyy HH:mm}}" 
+                                FontSize="16" 
+                                Foreground="Gray"/>
 
-            
+                                <!-- Hora de Fin -->
+                                <TextBlock 
+                                Text="Fin: " 
+                                FontWeight="Bold" 
+                                FontSize="18" 
+                                Foreground="Black"/>
+                                <TextBlock 
+                                Text="{Binding EndTime, StringFormat={}{0:dd/MM/yyyy HH:mm}}" 
+                                FontSize="16" 
+                                Foreground="Gray"/>
+
+                                <!-- Ganador (opcional) -->
+                                <TextBlock 
+                                Text="Ganador: " 
+                                FontWeight="Bold" 
+                                FontSize="18" 
+                                Foreground="Black"/>
+                                <TextBlock 
+                                Text="{Binding IdWinner}" 
+                                FontSize="16" 
+                                Foreground="Gray"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+                <!-- Espaciado entre elementos -->
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
         </Grid>
+
 
         <Grid
             Grid.Row="1"
-            Grid.Column="4">
+            Grid.Column="4"
+            Background="#80FFFFFF">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*" />
                 <RowDefinition Height="100*" />

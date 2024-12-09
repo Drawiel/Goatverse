@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Goatverse.Windows"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:language="clr-namespace:Goatverse.Properties.Langs"
         mc:Ignorable="d"
         Title="Deck" Height="1080" Width="1920"  WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized">
+
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Multimedia/deck.png"/>
+    </Window.Background>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -78,7 +83,7 @@
                             Background="Transparent"
                             BorderBrush="Transparent"
                             Click="BtnClickGoat">
-                            <Image Source="../Multimedia/Cards/Master Goat.png" Stretch="UniformToFill" />
+                            <Image Source="../Multimedia/Cards/goat.png" Stretch="UniformToFill" />
                         </Button>
                     </Border>
 
@@ -95,6 +100,7 @@
                             Background="Transparent"
                             BorderBrush="Transparent"
                             Click="BtnClickGoatSalvatore">
+                            <Image Source="../Multimedia/Cards/goat_salvatore.png" Stretch="UniformToFill" />
                         </Button>
                     </Border>
 
@@ -111,6 +117,7 @@
                             Background="Transparent"
                             BorderBrush="Transparent"
                             Click="BtnClickNotpacGoat">
+                            <Image Source="../Multimedia/Cards/notpac_goat.png" Stretch="UniformToFill" />
                         </Button>
                     </Border>
 
@@ -127,6 +134,7 @@
                             Background="Transparent"
                             BorderBrush="Transparent"
                             Click="BtnClickGoatSlayer">
+                            <Image Source="../Multimedia/Cards/goat_slayer.png" Stretch="UniformToFill" />
                         </Button>
                     </Border>
 
@@ -143,6 +151,7 @@
                             Background="Transparent"
                             BorderBrush="Transparent"
                             Click="BtnClickPlumberGoat">
+                            <Image Source="../Multimedia/Cards/plumber_goat.png" Stretch="UniformToFill" />
                         </Button>
                     </Border>
                 </Grid>
@@ -169,6 +178,7 @@
                             Background="Transparent"
                             BorderBrush="Transparent"
                             Click="BtnClickGoatink">
+                            <Image Source="../Multimedia/Cards/goatink.png" Stretch="UniformToFill" />
                         </Button>
                     </Border>
                     <Border
@@ -184,6 +194,7 @@
                             Background="Transparent"
                             BorderBrush="Transparent"
                             Click="BtnClickGTA">
+                            <Image Source="../Multimedia/Cards/goat_tactical_assault.png" Stretch="UniformToFill" />
                         </Button>
                     </Border>
 
@@ -292,7 +303,7 @@
                             Click="BtnClickMasterGoat"
                             Background="Transparent"
                             BorderBrush="Transparent">
-                            <Image Source="../Multimedia/Cards/Master Goat.png" Stretch="UniformToFill" />
+                            <Image Source="../Multimedia/Cards/master_goat.png" Stretch="UniformToFill" />
                         </Button>
                     </Border>
 
@@ -309,6 +320,7 @@
                             Background="Transparent"
                             BorderBrush="Transparent"
                             Click="BtnClickGoatzzz">
+                            <Image Source="../Multimedia/Cards/goatzzz.png" Stretch="UniformToFill" />
                         </Button>
                     </Border>
 
@@ -317,15 +329,17 @@
 
             </Grid>
         </ScrollViewer>
-
-        <StackPanel
+        
+        <ScrollViewer
             Grid.Row="1"
             Grid.Column="3">
-            <Border            
-            BorderBrush="Black"
-            BorderThickness="2"
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch">
+            <StackPanel
+                Background="#80FFFFFF">
+                <Border            
+                    BorderBrush="Black"
+                    BorderThickness="2"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -358,18 +372,39 @@
                     HorizontalAlignment="Center"/>
 
                     <TextBlock 
-                    Name="txtBlockHistory"
-                    Grid.Row="3"
-                    Text=""
-                    FontSize="22"
-                    TextWrapping="Wrap"/>
+                        Name="txtBlockHistory"
+                        Grid.Row="3"
+                        Text=""
+                        FontSize="22"
+                        TextWrapping="Wrap">
+                    </TextBlock>
 
 
                 </Grid>
 
             </Border>
         </StackPanel>
+        </ScrollViewer>
 
+        <Viewbox Grid.Column="0" Grid.Row="0" Margin="0">
+            <Border CornerRadius="0 20 20 0">
+                <Button 
+                    Margin="10"
+                    Background="LightBlue"
+                    BorderBrush="Black"
+                    BorderThickness="2" 
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    Click="BtnClickGoBack">
+                    <materialDesign:PackIcon 
+                        Kind="ArrowLeft" 
+                        Width="40" 
+                        Height="40" 
+                        Margin="5" />
+                </Button>
+            </Border>
+        </Viewbox>
+        
     </Grid>
 
 </Window>

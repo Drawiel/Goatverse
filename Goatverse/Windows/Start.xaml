@@ -82,7 +82,8 @@
                         BorderBrush="White" 
                         Foreground="White"
                         FontSize="30"
-                        x:Name="btnDeck">
+                        x:Name="btnDeck" 
+                        Click="BtnClickGotoDeck">
                 </Button>
 
                 <Button Grid.Row="3" 

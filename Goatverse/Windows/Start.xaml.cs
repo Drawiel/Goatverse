@@ -338,5 +338,12 @@ namespace Goatverse.Windows {
         }
 
         public void ServiceOwnerLeftLobby(string newOwner) { }
+
+        private void BtnClickGotoDeck(object sender, RoutedEventArgs e) {
+            Deck deck = new Deck();
+            deck.Show();
+            this.Close();
+
+        }
     }
 }
