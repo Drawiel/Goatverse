@@ -79,7 +79,7 @@
 
                         <!--Chats-->
                         <Grid>
-                            <ItemsControl x:Name="chatSection" ItemsSource="{Binding userControls}">
+                            <ItemsControl x:Name="chatSection" ItemsSource="{Binding UserControls}">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <StackPanel x:Name="chatPanel"/>
