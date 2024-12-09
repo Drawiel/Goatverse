@@ -32,7 +32,7 @@ namespace Goatverse.Windows {
             try {
                 int cardId = 1;
                 CardData card = cardsManager.ServiceGetCardById(cardId);
-                string imagePath = "../Multimedia/Cards/Master Goat.png";
+                string imagePath = "../Multimedia/Cards/goat.png";
 
                 if(card != null) {
                     
@@ -54,7 +54,7 @@ namespace Goatverse.Windows {
             try {
                 int cardId = 2;
                 CardData card = cardsManager.ServiceGetCardById(cardId);
-                string imagePath = "../Multimedia/Cards/Master Goat.png";
+                string imagePath = "../Multimedia/Cards/goat_salvatore.png";
 
                 if(card != null) {
                     
@@ -76,7 +76,7 @@ namespace Goatverse.Windows {
             try {
                 int cardId = 3;
                 CardData card = cardsManager.ServiceGetCardById(cardId);
-                string imagePath = "../Multimedia/Cards/Master Goat.png";
+                string imagePath = "../Multimedia/Cards/notpac_goat.png";
 
                 if(card != null) {
                     
@@ -98,7 +98,7 @@ namespace Goatverse.Windows {
             try {
                 int cardId = 4;
                 CardData card = cardsManager.ServiceGetCardById(cardId);
-                string imagePath = "../Multimedia/Cards/Master Goat.png";
+                string imagePath = "../Multimedia/Cards/goat_slayer.png";
 
                 if(card != null) {
                     
@@ -120,7 +120,7 @@ namespace Goatverse.Windows {
             try {
                 int cardId = 5;
                 CardData card = cardsManager.ServiceGetCardById(cardId);
-                string imagePath = "../Multimedia/Cards/Master Goat.png";
+                string imagePath = "../Multimedia/Cards/plumber_goat.png";
 
                 if(card != null) {
                     
@@ -142,11 +142,11 @@ namespace Goatverse.Windows {
             try {
                 int cardId = 6;
                 CardData card = cardsManager.ServiceGetCardById(cardId);
-                string imagePath = "../Multimedia/Cards/Master Goat.png";
+                string imagePath = "../Multimedia/Cards/goatink.png";
 
                 if(card != null) {
                     
-                    string globalHistory = resourceManager.GetString("globalHistoryGoatLink");
+                    string globalHistory = resourceManager.GetString("globalHistoryGoatink");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -164,11 +164,11 @@ namespace Goatverse.Windows {
             try {
                 int cardId = 7;
                 CardData card = cardsManager.ServiceGetCardById(cardId);
-                string imagePath = "../Multimedia/Cards/Master Goat.png";
+                string imagePath = "../Multimedia/Cards/goat_tactical_assault.png";
 
                 if(card != null) {
                     
-                    string globalHistory = resourceManager.GetString("globalHistoryG.T.A.");
+                    string globalHistory = resourceManager.GetString("globalHistoryG.T.A");
                     txtBlockHistory.Text = globalHistory;
                     txtBlockCardName.Text = card.CardName;
                     imageGoat.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -186,7 +186,7 @@ namespace Goatverse.Windows {
             try {
                 int cardId = 8;
                 CardData card = cardsManager.ServiceGetCardById(cardId);
-                string imagePath = "../Multimedia/Cards/Master Goat.png";
+                string imagePath = "../Multimedia/Cards/goatzzz.png";
 
                 if(card != null) {
                     
@@ -208,7 +208,7 @@ namespace Goatverse.Windows {
             try {
                 int cardId = 9;
                 CardData card = cardsManager.ServiceGetCardById(cardId);
-                string imagePath = "../Multimedia/Cards/Master Goat.png";
+                string imagePath = "../Multimedia/Cards/master_goat.png";
 
                 if(card != null) {
                     
@@ -290,6 +290,12 @@ namespace Goatverse.Windows {
             } catch(Exception ex) {
                 ExceptionHandler.HandleServiceException(ex);  
             }
+        }
+
+        private void BtnClickGoBack(object sender, RoutedEventArgs e) {
+            Start start = new Start();
+            start.Show();
+            this.Close();
         }
 
     }

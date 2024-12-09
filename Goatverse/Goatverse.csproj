@@ -365,7 +365,20 @@
     <Resource Include="Multimedia\bellGoatLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Multimedia\Cards\Master Goat.png" />
+    <Resource Include="Multimedia\Cards\master_goat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Multimedia\Cards\goat.png" />
+    <Resource Include="Multimedia\Cards\goatink.png" />
+    <Resource Include="Multimedia\Cards\goatzzz.png" />
+    <Resource Include="Multimedia\Cards\goat_salvatore.png" />
+    <Resource Include="Multimedia\Cards\goat_slayer.png" />
+    <Resource Include="Multimedia\Cards\goat_tactical_assault.png" />
+    <Resource Include="Multimedia\Cards\notpac_goat.png" />
+    <Resource Include="Multimedia\Cards\plumber_goat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Multimedia\deck.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
