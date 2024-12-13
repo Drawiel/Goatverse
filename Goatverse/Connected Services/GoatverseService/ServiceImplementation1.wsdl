@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ServiceImplementation" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IUsersManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILobbyManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IProfilesManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IFriendsManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IMatchManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ICardsManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
+      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUsersManager_ServiceTryLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceTryLogin" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceTryLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceTryLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceTrySignIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceTrySignIn" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceTrySignIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceTrySignInResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceUserExistsByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUserExistsByUsername" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceUserExistsByUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUserExistsByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceVerifyPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceVerifyPassword" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceVerifyPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceVerifyPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServicePasswordChanged_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServicePasswordChanged" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServicePasswordChanged_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServicePasswordChangedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceUsernameChanged_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUsernameChanged" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceUsernameChanged_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUsernameChangedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServicePasswordAndUsernameChanged_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServicePasswordAndUsernameChanged" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServicePasswordAndUsernameChanged_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServicePasswordAndUsernameChangedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceGetEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetEmail" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_ServiceGetEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceSendMessageToLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceSendMessageToLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceConnectToLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceConnectToLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceConnectToLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceConnectToLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceDisconnectFromLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceDisconnectFromLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceDisconnectFromLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceDisconnectFromLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceCountPlayersInLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCountPlayersInLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceCountPlayersInLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCountPlayersInLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceCreateLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCreateLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceCreateLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCreateLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceStartLobbyMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceStartLobbyMatch" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceStartLobbyMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceStartLobbyMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceGetMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetMessage" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceUpdatePlayersInLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUpdatePlayersInLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceStartMatch_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceStartMatch" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceNotifyMatchStart_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceNotifyMatchStart" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ServiceOwnerLeftLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceOwnerLeftLobby" />
+  </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceLoadProfileData_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceLoadProfileData" />
+  </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceLoadProfileData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceLoadProfileDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceChangeProfileImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceChangeProfileImage" />
+  </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceChangeProfileImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceChangeProfileImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceGetProfileByUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetProfileByUserId" />
+  </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceGetProfileByUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetProfileByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceSendFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceSendFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceSendFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceSendFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceRemoveFriend_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceRemoveFriend" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceRemoveFriend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceRemoveFriendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceAcceptFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceAcceptFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceAcceptFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceAcceptFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceGetFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetFriends" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceGetFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceIsPendingFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceIsPendingFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceIsPendingFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceIsPendingFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceGetPendingFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetPendingFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceGetPendingFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetPendingFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceIsUserBlocked_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceIsUserBlocked" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceIsUserBlocked_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceIsUserBlockedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceGetBlockedUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetBlockedUsers" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceGetBlockedUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetBlockedUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceRemoveBlock_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceRemoveBlock" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceRemoveBlock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceRemoveBlockResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceBlockUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceBlockUser" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_ServiceBlockUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceBlockUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceCreateMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCreateMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceCreateMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCreateMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetMatchById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetMatchById" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetMatchById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetMatchByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceUpdateMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUpdateMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceUpdateMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUpdateMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetRecentMatches_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetRecentMatches" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetRecentMatches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetRecentMatchesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceInitializeGameTurns_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceInitializeGameTurns" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceNotifyEndTurn_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceNotifyEndTurn" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetCurrentTurn_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetCurrentTurn" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceGetCurrentTurn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetCurrentTurnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceConnectToGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceConnectToGame" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceConnectToGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceConnectToGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceCreateDeck_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceCreateDeck" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceNotifyDrawCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceNotifyDrawCard" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceNotifyEndGame_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceNotifyEndGame" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceUpdateCurrentTurn_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUpdateCurrentTurn" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceSyncTimer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceSyncTimer" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceReceiveDeck_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceReceiveDeck" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceRemoveCardFromDeck_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServiceRemoveCardFromDeck" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceGetAllCards_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetAllCards" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceGetAllCards_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetAllCardsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceGetCardById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetCardById" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceGetCardById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetCardByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceAddCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceAddCard" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceAddCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceAddCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceDeleteCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceDeleteCard" />
+  </wsdl:message>
+  <wsdl:message name="ICardsManager_ServiceDeleteCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceDeleteCardResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUsersManager">
+    <wsdl:operation name="ServiceTryLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceTryLogin" message="tns:IUsersManager_ServiceTryLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServiceTryLoginResponse" message="tns:IUsersManager_ServiceTryLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceTrySignIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceTrySignIn" message="tns:IUsersManager_ServiceTrySignIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServiceTrySignInResponse" message="tns:IUsersManager_ServiceTrySignIn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUserExistsByUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceUserExistsByUsername" message="tns:IUsersManager_ServiceUserExistsByUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServiceUserExistsByUsernameResponse" message="tns:IUsersManager_ServiceUserExistsByUsername_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceVerifyPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceVerifyPassword" message="tns:IUsersManager_ServiceVerifyPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServiceVerifyPasswordResponse" message="tns:IUsersManager_ServiceVerifyPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServicePasswordChanged">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServicePasswordChanged" message="tns:IUsersManager_ServicePasswordChanged_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServicePasswordChangedResponse" message="tns:IUsersManager_ServicePasswordChanged_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUsernameChanged">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceUsernameChanged" message="tns:IUsersManager_ServiceUsernameChanged_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServiceUsernameChangedResponse" message="tns:IUsersManager_ServiceUsernameChanged_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServicePasswordAndUsernameChanged">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServicePasswordAndUsernameChanged" message="tns:IUsersManager_ServicePasswordAndUsernameChanged_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServicePasswordAndUsernameChangedResponse" message="tns:IUsersManager_ServicePasswordAndUsernameChanged_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/ServiceGetEmail" message="tns:IUsersManager_ServiceGetEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/ServiceGetEmailResponse" message="tns:IUsersManager_ServiceGetEmail_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILobbyManager">
+    <wsdl:operation name="ServiceSendMessageToLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceSendMessageToLobby" message="tns:ILobbyManager_ServiceSendMessageToLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceConnectToLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceConnectToLobby" message="tns:ILobbyManager_ServiceConnectToLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceConnectToLobbyResponse" message="tns:ILobbyManager_ServiceConnectToLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceDisconnectFromLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceDisconnectFromLobby" message="tns:ILobbyManager_ServiceDisconnectFromLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceDisconnectFromLobbyResponse" message="tns:ILobbyManager_ServiceDisconnectFromLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceCountPlayersInLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobby" message="tns:ILobbyManager_ServiceCountPlayersInLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobbyResponse" message="tns:ILobbyManager_ServiceCountPlayersInLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceCreateLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCreateLobby" message="tns:ILobbyManager_ServiceCreateLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceCreateLobbyResponse" message="tns:ILobbyManager_ServiceCreateLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceStartLobbyMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatch" message="tns:ILobbyManager_ServiceStartLobbyMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatchResponse" message="tns:ILobbyManager_ServiceStartLobbyMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceGetMessage" message="tns:ILobbyManager_ServiceGetMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUpdatePlayersInLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceUpdatePlayersInLobby" message="tns:ILobbyManager_ServiceUpdatePlayersInLobby_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceStartMatch">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceStartMatch" message="tns:ILobbyManager_ServiceStartMatch_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyMatchStart">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceNotifyMatchStart" message="tns:ILobbyManager_ServiceNotifyMatchStart_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceOwnerLeftLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ServiceOwnerLeftLobby" message="tns:ILobbyManager_ServiceOwnerLeftLobby_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IProfilesManager">
+    <wsdl:operation name="ServiceLoadProfileData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceLoadProfileData" message="tns:IProfilesManager_ServiceLoadProfileData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceLoadProfileDataResponse" message="tns:IProfilesManager_ServiceLoadProfileData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceChangeProfileImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage" message="tns:IProfilesManager_ServiceChangeProfileImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImageResponse" message="tns:IProfilesManager_ServiceChangeProfileImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetProfileByUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserId" message="tns:IProfilesManager_ServiceGetProfileByUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserIdResponse" message="tns:IProfilesManager_ServiceGetProfileByUserId_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IFriendsManager">
+    <wsdl:operation name="ServiceSendFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceSendFriendRequest" message="tns:IFriendsManager_ServiceSendFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceSendFriendRequestResponse" message="tns:IFriendsManager_ServiceSendFriendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceRemoveFriend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceRemoveFriend" message="tns:IFriendsManager_ServiceRemoveFriend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceRemoveFriendResponse" message="tns:IFriendsManager_ServiceRemoveFriend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceAcceptFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceAcceptFriendRequest" message="tns:IFriendsManager_ServiceAcceptFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceAcceptFriendRequestResponse" message="tns:IFriendsManager_ServiceAcceptFriendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetFriends" message="tns:IFriendsManager_ServiceGetFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetFriendsResponse" message="tns:IFriendsManager_ServiceGetFriends_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceIsPendingFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceIsPendingFriendRequest" message="tns:IFriendsManager_ServiceIsPendingFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceIsPendingFriendRequestResponse" message="tns:IFriendsManager_ServiceIsPendingFriendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetPendingFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequest" message="tns:IFriendsManager_ServiceGetPendingFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequestResponse" message="tns:IFriendsManager_ServiceGetPendingFriendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceIsUserBlocked">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceIsUserBlocked" message="tns:IFriendsManager_ServiceIsUserBlocked_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceIsUserBlockedResponse" message="tns:IFriendsManager_ServiceIsUserBlocked_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetBlockedUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetBlockedUsers" message="tns:IFriendsManager_ServiceGetBlockedUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceGetBlockedUsersResponse" message="tns:IFriendsManager_ServiceGetBlockedUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceRemoveBlock">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceRemoveBlock" message="tns:IFriendsManager_ServiceRemoveBlock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceRemoveBlockResponse" message="tns:IFriendsManager_ServiceRemoveBlock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceBlockUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/ServiceBlockUser" message="tns:IFriendsManager_ServiceBlockUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/ServiceBlockUserResponse" message="tns:IFriendsManager_ServiceBlockUser_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMatchManager">
+    <wsdl:operation name="ServiceCreateMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceCreateMatch" message="tns:IMatchManager_ServiceCreateMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceCreateMatchResponse" message="tns:IMatchManager_ServiceCreateMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetMatchById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetMatchById" message="tns:IMatchManager_ServiceGetMatchById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetMatchByIdResponse" message="tns:IMatchManager_ServiceGetMatchById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUpdateMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceUpdateMatch" message="tns:IMatchManager_ServiceUpdateMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceUpdateMatchResponse" message="tns:IMatchManager_ServiceUpdateMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetRecentMatches">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetRecentMatches" message="tns:IMatchManager_ServiceGetRecentMatches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetRecentMatchesResponse" message="tns:IMatchManager_ServiceGetRecentMatches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceInitializeGameTurns">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceInitializeGameTurns" message="tns:IMatchManager_ServiceInitializeGameTurns_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyEndTurn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceNotifyEndTurn" message="tns:IMatchManager_ServiceNotifyEndTurn_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetCurrentTurn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetCurrentTurn" message="tns:IMatchManager_ServiceGetCurrentTurn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceGetCurrentTurnResponse" message="tns:IMatchManager_ServiceGetCurrentTurn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceConnectToGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceConnectToGame" message="tns:IMatchManager_ServiceConnectToGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceConnectToGameResponse" message="tns:IMatchManager_ServiceConnectToGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceCreateDeck">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceCreateDeck" message="tns:IMatchManager_ServiceCreateDeck_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyDrawCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceNotifyDrawCard" message="tns:IMatchManager_ServiceNotifyDrawCard_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyEndGame">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceNotifyEndGame" message="tns:IMatchManager_ServiceNotifyEndGame_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUpdateCurrentTurn">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceUpdateCurrentTurn" message="tns:IMatchManager_ServiceUpdateCurrentTurn_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceSyncTimer">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceSyncTimer" message="tns:IMatchManager_ServiceSyncTimer_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceReceiveDeck">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceReceiveDeck" message="tns:IMatchManager_ServiceReceiveDeck_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceRemoveCardFromDeck">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceRemoveCardFromDeck" message="tns:IMatchManager_ServiceRemoveCardFromDeck_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICardsManager">
+    <wsdl:operation name="ServiceGetAllCards">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICardsManager/ServiceGetAllCards" message="tns:ICardsManager_ServiceGetAllCards_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICardsManager/ServiceGetAllCardsResponse" message="tns:ICardsManager_ServiceGetAllCards_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetCardById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICardsManager/ServiceGetCardById" message="tns:ICardsManager_ServiceGetCardById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICardsManager/ServiceGetCardByIdResponse" message="tns:ICardsManager_ServiceGetCardById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceAddCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICardsManager/ServiceAddCard" message="tns:ICardsManager_ServiceAddCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICardsManager/ServiceAddCardResponse" message="tns:ICardsManager_ServiceAddCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceDeleteCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICardsManager/ServiceDeleteCard" message="tns:ICardsManager_ServiceDeleteCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICardsManager/ServiceDeleteCardResponse" message="tns:ICardsManager_ServiceDeleteCard_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUsersManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ServiceTryLogin">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServiceTryLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceTrySignIn">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServiceTrySignIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUserExistsByUsername">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServiceUserExistsByUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceVerifyPassword">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServiceVerifyPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServicePasswordChanged">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServicePasswordChanged" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUsernameChanged">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServiceUsernameChanged" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServicePasswordAndUsernameChanged">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServicePasswordAndUsernameChanged" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetEmail">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/ServiceGetEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILobbyManager" type="tns:ILobbyManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILobbyManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ServiceSendMessageToLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceSendMessageToLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceConnectToLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceConnectToLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceDisconnectFromLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceDisconnectFromLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceCountPlayersInLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceCountPlayersInLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceCreateLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceCreateLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceStartLobbyMatch">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceStartLobbyMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetMessage">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceGetMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUpdatePlayersInLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceUpdatePlayersInLobby" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceStartMatch">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceStartMatch" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyMatchStart">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceNotifyMatchStart" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceOwnerLeftLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ServiceOwnerLeftLobby" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IProfilesManager" type="tns:IProfilesManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IProfilesManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ServiceLoadProfileData">
+      <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceLoadProfileData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceChangeProfileImage">
+      <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetProfileByUserId">
+      <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IFriendsManager" type="tns:IFriendsManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IFriendsManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ServiceSendFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceSendFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceRemoveFriend">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceRemoveFriend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceAcceptFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceAcceptFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetFriends">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceGetFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceIsPendingFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceIsPendingFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetPendingFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceGetPendingFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceIsUserBlocked">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceIsUserBlocked" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetBlockedUsers">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceGetBlockedUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceRemoveBlock">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceRemoveBlock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceBlockUser">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/ServiceBlockUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IMatchManager" type="tns:IMatchManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IMatchManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ServiceCreateMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceCreateMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetMatchById">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceGetMatchById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUpdateMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceUpdateMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetRecentMatches">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceGetRecentMatches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceInitializeGameTurns">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceInitializeGameTurns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyEndTurn">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceNotifyEndTurn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetCurrentTurn">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceGetCurrentTurn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceConnectToGame">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceConnectToGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceCreateDeck">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceCreateDeck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyDrawCard">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceNotifyDrawCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceNotifyEndGame">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceNotifyEndGame" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUpdateCurrentTurn">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceUpdateCurrentTurn" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceSyncTimer">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceSyncTimer" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceReceiveDeck">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceReceiveDeck" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceRemoveCardFromDeck">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceRemoveCardFromDeck" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ICardsManager" type="tns:ICardsManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_ICardsManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ServiceGetAllCards">
+      <soap12:operation soapAction="http://tempuri.org/ICardsManager/ServiceGetAllCards" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetCardById">
+      <soap12:operation soapAction="http://tempuri.org/ICardsManager/ServiceGetCardById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceAddCard">
+      <soap12:operation soapAction="http://tempuri.org/ICardsManager/ServiceAddCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceDeleteCard">
+      <soap12:operation soapAction="http://tempuri.org/ICardsManager/ServiceDeleteCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceImplementation">
+    <wsdl:port name="NetTcpBinding_IUsersManager" binding="tns:NetTcpBinding_IUsersManager">
+      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILobbyManager" binding="tns:NetTcpBinding_ILobbyManager">
+      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IProfilesManager" binding="tns:NetTcpBinding_IProfilesManager">
+      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IFriendsManager" binding="tns:NetTcpBinding_IFriendsManager">
+      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IMatchManager" binding="tns:NetTcpBinding_IMatchManager">
+      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ICardsManager" binding="tns:NetTcpBinding_ICardsManager">
+      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

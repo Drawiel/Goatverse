@@ -213,16 +213,15 @@ namespace Goatverse.Windows {
             Console.WriteLine(imageId);
         }
 
-        public void ServiceNotifyEndGame(string matchId, string winnerUsername) {
-            throw new NotImplementedException();
-        }
+        public void ServiceNotifyEndGame(string matchId, string winnerUsername) { }
 
-        public void ServiceUpdateCurrentTurn(string currentTurn) {
-            throw new NotImplementedException();
-        }
+        public void ServiceUpdateCurrentTurn(string currentTurn) { }
 
-        public void ServiceSyncTimer() {
-            throw new NotImplementedException();
-        }
+        public void ServiceSyncTimer() { }
+
+        public void ServiceReceiveDeck(Stack<CardData> cards) { }
+
+        public void ServiceRemoveCardFromDeck() { }
+
     }
 }

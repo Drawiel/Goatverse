@@ -91,6 +91,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\Classes\CardImageManager.cs" />
     <Compile Include="Logic\Classes\ExceptionHandler.cs" />
     <Compile Include="Logic\Classes\FieldValidator.cs" />
     <Compile Include="Logic\Classes\Message.cs" />
@@ -266,13 +267,16 @@
     <None Include="Connected Services\GoatverseService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GoatverseService\item1.xsd">
+    <None Include="Connected Services\GoatverseService\item3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GoatverseService\item2.xsd">
+    <None Include="Connected Services\GoatverseService\item31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GoatverseService\ServiceImplementation.wsdl" />
+    <None Include="Connected Services\GoatverseService\item32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GoatverseService\ServiceImplementation1.wsdl" />
     <None Include="log4net.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -375,7 +379,7 @@
     <Resource Include="Multimedia\deck.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\GoatverseService\item.disco" />
+    <None Include="Connected Services\GoatverseService\item1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.143.220:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
+  <xs:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
+  <xs:import schemaLocation="http://localhost:8083/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
   <xs:element name="ServiceTryLogin">
     <xs:complexType>
       <xs:sequence>
@@ -520,6 +521,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ServiceCreateDeck">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceNotifyDrawCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ServiceNotifyEndGame">
     <xs:complexType>
       <xs:sequence>
@@ -540,6 +555,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="ServiceReceiveDeck">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="shuffledDeck" nillable="true" type="q18:StackOfCardData2jt2vigx" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceRemoveCardFromDeck">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ServiceGetAllCards">
     <xs:complexType>
       <xs:sequence />
@@ -548,7 +575,7 @@
   <xs:element name="ServiceGetAllCardsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetAllCardsResult" nillable="true" type="q18:ArrayOfCardData" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetAllCardsResult" nillable="true" type="q19:ArrayOfCardData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -562,14 +589,14 @@
   <xs:element name="ServiceGetCardByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetCardByIdResult" nillable="true" type="q19:CardData" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="ServiceGetCardByIdResult" nillable="true" type="q20:CardData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ServiceAddCard">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="cardData" nillable="true" type="q20:CardData" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/GoatverseService" minOccurs="0" name="cardData" nillable="true" type="q21:CardData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

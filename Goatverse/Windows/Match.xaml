@@ -504,11 +504,13 @@
                         Background="#FFFAFA" 
                         Margin="0, 0, 0, 0">
                         <Button
+                            x:Name="btnTakeCard"
                             Click="BtnClickTakeCard"
                             Width="120"
                             Height="170"
                             Background="Transparent"
-                            BorderBrush="Transparent">
+                            BorderBrush="Transparent"
+                            Content="88">
                             
                         </Button>
                         

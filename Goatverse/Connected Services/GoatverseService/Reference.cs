@@ -1232,6 +1232,18 @@ namespace Goatverse.GoatverseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ServiceConnectToGame", ReplyAction="http://tempuri.org/IMatchManager/ServiceConnectToGameResponse")]
         System.Threading.Tasks.Task<bool> ServiceConnectToGameAsync(string username, string lobbyCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceCreateDeck")]
+        void ServiceCreateDeck(string gameCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceCreateDeck")]
+        System.Threading.Tasks.Task ServiceCreateDeckAsync(string gameCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceNotifyDrawCard")]
+        void ServiceNotifyDrawCard(string lobbyCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceNotifyDrawCard")]
+        System.Threading.Tasks.Task ServiceNotifyDrawCardAsync(string lobbyCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1245,6 +1257,12 @@ namespace Goatverse.GoatverseService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceSyncTimer")]
         void ServiceSyncTimer();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceReceiveDeck")]
+        void ServiceReceiveDeck(System.Collections.Generic.Stack<Goatverse.GoatverseService.CardData> shuffledDeck);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/ServiceRemoveCardFromDeck")]
+        void ServiceRemoveCardFromDeck();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1337,6 +1355,22 @@ namespace Goatverse.GoatverseService {
         
         public System.Threading.Tasks.Task<bool> ServiceConnectToGameAsync(string username, string lobbyCode) {
             return base.Channel.ServiceConnectToGameAsync(username, lobbyCode);
+        }
+        
+        public void ServiceCreateDeck(string gameCode) {
+            base.Channel.ServiceCreateDeck(gameCode);
+        }
+        
+        public System.Threading.Tasks.Task ServiceCreateDeckAsync(string gameCode) {
+            return base.Channel.ServiceCreateDeckAsync(gameCode);
+        }
+        
+        public void ServiceNotifyDrawCard(string lobbyCode) {
+            base.Channel.ServiceNotifyDrawCard(lobbyCode);
+        }
+        
+        public System.Threading.Tasks.Task ServiceNotifyDrawCardAsync(string lobbyCode) {
+            return base.Channel.ServiceNotifyDrawCardAsync(lobbyCode);
         }
     }
     

@@ -33,12 +33,15 @@ namespace Goatverse.Windows {
         private string lobbyCode;
         private string usernamePlayer;
         private string currentTurnPlayer;
+        private Stack<CardData> gameDeck;
+        private int currentCardCount;
 
 
         private GoatverseService.MatchManagerClient matchManagerClient;
 
         public Match(PlayerData[] playersList, string lobbyCode, string ownerGamertag) {
             UserSession userSession = UserSessionManager.GetInstance().GetUser();
+            currentCardCount = 0;
             usernamePlayer = userSession.Username;
             InitializeComponent();
             playersCardsStackPlanel = this.FindName("stackPanelPlayersCards") as StackPanel;
@@ -51,7 +54,9 @@ namespace Goatverse.Windows {
             InstanceContext context = new InstanceContext(this);
             matchManagerClient = new GoatverseService.MatchManagerClient(context);
             matchManagerClient.ServiceConnectToGame(usernamePlayer, lobbyCode);
+            matchManagerClient.ServiceCreateDeck(lobbyCode);
             matchManagerClient.ServiceInitializeGameTurns(lobbyCode);
+            
         }
 
         private void TurnTimer_Tick(object sender, EventArgs e) {
@@ -72,18 +77,15 @@ namespace Goatverse.Windows {
             });
             currentTurnPlayer = currentTurn;
             turnTimeRemaining = 30;
+            if (currentTurnPlayer == usernamePlayer) {
+                btnTakeCard.IsEnabled = true;
+            } else { 
+                btnTakeCard.IsEnabled = false;
+            }
             turnTimer.Start();
         }
 
-        public void SyncTimer() {
-            MessageBox.Show("El temporizador ha sido sincronizado.", "Sincronización de temporizador", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
 
-        private void InitializePlayerCards(int initialCardCount) {
-            for(int i = 0; i < initialCardCount; i++) {
-                AddCardToPanel(i);
-            }
-        }
 
         private Border selectedCard = null;
 
@@ -171,12 +173,12 @@ namespace Goatverse.Windows {
 
 
         // crear una carta
-        private Border CreateCard(int cardIndex, string randomImagePath = null) {
+        private Border CreateCard(int cardIndex, int cardImageId) {
             Brush background;
-
-            if(randomImagePath != null) {
+            var imagePath = CardImageManager.GetImagePath(cardImageId);
+            if(imagePath != null) {
                 background = new ImageBrush {
-                    ImageSource = new BitmapImage(new Uri(randomImagePath, UriKind.Relative))
+                    ImageSource = new BitmapImage(new Uri(imagePath, UriKind.Relative))
                 };
             }
             else {
@@ -195,70 +197,34 @@ namespace Goatverse.Windows {
                     ShadowDepth = 5,
                     Color = Colors.Gray
                 },
-                DataContext = $"Tipo{cardIndex % 2}" 
+                DataContext = cardImageId
             };
         }
 
-        // añadir una carta al panel
-        private void AddCardToPanel(int cardIndex) {
-            var newCard = CreateCard(cardIndex); 
-            newCard.MouseLeftButtonDown += ToggleCardPosition;
 
-            var stackPanel = new StackPanel {
-                VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Center
-            };
-            var textBlock = new TextBlock {
-                Text = $"Carta {cardIndex + 1}",
-                FontSize = 16,
-                FontWeight = FontWeights.Bold,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                Margin = new Thickness(5)
-            };
-            stackPanel.Children.Add(textBlock);
-            newCard.Child = stackPanel;
-
-            stackPanelPlayersCards.Children.Add(newCard);
-        }
 
         private void BtnClickTakeCard(object sender, RoutedEventArgs e) {
-            int maxCardCount = 5;
-            int currentCardCount = stackPanelPlayersCards.Children.Count;
+            currentCardCount = stackPanelPlayersCards.Children.Count;
 
-            if(currentCardCount >= maxCardCount) {
+            if(currentCardCount >= 5) {
                 MessageBox.Show("No puedes tener más de 5 cartas al mismo tiempo.", "Límite alcanzado", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
+            } else {
+
+                AddCardToHand(currentCardCount);
+                matchManagerClient.ServiceNotifyEndTurn(lobbyCode, usernamePlayer);
             }
-
-            string randomImagePath = GetRandomCardImagePath();
-            var newCard = CreateCard(currentCardCount, randomImagePath);
-            newCard.MouseLeftButtonDown += ToggleCardPosition;
-
-            stackPanelPlayersCards.Children.Add(newCard);
+            
         }
 
+        private void AddCardToHand(int currentCardCount) {
+            var card = gameDeck.Peek();
+            var newCard = CreateCard(currentCardCount, card.ImageCardId);
+            newCard.MouseLeftButtonDown += ToggleCardPosition;
+            stackPanelPlayersCards.Children.Add(newCard);
 
-        private string GetRandomCardImagePath() {
-                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-                string projectRoot = IOPath.Combine(baseDirectory, @"..\..\..\");
-                string folderPath = IOPath.Combine(projectRoot, "Goatverse", "Multimedia", "Cards");
-                folderPath = IOPath.GetFullPath(folderPath);
-                if(!Directory.Exists(folderPath)) {
-                    throw new DirectoryNotFoundException($"La carpeta {folderPath} no existe.");
-                }
-                var imageFiles = Directory.GetFiles(folderPath, "*.png");
-
-                if(imageFiles.Length == 0) {
-                    throw new InvalidOperationException("No hay imágenes disponibles en la carpeta.");
-                }
-
-                var random = new Random();
-                int randomIndex = random.Next(imageFiles.Length);
-                return imageFiles[randomIndex];
-            }
-
-
+            matchManagerClient.ServiceNotifyDrawCard(lobbyCode);
+        }
 
         private void CardMouseEnter(object sender, MouseEventArgs e) {
             var card = sender as MaterialDesignThemes.Wpf.Card;
@@ -296,6 +262,21 @@ namespace Goatverse.Windows {
             turnTimeRemaining = 30;
             turnTimer.Start();
         }
+
+        public void ServiceReceiveDeck(Stack<CardData> shuffledDeck) {
+            gameDeck = shuffledDeck;
+            btnTakeCard.Content = gameDeck.Count();
+        }
+
+        public void ServiceRemoveCardFromDeck() {
+            try {
+                gameDeck.Pop();
+                btnTakeCard.Content = gameDeck.Count();
+            } catch (Exception ex){
+                ExceptionHandler.HandleServiceException(ex);
+            } 
+        }
+
     }
 
 }
