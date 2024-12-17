@@ -285,6 +285,9 @@
   <wsdl:message name="IMatchManager_ServiceEndGame_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceEndGame" />
   </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceAttackPlayers_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceAttackPlayers" />
+  </wsdl:message>
   <wsdl:message name="IMatchManager_ServiceNotifyEndGame_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ServiceNotifyEndGame" />
   </wsdl:message>
@@ -496,6 +499,9 @@
     </wsdl:operation>
     <wsdl:operation name="ServiceEndGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceEndGame" message="tns:IMatchManager_ServiceEndGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceAttackPlayers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceAttackPlayers" message="tns:IMatchManager_ServiceAttackPlayers_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ServiceNotifyEndGame">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceNotifyEndGame" message="tns:IMatchManager_ServiceNotifyEndGame_OutputCallbackMessage" />
@@ -906,6 +912,12 @@
     </wsdl:operation>
     <wsdl:operation name="ServiceEndGame">
       <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceEndGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceAttackPlayers">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceAttackPlayers" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

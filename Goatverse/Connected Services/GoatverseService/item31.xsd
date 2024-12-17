@@ -552,6 +552,15 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ServiceAttackPlayers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="usernameAttacker" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="attackPoints" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ServiceNotifyEndGame">
     <xs:complexType>
       <xs:sequence>

@@ -431,4 +431,7 @@ Cada jugador suma el valor total de su rebaño contando los puntos de cada carta
   <data name="messageDiscardCard" xml:space="preserve">
     <value>Debes seleccionar una sola carta para descartarla.</value>
   </data>
+  <data name="messageAttackCard" xml:space="preserve">
+    <value>Debes seleccionar una sola carta para atacar con ella.</value>
+  </data>
 </root>

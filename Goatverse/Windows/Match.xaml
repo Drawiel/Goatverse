@@ -267,7 +267,9 @@
                             HorizontalAlignment="Left" 
                             VerticalAlignment="Bottom"                   
                             Background="Transparent" 
-                            BorderBrush="Transparent" >
+                            BorderBrush="Transparent" 
+                            x:Name="btnAttack"
+                            Click="BtnClickAttack">
                         </Button>
                     </Border>
                 </Canvas>

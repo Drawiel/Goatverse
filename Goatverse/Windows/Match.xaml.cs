@@ -180,7 +180,7 @@ namespace Goatverse.Windows {
                     int pointsCard1 = GetPointsFromCard(int.Parse(card1.DataContext.ToString()));
                     int pointsCard2 = GetPointsFromCard(int.Parse(card2.DataContext.ToString()));
                     int totalPoints = pointsCard1 + pointsCard2;
-                    points = points + totalPoints;
+                    points += totalPoints;
                     matchManagerClient.ServiceUpdatePointsFromPlayer(lobbyCode, usernamePlayer, points);
                     
                     stackContainer.Children.Add(representativeCard);
@@ -324,11 +324,9 @@ namespace Goatverse.Windows {
         }
 
         public void EndGame() {
-            Application.Current.Dispatcher.Invoke(() => {
-                Start start = new Start();
-                start.Show();
-                this.Close();
-            });
+            Start start = new Start();
+            start.Show();
+            this.Close();
         }
 
         public void ServiceUpdateCurrentTurn(string currentTurn, Dictionary<string, int> playerPoints) {
@@ -339,6 +337,7 @@ namespace Goatverse.Windows {
 
         public void UpdatePoints(Dictionary<string, int> playerPoints) {
             int count = 2;
+            points = playerPoints[usernamePlayer];
             foreach(var player in playerPoints) {
                 TextBlock txtBlock = (TextBlock)this.FindName($"txtBlockPointsPlayer{count}");
                 if(usernamePlayer == player.Key) {
@@ -382,6 +381,25 @@ namespace Goatverse.Windows {
 
             Border selectedCard = selectedCards[0];
 
+            stackPanelPlayersCards.Children.Remove(selectedCard);
+            selectedCards.Clear();
+
+            BtnClickTakeCard(null, null);
+            matchManagerClient.ServiceNotifyEndTurn(lobbyCode, usernamePlayer);
+        }
+
+        private void BtnClickAttack(object sender, RoutedEventArgs e) {
+            if (selectedCards.Count != 1) {
+                MessageBox.Show(Lang.messageAttackCard,
+                                Lang.globalAttack,
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+                return;
+            }
+
+            Border selectedCard = selectedCards[0];
+            int attackPoints = GetPointsFromCard(int.Parse(selectedCard.DataContext.ToString()));
+            matchManagerClient.ServiceAttackPlayers(lobbyCode, usernamePlayer, attackPoints);
             stackPanelPlayersCards.Children.Remove(selectedCard);
             selectedCards.Clear();
 
