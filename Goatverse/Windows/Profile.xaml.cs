@@ -213,9 +213,9 @@ namespace Goatverse.Windows {
             Console.WriteLine(imageId);
         }
 
-        public void ServiceNotifyEndGame(string matchId, string winnerUsername) { }
+        public void ServiceNotifyEndGame(string winnerUsername) { }
 
-        public void ServiceUpdateCurrentTurn(string currentTurn) { }
+        public void ServiceUpdateCurrentTurn(string currentTurn, Dictionary<string, int> playerPoints) { }
 
         public void ServiceSyncTimer() { }
 

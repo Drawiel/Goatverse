@@ -53,7 +53,8 @@
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
-      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUsersManager_ServiceTryLogin_InputMessage">
@@ -278,6 +279,12 @@
   <wsdl:message name="IMatchManager_ServiceNotifyDrawCard_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceNotifyDrawCard" />
   </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceUpdatePointsFromPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceUpdatePointsFromPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_ServiceEndGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceEndGame" />
+  </wsdl:message>
   <wsdl:message name="IMatchManager_ServiceNotifyEndGame_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ServiceNotifyEndGame" />
   </wsdl:message>
@@ -483,6 +490,12 @@
     </wsdl:operation>
     <wsdl:operation name="ServiceNotifyDrawCard">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceNotifyDrawCard" message="tns:IMatchManager_ServiceNotifyDrawCard_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUpdatePointsFromPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceUpdatePointsFromPlayer" message="tns:IMatchManager_ServiceUpdatePointsFromPlayer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceEndGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ServiceEndGame" message="tns:IMatchManager_ServiceEndGame_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ServiceNotifyEndGame">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ServiceNotifyEndGame" message="tns:IMatchManager_ServiceNotifyEndGame_OutputCallbackMessage" />
@@ -881,6 +894,18 @@
     </wsdl:operation>
     <wsdl:operation name="ServiceNotifyDrawCard">
       <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceNotifyDrawCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceUpdatePointsFromPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceUpdatePointsFromPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceEndGame">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ServiceEndGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

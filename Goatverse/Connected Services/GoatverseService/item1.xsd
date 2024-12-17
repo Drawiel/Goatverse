@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.Collections.Generic" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
+  <xs:complexType name="StackOfCardData2jt2vigx">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="StackOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="CardData" Namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/GoatverseService" name="_array" nillable="true" type="q1:ArrayOfCardData" />
+      <xs:element name="_size" type="xs:int" />
+      <xs:element name="_version" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StackOfCardData2jt2vigx" nillable="true" type="tns:StackOfCardData2jt2vigx" />
+</xs:schema>

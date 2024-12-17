@@ -781,6 +781,15 @@ namespace Goatverse.Properties.Langs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You must select a single card to discard..
+        /// </summary>
+        public static string messageDiscardCard {
+            get {
+                return ResourceManager.GetString("messageDiscardCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The email is already linked to an account.
         /// </summary>
         public static string messageEmailInUse {

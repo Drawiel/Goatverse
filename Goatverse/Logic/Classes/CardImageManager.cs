@@ -44,15 +44,6 @@ namespace Goatverse.Logic.Classes {
                 case 9:
                     imagePath = "../../Multimedia/Cards/master_goat.png";
                     break;
-                case 10:
-                    imagePath = "../../Multimedia/Cards/goat.png";
-                    break;
-                case 11:
-                    imagePath = "../../Multimedia/Cards/goat.png";
-                    break;
-                case 12:
-                    imagePath = "../../Multimedia/Cards/goat.png";
-                    break;
             }
 
             return imagePath;

@@ -428,4 +428,7 @@ Cada jugador suma el valor total de su rebaño contando los puntos de cada carta
   <data name="globalHistoryMasterGoat" xml:space="preserve">
     <value>Master Goat es una cabra legendaria, forjada en la batalla y diseñada para proteger su hogar. Criada en un mundo devastado por invasores, se unió a un programa secreto que la transformó en una guerrera imparable. Con una armadura avanzada y cuernos afilados como una espada, Master Goat lidera su rebaño contra las fuerzas oscuras, enfrentándose a criaturas colosales y monstruos en el campo de batalla. Su presencia es un faro de esperanza, y su misión es clara: salvar su hogar de la destrucción total, sin importar el costo.</value>
   </data>
+  <data name="messageDiscardCard" xml:space="preserve">
+    <value>Debes seleccionar una sola carta para descartarla.</value>
+  </data>
 </root>

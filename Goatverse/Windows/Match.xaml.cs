@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using Goatverse.GoatverseService;
 using Goatverse.Logic.Classes;
+using Goatverse.Properties.Langs;
 using IOPath = System.IO.Path; 
 
 namespace Goatverse.Windows {
@@ -35,11 +36,15 @@ namespace Goatverse.Windows {
         private string currentTurnPlayer;
         private Stack<CardData> gameDeck;
         private int currentCardCount;
+        private Dictionary<string, int> pointsPerPlayer = new Dictionary<string, int>();
+        private int points;
+        private bool gameEnded;
 
 
         private GoatverseService.MatchManagerClient matchManagerClient;
 
         public Match(PlayerData[] playersList, string lobbyCode, string ownerGamertag) {
+            gameEnded = false;
             UserSession userSession = UserSessionManager.GetInstance().GetUser();
             currentCardCount = 0;
             usernamePlayer = userSession.Username;
@@ -56,7 +61,22 @@ namespace Goatverse.Windows {
             matchManagerClient.ServiceConnectToGame(usernamePlayer, lobbyCode);
             matchManagerClient.ServiceCreateDeck(lobbyCode);
             matchManagerClient.ServiceInitializeGameTurns(lobbyCode);
+            IniatilizePlayers(playersList);
             
+        }
+
+        private void IniatilizePlayers(PlayerData[] playerList) {
+            int count = 2;
+            foreach(var player in playerList) {
+                TextBlock txtBlock = (TextBlock)this.FindName($"txtBlockPointsPlayer{count}");
+                if(usernamePlayer == player.Username) {
+                    txtBlockPointsPlayer1.Tag = player.Username;
+                    
+                } else {
+                    txtBlock.Tag = player.Username;
+                    count++;
+                }
+            }
         }
 
         private void TurnTimer_Tick(object sender, EventArgs e) {
@@ -78,9 +98,11 @@ namespace Goatverse.Windows {
             currentTurnPlayer = currentTurn;
             turnTimeRemaining = 30;
             if (currentTurnPlayer == usernamePlayer) {
-                btnTakeCard.IsEnabled = true;
+                btnDiscardCard.IsEnabled = true;
+                gridPlayerActions.IsEnabled = true;
             } else { 
-                btnTakeCard.IsEnabled = false;
+                btnDiscardCard.IsEnabled = false;
+                gridPlayerActions.IsEnabled= false;
             }
             turnTimer.Start();
         }
@@ -115,21 +137,22 @@ namespace Goatverse.Windows {
             }
         }
         private void CheckAndStackCards() {
-            if(selectedCards.Count == 2) {
+            if (selectedCards.Count == 2) {
                 var card1 = selectedCards[0];
                 var card2 = selectedCards[1];
 
-                if(card1 == null || card2 == null) {
+                // Validaciones
+                if (card1 == null || card2 == null) {
                     MessageBox.Show("Ocurrió un error: Una de las cartas seleccionadas no existe.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
-                if(card1.DataContext == null || card2.DataContext == null) {
+                if (card1.DataContext == null || card2.DataContext == null) {
                     MessageBox.Show("Las cartas no tienen información asignada.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
-                if(card1.DataContext.ToString() == card2.DataContext.ToString()) {
+                if (card1.DataContext.ToString() == card2.DataContext.ToString()) {
                     MessageBox.Show("¡Cartas iguales! Se crea un stack.", "Stack creado", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     stackPanelPlayersCards.Children.Remove(card1);
@@ -144,26 +167,35 @@ namespace Goatverse.Windows {
                         BorderThickness = new Thickness(2),
                         Margin = new Thickness(10),
                         HorizontalAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Center     
+                        VerticalAlignment = VerticalAlignment.Center
                     };
 
                     var stackContainer = new StackPanel {
                         Orientation = Orientation.Vertical,
                         Margin = new Thickness(10),
-                        HorizontalAlignment = HorizontalAlignment.Center, 
-                        VerticalAlignment = VerticalAlignment.Center,     
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center,
                         Tag = new List<Border> { card1, card2 }
                     };
-
+                    int pointsCard1 = GetPointsFromCard(int.Parse(card1.DataContext.ToString()));
+                    int pointsCard2 = GetPointsFromCard(int.Parse(card2.DataContext.ToString()));
+                    int totalPoints = pointsCard1 + pointsCard2;
+                    points = points + totalPoints;
+                    matchManagerClient.ServiceUpdatePointsFromPlayer(lobbyCode, usernamePlayer, points);
+                    
                     stackContainer.Children.Add(representativeCard);
                     stackPanelPlayerStacks.Children.Add(stackContainer);
-                }
 
-                else {
+                    for (int i = 0; i < 2; i++) {
+                        BtnClickTakeCard(null, null);
+                    }
+
+                    matchManagerClient.ServiceNotifyEndTurn(lobbyCode, usernamePlayer);
+                } else {
                     MessageBox.Show("Las cartas no coinciden.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
 
-                foreach(var card in selectedCards) {
+                foreach (var card in selectedCards) {
                     card.Margin = new Thickness(card.Margin.Left, 10, card.Margin.Right, 10);
                     card.Tag = null;
                 }
@@ -171,8 +203,31 @@ namespace Goatverse.Windows {
             }
         }
 
+        public int GetPointsFromCard(int imageId) {
+            switch(imageId) {
+                case 1:
+                    return 5;
+                case 2:
+                    return 5;
+                case 3:
+                    return 10;
+                case 4:
+                    return 10;
+                case 5:
+                    return 15;
+                case 6:
+                    return 15;
+                case 7:
+                    return 20;
+                case 8:
+                    return 25;
+                case 9:
+                    return 50;
+            }
 
-        // crear una carta
+            return 0;
+        }
+
         private Border CreateCard(int cardIndex, int cardImageId) {
             Brush background;
             var imagePath = CardImageManager.GetImagePath(cardImageId);
@@ -197,7 +252,9 @@ namespace Goatverse.Windows {
                     ShadowDepth = 5,
                     Color = Colors.Gray
                 },
-                DataContext = cardImageId
+                DataContext = cardImageId,
+
+                Tag = cardImageId
             };
         }
 
@@ -214,16 +271,22 @@ namespace Goatverse.Windows {
                 AddCardToHand(currentCardCount);
                 matchManagerClient.ServiceNotifyEndTurn(lobbyCode, usernamePlayer);
             }
-            
+
+            if(gameDeck.Count == 0) {
+                matchManagerClient.ServiceEndGame(lobbyCode);
+            }
         }
 
         private void AddCardToHand(int currentCardCount) {
-            var card = gameDeck.Peek();
-            var newCard = CreateCard(currentCardCount, card.ImageCardId);
-            newCard.MouseLeftButtonDown += ToggleCardPosition;
-            stackPanelPlayersCards.Children.Add(newCard);
+            if(gameDeck.Count() != 0) {
+                var card = gameDeck.Peek();
+                var newCard = CreateCard(currentCardCount, card.ImageCardId);
+                newCard.MouseLeftButtonDown += ToggleCardPosition;
+                stackPanelPlayersCards.Children.Add(newCard);
 
-            matchManagerClient.ServiceNotifyDrawCard(lobbyCode);
+                matchManagerClient.ServiceNotifyDrawCard(lobbyCode);
+            } 
+
         }
 
         private void CardMouseEnter(object sender, MouseEventArgs e) {
@@ -250,12 +313,42 @@ namespace Goatverse.Windows {
             card.BeginAnimation(FrameworkElement.MarginProperty, marginAnimation);
         }
 
-        public void ServiceNotifyEndGame(string matchId, string winnerUsername) {
-            throw new NotImplementedException();
+        public void ServiceNotifyEndGame(string winnerUsername) {
+            Application.Current.Dispatcher.Invoke(() => {
+                MessageBox.Show($"El ganador de la partida es: {winnerUsername}");
+                if(!gameEnded) {
+                    gameEnded = true;
+                    EndGame();
+                }
+            });
         }
 
-        public void ServiceUpdateCurrentTurn(string currentTurn) {
+        public void EndGame() {
+            Application.Current.Dispatcher.Invoke(() => {
+                Start start = new Start();
+                start.Show();
+                this.Close();
+            });
+        }
+
+        public void ServiceUpdateCurrentTurn(string currentTurn, Dictionary<string, int> playerPoints) {
             UpdateCurrentTurn(currentTurn);
+            pointsPerPlayer = playerPoints;
+            UpdatePoints(playerPoints);
+        }
+
+        public void UpdatePoints(Dictionary<string, int> playerPoints) {
+            int count = 2;
+            foreach(var player in playerPoints) {
+                TextBlock txtBlock = (TextBlock)this.FindName($"txtBlockPointsPlayer{count}");
+                if(usernamePlayer == player.Key) {
+                    txtBlockPointsPlayer1.Text = player.Value.ToString();
+
+                } else if (txtBlock.Tag.ToString() == player.Key){
+                    txtBlock.Text = player.Value.ToString();
+                    count++;
+                }
+            }
         }
 
         public void ServiceSyncTimer() {
@@ -272,9 +365,28 @@ namespace Goatverse.Windows {
             try {
                 gameDeck.Pop();
                 btnTakeCard.Content = gameDeck.Count();
+                
             } catch (Exception ex){
                 ExceptionHandler.HandleServiceException(ex);
             } 
+        }
+
+        private void BtnClickDiscardCard(object sender, RoutedEventArgs e) {
+            if (selectedCards.Count != 1) {
+                MessageBox.Show(Lang.messageDiscardCard,
+                                Lang.globalDiscard,
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+                return;
+            }
+
+            Border selectedCard = selectedCards[0];
+
+            stackPanelPlayersCards.Children.Remove(selectedCard);
+            selectedCards.Clear();
+
+            BtnClickTakeCard(null, null);
+            matchManagerClient.ServiceNotifyEndTurn(lobbyCode, usernamePlayer);
         }
 
     }

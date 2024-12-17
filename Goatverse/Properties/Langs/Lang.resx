@@ -427,4 +427,7 @@ Scoring Each player adds up the total value of their herd by counting the points
   <data name="globalHistoryMasterGoat" xml:space="preserve">
     <value>Master Goat is a legendary goat, forged in battle and designed to protect his home. Raised in a world ravaged by invaders, she joined a secret program that transformed her into an unstoppable warrior. With advanced armor and horns sharp as a sword, Master Goat leads her herd against the dark forces, facing colossal creatures and monsters on the battlefield. Her presence is a beacon of hope, and her mission is clear: save her home from total destruction, no matter the cost.</value>
   </data>
+  <data name="messageDiscardCard" xml:space="preserve">
+    <value>You must select a single card to discard.</value>
+  </data>
 </root>

@@ -267,6 +267,9 @@
     <None Include="Connected Services\GoatverseService\item.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\GoatverseService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\GoatverseService\item3.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -380,6 +383,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\GoatverseService\item1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Multimedia\trash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
