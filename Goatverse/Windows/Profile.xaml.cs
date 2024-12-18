@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Goatverse.GoatverseService;
 using Goatverse.Properties.Langs;
 using System.ServiceModel;
+using System.ComponentModel;
 
 namespace Goatverse.Windows {
 
@@ -28,6 +29,22 @@ namespace Goatverse.Windows {
         private int imageId = -1;
         private Button lastSelectedButton = null;
         public List<MatchData> RecentMatches { get; set; }
+        private int _totalWins;
+        public int TotalWins {
+            get { return _totalWins; }
+            set {
+                if(_totalWins != value) {
+                    _totalWins = value;
+                    OnPropertyChanged(nameof(TotalWins)); 
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
 
         public Profile() {
             InitializeComponent();
@@ -37,11 +54,13 @@ namespace Goatverse.Windows {
             emailInstance = userSession.Email;
             profileManager = new GoatverseService.ProfilesManagerClient();
             matchManager = new GoatverseService.MatchManagerClient(new InstanceContext(this));
-
+            this.DataContext = this;
 
             LoadProfileData();
-            LoadRecentMatches();  // Llamada al nuevo método para cargar las partidas recientes
+            LoadRecentMatches(); 
+            LoadWonMatches();
         }
+
 
         private void LoadProfileData() {
             try {
@@ -55,20 +74,29 @@ namespace Goatverse.Windows {
             }
         }
 
-        // Implementación del método de la interfaz de callback
         public void OnMatchDataReceived(MatchData matchData) {
-            // Lógica para manejar los datos de la partida
         }
 
         private void LoadRecentMatches() {
             try {
-                // Usamos 'matchManager' que está correctamente inicializado
                 RecentMatches = matchManager.ServiceGetRecentMatches(10).ToList();
-
-                // Asignar los datos al control
                 RecentMatchesControl.ItemsSource = RecentMatches;
             } catch(Exception ex) {
                 MessageBox.Show($"Error al cargar las partidas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void LoadWonMatches() {
+            try {
+
+                profileManager.ServiceIncrementMatchesWonByUserName(usernamePlayer);
+
+                var matches = profileManager.ServiceGetWonMatchesByUsername(usernamePlayer);
+                TotalWins = matches;
+
+
+            } catch(Exception ex) {
+                MessageBox.Show($"Error al cargar las partidas ganadas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

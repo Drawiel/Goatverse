@@ -95,6 +95,7 @@
     <Compile Include="Logic\Classes\ExceptionHandler.cs" />
     <Compile Include="Logic\Classes\FieldValidator.cs" />
     <Compile Include="Logic\Classes\Message.cs" />
+    <Compile Include="Logic\Classes\MessageHelper.cs" />
     <Compile Include="Logic\Classes\UserSession.cs" />
     <Compile Include="Logic\Classes\UserSessionManager.cs" />
     <Compile Include="ScreenSizeToFontSizeConverter.cs" />
@@ -239,6 +240,7 @@
     <EmbeddedResource Include="Properties\Langs\Lang.en-US.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.en-US.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Langs\Lang.es-MX.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -247,6 +249,7 @@
     <EmbeddedResource Include="Properties\Langs\Lang.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

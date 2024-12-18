@@ -61,7 +61,6 @@
                     <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
 
-                <!--Top section-->
                 <Viewbox 
                     Grid.Column="1" 
                     Grid.Row="0"
@@ -207,7 +206,6 @@
                     </Border>
                 </Viewbox>
 
-                <!--Botón Guardar Cambios-->
                 <Viewbox 
                     Grid.Column="1" 
                     Grid.Row="3"
@@ -232,7 +230,7 @@
             </Grid>
 
         </Viewbox>
-        
+
         <Viewbox Grid.Column="0" Grid.Row="0" Margin="0">
             <Border CornerRadius="0 20 20 0">
                 <Button 
@@ -313,14 +311,11 @@
                                                         <materialDesign:PackIcon Kind="Pencil" />
                                                     </Button>
                                                 </Grid>
-                                                
+
                                             </materialDesign:ColorZone>
                                         </Grid>
                                     </Grid>
                                 </Viewbox>
-                                
-                                
-                                
 
                                 <StackPanel 
                                     Grid.Row="1" 
@@ -495,7 +490,6 @@
                 <RowDefinition Height="90*"/>
             </Grid.RowDefinitions>
 
-            <!-- Título -->
             <TextBlock
             Grid.Row="0"
             HorizontalAlignment="Left"
@@ -504,68 +498,48 @@
             FontSize="40"
             Margin="10,0"/>
 
-            <!-- Contenedor para partidas -->
-            <ItemsControl x:Name="RecentMatchesControl" Grid.Row="1" ItemsSource="{Binding RecentMatches}">
-                <!-- Diseño de las partidas -->
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="Gray" BorderThickness="1" Margin="5" Padding="10">
-                            <StackPanel Orientation="Vertical">
-                                <!-- ID de Partida -->
-                                <TextBlock 
-                                Text="Partida ID: " 
-                                FontWeight="Bold" 
-                                FontSize="18" 
-                                Foreground="Black"/>
-                                <TextBlock 
-                                Text="{Binding IdMatch}" 
-                                FontSize="16" 
-                                Foreground="Gray"/>
+            <ScrollViewer  Grid.Row="1">
 
-                                <!-- Hora de Inicio -->
-                                <TextBlock 
-                                Text="Inicio: " 
-                                FontWeight="Bold" 
-                                FontSize="18" 
-                                Foreground="Black"/>
-                                <TextBlock 
-                                Text="{Binding StartTime, StringFormat={}{0:dd/MM/yyyy HH:mm}}" 
-                                FontSize="16" 
-                                Foreground="Gray"/>
+                <ItemsControl 
+                    x:Name="RecentMatchesControl" 
+                    Grid.Row="1" 
+                    ItemsSource="{Binding RecentMatches}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Gray" BorderThickness="1" Margin="5" Padding="10">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock 
+                                    Text="Partida ID: " 
+                                    FontWeight="Bold" 
+                                    FontSize="18" 
+                                    Foreground="Black"/>
+                                    <TextBlock 
+                                    Text="{Binding IdMatch}" 
+                                    FontSize="16" 
+                                    Foreground="Black"/>
 
-                                <!-- Hora de Fin -->
-                                <TextBlock 
-                                Text="Fin: " 
-                                FontWeight="Bold" 
-                                FontSize="18" 
-                                Foreground="Black"/>
-                                <TextBlock 
-                                Text="{Binding EndTime, StringFormat={}{0:dd/MM/yyyy HH:mm}}" 
-                                FontSize="16" 
-                                Foreground="Gray"/>
+                                    <TextBlock 
+                                    Text="Inicio: " 
+                                    FontWeight="Bold" 
+                                    FontSize="18" 
+                                    Foreground="Black"/>
+                                    <TextBlock 
+                                    Text="{Binding StartTime, StringFormat={}{0:dd/MM/yyyy HH:mm}}" 
+                                    FontSize="16" 
+                                    Foreground="Black"/>
 
-                                <!-- Ganador (opcional) -->
-                                <TextBlock 
-                                Text="Ganador: " 
-                                FontWeight="Bold" 
-                                FontSize="18" 
-                                Foreground="Black"/>
-                                <TextBlock 
-                                Text="{Binding IdWinner}" 
-                                FontSize="16" 
-                                Foreground="Gray"/>
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
 
-                <!-- Espaciado entre elementos -->
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Vertical" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
         </Grid>
 
 
@@ -583,21 +557,40 @@
                 Text="{x:Static language:Lang.globalStatistics}"
                 FontSize="40"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center"/>
+                HorizontalAlignment="Center"/>  
 
             <Grid
                 Grid.Row="1">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="10*"/>
                     <ColumnDefinition Width="40*"/>
-                    <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50*"/>
                     <RowDefinition Height="50*"/>
                     <RowDefinition Height="150*"/>
                 </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="{x:Static language:Lang.globalWins}"
+                    FontSize="40"
+                    Foreground="Green"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+                <TextBlock 
+                    Grid.Row="0" 
+                    Grid.Column="2"
+                    Text="{Binding TotalWins}" 
+                    FontSize="35" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    Foreground="Black" />
             </Grid>
         </Grid>
+
 
     </Grid>
 </Window>

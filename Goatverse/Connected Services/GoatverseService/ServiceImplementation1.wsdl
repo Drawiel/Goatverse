@@ -171,6 +171,18 @@
   <wsdl:message name="IProfilesManager_ServiceGetProfileByUserId_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceGetProfileByUserIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceIncrementMatchesWonByUserName_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceIncrementMatchesWonByUserName" />
+  </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceIncrementMatchesWonByUserName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceIncrementMatchesWonByUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceGetWonMatchesByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetWonMatchesByUsername" />
+  </wsdl:message>
+  <wsdl:message name="IProfilesManager_ServiceGetWonMatchesByUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiceGetWonMatchesByUsernameResponse" />
+  </wsdl:message>
   <wsdl:message name="IFriendsManager_ServiceSendFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceSendFriendRequest" />
   </wsdl:message>
@@ -413,6 +425,14 @@
     <wsdl:operation name="ServiceGetProfileByUserId">
       <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserId" message="tns:IProfilesManager_ServiceGetProfileByUserId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserIdResponse" message="tns:IProfilesManager_ServiceGetProfileByUserId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceIncrementMatchesWonByUserName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceIncrementMatchesWonByUserName" message="tns:IProfilesManager_ServiceIncrementMatchesWonByUserName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceIncrementMatchesWonByUserNameResponse" message="tns:IProfilesManager_ServiceIncrementMatchesWonByUserName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetWonMatchesByUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetWonMatchesByUsername" message="tns:IProfilesManager_ServiceGetWonMatchesByUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetWonMatchesByUsernameResponse" message="tns:IProfilesManager_ServiceGetWonMatchesByUsername_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IFriendsManager">
@@ -721,6 +741,24 @@
     </wsdl:operation>
     <wsdl:operation name="ServiceGetProfileByUserId">
       <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceIncrementMatchesWonByUserName">
+      <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceIncrementMatchesWonByUserName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceGetWonMatchesByUsername">
+      <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceGetWonMatchesByUsername" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -63,10 +63,6 @@
                 <ScrollViewer x:Name="scrollViewerChat">
                     <Grid>
 
-
-
-                        <!--Top Chat MenuBar-->
-
                         <Grid Background="#ffffff">
                             <Grid.Effect>
                                 <DropShadowEffect BlurRadius="20" ShadowDepth="1" Direction="90" Opacity="0.1"/>
@@ -77,7 +73,6 @@
 
                         </Grid>
 
-                        <!--Chats-->
                         <Grid>
                             <ItemsControl x:Name="chatSection" ItemsSource="{Binding UserControls}">
                                 <ItemsControl.ItemsPanel>
@@ -88,12 +83,8 @@
                             </ItemsControl>
                         </Grid>
 
-
-
-
                     </Grid>
                 </ScrollViewer>
-                <!--Bottom Message Section-->
 
                 <Grid Grid.Row="2" Margin="0 0 17 0" Background="White">
 
@@ -102,7 +93,6 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <!--message TextBox-->
                     <Grid Background="White">
 
                         <TextBox x:Name="textBoxMessage" materialDesign:HintAssist.Hint="{x:Static language:Lang.globalSendMessage}" Panel.ZIndex="1"
@@ -110,7 +100,6 @@
                         Margin="15 0 15 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Background="LightGray" materialDesign:HintAssist.IsFloating="False"/>
 
                     </Grid>
-                    <!--SendButton-->
 
                     <Button Grid.Column="1" Margin="5 0 0 0" Style="{StaticResource MaterialDesignIconButton}" Click="BtnClickSendMessage" >
                         <materialDesign:PackIcon Kind="Send" />
@@ -120,7 +109,6 @@
 
         </Border>
 
-        <!--Start Button-->
         <Viewbox 
             Grid.Column="2" 
             Grid.Row="1" 
@@ -151,40 +139,11 @@
                     </Button>
                 </Border>
             </Grid>
-            
+
         </Viewbox>
 
-        <!--Friends Button />-->
-        <Viewbox 
-            Grid.Column="0" Grid.Row="0" Margin="0 -50 0 0">
-            <Border CornerRadius="0 20 20 0">
-                <Button
-                    Margin="10"
-                    Background="LightBlue"
-                    BorderBrush="Black"
-                    BorderThickness="2" 
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                    Style="{StaticResource MaterialDesignFloatingActionButton}"
-                    ToolTip="{x:Static language:Lang.globalFriendList}">
-                    <materialDesign:PackIcon Kind="AccountSupervisor" Width="40" Height="40" Margin="5" />
-                </Button>
-            </Border>
-        </Viewbox>
-
-        <!--Setting Button-->
         <Viewbox Grid.Column="5" Grid.Row="0" Margin="0 -50 0 0">
-            <Border CornerRadius="0 20 20 0">
-                <Button
-                    Margin="10"
-                    Background="LightBlue"
-                    BorderBrush="Black"
-                    BorderThickness="2" 
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                    Style="{StaticResource MaterialDesignFloatingActionButton}"
-                    ToolTip="{x:Static language:Lang.globalSettings}">
-                    <materialDesign:PackIcon Kind="Cog" Width="40" Height="40" Margin="5" />
-                </Button>
-            </Border>
+            <Border CornerRadius="0 20 20 0"/>
         </Viewbox>
 
         <Viewbox Grid.Column="0" Grid.Row="2" Margin="0 0 0 -30">
@@ -207,7 +166,6 @@
             </Grid>
         </Viewbox>
 
-        <!--Lobby Code-->
         <Viewbox 
         Grid.Column="2" 
         Grid.Row="0" 

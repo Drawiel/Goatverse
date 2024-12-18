@@ -8,7 +8,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="220" d:DesignWidth="320">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid Name="gridMain"  
+          HorizontalAlignment="Center" 
+          VerticalAlignment="Center">
         <Border Background="White"
                 CornerRadius="15"
                 Width="300"
@@ -49,6 +51,7 @@
                            HorizontalAlignment="Center"
                            Margin="0,10,0,5" />
                 <TextBlock Text=""
+                           Name="txtBlockMessage"
                            FontSize="10"
                            Foreground="#666666"
                            HorizontalAlignment="Center"

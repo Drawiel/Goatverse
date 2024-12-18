@@ -434,4 +434,7 @@ Cada jugador suma el valor total de su rebaño contando los puntos de cada carta
   <data name="messageAttackCard" xml:space="preserve">
     <value>Debes seleccionar una sola carta para atacar con ella.</value>
   </data>
+  <data name="globalWins" xml:space="preserve">
+    <value>Victorias:</value>
+  </data>
 </root>

@@ -433,4 +433,7 @@ Scoring Each player adds up the total value of their herd by counting the points
   <data name="messageAttackCard" xml:space="preserve">
     <value>You must select a single card to attack.</value>
   </data>
+  <data name="globalWins" xml:space="preserve">
+    <value>Wins</value>
+  </data>
 </root>

@@ -200,74 +200,6 @@
 
                 </Grid>
 
-                <Grid
-                Grid.Row="3">
-                    <TextBlock 
-                    Text="{x:Static language:Lang.globalAction}" 
-                    FontSize="35"
-                    Margin="0 0 0 0"/>
-                </Grid>
-
-                <Grid
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20*"/>
-                        <ColumnDefinition Width="20*"/>
-                        <ColumnDefinition Width="20*"/>
-
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        Width="210"
-                        Height="260">
-                        <Button
-                            Margin="0"
-                            HorizontalAlignment="Center"
-                            Width="210"
-                            Height="250"
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            Click="BtnClickSliceOfGoat">
-                        </Button>
-                    </Border>
-
-                    <Border
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        Width="210"
-                        Height="260">
-                        <Button
-                            Margin="0"
-                            HorizontalAlignment="Center"
-                            Width="210"
-                            Height="250"
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            Click="BtnClickEscapeGoat">
-                        </Button>
-                    </Border>
-
-                    <Border
-                        Grid.Column="2"
-                        Grid.Row="0"
-                        Width="210"
-                        Height="260">
-                        <Button
-                            Margin="0"
-                            HorizontalAlignment="Center"
-                            Width="210"
-                            Height="250"
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            Click="BtnClickGoatsRampage">
-                        </Button>
-                    </Border>
-
-                </Grid>
 
                 <Grid
                 Grid.Row="6">
@@ -367,7 +299,7 @@
 
                     <TextBlock 
                     Grid.Row="2"
-                    Text="Historia"
+                    Text="{x:Static language:Lang.globalHistory}"
                     FontSize="25"
                     HorizontalAlignment="Center"/>
 
