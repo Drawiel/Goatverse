@@ -437,4 +437,7 @@ Cada jugador suma el valor total de su rebaño contando los puntos de cada carta
   <data name="globalWins" xml:space="preserve">
     <value>Victorias:</value>
   </data>
+  <data name="messageDatabaseError" xml:space="preserve">
+    <value>Hubo un error con nuestra base de datos. Vuelva a intentar más tarde</value>
+  </data>
 </root>

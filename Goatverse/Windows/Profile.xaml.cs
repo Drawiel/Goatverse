@@ -80,33 +80,43 @@ namespace Goatverse.Windows {
         private void LoadRecentMatches() {
             try {
                 RecentMatches = matchManager.ServiceGetRecentMatches(10).ToList();
-                RecentMatchesControl.ItemsSource = RecentMatches;
-            } catch(Exception ex) {
-                MessageBox.Show($"Error al cargar las partidas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                if (RecentMatches.Count != 0) {
+                    RecentMatchesControl.ItemsSource = RecentMatches;
+                } else {
+                    MessageBox.Show(Lang.messageDatabaseError);
+                }
+
+            } catch (Exception ex) {
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
         private void LoadWonMatches() {
             try {
 
-                profileManager.ServiceIncrementMatchesWonByUserName(usernamePlayer);
-
                 var matches = profileManager.ServiceGetWonMatchesByUsername(usernamePlayer);
                 TotalWins = matches;
 
 
             } catch(Exception ex) {
-                MessageBox.Show($"Error al cargar las partidas ganadas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
             }
         }
 
         private void Changeimage() {
-            string imagePath = "../Multimedia/sword.png";
-            if (imageId != 0 && imageId != -1) {
-                imagePath = $"../Multimedia/gato{imageId}.png";
-            } 
+            try {
+                string imagePath = "../Multimedia/sword.png";
+                if (imageId != 0 && imageId != -1) {
+                    imagePath = $"../Multimedia/gato{imageId}.png";
+                }
 
-            imgProfile.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
+                imgProfile.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
+
+            } catch(Exception ex) {
+                ExceptionHandler.HandleServiceException(ex);
+            }
+            
         }
 
         private void BtnClickGoBack(object sender, RoutedEventArgs e) {
@@ -194,6 +204,10 @@ namespace Goatverse.Windows {
 
         private bool UpdateUsernameAndPassword(UserData userData, string oldPassword) {
             try {
+                if (userManager.ServiceUserExistsByUsername(userData.Username)) { 
+                    MessageBox.Show(Lang.messageExistingUsername);
+                    return false;
+                }
                 if (userManager.ServiceVerifyPassword(oldPassword, usernamePlayer)) {
                     if (FieldValidator.IsValidPassword(userData.Password)) {
                         return userManager.ServicePasswordAndUsernameChanged(userData);
@@ -219,7 +233,7 @@ namespace Goatverse.Windows {
                         MessageBox.Show("image changed");
                         Changeimage();
                     } else {
-                        MessageBox.Show("Error");
+                        MessageBox.Show(Lang.messageDatabaseError);
                     }
                 }
             } catch (Exception ex) {
@@ -251,5 +265,6 @@ namespace Goatverse.Windows {
 
         public void ServiceRemoveCardFromDeck() { }
 
+        public void ServiceNotifyReturnToStart() { }
     }
 }

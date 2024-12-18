@@ -19,7 +19,7 @@ namespace Goatverse.Logic.Classes {
                 MessageBox.Show(Lang.messageConnectionTookTooLong);
                 log.Warn($"TimeoutException: {ex.Message}", ex);
             } else if (ex is CommunicationException) {
-                MessageBox.Show(Lang.messageLostInternetConnection);
+                MessageBox.Show(Lang.messageDatabaseError);
                 log.Warn($"CommunicationException:  {ex.Message}", ex);
             } else {
                 MessageBox.Show(Lang.messageUnexpectedError);

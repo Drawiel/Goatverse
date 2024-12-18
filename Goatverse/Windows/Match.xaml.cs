@@ -44,24 +44,31 @@ namespace Goatverse.Windows {
         private GoatverseService.MatchManagerClient matchManagerClient;
 
         public Match(PlayerData[] playersList, string lobbyCode, string ownerGamertag) {
-            gameEnded = false;
-            UserSession userSession = UserSessionManager.GetInstance().GetUser();
-            currentCardCount = 0;
-            usernamePlayer = userSession.Username;
-            InitializeComponent();
-            playersCardsStackPlanel = this.FindName("stackPanelPlayersCards") as StackPanel;
-            lblCurrentTurn = this.FindName("lblCurrentTurn") as Label;
-            this.lobbyCode = lobbyCode;
-            turnTimer = new DispatcherTimer();
-            turnTimer.Interval = TimeSpan.FromSeconds(1); 
-            turnTimer.Tick += TurnTimer_Tick;
-            turnTimeRemaining = 10;
-            InstanceContext context = new InstanceContext(this);
-            matchManagerClient = new GoatverseService.MatchManagerClient(context);
-            matchManagerClient.ServiceConnectToGame(usernamePlayer, lobbyCode);
-            matchManagerClient.ServiceCreateDeck(lobbyCode);
-            matchManagerClient.ServiceInitializeGameTurns(lobbyCode);
-            IniatilizePlayers(playersList);
+            try {
+                gameEnded = false;
+                UserSession userSession = UserSessionManager.GetInstance().GetUser();
+                currentCardCount = 0;
+                usernamePlayer = userSession.Username;
+                InitializeComponent();
+                playersCardsStackPlanel = this.FindName("stackPanelPlayersCards") as StackPanel;
+                lblCurrentTurn = this.FindName("lblCurrentTurn") as Label;
+                this.lobbyCode = lobbyCode;
+                turnTimer = new DispatcherTimer();
+                turnTimer.Interval = TimeSpan.FromSeconds(1);
+                turnTimer.Tick += TurnTimer_Tick;
+                turnTimeRemaining = 10;
+                InstanceContext context = new InstanceContext(this);
+                matchManagerClient = new GoatverseService.MatchManagerClient(context);
+                matchManagerClient.ServiceConnectToGame(usernamePlayer, lobbyCode);
+                matchManagerClient.ServiceCreateDeck(lobbyCode);
+                matchManagerClient.ServiceInitializeGameTurns(lobbyCode);
+                IniatilizePlayers(playersList);
+            } catch (Exception ex) {
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
+            }
             
         }
 
@@ -109,7 +116,10 @@ namespace Goatverse.Windows {
                 turnTimer.Start();
 
             } catch(Exception ex) {
-                MessageBox.Show($"Error al actualizar el turno: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -144,7 +154,10 @@ namespace Goatverse.Windows {
                     }
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"Error al actualizar el turno: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
         private void CheckAndStackCards() {
@@ -212,7 +225,10 @@ namespace Goatverse.Windows {
                     selectedCards.Clear();
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"Error al actualizar el turno: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -303,7 +319,10 @@ namespace Goatverse.Windows {
                     matchManagerClient.ServiceEndGame(lobbyCode);
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"Error al tomar la carta: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -318,7 +337,10 @@ namespace Goatverse.Windows {
                     matchManagerClient.ServiceNotifyDrawCard(lobbyCode);
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"Error al agregar carta a la mano: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -334,7 +356,10 @@ namespace Goatverse.Windows {
 
                 card.BeginAnimation(FrameworkElement.MarginProperty, marginAnimation);
             } catch(Exception ex) {
-                MessageBox.Show($"Error al animar la carta: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -350,7 +375,10 @@ namespace Goatverse.Windows {
 
                 card.BeginAnimation(FrameworkElement.MarginProperty, marginAnimation);
             } catch(Exception ex) {
-                MessageBox.Show($"Error al quitar la animación de la carta: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -364,7 +392,10 @@ namespace Goatverse.Windows {
                     }
                 });
             } catch(Exception ex) {
-                MessageBox.Show($"Error al notificar el final del juego: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -374,7 +405,10 @@ namespace Goatverse.Windows {
                 start.Show();
                 this.Close();
             } catch(Exception ex) {
-                MessageBox.Show($"Error al terminar el juego: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -384,7 +418,10 @@ namespace Goatverse.Windows {
                 pointsPerPlayer = playerPoints;
                 UpdatePoints(playerPoints);
             } catch(Exception ex) {
-                MessageBox.Show($"Error al actualizar el turno: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -402,7 +439,10 @@ namespace Goatverse.Windows {
                     }
                 }
             } catch(Exception ex) {
-                MessageBox.Show($"Error al actualizar los puntos: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -411,7 +451,10 @@ namespace Goatverse.Windows {
                 turnTimeRemaining = 30;
                 turnTimer.Start();
             } catch(Exception ex) {
-                MessageBox.Show($"Error al sincronizar el temporizador: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -420,7 +463,10 @@ namespace Goatverse.Windows {
                 gameDeck = shuffledDeck;
                 btnTakeCard.Content = gameDeck.Count();
             } catch(Exception ex) {
-                MessageBox.Show($"Error al recibir el mazo: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -430,6 +476,9 @@ namespace Goatverse.Windows {
                 btnTakeCard.Content = gameDeck.Count();
             } catch(Exception ex) {
                 ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -451,7 +500,10 @@ namespace Goatverse.Windows {
                 BtnClickTakeCard(null, null);
                 matchManagerClient.ServiceNotifyEndTurn(lobbyCode, usernamePlayer);
             } catch(Exception ex) {
-                MessageBox.Show($"Error al descartar la carta: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
@@ -474,11 +526,19 @@ namespace Goatverse.Windows {
                 BtnClickTakeCard(null, null);
                 matchManagerClient.ServiceNotifyEndTurn(lobbyCode, usernamePlayer);
             } catch(Exception ex) {
-                MessageBox.Show($"Error al atacar con la carta: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExceptionHandler.HandleServiceException(ex);
+                Start start = new Start();
+                start.Show();
+                this.Close();
             }
         }
 
-
+        public void ServiceNotifyReturnToStart() {
+            Start start = new Start();
+            start.Show();
+            MessageBox.Show(Lang.messageGameError);
+            this.Close();
+        }
     }
 
 }

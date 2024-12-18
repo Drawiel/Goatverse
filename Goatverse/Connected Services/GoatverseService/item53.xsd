@@ -44,6 +44,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ProfileData" nillable="true" type="tns:ProfileData" />
+  <xs:complexType name="ExceptionSender">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExceptionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StackTrace" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExceptionSender" nillable="true" type="tns:ExceptionSender" />
   <xs:complexType name="MatchData">
     <xs:sequence>
       <xs:element minOccurs="0" name="EndTime" nillable="true" type="xs:dateTime" />

@@ -436,4 +436,7 @@ Scoring Each player adds up the total value of their herd by counting the points
   <data name="globalWins" xml:space="preserve">
     <value>Wins:</value>
   </data>
+  <data name="messageDatabaseError" xml:space="preserve">
+    <value>There was an error with our database. Please try again later</value>
+  </data>
 </root>

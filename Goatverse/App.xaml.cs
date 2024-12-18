@@ -23,7 +23,7 @@ namespace Goatverse {
             
             log4net.Config.XmlConfigurator.Configure();
 
-            log.Debug("Exam Explosion - Cliente ha iniciado.");
+            log.Debug("Goatverse iniciado.");
 
             base.OnStartup(e);
         }
