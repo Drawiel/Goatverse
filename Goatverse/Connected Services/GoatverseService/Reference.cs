@@ -419,83 +419,6 @@ namespace Goatverse.GoatverseService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ExceptionSender", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
-    [System.SerializableAttribute()]
-    public partial class ExceptionSender : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ErrorMessageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ExceptionTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StackTraceField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ErrorMessage {
-            get {
-                return this.ErrorMessageField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ErrorMessageField, value) != true)) {
-                    this.ErrorMessageField = value;
-                    this.RaisePropertyChanged("ErrorMessage");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ExceptionType {
-            get {
-                return this.ExceptionTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ExceptionTypeField, value) != true)) {
-                    this.ExceptionTypeField = value;
-                    this.RaisePropertyChanged("ExceptionType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StackTrace {
-            get {
-                return this.StackTraceField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StackTraceField, value) != true)) {
-                    this.StackTraceField = value;
-                    this.RaisePropertyChanged("StackTrace");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="MatchData", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
     [System.SerializableAttribute()]
     public partial class MatchData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1015,39 +938,30 @@ namespace Goatverse.GoatverseService {
     public interface IProfilesManager {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceLoadProfileData", ReplyAction="http://tempuri.org/IProfilesManager/ServiceLoadProfileDataResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Goatverse.GoatverseService.ExceptionSender), Action="http://tempuri.org/IProfilesManager/ServiceLoadProfileDataExceptionSenderFault", Name="ExceptionSender", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
         Goatverse.GoatverseService.ProfileData ServiceLoadProfileData(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceLoadProfileData", ReplyAction="http://tempuri.org/IProfilesManager/ServiceLoadProfileDataResponse")]
         System.Threading.Tasks.Task<Goatverse.GoatverseService.ProfileData> ServiceLoadProfileDataAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage", ReplyAction="http://tempuri.org/IProfilesManager/ServiceChangeProfileImageResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Goatverse.GoatverseService.ExceptionSender), Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImageExceptionSenderFault" +
-            "", Name="ExceptionSender", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
         bool ServiceChangeProfileImage(string username, int imageId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage", ReplyAction="http://tempuri.org/IProfilesManager/ServiceChangeProfileImageResponse")]
         System.Threading.Tasks.Task<bool> ServiceChangeProfileImageAsync(string username, int imageId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserId", ReplyAction="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserIdResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Goatverse.GoatverseService.ExceptionSender), Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserIdExceptionSenderFault" +
-            "", Name="ExceptionSender", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
         Goatverse.GoatverseService.ProfileData ServiceGetProfileByUserId(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserId", ReplyAction="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserIdResponse")]
         System.Threading.Tasks.Task<Goatverse.GoatverseService.ProfileData> ServiceGetProfileByUserIdAsync(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceIncrementMatchesWonByUserName", ReplyAction="http://tempuri.org/IProfilesManager/ServiceIncrementMatchesWonByUserNameResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Goatverse.GoatverseService.ExceptionSender), Action="http://tempuri.org/IProfilesManager/ServiceIncrementMatchesWonByUserNameException" +
-            "SenderFault", Name="ExceptionSender", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
         void ServiceIncrementMatchesWonByUserName(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceIncrementMatchesWonByUserName", ReplyAction="http://tempuri.org/IProfilesManager/ServiceIncrementMatchesWonByUserNameResponse")]
         System.Threading.Tasks.Task ServiceIncrementMatchesWonByUserNameAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceGetWonMatchesByUsername", ReplyAction="http://tempuri.org/IProfilesManager/ServiceGetWonMatchesByUsernameResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Goatverse.GoatverseService.ExceptionSender), Action="http://tempuri.org/IProfilesManager/ServiceGetWonMatchesByUsernameExceptionSender" +
-            "Fault", Name="ExceptionSender", Namespace="http://schemas.datacontract.org/2004/07/GoatverseService")]
         int ServiceGetWonMatchesByUsername(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfilesManager/ServiceGetWonMatchesByUsername", ReplyAction="http://tempuri.org/IProfilesManager/ServiceGetWonMatchesByUsernameResponse")]

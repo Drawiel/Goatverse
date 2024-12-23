@@ -50,11 +50,11 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
-      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+      <xsd:import schemaLocation="http://192.168.251.220:8083/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.251.220:8083/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.251.220:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GoatverseService" />
+      <xsd:import schemaLocation="http://192.168.251.220:8083/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://192.168.251.220:8083/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUsersManager_ServiceTryLogin_InputMessage">
@@ -159,17 +159,11 @@
   <wsdl:message name="IProfilesManager_ServiceLoadProfileData_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceLoadProfileDataResponse" />
   </wsdl:message>
-  <wsdl:message name="IProfilesManager_ServiceLoadProfileData_ExceptionSenderFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/GoatverseService" name="detail" element="q1:ExceptionSender" />
-  </wsdl:message>
   <wsdl:message name="IProfilesManager_ServiceChangeProfileImage_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceChangeProfileImage" />
   </wsdl:message>
   <wsdl:message name="IProfilesManager_ServiceChangeProfileImage_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceChangeProfileImageResponse" />
-  </wsdl:message>
-  <wsdl:message name="IProfilesManager_ServiceChangeProfileImage_ExceptionSenderFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/GoatverseService" name="detail" element="q2:ExceptionSender" />
   </wsdl:message>
   <wsdl:message name="IProfilesManager_ServiceGetProfileByUserId_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceGetProfileByUserId" />
@@ -177,26 +171,17 @@
   <wsdl:message name="IProfilesManager_ServiceGetProfileByUserId_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceGetProfileByUserIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IProfilesManager_ServiceGetProfileByUserId_ExceptionSenderFault_FaultMessage">
-    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/GoatverseService" name="detail" element="q3:ExceptionSender" />
-  </wsdl:message>
   <wsdl:message name="IProfilesManager_ServiceIncrementMatchesWonByUserName_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceIncrementMatchesWonByUserName" />
   </wsdl:message>
   <wsdl:message name="IProfilesManager_ServiceIncrementMatchesWonByUserName_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceIncrementMatchesWonByUserNameResponse" />
   </wsdl:message>
-  <wsdl:message name="IProfilesManager_ServiceIncrementMatchesWonByUserName_ExceptionSenderFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/GoatverseService" name="detail" element="q4:ExceptionSender" />
-  </wsdl:message>
   <wsdl:message name="IProfilesManager_ServiceGetWonMatchesByUsername_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceGetWonMatchesByUsername" />
   </wsdl:message>
   <wsdl:message name="IProfilesManager_ServiceGetWonMatchesByUsername_OutputMessage">
     <wsdl:part name="parameters" element="tns:ServiceGetWonMatchesByUsernameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IProfilesManager_ServiceGetWonMatchesByUsername_ExceptionSenderFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/GoatverseService" name="detail" element="q5:ExceptionSender" />
   </wsdl:message>
   <wsdl:message name="IFriendsManager_ServiceSendFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:ServiceSendFriendRequest" />
@@ -435,27 +420,22 @@
     <wsdl:operation name="ServiceLoadProfileData">
       <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceLoadProfileData" message="tns:IProfilesManager_ServiceLoadProfileData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceLoadProfileDataResponse" message="tns:IProfilesManager_ServiceLoadProfileData_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IProfilesManager/ServiceLoadProfileDataExceptionSenderFault" name="ExceptionSenderFault" message="tns:IProfilesManager_ServiceLoadProfileData_ExceptionSenderFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="ServiceChangeProfileImage">
       <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage" message="tns:IProfilesManager_ServiceChangeProfileImage_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImageResponse" message="tns:IProfilesManager_ServiceChangeProfileImage_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IProfilesManager/ServiceChangeProfileImageExceptionSenderFault" name="ExceptionSenderFault" message="tns:IProfilesManager_ServiceChangeProfileImage_ExceptionSenderFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="ServiceGetProfileByUserId">
       <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserId" message="tns:IProfilesManager_ServiceGetProfileByUserId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserIdResponse" message="tns:IProfilesManager_ServiceGetProfileByUserId_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserIdExceptionSenderFault" name="ExceptionSenderFault" message="tns:IProfilesManager_ServiceGetProfileByUserId_ExceptionSenderFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="ServiceIncrementMatchesWonByUserName">
       <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceIncrementMatchesWonByUserName" message="tns:IProfilesManager_ServiceIncrementMatchesWonByUserName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceIncrementMatchesWonByUserNameResponse" message="tns:IProfilesManager_ServiceIncrementMatchesWonByUserName_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IProfilesManager/ServiceIncrementMatchesWonByUserNameExceptionSenderFault" name="ExceptionSenderFault" message="tns:IProfilesManager_ServiceIncrementMatchesWonByUserName_ExceptionSenderFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="ServiceGetWonMatchesByUsername">
       <wsdl:input wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetWonMatchesByUsername" message="tns:IProfilesManager_ServiceGetWonMatchesByUsername_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetWonMatchesByUsernameResponse" message="tns:IProfilesManager_ServiceGetWonMatchesByUsername_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IProfilesManager/ServiceGetWonMatchesByUsernameExceptionSenderFault" name="ExceptionSenderFault" message="tns:IProfilesManager_ServiceGetWonMatchesByUsername_ExceptionSenderFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IFriendsManager">
@@ -755,9 +735,6 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="ExceptionSenderFault">
-        <soap12:fault use="literal" name="ExceptionSenderFault" namespace="" />
-      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="ServiceChangeProfileImage">
       <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceChangeProfileImage" style="document" />
@@ -767,9 +744,6 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="ExceptionSenderFault">
-        <soap12:fault use="literal" name="ExceptionSenderFault" namespace="" />
-      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="ServiceGetProfileByUserId">
       <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceGetProfileByUserId" style="document" />
@@ -779,9 +753,6 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="ExceptionSenderFault">
-        <soap12:fault use="literal" name="ExceptionSenderFault" namespace="" />
-      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="ServiceIncrementMatchesWonByUserName">
       <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceIncrementMatchesWonByUserName" style="document" />
@@ -791,9 +762,6 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="ExceptionSenderFault">
-        <soap12:fault use="literal" name="ExceptionSenderFault" namespace="" />
-      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="ServiceGetWonMatchesByUsername">
       <soap12:operation soapAction="http://tempuri.org/IProfilesManager/ServiceGetWonMatchesByUsername" style="document" />
@@ -803,9 +771,6 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="ExceptionSenderFault">
-        <soap12:fault use="literal" name="ExceptionSenderFault" namespace="" />
-      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IFriendsManager" type="tns:IFriendsManager">
@@ -1080,39 +1045,39 @@
   </wsdl:binding>
   <wsdl:service name="ServiceImplementation">
     <wsdl:port name="NetTcpBinding_IUsersManager" binding="tns:NetTcpBinding_IUsersManager">
-      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <soap12:address location="net.tcp://192.168.251.220:8090/GoatverseService" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.220:8090/GoatverseService</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILobbyManager" binding="tns:NetTcpBinding_ILobbyManager">
-      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <soap12:address location="net.tcp://192.168.251.220:8090/GoatverseService" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.220:8090/GoatverseService</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IProfilesManager" binding="tns:NetTcpBinding_IProfilesManager">
-      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <soap12:address location="net.tcp://192.168.251.220:8090/GoatverseService" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.220:8090/GoatverseService</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IFriendsManager" binding="tns:NetTcpBinding_IFriendsManager">
-      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <soap12:address location="net.tcp://192.168.251.220:8090/GoatverseService" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.220:8090/GoatverseService</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IMatchManager" binding="tns:NetTcpBinding_IMatchManager">
-      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <soap12:address location="net.tcp://192.168.251.220:8090/GoatverseService" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.220:8090/GoatverseService</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ICardsManager" binding="tns:NetTcpBinding_ICardsManager">
-      <soap12:address location="net.tcp://localhost:8090/GoatverseService" />
+      <soap12:address location="net.tcp://192.168.251.220:8090/GoatverseService" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8090/GoatverseService</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.220:8090/GoatverseService</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
